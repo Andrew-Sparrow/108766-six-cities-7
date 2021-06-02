@@ -106,7 +106,12 @@ function Main({places}) {
 }
 
 Main.propTypes = {
-  places: PropTypes.object,
+  places: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      price: PropTypes.number.isRequired,
+    }),
+  ).isRequired,
 };
 
 export default Main;
