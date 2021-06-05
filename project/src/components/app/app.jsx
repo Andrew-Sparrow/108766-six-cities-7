@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { AppRoute } from '../../const.js'
+import { AppRoute } from '../../const.js';
 import {Switch, Route, BrowserRouter} from 'react-router-dom';
 import Main from '../main/main';
 import Favorites from '../favorites/favorites';

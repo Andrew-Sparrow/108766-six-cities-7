@@ -93,7 +93,7 @@ function PropertyNotLogged(props) {
                   <span className="property__price-text">&nbsp;night</span>
                 </div>
                 <div className="property__inside">
-                  <h2 className="property__inside-title">What's inside</h2>
+                  <h2 className="property__inside-title">What&apos;s inside</h2>
                   <ul className="property__inside-list">
                     <li className="property__inside-item">
                       Wi-Fi
