@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-function Place({price}) {
+function Offer({price}) {
   return (
     <article className="cities__place-card place-card">
       <div className="place-card__mark">
@@ -40,8 +40,8 @@ function Place({price}) {
   );
 }
 
-Place.propTypes = {
+Offer.propTypes = {
   price: PropTypes.number,
 };
 
-export default Place;
+export default Offer;

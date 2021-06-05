@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Place from '../place/place';
+import Room from '../offer/offer';
 
 function Main({places}) {
   return (
@@ -92,7 +92,7 @@ function Main({places}) {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                {places.map((place) => <Place key={place.id} price={place.price}/>)}
+                {places.map((place) => <Room key={place.id} price={place.price}/>)}
               </div>
             </section>
             <div className="cities__right-section">
