@@ -1,16 +1,17 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-function Place({price}) {
+function Offer({price}) {
   return (
     <article className="cities__place-card place-card">
       <div className="place-card__mark">
         <span>Premium</span>
       </div>
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <a href="#">
+        <Link to="#">
           <img className="place-card__image" src="img/apartment-01.jpg" width="260" height="200" alt="Place image" />
-        </a>
+        </Link>
       </div>
       <div className="place-card__info">
         <div className="place-card__price-wrapper">
@@ -20,7 +21,7 @@ function Place({price}) {
           </div>
           <button className="place-card__bookmark-button button" type="button">
             <svg className="place-card__bookmark-icon" width="18" height="19">
-              <use xlinkHref="#icon-bookmark"></use>
+              <use xlinkto="#icon-bookmark"></use>
             </svg>
             <span className="visually-hidden">To bookmarks</span>
           </button>
@@ -32,7 +33,7 @@ function Place({price}) {
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="#">Beautiful &amp; luxurious apartment at great location</a>
+          <Link to="#">Beautiful &amp; luxurious apartment at great location</Link>
         </h2>
         <p className="place-card__type">Apartment</p>
       </div>
@@ -40,8 +41,8 @@ function Place({price}) {
   );
 }
 
-Place.propTypes = {
+Offer.propTypes = {
   price: PropTypes.number,
 };
 
-export default Place;
+export default Offer;
