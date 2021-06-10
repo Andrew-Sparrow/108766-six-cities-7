@@ -39,4 +39,27 @@ export default class Utils {
 
     return filmInfoForServer;
   }
+
+  static getFavoritePlaces(places) {
+    const favoritePlaces = new Map();
+
+    places.forEach((place) => {
+      if (place.isFavorite) {
+        if (favoritePlaces.has(place.city.name)) {
+          favoritePlaces.get(place.city.name).push(place);
+        } else {
+          favoritePlaces.set(place.city.name, []);
+          favoritePlaces.get(place.city.name).push(place);
+        }
+      }
+    });
+
+    return favoritePlaces;
+  }
+
+  static getFavoritePlaceComponents(places) {
+    places.keys().forEach((city) => {
+
+    });
+  }
 }
