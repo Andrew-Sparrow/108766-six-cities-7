@@ -7,10 +7,11 @@ import Favorites from '../favorites/favorites';
 import Login from '../login/login';
 import Offer from '../offer/offer';
 import Error from '../error/error';
-import appProp from '../offer/offer.prop.js';
+import offerProp from '../offer/offer.prop.js';
 
 function App(props) {
   const offers = props.offers;
+
   return (
     <BrowserRouter>
       <Switch>
@@ -35,7 +36,7 @@ function App(props) {
 }
 
 App.propTypes = {
-  offers: appProp,
+  offers: PropTypes.arrayOf(offerProp),
 };
 
 export default App;
