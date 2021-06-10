@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Room from '../offer/offer';
 import { Link } from 'react-router-dom';
+import OfferList from '../offer-list/offer-list';
+import offerProp from '../offer/offer.prop';
 
 function Main({places}) {
   return (
@@ -92,9 +93,7 @@ function Main({places}) {
                   <li className="places__option" tabIndex="0">Top rated first</li>
                 </ul>
               </form>
-              <div className="cities__places-list places__list tabs__content">
-                {places.map((place) => <Room key={place.id} price={place.price}/>)}
-              </div>
+              <OfferList places={places}/>
             </section>
             <div className="cities__right-section">
               <section className="cities__map map"></section>
@@ -108,10 +107,7 @@ function Main({places}) {
 
 Main.propTypes = {
   places: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      price: PropTypes.number.isRequired,
-    }),
+    PropTypes.shape(offerProp),
   ).isRequired,
 };
 

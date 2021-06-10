@@ -7,23 +7,24 @@ import Favorites from '../favorites/favorites';
 import Login from '../login/login';
 import Offer from '../offer/offer';
 import Error from '../error/error';
+import appProp from '../offer/offer.prop.js';
 
 function App(props) {
-  const places = props.places;
+  const offers = props.offers;
   return (
     <BrowserRouter>
       <Switch>
         <Route exact path={AppRoute.ROOT}>
-          <Main places={places} />
+          <Main places={offers} />
         </Route>
         <Route exact path={AppRoute.LOGIN}>
-          <Login places={places} />
+          <Login places={offers} />
         </Route>
         <Route exact path={AppRoute.FAVORITES}>
-          <Favorites places={places} />
+          <Favorites places={offers} />
         </Route>
         <Route exact path={AppRoute.OFFER}>
-          <Offer places={places} />
+          <Offer places={offers} />
         </Route>
         <Route>
           <Error />
@@ -34,12 +35,7 @@ function App(props) {
 }
 
 App.propTypes = {
-  places: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      price: PropTypes.number.isRequired,
-    }),
-  ).isRequired,
+  offers: appProp,
 };
 
 export default App;
