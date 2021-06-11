@@ -3,7 +3,7 @@ import { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import {BrowserRouter, Link} from 'react-router-dom';
 import FavoriteList from '../favorite-list/favorite-list';
-import offerProp from '../offer/offer.prop.js';
+import offerProp from '../room/room.prop.js';
 
 function Favorites({ places }) {
   return (

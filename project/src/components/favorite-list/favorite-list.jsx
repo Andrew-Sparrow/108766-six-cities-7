@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Utils from '../../utils/utils';
 import FavoriteCity from '../favorite-city/favorite-city';
-import offerProp from '../offer/offer.prop.js';
+import offerProp from '../room/room.prop.js';
 
 function FavoriteList({ places }) {
   const favoriteList = Utils.getFavoritePlacesSeparatedByCity(places);
