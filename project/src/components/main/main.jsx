@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import RoomList from '../offer-list/offer-list';
+import RoomList from '../room-list/room-list';
 import offerProp from '../room/room.prop';
 
 function Main({places}) {
