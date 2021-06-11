@@ -6,9 +6,9 @@ import { Switch, Route, BrowserRouter } from 'react-router-dom';
 function Comment(props) {
   const [comment, setComment] = useState('');
 
-  function changeCommentHandler({target}) {
+  function changeCommentHandler(evt) {
     evt.preventDefault();
-    setComment(target.value);
+    setComment(evt.target.value);
   }
 
   return (
