@@ -5,7 +5,7 @@ import {Switch, Route, BrowserRouter} from 'react-router-dom';
 import Main from '../main/main';
 import Favorites from '../favorites/favorites';
 import Login from '../login/login';
-import Room from '../room/room';
+import Property from '../property/property';
 import Error from '../error/error';
 import offerProp from '../room/room.prop.js';
 
@@ -24,8 +24,8 @@ function App(props) {
         <Route exact path={AppRoute.FAVORITES}>
           <Favorites places={offers} />
         </Route>
-        <Route exact path={AppRoute.OFFER}>
-          <Room place={offers[0]} price={0}/>
+        <Route exact path={AppRoute.PROPERTY}>
+          <Property place={offers[0]} price={0}/>
         </Route>
         <Route>
           <Error />

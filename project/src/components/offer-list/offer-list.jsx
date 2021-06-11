@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import Room from '../room/room';
 import offerProp from '../room/room.prop';
 
-function OfferList({places})  {
+function RoomList({places})  {
   const [activeCard, setActiveCard] = useState({});
 
   return (
@@ -13,8 +13,8 @@ function OfferList({places})  {
   );
 };
 
-OfferList.propTypes = {
+RoomList.propTypes = {
   places: PropTypes.arrayOf(offerProp)
 };
 
-export default OfferList;
+export default RoomList;

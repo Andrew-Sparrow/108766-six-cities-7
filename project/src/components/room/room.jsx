@@ -11,7 +11,7 @@ function Room({price}) {
         <span>Premium</span>
       </div>
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <Link to={AppRoute.OFFER}>
+        <Link to={AppRoute.PROPERTY}>
           <img className="place-card__image" src="img/apartment-01.jpg" width="260" height="200" alt="Place image" />
         </Link>
       </div>
@@ -35,7 +35,7 @@ function Room({price}) {
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to={`${AppRoute.OFFER}`}>Beautiful &amp; luxurious apartment at great location</Link>
+          <Link to={AppRoute.PROPERTY}>Beautiful &amp; luxurious apartment at great location</Link>
         </h2>
         <p className="place-card__type">Apartment</p>
       </div>
