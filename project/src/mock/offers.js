@@ -1,15 +1,17 @@
 export const offers = [
   {
     "id": 1,
-    "price": 120,
+    "price": 220,
     "bedrooms": 3,
+    "type": "apartment",
+    "title": "Beautiful & luxurious studio at great location",
     "city": {
+      "name": "Cologne",
       "location": {
         "latitude": 55.370216,
         "longitude": 5.895168,
         "zoom": 10
       },
-      "name": "Cologne"
     },
     "description": "A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.",
     "goods": ["Heating", "Kitchen", "Cable TV", "Washing machine", "Coffee machine", "Dishwasher"],
@@ -29,9 +31,7 @@ export const offers = [
     },
     "maxAdults": 4,
     "previewImage": "img/1.png",
-    "rating": 4.8,
-    "title": "Beautiful & luxurious studio at great location",
-    "type": "apartment"
+    "rating": 4.0,
   },
   {
     "id": 2,
@@ -103,7 +103,7 @@ export const offers = [
   },
   {
     "id": 4,
-    "price": 120,
+    "price": 180,
     "bedrooms": 3,
     "city": {
       "location": {
@@ -122,7 +122,7 @@ export const offers = [
       "name": "Angelina"
     },
     "images": ["img/1.png", "img/2.png"],
-    "isFavorite": false,
+    "isFavorite": true,
     "isPremium": false,
     "location": {
       "latitude": 52.35514938496378,

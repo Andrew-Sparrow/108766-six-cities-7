@@ -1,7 +1,9 @@
 import React from 'react';
 import { Fragment } from 'react';
+import PropTypes from 'prop-types';
 import {BrowserRouter, Link} from 'react-router-dom';
 import FavoriteList from '../favorite-list/favorite-list';
+import offerProp from '../offer/offer.prop.js';
 
 function Favorites({ places }) {
   return (
@@ -57,5 +59,9 @@ function Favorites({ places }) {
     </BrowserRouter>
   );
 }
+
+Favorites.propTypes = {
+  places: PropTypes.arrayOf(offerProp),
+};
 
 export default Favorites;

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 function FavoritePlace(props) {
@@ -38,3 +39,11 @@ function FavoritePlace(props) {
     </article>
   );
 }
+
+FavoritePlace.propTypes = {
+  price: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+};
+
+export default FavoritePlace;

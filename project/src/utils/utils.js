@@ -1,3 +1,7 @@
+import FavoriteList from "../components/favorite-list/favorite-list";
+import FavoriteCity from "../components/favorite-city/favorite-city";
+import FavoritePlace from "../components/favorite-place/favorite-place";
+
 export default class Utils {
 
   static adaptToClient(offerFromServer) {
@@ -40,7 +44,7 @@ export default class Utils {
     return filmInfoForServer;
   }
 
-  static getFavoritePlaces(places) {
+  static getFavoritePlacesSeparatedByCity(places) {
     const favoritePlaces = new Map();
 
     places.forEach((place) => {
@@ -55,11 +59,5 @@ export default class Utils {
     });
 
     return favoritePlaces;
-  }
-
-  static getFavoritePlaceComponents(places) {
-    places.keys().forEach((city) => {
-
-    });
   }
 }
