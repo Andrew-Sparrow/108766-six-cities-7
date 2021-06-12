@@ -7,8 +7,9 @@ import { withLayout } from '../hocs/with-layout';
 
 function Main(props) {
   const places = props.places;
+
   return (
-    <Fragment>
+    <main className="page__main page__main--index">
       <h1 className="visually-hidden">Cities</h1>
       <div className="tabs">
         <section className="locations container">
@@ -73,7 +74,7 @@ function Main(props) {
           </div>
         </div>
       </div>
-    </Fragment>
+    </main>
   );
 }
 

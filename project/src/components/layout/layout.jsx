@@ -1,10 +1,13 @@
 import React, { Fragment } from "react";
-import { Link } from "react-router-dom";
+import { BrowserRouter, Link } from "react-router-dom";
 
-export default ({ children }) => {
+export default (props) => {
+  const className = props.className;
+  const children = props.children;
+
   return (
-    <Fragment>
-      <div className="page page--gray page--main">
+    <BrowserRouter>
+      <div className={className}>
         <header className="header">
           <div className="container">
             <div className="header__wrapper">
@@ -32,10 +35,8 @@ export default ({ children }) => {
             </div>
           </div>
         </header>
-        <main className="page__main page__main--index">
-          {children}
-        </main>
+        {children}
       </div>
-    </Fragment>
+    </BrowserRouter>
   );
 };

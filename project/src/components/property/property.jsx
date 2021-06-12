@@ -3,6 +3,8 @@ import { Fragment } from 'react';
 import Comment from '../comment/comment';
 
 function Property(props) {
+  const place = props.place;
+
   return (
     <Fragment>
       <div style={{display: 'none'}}>
