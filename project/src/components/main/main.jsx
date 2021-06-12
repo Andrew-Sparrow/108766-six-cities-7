@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Room from '../offer/offer';
 import { Link } from 'react-router-dom';
+import RoomList from '../room-list/room-list';
+import offerProp from '../room/room.prop';
 
 function Main({places}) {
   return (
@@ -10,21 +11,21 @@ function Main({places}) {
         <div className="container">
           <div className="header__wrapper">
             <div className="header__left">
-              <Link className="header__logo-link header__logo-link--active" to="#">
+              <Link className="header__logo-link header__logo-link--active" to="/">
                 <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width="81" height="41" />
               </Link>
             </div>
             <nav className="header__nav">
               <ul className="header__nav-list">
                 <li className="header__nav-item user">
-                  <Link className="header__nav-link header__nav-link--profile" to="#">
+                  <Link className="header__nav-link header__nav-link--profile" to="/">
                     <div className="header__avatar-wrapper user__avatar-wrapper">
                     </div>
                     <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
                   </Link>
                 </li>
                 <li className="header__nav-item">
-                  <Link className="header__nav-link" to="#">
+                  <Link className="header__nav-link" to="/">
                     <span className="header__signout">Sign out</span>
                   </Link>
                 </li>
@@ -40,32 +41,32 @@ function Main({places}) {
           <section className="locations container">
             <ul className="locations__list tabs__list">
               <li className="locations__item">
-                <Link className="locations__item-link tabs__item" to="#">
+                <Link className="locations__item-link tabs__item" to="/">
                   <span>Paris</span>
                 </Link>
               </li>
               <li className="locations__item">
-                <Link className="locations__item-link tabs__item" to="#">
+                <Link className="locations__item-link tabs__item" to="/">
                   <span>Cologne</span>
                 </Link>
               </li>
               <li className="locations__item">
-                <Link className="locations__item-link tabs__item" to="#">
+                <Link className="locations__item-link tabs__item" to="/">
                   <span>Brussels</span>
                 </Link>
               </li>
               <li className="locations__item">
-                <Link className="locations__item-link tabs__item tabs__item--active" to="#">
+                <Link className="locations__item-link tabs__item tabs__item--active" to="/">
                   <span>Amsterdam</span>
                 </Link>
               </li>
               <li className="locations__item">
-                <Link className="locations__item-link tabs__item" to="#">
+                <Link className="locations__item-link tabs__item" to="/">
                   <span>Hamburg</span>
                 </Link>
               </li>
               <li className="locations__item">
-                <Link className="locations__item-link tabs__item" to="#">
+                <Link className="locations__item-link tabs__item" to="/">
                   <span>Dusseldorf</span>
                 </Link>
               </li>
@@ -92,9 +93,7 @@ function Main({places}) {
                   <li className="places__option" tabIndex="0">Top rated first</li>
                 </ul>
               </form>
-              <div className="cities__places-list places__list tabs__content">
-                {places.map((place) => <Room key={place.id} price={place.price}/>)}
-              </div>
+              <RoomList places={places}/>
             </section>
             <div className="cities__right-section">
               <section className="cities__map map"></section>
@@ -107,12 +106,7 @@ function Main({places}) {
 }
 
 Main.propTypes = {
-  places: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      price: PropTypes.number.isRequired,
-    }),
-  ).isRequired,
+  places: PropTypes.arrayOf(offerProp)
 };
 
 export default Main;

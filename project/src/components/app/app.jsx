@@ -5,25 +5,27 @@ import {Switch, Route, BrowserRouter} from 'react-router-dom';
 import Main from '../main/main';
 import Favorites from '../favorites/favorites';
 import Login from '../login/login';
-import Offer from '../offer/offer';
+import Property from '../property/property';
 import Error from '../error/error';
+import offerProp from '../room/room.prop.js';
 
 function App(props) {
-  const places = props.places;
+  const offers = props.offers;
+
   return (
     <BrowserRouter>
       <Switch>
         <Route exact path={AppRoute.ROOT}>
-          <Main places={places} />
+          <Main places={offers} />
         </Route>
         <Route exact path={AppRoute.LOGIN}>
-          <Login places={places} />
+          <Login places={offers} />
         </Route>
         <Route exact path={AppRoute.FAVORITES}>
-          <Favorites places={places} />
+          <Favorites places={offers} />
         </Route>
-        <Route exact path={AppRoute.OFFER}>
-          <Offer places={places} />
+        <Route exact path={AppRoute.PROPERTY}>
+          <Property place={offers[0]} price={0}/>
         </Route>
         <Route>
           <Error />
@@ -34,12 +36,7 @@ function App(props) {
 }
 
 App.propTypes = {
-  places: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      price: PropTypes.number.isRequired,
-    }),
-  ).isRequired,
+  offers: PropTypes.arrayOf(offerProp),
 };
 
 export default App;
