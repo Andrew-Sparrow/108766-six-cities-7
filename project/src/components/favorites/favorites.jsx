@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import FavoriteList from '../favorite-list/favorite-list';
 import offerProp from '../room/room.prop.js';
+import { withLayout } from '../hocs/with-layout';
 
 function Favorites(props) {
   const places = props.places;
@@ -31,4 +32,4 @@ Favorites.propTypes = {
   places: PropTypes.arrayOf(offerProp),
 };
 
-export default Favorites;
+export default withLayout(Favorites);
