@@ -25,7 +25,7 @@ function App(props) {
           <Favorites places={offers} className="page" />
         </Route>
         <Route exact path={AppRoute.PROPERTY}>
-          <Property place={offers[0]} price={0}/>
+          <Property place={offers[0]} price={0} className="page" />
         </Route>
         <Route>
           <Error />

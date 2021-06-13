@@ -1,6 +1,6 @@
 export const AppRoute = {
   LOGIN: '/login',
   FAVORITES: '/favorites',
-  PROPERTY: '/property/:id',
+  PROPERTY: '/property/:id?',
   ROOT: '/',
 };
