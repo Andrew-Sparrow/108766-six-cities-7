@@ -1,9 +1,10 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import RoomList from '../room-list/room-list';
 import offerProp from '../room/room.prop';
 import { withLayout } from '../hocs/with-layout';
+import Map from '../map/map';
 
 function Main(props) {
   const places = props.places;
@@ -70,7 +71,9 @@ function Main(props) {
             <RoomList places={places}/>
           </section>
           <div className="cities__right-section">
-            <section className="cities__map map"></section>
+            <section className="cities__map map">
+              <Map city={places[1].city} points={places} />
+            </section>
           </div>
         </div>
       </div>
