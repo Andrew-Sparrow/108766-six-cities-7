@@ -1,36 +1,19 @@
-export const AppRoute = {
+const AppRoute = {
   LOGIN: '/login',
   FAVORITES: '/favorites',
   PROPERTY: '/property/:id?',
   ROOT: '/',
 };
 
-export const POINTS = [
-  {
-    title: 'Саундвью',
-    lat: 40.816881,
-    lng: -73.872768,
-  }, {
-    title: 'Ферри Поинт',
-    lat: 40.814909,
-    lng: -73.830682,
-  }, {
-    title: 'Бронкс',
-    lat: 40.862413,
-    lng: -73.879357,
-  }, {
-    title: 'Инвуд-Хилл',
-    lat: 40.870817,
-    lng: -73.927112,
-  }, {
-    title: 'Пелхэм-Бей-Парк',
-    lat: 40.877312,
-    lng: -73.807182,
-  }
-];
+const zoom = 12;
 
-const URL_MARKER_DEFAULT = 'https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/pin.svg';
+const URL_MARKER_DEFAULT = 'img/pin.svg';
 
-const URL_MARKER_CURRENT = 'https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/main-pin.svg';
+const URL_MARKER_CURRENT = 'img/pin-active.svg';
 
-export { URL_MARKER_DEFAULT, URL_MARKER_CURRENT };
+export {
+  AppRoute,
+  zoom,
+  URL_MARKER_DEFAULT,
+  URL_MARKER_CURRENT
+};

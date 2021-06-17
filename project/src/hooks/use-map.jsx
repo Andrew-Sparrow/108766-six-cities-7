@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import leaflet from 'leaflet';
+import {zoom} from '../const';
 
 function useMap(mapRef, city) {
   const [map, setMap]  = useState(null);
@@ -12,7 +13,9 @@ function useMap(mapRef, city) {
           lat: city.location.latitude,
           lng: city.location.longitude,
         },
-        zoom: city.location.zoom
+        zoom: zoom,
+        zoomControl: false,
+        marker: true,
       });
 
       leaflet

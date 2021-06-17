@@ -5,20 +5,14 @@ import 'leaflet/dist/leaflet.css';
 import useMap from '../../hooks/use-map';
 import { URL_MARKER_DEFAULT, URL_MARKER_CURRENT } from '../../const';
 
-const icon = leaflet.icon({
-  iconUrl: 'img/pin.svg',
-  iconSize: [30, 30],
-  iconAnchor: [15, 30],
-});
-
 function Map({ city, points}) {
   const mapRef = useRef(null);
   const map = useMap(mapRef, city);
 
   const defaultCustomIcon = leaflet.icon({
     iconUrl: URL_MARKER_DEFAULT,
-    iconSize: [40, 40],
-    iconAnchor: [20, 40],
+    iconSize: [27, 39],
+    iconAnchor: [14, 39],
   });
 
   const currentCustomIcon = leaflet.icon({
@@ -30,14 +24,16 @@ function Map({ city, points}) {
   useEffect(() => {
     if (map) {
       points.forEach((point) => {
-        leaflet
-          .marker({
-            lat: point.location.latitude,
-            lng: point.location.longitude
-          }, {
-            icon: defaultCustomIcon
-          })
-          .addTo(map);
+        if (point.city.name === city.name) {
+          leaflet
+            .marker({
+              lat: point.location.latitude,
+              lng: point.location.longitude
+            }, {
+              icon: defaultCustomIcon
+            })
+            .addTo(map);
+        }
       });
     }
   }, [map, points]);
