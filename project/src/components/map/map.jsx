@@ -5,7 +5,7 @@ import 'leaflet/dist/leaflet.css';
 import useMap from '../../hooks/use-map';
 import { URL_MARKER_DEFAULT, URL_MARKER_CURRENT } from '../../const';
 
-function Map({ city, points}) {
+function Map({ city, points, selectedPoint}) {
   const mapRef = useRef(null);
   const map = useMap(mapRef, city);
 
@@ -17,8 +17,8 @@ function Map({ city, points}) {
 
   const currentCustomIcon = leaflet.icon({
     iconUrl: URL_MARKER_CURRENT,
-    iconSize: [40, 40],
-    iconAnchor: [20, 40],
+    iconSize: [27, 39],
+    iconAnchor: [14, 39],
   });
 
   useEffect(() => {
@@ -30,7 +30,9 @@ function Map({ city, points}) {
               lat: point.location.latitude,
               lng: point.location.longitude
             }, {
-              icon: defaultCustomIcon
+              icon: (point.id === selectedPoint.id)
+              ? currentCustomIcon
+              : defaultCustomIcon
             })
             .addTo(map);
         }

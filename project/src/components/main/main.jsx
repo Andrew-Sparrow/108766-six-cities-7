@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import RoomList from '../room-list/room-list';
@@ -8,6 +8,15 @@ import Map from '../map/map';
 
 function Main(props) {
   const places = props.places;
+
+  const [selectedPoint, setSelectedPoint] = useState({});
+
+  const onListItemHover = (listItem) => {
+    const currentPoint = places.find((point) => {
+      return point.id === parseInt(listItem.id);
+    });
+    setSelectedPoint(currentPoint);
+  };
 
   return (
     <main className="page__main page__main--index">
@@ -68,11 +77,15 @@ function Main(props) {
                 <li className="places__option" tabIndex="0">Top rated first</li>
               </ul>
             </form>
-            <RoomList places={places}/>
+            <RoomList places={places} onListItemHover={onListItemHover} />
           </section>
           <div className="cities__right-section">
             <section className="cities__map map">
-              <Map city={places[1].city} points={places} />
+              <Map
+                city={places[1].city}
+                points={places}
+                selectedPoint={selectedPoint}
+              />
             </section>
           </div>
         </div>
