@@ -4,14 +4,15 @@ import Utils from '../../utils/utils';
 import FavoriteCity from '../favorite-city/favorite-city';
 import offerProp from '../room/room.prop.js';
 
-function FavoriteList({ places }) {
+function FavoriteList(props) {
+  const {places} = props;
   const favoriteList = Utils.getFavoritePlacesSeparatedByCity(places);
 
   function getPlaces(list) {
     const cityList = [];
 
-     list.forEach((places, city) => {
-      cityList.push(<FavoriteCity city={city} favoritePlaces={places} key={city}/>);
+    list.forEach((place, city) => {
+      cityList.push(<FavoriteCity city={city} favoritePlaces={place} key={place.city}/>);
     });
 
     return cityList;

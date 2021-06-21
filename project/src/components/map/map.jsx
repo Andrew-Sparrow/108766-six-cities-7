@@ -5,7 +5,8 @@ import 'leaflet/dist/leaflet.css';
 import useMap from '../../hooks/use-map';
 import { URL_MARKER_DEFAULT, URL_MARKER_CURRENT } from '../../const';
 
-function Map({ city, points, selectedPoint}) {
+function Map(props) {
+  const { city, points, selectedPoint } = props;
   const mapRef = useRef(null);
   const map = useMap(mapRef, city);
 
@@ -28,17 +29,17 @@ function Map({ city, points, selectedPoint}) {
           leaflet
             .marker({
               lat: point.location.latitude,
-              lng: point.location.longitude
+              lng: point.location.longitude,
             }, {
               icon: (point.id === selectedPoint.id)
-              ? currentCustomIcon
-              : defaultCustomIcon
+                ? currentCustomIcon
+                : defaultCustomIcon,
             })
             .addTo(map);
         }
       });
     }
-  }, [map, points]);
+  }, [map, points, selectedPoint]);
 
   return (
     <div
@@ -47,6 +48,12 @@ function Map({ city, points, selectedPoint}) {
     >
     </div>
   );
+}
+
+Map.propTypes = {
+  city: PropTypes.object,
+  selectedPoint: PropTypes.object,
+  points: PropTypes.array,
 };
 
 export default Map;

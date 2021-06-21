@@ -1,10 +1,15 @@
-import React from "react";
-import Layout from "../layout/layout";
+import React from 'react';
+import Layout from '../layout/layout';
 
-export const withLayout = (Component) => {
-  return (props) => (
-    <Layout>
-      <Component {...props} />
-    </Layout>
-  );
-};
+const withLayout = (Component) =>
+  function wrapper(props) {
+    return (
+      <Layout>
+        <Component {...props} />
+      </Layout>
+    );
+  };
+
+withLayout.displayName = 'withLayout';
+
+export default withLayout;

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import RoomList from '../room-list/room-list';
 import offerProp from '../room/room.prop';
-import { withLayout } from '../hocs/with-layout';
+import withLayout from '../hocs/with-layout';
 import Map from '../map/map';
 
 function Main(props) {
@@ -12,9 +12,7 @@ function Main(props) {
   const [selectedPoint, setSelectedPoint] = useState({});
 
   const onListItemHover = (listItem) => {
-    const currentPoint = places.find((point) => {
-      return point.id === parseInt(listItem.id);
-    });
+    const currentPoint = places.find((point) => point.id === parseInt(listItem.id, 10));
     setSelectedPoint(currentPoint);
   };
 
@@ -95,7 +93,7 @@ function Main(props) {
 }
 
 Main.propTypes = {
-  places: PropTypes.arrayOf(offerProp)
+  places: PropTypes.arrayOf(offerProp),
 };
 
 export default withLayout(Main);
