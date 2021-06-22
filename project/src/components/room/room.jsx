@@ -4,7 +4,13 @@ import { Link } from 'react-router-dom';
 import { AppRoute } from '../../const.js';
 
 function Room(props) {
-  const { price, onListItemHover, id } = props;
+  const {
+    price,
+    onListItemHover,
+    id,
+    title,
+  } = props;
+
   const listItemHoverHandler = (evt) => {
     onListItemHover(evt.currentTarget);
   };
@@ -16,7 +22,7 @@ function Room(props) {
       </div>
       <div className="cities__image-wrapper place-card__image-wrapper">
         <Link to={AppRoute.PROPERTY}>
-          <img className="place-card__image" src="img/apartment-01.jpg" width="260" height="200" alt="Place image" />
+          <img className="place-card__image" src="img/apartment-01.jpg" width="260" height="200" alt="Place" />
         </Link>
       </div>
       <div className="place-card__info">
@@ -39,7 +45,7 @@ function Room(props) {
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to={AppRoute.PROPERTY}>Beautiful &amp; luxurious apartment at great location</Link>
+          <Link to={AppRoute.PROPERTY}>{title}</Link>
         </h2>
         <p className="place-card__type">Apartment</p>
       </div>
@@ -51,6 +57,7 @@ Room.propTypes = {
   id: PropTypes.number.isRequired,
   price: PropTypes.number,
   onListItemHover: PropTypes.func,
+  title: PropTypes.string.isRequired,
 };
 
 export default Room;

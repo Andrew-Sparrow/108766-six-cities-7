@@ -165,7 +165,7 @@ function Property() {
               <article className="near-places__card place-card">
                 <div className="near-places__image-wrapper place-card__image-wrapper">
                   <a href="#">
-                    <img className="place-card__image" src="img/room.jpg" width={260} height={200} alt="Place image" />
+                    <img className="place-card__image" src="img/room.jpg" width={260} height={200} alt="Place" />
                   </a>
                 </div>
                 <div className="place-card__info">
@@ -192,11 +192,11 @@ function Property() {
                   </h2>
                   <p className="place-card__type">Private room</p>
                 </div>
-              </article>
+              </ article>
               <article className="near-places__card place-card">
                 <div className="near-places__image-wrapper place-card__image-wrapper">
                   <a href="#">
-                    <img className="place-card__image" src="img/apartment-02.jpg" width={260} height={200} alt="Place image" />
+                    <img className="place-card__image" src="img/apartment-02.jpg" width={260} height={200} alt="Place" />
                   </a>
                 </div>
                 <div className="place-card__info">
@@ -227,7 +227,7 @@ function Property() {
               <article className="near-places__card place-card">
                 <div className="near-places__image-wrapper place-card__image-wrapper">
                   <a href="#">
-                    <img className="place-card__image" src="img/apartment-03.jpg" width={260} height={200} alt="Place image" />
+                    <img className="place-card__image" src="img/apartment-03.jpg" width={260} height={200} alt="Place" />
                   </a>
                 </div>
                 <div className="place-card__info">
