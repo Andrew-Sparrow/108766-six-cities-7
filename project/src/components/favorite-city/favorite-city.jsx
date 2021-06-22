@@ -15,9 +15,7 @@ function FavoriteCity({ city, favoritePlaces }) {
         </div>
       </div>
       <div className="favorites__places">
-        {favoritePlaces.map((place) => {
-          return <FavoritePlace price={place.price} title={place.title} type={place.type} key={place.id} />
-        })}
+        {favoritePlaces.map((place) => <FavoritePlace price={place.price} title={place.title} type={place.type} key={place.id} />)}
       </div>
     </li>);
 }

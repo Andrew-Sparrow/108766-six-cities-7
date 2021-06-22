@@ -16,16 +16,16 @@ function App(props) {
     <BrowserRouter>
       <Switch>
         <Route exact path={AppRoute.ROOT}>
-          <Main places={offers} />
+          <Main places={offers} className="page page--gray page--main" />
         </Route>
         <Route exact path={AppRoute.LOGIN}>
           <Login places={offers} />
         </Route>
         <Route exact path={AppRoute.FAVORITES}>
-          <Favorites places={offers} />
+          <Favorites places={offers} className="page" />
         </Route>
         <Route exact path={AppRoute.PROPERTY}>
-          <Property place={offers[0]} price={0}/>
+          <Property place={offers[0]} price={0} className="page" />
         </Route>
         <Route>
           <Error />

@@ -3,10 +3,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { AppRoute } from '../../const.js';
 
-function Room({price}) {
+function Room(props) {
+  const { price, onListItemHover, id } = props;
+  const listItemHoverHandler = (evt) => {
+    onListItemHover(evt.currentTarget);
+  };
 
   return (
-    <article className="cities__place-card place-card">
+    <article className="cities__place-card place-card" onMouseEnter={listItemHoverHandler} id={id}>
       <div className="place-card__mark">
         <span>Premium</span>
       </div>
@@ -44,7 +48,9 @@ function Room({price}) {
 }
 
 Room.propTypes = {
+  id: PropTypes.number.isRequired,
   price: PropTypes.number,
+  onListItemHover: PropTypes.func,
 };
 
 export default Room;

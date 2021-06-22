@@ -1,7 +1,3 @@
-import FavoriteList from "../components/favorite-list/favorite-list";
-import FavoriteCity from "../components/favorite-city/favorite-city";
-import FavoritePlace from "../components/favorite-place/favorite-place";
-
 export default class Utils {
 
   static adaptToClient(offerFromServer) {
@@ -14,13 +10,13 @@ export default class Utils {
           {
             avatarUrl: offerFromServer.host.avatar_url,
             isPro: offerFromServer.host.is_pro,
-          }
+          },
         ),
         isFavorite: offerFromServer.is_favorite,
         isPremium: offerFromServer.is_premium,
         maxAdults: offerFromServer.max_adults,
         previewImage: offerFromServer.preview_image,
-      }
+      },
     );
 
     // Ненужные ключи мы удаляем
@@ -38,8 +34,8 @@ export default class Utils {
   static adaptToServer(filmFromClient) {
     const filmInfoForServer = Object.assign(
       {},
-      {}
-    )
+      {},
+    );
 
     return filmInfoForServer;
   }

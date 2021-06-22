@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import { AppRoute } from '../../const.js';
-import { Switch, Route, BrowserRouter } from 'react-router-dom';
 
-function Comment(props) {
+function Comment() {
   const [comment, setComment] = useState('');
 
   function changeCommentHandler(evt) {
