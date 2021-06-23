@@ -1,16 +1,20 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+
 import RoomList from '../room-list/room-list';
 import offerProp from '../room/room.prop';
 import withLayout from '../hocs/with-layout';
 import Map from '../map/map';
 import Tabs from '../tabs/tabs';
 import SortBy from '../sort-by/sort-by';
+import Utils from '../../utils/utils';
 
 function Main(props) {
-  const places = props.places;
+  const { places, activeCityName } = props;
 
   const [selectedPoint, setSelectedPoint] = useState({});
+  const filteredPlaces = Utils.getFilteredPlaces(activeCityName, places);
 
   const onListItemHover = (listItem) => {
     const currentPoint = places.find((point) => point.id === parseInt(listItem.id, 10));
@@ -26,15 +30,16 @@ function Main(props) {
         <div className="cities__places-container container">
           <section className="cities__places places">
             <h2 className="visually-hidden">Places</h2>
-            <b className="places__found">{places.length} places to stay in Amsterdam</b>
+            <b className="places__found">{filteredPlaces.length} places to stay in {activeCityName}</b>
             <SortBy />
-            <RoomList places={places} onListItemHover={onListItemHover} />
+            <RoomList places={filteredPlaces} onListItemHover={onListItemHover} />
           </section>
           <div className="cities__right-section">
             <section className="cities__map map">
               <Map
-                city={places[1].city}
-                points={places}
+                activeCityName={activeCityName}
+                city={filteredPlaces.length !== 0 ? filteredPlaces[0].city : {}}
+                points={filteredPlaces}
                 selectedPoint={selectedPoint}
               />
             </section>
@@ -45,8 +50,15 @@ function Main(props) {
   );
 }
 
+const mapStateToProps = (state) => ({
+  activeCityName: state.activeCityName,
+});
+
 Main.propTypes = {
   places: PropTypes.arrayOf(offerProp),
+  activeCityName: PropTypes.string.isRequired,
 };
 
-export default withLayout(Main);
+const withLayoutMain = withLayout(Main);
+export { withLayoutMain };
+export default connect(mapStateToProps, null)(Main);

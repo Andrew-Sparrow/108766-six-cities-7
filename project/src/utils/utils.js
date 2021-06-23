@@ -1,4 +1,4 @@
-export default class Utils {
+class Utils {
 
   static adaptToClient(offerFromServer) {
     const adaptedOfferForClient = Object.assign(
@@ -56,4 +56,12 @@ export default class Utils {
 
     return favoritePlaces;
   }
+
+  static getFilteredPlaces(activeCity, places) {
+    let filteredPlaces = [];
+    filteredPlaces = places.filter((item) => item.city.name === activeCity);
+    return filteredPlaces;
+  }
 }
+
+export default Utils;

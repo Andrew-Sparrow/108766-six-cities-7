@@ -1,12 +1,19 @@
 import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
+
 import leaflet from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import useMap from '../../hooks/use-map';
 import { URL_MARKER_DEFAULT, URL_MARKER_CURRENT } from '../../const';
 
 function Map(props) {
-  const { city, points, selectedPoint } = props;
+  const {
+    activeCityName,
+    city,
+    points,
+    selectedPoint,
+  } = props;
+
   const mapRef = useRef(null);
   const map = useMap(mapRef, city);
 
@@ -25,21 +32,19 @@ function Map(props) {
   useEffect(() => {
     if (map) {
       points.forEach((point) => {
-        if (point.city.name === city.name) {
-          leaflet
-            .marker({
-              lat: point.location.latitude,
-              lng: point.location.longitude,
-            }, {
-              icon: (point.id === selectedPoint.id)
-                ? currentCustomIcon
-                : defaultCustomIcon,
-            })
-            .addTo(map);
-        }
+        leaflet
+          .marker({
+            lat: point.location.latitude,
+            lng: point.location.longitude,
+          }, {
+            icon: (point.id === selectedPoint.id)
+              ? currentCustomIcon
+              : defaultCustomIcon,
+          })
+          .addTo(map);
       });
     }
-  }, [map, points, selectedPoint]);
+  }, [map, city, points, selectedPoint, activeCityName, currentCustomIcon, defaultCustomIcon]);
 
   return (
     <div
@@ -52,8 +57,9 @@ function Map(props) {
 
 Map.propTypes = {
   city: PropTypes.object,
+  activeCityName: PropTypes.string,
   selectedPoint: PropTypes.object,
   points: PropTypes.array,
 };
 
-export default Map;
+export default Map ;
