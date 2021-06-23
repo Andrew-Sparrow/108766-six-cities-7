@@ -16,6 +16,8 @@ function RoomList(props)
           onListItemHover={onListItemHover}
           id={place.id}
           title={place.title}
+          isPremium={place.isPremium}
+          isFavorite={place.isFavorite}
         />
       ))}
     </div>

@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { cityList } from '../../const';
 
-function Tabs(props)
-{
+function Tabs(props) {
   const { activeCity } = props;
 
   return (

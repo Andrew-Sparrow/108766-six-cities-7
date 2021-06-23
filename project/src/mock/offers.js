@@ -23,7 +23,7 @@ export const offers = [
     },
     'images': ['img/1.png', 'img/2.png'],
     'isFavorite': true,
-    'isPremium': false,
+    'isPremium': true,
     'location': {
       'latitude': 52.3909553943508,
       'longitude': 4.85309666406198,
@@ -158,7 +158,7 @@ export const offers = [
       'name': 'Angelina',
     },
     'images': ['img/1.png', 'img/2.png'],
-    'isFavorite': true,
+    'isFavorite': false,
     'isPremium': false,
     'location': {
       'latitude': 48.86747361379132,
