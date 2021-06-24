@@ -17,5 +17,3 @@ Project for booking appartments in six cities.
 * Redux-thunk
 * Jest
 ---
-
-
