@@ -14,6 +14,6 @@ Project for booking apartments in six cities.
 * Axios
 * React Router
 * hooks
-* HOCs
+* HOC's
 * Redux-thunk
 * Jest
