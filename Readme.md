@@ -6,7 +6,7 @@
 Student: [Andrew Pechersky](https://up.htmlacademy.ru/react/7/user/108766).
 
 #####Description:
-Project for booking appartments in six cities.
+Project for booking apartments in six cities.
 
 #####Technologies:
 * React
