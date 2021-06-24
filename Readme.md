@@ -1,4 +1,5 @@
 # 6 Sities
+---
 
 ### Training project
 
@@ -16,4 +17,3 @@ Project for booking appartments in six cities.
 * HOCs
 * Redux-thunk
 * Jest
----
