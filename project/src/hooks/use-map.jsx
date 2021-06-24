@@ -6,7 +6,7 @@ function useMap(mapRef, activeCity) {
   const [map, setMap]  = useState(null);
 
   useEffect(() => {
-    if (mapRef.current !== null && map === null) {
+    if (map === null) {
 
       const instance = leaflet.map(mapRef.current, {
         center: {
@@ -28,6 +28,11 @@ function useMap(mapRef, activeCity) {
         .addTo(instance);
 
       setMap(instance);
+    } else if (activeCity.location !== undefined) {
+      map.panTo({
+        lat: activeCity.location.latitude,
+        lng: activeCity.location.longitude,
+      });
     }
   }, [mapRef, map, activeCity]);
 

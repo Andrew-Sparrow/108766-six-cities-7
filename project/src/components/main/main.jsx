@@ -9,6 +9,7 @@ import Map from '../map/map';
 import Tabs from '../tabs/tabs';
 import SortBy from '../sort-by/sort-by';
 import Utils from '../../utils/utils';
+import EmptyList from '../empty-list/empty-list';
 
 function Main(props) {
   const { places, activeCityName } = props;
@@ -25,27 +26,32 @@ function Main(props) {
     <main className="page__main page__main--index">
       <h1 className="visually-hidden">Cities</h1>
       <Tabs />
-
-      <div className="cities">
-        <div className="cities__places-container container">
-          <section className="cities__places places">
-            <h2 className="visually-hidden">Places</h2>
-            <b className="places__found">{filteredPlaces.length} places to stay in {activeCityName}</b>
-            <SortBy />
-            <RoomList places={filteredPlaces} onListItemHover={onListItemHover} />
-          </section>
-          <div className="cities__right-section">
-            <section className="cities__map map">
-              <Map
-                activeCityName={activeCityName}
-                city={filteredPlaces.length !== 0 ? filteredPlaces[0].city : {}}
-                points={filteredPlaces}
-                selectedPoint={selectedPoint}
-              />
-            </section>
-          </div>
-        </div>
-      </div>
+      {
+        filteredPlaces.length === 0
+          ? < EmptyList activeCityName={activeCityName}/>
+          : (
+            <div className="cities">
+              <div className="cities__places-container container">
+                <section className="cities__places places">
+                  <h2 className="visually-hidden">Places</h2>
+                  <b className="places__found">{filteredPlaces.length} places to stay in {activeCityName}</b>
+                  <SortBy />
+                  < RoomList places={filteredPlaces} onListItemHover={onListItemHover} />
+                </section>
+                <div className="cities__right-section">
+                  <section className="cities__map map">
+                    <Map
+                      activeCityName={activeCityName}
+                      city={filteredPlaces[0].city}
+                      points={filteredPlaces}
+                      selectedPoint={selectedPoint}
+                    />
+                  </section>
+                </div>
+              </div>
+            </div>
+          )
+      }
     </main>
   );
 }

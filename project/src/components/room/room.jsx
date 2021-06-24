@@ -24,7 +24,7 @@ function Room(props) {
           <span>Premium</span>
         </div>}
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <Link to={AppRoute.PROPERTY}>
+        <Link to={`/property/${id}`}>
           <img className="place-card__image" src="img/apartment-01.jpg" width="260" height="200" alt="Place" />
         </Link>
       </div>
