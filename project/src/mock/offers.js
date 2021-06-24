@@ -146,7 +146,7 @@ export const offers = [
       'location': {
         'latitude': 48.8588376,
         'longitude': 2.2768488,
-        'zoom': 12,
+        'zoom': 10,
       },
     },
     'description': 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.',
@@ -163,7 +163,7 @@ export const offers = [
     'location': {
       'latitude': 48.86747361379132,
       'longitude': 2.2267184250804877,
-      'zoom': 8,
+      'zoom': 1,
     },
     'maxAdults': 4,
     'previewImage': 'img/1.png',
@@ -180,7 +180,7 @@ export const offers = [
       'location': {
         'latitude': 48.8588376,
         'longitude': 2.2768488,
-        'zoom': 12,
+        'zoom': 10,
       },
     },
     'description': 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.',
@@ -197,7 +197,7 @@ export const offers = [
     'location': {
       'latitude': 48.888535449973645,
       'longitude': 2.3784153148804354,
-      'zoom': 8,
+      'zoom': 1,
     },
     'maxAdults': 4,
     'previewImage': 'img/1.png',
@@ -333,7 +333,7 @@ export const offers = [
     'location': {
       'latitude': 51.226913566582006,
       'longitude': 6.7783946335835665,
-      'zoom': 8,
+      'zoom': 5,
     },
     'maxAdults': 4,
     'previewImage': 'img/1.png',

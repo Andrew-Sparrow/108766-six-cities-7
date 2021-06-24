@@ -5,7 +5,7 @@ const AppRoute = {
   ROOT: '/',
 };
 
-const zoom = 12;
+const zoom = 10;
 
 const URL_MARKER_DEFAULT = 'img/pin.svg';
 
