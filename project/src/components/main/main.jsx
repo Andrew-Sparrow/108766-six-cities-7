@@ -9,7 +9,7 @@ import Map from '../map/map';
 import Tabs from '../tabs/tabs';
 import SortBy from '../sort-by/sort-by';
 import Utils from '../../utils/utils';
-import EmptyList from '../empty-list/empty-list';
+import MainEmpty from '../main-empty/main-empty';
 
 function Main(props) {
   const { places, activeCityName } = props;
@@ -28,7 +28,7 @@ function Main(props) {
       <Tabs />
       {
         filteredPlaces.length === 0
-          ? < EmptyList activeCityName={activeCityName}/>
+          ? < MainEmpty activeCityName={activeCityName}/>
           : (
             <div className="cities">
               <div className="cities__places-container container">

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function EmptyList(props) {
+function MainEmpty(props) {
   const { activeCityName } = props;
 
   return (
@@ -19,8 +19,8 @@ function EmptyList(props) {
   );
 }
 
-EmptyList.propTypes = {
+MainEmpty.propTypes = {
   activeCityName: PropTypes.string.isRequired,
 };
 
-export default EmptyList;
+export default MainEmpty;
