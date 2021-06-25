@@ -2,6 +2,7 @@
   "name": "project",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://gitname.github.io/108766-six-cities-7",
   "dependencies": {
     "@reduxjs/toolkit": "^1.5.0",
     "axios": "^0.21.1",
@@ -21,7 +22,8 @@
     "test": "react-scripts test --passWithNoTests",
     "eject": "react-scripts eject",
     "eslint": "eslint --ext .jsx --ext .js src/",
-    "test:eslint": "npm run eslint"
+    "test:eslint": "npm run eslint",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -49,6 +51,7 @@
     "@testing-library/user-event": "^12.8.0",
     "axios-mock-adapter": "^1.19.0",
     "eslint-config-htmlacademy": "^4.0.1",
+    "gh-pages": "^3.2.3",
     "redux-devtools-extension": "^2.13.9",
     "redux-mock-store": "^1.5.4"
   }

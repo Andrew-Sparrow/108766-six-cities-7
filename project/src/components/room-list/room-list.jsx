@@ -3,12 +3,23 @@ import React from 'react';
 import Room from '../room/room';
 import offerProp from '../room/room.prop';
 
-function RoomList(props)  {
+function RoomList(props)
+{
   const { places, onListItemHover } = props;
 
   return (
     <div className="cities__places-list places__list tabs__content">
-      {places.map((place) => <Room key={place.id} price={place.price} onListItemHover={onListItemHover} id={place.id}/>)}
+      {places.map((place) => (
+        <Room
+          key={place.id}
+          price={place.price}
+          onListItemHover={onListItemHover}
+          id={place.id}
+          title={place.title}
+          isPremium={place.isPremium}
+          isFavorite={place.isFavorite}
+        />
+      ))}
     </div>
   );
 }
