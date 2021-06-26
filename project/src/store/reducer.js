@@ -12,6 +12,11 @@ function reducer (state = initialState, action) {
         activeCityName: action.payload,
       };
     }
+    case ActionType.LOAD_PLACES:
+      return {
+        ...state,
+        places: action.payload,
+      };
     default:
       return state;
   }
