@@ -2,7 +2,7 @@
   "name": "project",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://Andrew-Sparrow.github.io/108766-six-cities-7",
+  "homepage": "http://Andrew-Sparrow.github.io",
   "dependencies": {
     "@reduxjs/toolkit": "^1.5.0",
     "axios": "^0.21.1",
