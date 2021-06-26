@@ -8,6 +8,7 @@ const HttpCode = {
 };
 
 export const createApi = (onUnauthorized) => {
+
   const api = axios.create({
     baseURL: BACKEND_URL,
     timeout: REQUEST_TIMEOUT,

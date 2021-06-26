@@ -1,7 +1,11 @@
 import { ActionType } from './action';
+import { places } from '../mock/offers';
+import { AuthorizationStatus } from '../const';
 
 const initialState = {
   activeCityName: 'Paris',
+  places,
+  authorizationStatus: AuthorizationStatus.UNKNOWN,
 };
 
 function reducer (state = initialState, action) {
@@ -16,6 +20,16 @@ function reducer (state = initialState, action) {
       return {
         ...state,
         places: action.payload,
+      };
+    case ActionType.REQUIRED_AUTHORIZATION:
+      return {
+        ...state,
+        authorizationStatus: action.payload,
+      };
+    case ActionType.LOGOUT:
+      return {
+        ...state,
+        authorizationStatus: AuthorizationStatus.NO_AUTH,
       };
     default:
       return state;
