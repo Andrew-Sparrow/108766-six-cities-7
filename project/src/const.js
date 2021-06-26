@@ -1,10 +1,8 @@
-export const host = '/108766-six-cities-7';
-
 export const AppRoute = {
-  LOGIN: `${host}/login`,
-  FAVORITES: `${host}/favorites`,
-  PROPERTY: `${host}/property/:id?`,
-  ROOT: `${host}/`,
+  LOGIN: '/login',
+  FAVORITES: '/favorites',
+  PROPERTY: '/property/:id?',
+  ROOT: '/',
 };
 
 export const zoom = 9;
