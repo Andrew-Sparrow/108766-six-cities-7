@@ -1,10 +1,9 @@
 import { ActionType } from './action';
-import { places } from '../mock/offers';
 import { AuthorizationStatus } from '../const';
 
 const initialState = {
   activeCityName: 'Paris',
-  places,
+  places: [],
   authorizationStatus: AuthorizationStatus.UNKNOWN,
 };
 
