@@ -5,6 +5,7 @@ const initialState = {
   activeCityName: 'Paris',
   places: [],
   authorizationStatus: AuthorizationStatus.UNKNOWN,
+  isDataLoaded: false,
 };
 
 function reducer (state = initialState, action) {
@@ -19,6 +20,7 @@ function reducer (state = initialState, action) {
       return {
         ...state,
         places: action.payload,
+        isDataLoaded: true,
       };
     case ActionType.REQUIRED_AUTHORIZATION:
       return {

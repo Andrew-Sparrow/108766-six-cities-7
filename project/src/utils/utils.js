@@ -1,3 +1,5 @@
+import { AuthorizationStatus } from '../const';
+
 class Utils {
 
   static adaptToClient(offerFromServer) {
@@ -62,6 +64,9 @@ class Utils {
     filteredPlaces = places.filter((item) => item.city.name === activeCity);
     return filteredPlaces;
   }
+
+  static isCheckedAuth = (authorizationStatus) =>
+    authorizationStatus === AuthorizationStatus.UNKNOWN;
 }
 
 export default Utils;
