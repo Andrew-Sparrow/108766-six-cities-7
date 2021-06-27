@@ -61,8 +61,8 @@ Room.propTypes = {
   price: PropTypes.number,
   onListItemHover: PropTypes.func,
   title: PropTypes.string.isRequired,
-  isPremium: PropTypes.bool.isRequired,
-  isFavorite: PropTypes.bool.isRequired,
+  isPremium: PropTypes.bool,
+  isFavorite: PropTypes.bool,
 };
 
 export default Room;

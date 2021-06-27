@@ -15,7 +15,7 @@ export const ActionCreator = {
     payload: places,
   }),
   requireAuthorization: (status) => ({
-    type: ActionType.REQUIRE_AUTHORIZATION,
+    type: ActionType.REQUIRED_AUTHORIZATION,
     payload: status,
   }),
   logout: () => ({
