@@ -10,6 +10,7 @@ import Login from '../login/login';
 import Property from '../property/property';
 import Error from '../error/error';
 import LoadingScreen from '../loading-screen/loading-screen.jsx';
+import PrivateRoute from '../private-route/private-route.jsx';
 import Utils from '../../utils/utils';
 
 function App(props) {
@@ -30,9 +31,12 @@ function App(props) {
         <Route exact path={AppRoute.LOGIN}>
           <Login />
         </Route>
-        <Route exact path={AppRoute.FAVORITES}>
-          <Favorites places={places} className="page" />
-        </Route>
+        <PrivateRoute
+          exact
+          path={AppRoute.FAVORITES}
+          render={() => <Favorites places={places} className="page" />}
+        >
+        </PrivateRoute>
         <Route exact path={AppRoute.PROPERTY}>
           <Property price={0} className="page" />
         </Route>
