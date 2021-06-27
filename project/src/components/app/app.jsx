@@ -13,7 +13,7 @@ import LoadingScreen from '../loading-screen/loading-screen.jsx';
 import Utils from '../../utils/utils';
 
 function App(props) {
-  const { authorizationStatus, isDataLoaded } = props;
+  const { authorizationStatus, isDataLoaded, places } = props;
 
   if (Utils.isCheckedAuth(authorizationStatus) || !isDataLoaded) {
     return (
@@ -25,13 +25,13 @@ function App(props) {
     <BrowserRouter>
       <Switch>
         <Route exact path={AppRoute.ROOT}>
-          <Main className="page page--gray page--main" />
+          <Main places={places} className="page page--gray page--main" />
         </Route>
         <Route exact path={AppRoute.LOGIN}>
           <Login />
         </Route>
         <Route exact path={AppRoute.FAVORITES}>
-          <Favorites className="page" />
+          <Favorites places={places} className="page" />
         </Route>
         <Route exact path={AppRoute.PROPERTY}>
           <Property price={0} className="page" />
@@ -45,11 +45,13 @@ function App(props) {
 }
 
 App.propTypes = {
+  places: PropTypes.array.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
   isDataLoaded: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = (state) => ({
+  places: state.places,
   authorizationStatus: state.authorizationStatus,
   isDataLoaded: state.isDataLoaded,
 });
