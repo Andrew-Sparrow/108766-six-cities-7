@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import RoomList from '../room-list/room-list';
-import offerProp from '../room/room.prop';
 import withLayout from '../hocs/with-layout';
 import Map from '../map/map';
 import Tabs from '../tabs/tabs';
@@ -18,7 +17,7 @@ function Main(props) {
   const filteredPlaces = Utils.getFilteredPlaces(activeCityName, places);
 
   const onListItemHover = (listItem) => {
-    const currentPoint = places.find((point) => point.id === parseInt(listItem.id, 10));
+    const currentPoint = places.find((place) => place.id === parseInt(listItem.id, 10));
     setSelectedPoint(currentPoint);
   };
 
@@ -42,7 +41,7 @@ function Main(props) {
                   <section className="cities__map map">
                     <Map
                       activeCityName={activeCityName}
-                      city={filteredPlaces[0].city}
+                      city={filteredPlaces.length !== 0 && filteredPlaces[0].city}
                       points={filteredPlaces}
                       selectedPoint={selectedPoint}
                     />
@@ -61,7 +60,7 @@ const mapStateToProps = (state) => ({
 });
 
 Main.propTypes = {
-  places: PropTypes.arrayOf(offerProp),
+  places: PropTypes.array,
   activeCityName: PropTypes.string.isRequired,
 };
 

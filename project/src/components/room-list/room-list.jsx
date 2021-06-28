@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import Room from '../room/room';
-import offerProp from '../room/room.prop';
+import placeProp from '../room/room.prop';
 
 function RoomList(props)
 {
@@ -25,7 +25,7 @@ function RoomList(props)
 }
 
 RoomList.propTypes = {
-  places: PropTypes.arrayOf(offerProp),
+  places: PropTypes.arrayOf(placeProp),
   onListItemHover: PropTypes.func,
 };
 

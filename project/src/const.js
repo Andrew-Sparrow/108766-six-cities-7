@@ -1,17 +1,17 @@
-const AppRoute = {
+export const AppRoute = {
+  ROOT: '/',
   LOGIN: '/login',
   FAVORITES: '/favorites',
   PROPERTY: '/property/:id?',
-  ROOT: '/',
 };
 
-const zoom = 9;
+export const zoom = 9;
 
-const URL_MARKER_DEFAULT = 'img/pin.svg';
+export const URL_MARKER_DEFAULT = 'img/pin.svg';
 
-const URL_MARKER_CURRENT = 'img/pin-active.svg';
+export const URL_MARKER_CURRENT = 'img/pin-active.svg';
 
-const cityList = [
+export const cityList = [
   'Paris',
   'Cologne',
   'Brussels',
@@ -20,10 +20,16 @@ const cityList = [
   'Dusseldorf',
 ];
 
-export {
-  AppRoute,
-  zoom,
-  URL_MARKER_DEFAULT,
-  URL_MARKER_CURRENT,
-  cityList
+export const AuthorizationStatus = {
+  AUTH: 'AUTH',
+  NO_AUTH: 'NO_AUTH',
+  UNKNOWN: 'UNKNOWN',
+};
+
+export const APIRoute = {
+  HOTELS: '/hotels',
+  FAVORITE: '/favorite',
+  COMMENTS: '/comments',
+  LOGIN: '/login',
+  LOGOUT: '/logout',
 };

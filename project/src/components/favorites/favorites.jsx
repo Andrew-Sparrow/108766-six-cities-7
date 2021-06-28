@@ -7,7 +7,7 @@ import offerProp from '../room/room.prop.js';
 import withLayout from '../hocs/with-layout';
 
 function Favorites(props) {
-  const places = props.places;
+  const { places } = props;
 
   return (
     <Fragment>
