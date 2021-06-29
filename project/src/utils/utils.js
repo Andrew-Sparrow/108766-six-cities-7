@@ -33,6 +33,34 @@ class Utils {
     return adaptedOfferForClient;
   }
 
+  static adaptCommentToClient(commentFromServer) {
+    const adaptedCommentForClient = Object.assign(
+      {},
+      commentFromServer,
+      {
+        comment: commentFromServer.comment,
+        date: commentFromServer.date,
+        id: commentFromServer.id,
+        rating: commentFromServer.rating,
+        user: Object.assign(
+          commentFromServer.user,
+          {
+            avatarUrl: commentFromServer.user.avatar_url,
+            isPro: commentFromServer.host.is_pro,
+            id: commentFromServer.id,
+            name: commentFromServer.name,
+          },
+        ),
+      },
+    );
+
+    // Ненужные ключи мы удаляем
+    delete adaptedCommentForClient.user.avatar_url;
+    delete adaptedCommentForClient.user.is_pro;
+
+    return adaptedCommentForClient;
+  }
+
   static adaptToServer(filmFromClient) {
     const filmInfoForServer = Object.assign(
       {},
