@@ -1,8 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function Review ( props ) {
-  const { avatarImgPath, date, text } = props;
+function PropertyReview ( props ) {
+  const {
+    avatarImgPath,
+    date,
+    text,
+    name,
+  } = props;
 
   return (
     <li className="reviews__item">
@@ -11,7 +16,7 @@ function Review ( props ) {
           <img className="reviews__avatar user__avatar" src={ avatarImgPath } width={54} height={54} alt="Reviews avatar" />
         </div>
         <span className="reviews__user-name">
-          Max
+          { name }
         </span>
       </div>
       <div className="reviews__info">
@@ -30,10 +35,11 @@ function Review ( props ) {
   );
 }
 
-Review.propTypes = {
+PropertyReview.propTypes = {
   avatarImgPath: PropTypes.string,
   date: PropTypes.string,
   text: PropTypes.string,
+  name: PropTypes.string,
 };
 
-export default Review;
+export default PropertyReview;

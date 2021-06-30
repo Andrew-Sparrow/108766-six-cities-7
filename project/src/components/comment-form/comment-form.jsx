@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function Comment() {
+function CommentForm() {
   const [comment, setComment] = useState('');
 
   function changeCommentHandler(evt) {
@@ -54,4 +54,4 @@ function Comment() {
   );
 }
 
-export default Comment;
+export default CommentForm;

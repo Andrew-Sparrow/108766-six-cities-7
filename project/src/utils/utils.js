@@ -43,12 +43,13 @@ class Utils {
         id: commentFromServer.id,
         rating: commentFromServer.rating,
         user: Object.assign(
+          {},
           commentFromServer.user,
           {
             avatarUrl: commentFromServer.user.avatar_url,
-            isPro: commentFromServer.host.is_pro,
-            id: commentFromServer.id,
-            name: commentFromServer.name,
+            isPro: commentFromServer.user.is_pro,
+            id: commentFromServer.user.id,
+            name: commentFromServer.user.name,
           },
         ),
       },
