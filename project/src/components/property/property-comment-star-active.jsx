@@ -1,8 +1,10 @@
 import React from 'react';
 
-function propertyCommentStarActive () {
+function PropertyCommentStarActive () {
   return (
-    <div className="review__star"></div>
+    <div className="review__star review__star--active">
+    </div>
   );
 }
 
+export default PropertyCommentStarActive;
