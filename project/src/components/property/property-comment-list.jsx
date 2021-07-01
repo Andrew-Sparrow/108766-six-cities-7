@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import PropertyReview from './property-review';
+import PropertyComment from './property-comment';
 import Utils from '../../utils/utils';
 
 function PropertyReviewList (props) {
@@ -12,7 +12,7 @@ function PropertyReviewList (props) {
         const adaptedCommentForClient = Utils.adaptCommentToClient(item);
 
         return (
-          <PropertyReview
+          <PropertyComment
             key={adaptedCommentForClient.id}
             avatarImgPath={adaptedCommentForClient.user.avatarUrl}
             date={adaptedCommentForClient.date}

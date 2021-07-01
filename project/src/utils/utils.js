@@ -96,6 +96,12 @@ class Utils {
 
   static isCheckedAuth = (authorizationStatus) =>
     authorizationStatus === AuthorizationStatus.UNKNOWN;
+
+  static formatDate = (dateString) => {
+    const DATE_OPTIONS = { year: 'numeric', month: 'short' };
+
+    return (new Date(dateString)).toLocaleDateString('en-US', DATE_OPTIONS);
+  }
 }
 
 export default Utils;

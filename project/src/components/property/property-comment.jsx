@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Utils from '../../utils/utils';
 
-function PropertyReview ( props ) {
+function PropertyComment ( props ) {
   const {
     avatarImgPath,
     date,
@@ -29,17 +30,17 @@ function PropertyReview ( props ) {
         <p className="reviews__text">
           {text}
         </p>
-        <time className="reviews__time" dateTime={date}>April 2019</time>
+        <time className="reviews__time" dateTime={date}>{Utils.formatDate(date)}</time>
       </div>
     </li>
   );
 }
 
-PropertyReview.propTypes = {
+PropertyComment.propTypes = {
   avatarImgPath: PropTypes.string,
   date: PropTypes.string,
   text: PropTypes.string,
   name: PropTypes.string,
 };
 
-export default PropertyReview;
+export default PropertyComment;

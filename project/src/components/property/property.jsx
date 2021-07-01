@@ -2,7 +2,7 @@ import React from 'react';
 import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import CommentForm from '../comment-form/comment-form';
-import PropertyReviewList from './property-review-list';
+import PropertyCommentList from './property-comment-list';
 import withLayout from '../hocs/with-layout';
 import { comments } from '../../mock/comments';
 
@@ -131,7 +131,7 @@ function Property ( props ) {
               </div>
               <section className="property__reviews reviews">
                 <h2 className="reviews__title">Reviews · <span className="reviews__amount">{ comments.length }</span></h2>
-                < PropertyReviewList reviews={ comments } />
+                < PropertyCommentList reviews={ comments } />
                 < CommentForm />
               </section>
             </div>
