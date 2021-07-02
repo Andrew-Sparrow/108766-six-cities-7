@@ -1,15 +1,18 @@
 import React from 'react';
 import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
+
 import CommentForm from '../comment-form/comment-form';
 import PropertyCommentList from './property-comment-list';
 import withLayout from '../hocs/with-layout';
-import { comments } from '../../mock/comments';
 import PropertyImagesList from './property-images-list';
 import PropertyGoodsList from './property-goods-list';
+import { neighbourhoodPlaces } from '../../mock/neighbourhood-places';
+import PropertyNearPlacesList from './property-near-places-list';
+
+import { comments } from '../../mock/comments';
 import { placeHotel } from '../../mock/place-hotel';
 import Utils from '../../utils/utils';
-import { neighbourhoodPlaces } from '../../mock/neighbourhood-places';
 import Map from '../map/map';
 
 function Property ( props ) {
@@ -109,6 +112,7 @@ function Property ( props ) {
         <div className="container">
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
+            < PropertyNearPlacesList />
             <div className="near-places__list places__list">
               <article className="near-places__card place-card">
                 <div className="near-places__image-wrapper place-card__image-wrapper">
