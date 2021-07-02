@@ -18,6 +18,7 @@ function PropertyReviewList (props) {
             date={adaptedCommentForClient.date}
             text={adaptedCommentForClient.comment}
             name={adaptedCommentForClient.user.name}
+            rating={adaptedCommentForClient.rating}
           />
         );
       })}
