@@ -19,7 +19,7 @@ function CardInfo (props) {
           <span className="place-card__price-text">&#47;&nbsp;night</span>
         </div>
         <button className="place-card__bookmark-button button" type="button">
-          <svg className="place-card__bookmark-icon" width="18" height="19" style={{ stroke: isFavorite && '#4481c3' }}>
+          <svg className="place-card__bookmark-icon" width="18" height="19" style={{ stroke: isFavorite && '#4481c3', fill: isFavorite && '#4481c3' }}>
             <use xlinkHref="#icon-bookmark"></use>
           </svg>
           <span className="visually-hidden">To bookmarks</span>

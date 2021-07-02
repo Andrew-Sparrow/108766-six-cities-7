@@ -17,6 +17,7 @@ function PropertyNearPlacesList() {
           price={place.price}
           title={place.title}
           isPremium={place.isPremium}
+          isFavorite={place.isFavorite}
           type={place.type}
           previewImage={place.previewImage}
         />
