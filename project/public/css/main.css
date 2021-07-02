@@ -1010,7 +1010,8 @@ img {
   margin-top: 0;
   margin-bottom: 0;
   font-size: 12px;
-  line-height: 1.1667
+  line-height: 1.1667;
+  text-transform: capitalize;
 }
 
 .place-card__mark {

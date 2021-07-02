@@ -9,8 +9,8 @@ import PropertyImagesList from './property-images-list';
 import PropertyGoodsList from './property-goods-list';
 import { placeHotel } from '../../mock/place-hotel';
 import Utils from '../../utils/utils';
-// import { neighbourhoodPlaces } from '../../mock/neighbourhood-places';
-// import Map from '../map/map';
+import { neighbourhoodPlaces } from '../../mock/neighbourhood-places';
+import Map from '../map/map';
 
 function Property ( props ) {
   const adaptedPlaceForClient = Utils.adaptToClient(placeHotel);
@@ -83,14 +83,10 @@ function Property ( props ) {
                       Pro
                     </span>
                   )}
-
                 </div>
                 <div className="property__description">
                   <p className="property__text">
-                    A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.
-                  </p>
-                  <p className="property__text">
-                    An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.
+                    { adaptedPlaceForClient.description }
                   </p>
                 </div>
               </div>
@@ -102,12 +98,12 @@ function Property ( props ) {
             </div>
           </div>
           <section className="property__map map">
-            {/* <Map
-              activeCityName={activeCityName}
-              city={filteredPlaces.length !== 0 && filteredPlaces[0].city}
-              points={filteredPlaces}
-              selectedPoint={selectedPoint}
-            /> */}
+            <Map
+              activeCityName={adaptedPlaceForClient.city.name}
+              city={adaptedPlaceForClient.city}
+              points={neighbourhoodPlaces}
+              selectedPoint={adaptedPlaceForClient}
+            />
           </section>
         </section>
         <div className="container">
