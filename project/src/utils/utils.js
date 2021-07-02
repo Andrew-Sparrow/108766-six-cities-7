@@ -9,6 +9,7 @@ class Utils {
       offerFromServer,
       {
         host: Object.assign(
+          {},
           offerFromServer.host,
           {
             avatarUrl: offerFromServer.host.avatar_url,

@@ -6,6 +6,7 @@ import PropertyCommentList from './property-comment-list';
 import withLayout from '../hocs/with-layout';
 import { comments } from '../../mock/comments';
 import PropertyImagesList from './property-images-list';
+import PropertyGoodsList from './property-goods-list';
 import { placeHotel } from '../../mock/place-hotel';
 import Utils from '../../utils/utils';
 // import { neighbourhoodPlaces } from '../../mock/neighbourhood-places';
@@ -60,51 +61,29 @@ function Property ( props ) {
               </div>
               <div className="property__inside">
                 <h2 className="property__inside-title">What&apos;s inside</h2>
-                <ul className="property__inside-list">
-                  <li className="property__inside-item">
-                    Wi-Fi
-                  </li>
-                  <li className="property__inside-item">
-                    Washing machine
-                  </li>
-                  <li className="property__inside-item">
-                    Towels
-                  </li>
-                  <li className="property__inside-item">
-                    Heating
-                  </li>
-                  <li className="property__inside-item">
-                    Coffee machine
-                  </li>
-                  <li className="property__inside-item">
-                    Baby seat
-                  </li>
-                  <li className="property__inside-item">
-                    Kitchen
-                  </li>
-                  <li className="property__inside-item">
-                    Dishwasher
-                  </li>
-                  <li className="property__inside-item">
-                    Cabel TV
-                  </li>
-                  <li className="property__inside-item">
-                    Fridge
-                  </li>
-                </ul>
+                < PropertyGoodsList goods={ adaptedPlaceForClient.goods } />
               </div>
               <div className="property__host">
                 <h2 className="property__host-title">Meet the host</h2>
                 <div className="property__host-user user">
-                  <div className="property__avatar-wrapper property__avatar-wrapper--pro user__avatar-wrapper">
-                    <img className="property__avatar user__avatar" src="img/avatar-angelina.jpg" width={74} height={74} alt="Host avatar" />
+                  <div className={`property__avatar-wrapper ${adaptedPlaceForClient.host.isPro && 'property__avatar-wrapper--pro'} user__avatar-wrapper`}>
+                    <img
+                      className="property__avatar user__avatar"
+                      src={adaptedPlaceForClient.host.avatarUrl}
+                      width={74}
+                      height={74}
+                      alt="Host avatar"
+                    />
                   </div>
                   <span className="property__user-name">
-                    Angelina
+                    { adaptedPlaceForClient.host.name}
                   </span>
-                  <span className="property__user-status">
-                    Pro
-                  </span>
+                  {adaptedPlaceForClient.host.isPro && (
+                    <span className="property__user-status">
+                      Pro
+                    </span>
+                  )}
+
                 </div>
                 <div className="property__description">
                   <p className="property__text">

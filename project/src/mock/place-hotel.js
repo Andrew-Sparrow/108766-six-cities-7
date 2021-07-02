@@ -17,8 +17,8 @@ export const placeHotel =
   'goods': ['Heating', 'Kitchen', 'Cable TV', 'Washing machine', 'Coffee machine', 'Dishwasher'],
   'host': {
     'id': 3,
-    'avatarUrl': 'img/1.png',
-    'isPro': true,
+    'avatar_url': 'img/avatar-angelina.jpg',
+    'is_pro': true,
     'name': 'Angelina',
   },
   'images': [
