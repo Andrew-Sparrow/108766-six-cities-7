@@ -2,7 +2,7 @@ export const AppRoute = {
   ROOT: '/',
   LOGIN: '/login',
   FAVORITES: '/favorites',
-  PROPERTY: '/property/:id?',
+  HOTELS: '/hotels/:id?',
 };
 
 export const zoom = 9;

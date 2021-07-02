@@ -38,7 +38,7 @@ function App(props) {
           render={() => <Favorites places={places} className="page" />}
         >
         </PrivateRoute>
-        <Route exact path={AppRoute.PROPERTY}>
+        <Route exact path={AppRoute.hotels}>
           <Property price={0} className="page" />
         </Route>
         <Route>

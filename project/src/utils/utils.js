@@ -1,4 +1,5 @@
 import { AuthorizationStatus } from '../const';
+import nanoid from 'nanoid';
 
 class Utils {
 
@@ -101,6 +102,12 @@ class Utils {
     const DATE_OPTIONS = { year: 'numeric', month: 'short' };
 
     return (new Date(dateString)).toLocaleDateString('en-US', DATE_OPTIONS);
+  }
+
+  static generateIdKeys(listLength) {
+    const list = new Array(listLength).fill('');
+    const generatedIdList = list.map(() => nanoid(10));
+    return generatedIdList;
   }
 }
 

@@ -5,43 +5,29 @@ import CommentForm from '../comment-form/comment-form';
 import PropertyCommentList from './property-comment-list';
 import withLayout from '../hocs/with-layout';
 import { comments } from '../../mock/comments';
+import PropertyImagesList from './property-images-list';
+import { placeHotel } from '../../mock/place-hotel';
+import Utils from '../../utils/utils';
+// import { neighbourhoodPlaces } from '../../mock/neighbourhood-places';
+// import Map from '../map/map';
 
 function Property ( props ) {
+  const adaptedPlaceForClient = Utils.adaptToClient(placeHotel);
 
   return (
     <Fragment>
       <main className="page__main">
         <section className="property">
-          <div className="property__gallery-container container">
-            <div className="property__gallery">
-              <div className="property__image-wrapper">
-                <img className="property__image" src="img/room.jpg" alt="studio" />
-              </div>
-              <div className="property__image-wrapper">
-                <img className="property__image" src="img/apartment-01.jpg" alt="studio" />
-              </div>
-              <div className="property__image-wrapper">
-                <img className="property__image" src="img/apartment-02.jpg" alt="studio" />
-              </div>
-              <div className="property__image-wrapper">
-                <img className="property__image" src="img/apartment-03.jpg" alt="studio" />
-              </div>
-              <div className="property__image-wrapper">
-                <img className="property__image" src="img/studio-01.jpg" alt="studio" />
-              </div>
-              <div className="property__image-wrapper">
-                <img className="property__image" src="img/apartment-01.jpg" alt="studio" />
-              </div>
-            </div>
-          </div>
+          < PropertyImagesList images={adaptedPlaceForClient.images} />
           <div className="property__container container">
             <div className="property__wrapper">
-              <div className="property__mark">
-                <span>Premium</span>
-              </div>
+              {adaptedPlaceForClient.isPremium && (
+                <div className="property__mark">
+                  <span>Premium</span>
+                </div>)}
               <div className="property__name-wrapper">
                 <h1 className="property__name">
-                  Beautiful &amp; luxurious studio at great location
+                  { adaptedPlaceForClient.description }
                 </h1>
                 <button className="property__bookmark-button button" type="button">
                   <svg className="property__bookmark-icon" width={31} height={33}>
@@ -55,21 +41,21 @@ function Property ( props ) {
                   <span style={{width: '80%'}} />
                   <span className="visually-hidden">Rating</span>
                 </div>
-                <span className="property__rating-value rating__value">4.8</span>
+                <span className="property__rating-value rating__value">{ adaptedPlaceForClient.rating }</span>
               </div>
               <ul className="property__features">
                 <li className="property__feature property__feature--entire">
-                  Apartment
+                  {adaptedPlaceForClient.type}
                 </li>
                 <li className="property__feature property__feature--bedrooms">
-                  3 Bedrooms
+                  { adaptedPlaceForClient.bedrooms } Bedrooms
                 </li>
                 <li className="property__feature property__feature--adults">
-                  Max 4 adults
+                  Max { adaptedPlaceForClient.maxAdults } adults
                 </li>
               </ul>
               <div className="property__price">
-                <b className="property__price-value">€120</b>
+                <b className="property__price-value">€{ adaptedPlaceForClient.price }</b>
                 <span className="property__price-text">&nbsp;night</span>
               </div>
               <div className="property__inside">
@@ -136,7 +122,14 @@ function Property ( props ) {
               </section>
             </div>
           </div>
-          <section className="property__map map" />
+          <section className="property__map map">
+            {/* <Map
+              activeCityName={activeCityName}
+              city={filteredPlaces.length !== 0 && filteredPlaces[0].city}
+              points={filteredPlaces}
+              selectedPoint={selectedPoint}
+            /> */}
+          </section>
         </section>
         <div className="container">
           <section className="near-places places">

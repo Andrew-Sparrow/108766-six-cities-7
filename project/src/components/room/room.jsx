@@ -48,7 +48,7 @@ function Room(props) {
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to={AppRoute.PROPERTY}>{title}</Link>
+          <Link to={AppRoute.hotels}>{title}</Link>
         </h2>
         <p className="place-card__type">Apartment</p>
       </div>
