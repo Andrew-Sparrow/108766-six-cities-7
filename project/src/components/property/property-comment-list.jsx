@@ -2,12 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import PropertyComment from './property-comment';
 import Utils from '../../utils/utils';
+import { MAX_COMMENTS_AMOUNT } from '../../const';
 
 function PropertyReviewList (props) {
   const { reviews } = props;
+  const slicedReviews = reviews.slice(0, MAX_COMMENTS_AMOUNT);
+
   return (
     <ul className="reviews__list">
-      {reviews.map((item) =>
+      {slicedReviews.map((item) =>
       {
         const adaptedCommentForClient = Utils.adaptCommentToClient(item);
 

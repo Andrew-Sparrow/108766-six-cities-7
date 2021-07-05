@@ -1,6 +1,12 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Link } from 'react-router-dom';
+
+import {
+  Link,
+  generatePath,
+  useHistory
+} from 'react-router-dom';
+
 import CardInfo from '../card-info/card-info';
 
 function Room(props) {
@@ -18,8 +24,19 @@ function Room(props) {
     onListItemHover(evt.currentTarget);
   };
 
+  const history = useHistory();
+
+  const handleProceed = (evt) => {
+    id && history.push(generatePath('/hotels/:id', { id }));
+  };
+
   return (
-    <article className="cities__place-card place-card" onMouseEnter={listItemHoverHandler} id={id}>
+    <article
+      className="cities__place-card place-card"
+      onMouseEnter={listItemHoverHandler}
+      id={id}
+      onClick={(evt) => handleProceed(evt)}
+    >
       {isPremium &&
         <div className="place-card__mark">
           <span>Premium</span>

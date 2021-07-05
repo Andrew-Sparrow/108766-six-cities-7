@@ -1,6 +1,12 @@
 import React from 'react';
 import { Fragment } from 'react';
-import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
+import {
+  Link,
+  useParams
+} from 'react-router-dom';
 
 import CommentForm from '../comment-form/comment-form';
 import PropertyCommentList from './property-comment-list';
@@ -11,13 +17,18 @@ import { neighbourhoodPlaces } from '../../mock/neighbourhood-places';
 import PropertyNearPlacesList from './property-near-places-list';
 
 import { comments } from '../../mock/comments';
-import { placeHotel } from '../../mock/place-hotel';
 import Utils from '../../utils/utils';
 import Map from '../map/map';
 
 function Property ( props ) {
-  const adaptedPlaceForClient = Utils.adaptToClient(placeHotel);
-  const width = Utils.getWidthByRating(placeHotel.rating);
+  const { id } = useParams();
+
+  const { places } = props;
+
+  const hotelFromServer = places.find((place) => place.id === +id);
+
+  const adaptedPlaceForClient = Utils.adaptToClient(hotelFromServer);
+  const width = Utils.getWidthByRating(adaptedPlaceForClient.rating);
 
   return (
     <Fragment>
@@ -222,4 +233,16 @@ function Property ( props ) {
   );
 }
 
-export default withLayout(Property);
+Property.propTypes = {
+  places: PropTypes.array,
+};
+
+const mapStateToProps = (state) => ({
+  places: state.places,
+});
+
+const withLayoutProperty =  withLayout(Property);
+
+export { withLayoutProperty };
+export default connect(mapStateToProps, null)(withLayoutProperty);
+
