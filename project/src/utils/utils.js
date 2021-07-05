@@ -1,5 +1,7 @@
 import { AuthorizationStatus } from '../const';
 import nanoid from 'nanoid';
+import { MAX_RATING } from '../const';
+import { MAX_PERCENT } from '../const';
 
 class Utils {
 
@@ -109,6 +111,12 @@ class Utils {
     const list = new Array(listLength).fill('');
     const generatedIdList = list.map(() => nanoid(10));
     return generatedIdList;
+  }
+
+  static getWidthByRating(rating) {
+    const roundedRating = Math.round(rating);
+    const widthValue = (MAX_PERCENT * roundedRating) / MAX_RATING;
+    return widthValue;
   }
 }
 

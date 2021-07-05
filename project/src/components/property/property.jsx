@@ -17,6 +17,7 @@ import Map from '../map/map';
 
 function Property ( props ) {
   const adaptedPlaceForClient = Utils.adaptToClient(placeHotel);
+  const width = Utils.getWidthByRating(placeHotel.rating);
 
   return (
     <Fragment>
@@ -42,10 +43,10 @@ function Property ( props ) {
               </div>
               <div className="property__rating rating">
                 <div className="property__stars rating__stars">
-                  <span style={{ width: '80%' }} />
+                  <span style={{ width: `${width}%` }} />
                   <span className="visually-hidden">Rating</span>
                 </div>
-                <span className="property__rating-value rating__value">{ adaptedPlaceForClient.rating }</span>
+                <span className="property__rating-value rating__value">{ Math.round(adaptedPlaceForClient.rating) }</span>
               </div>
               <ul className="property__features">
                 <li className="property__feature property__feature--entire">

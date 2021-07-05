@@ -8,7 +8,10 @@ function PropertyComment ( props ) {
     date,
     text,
     name,
+    rating,
   } = props;
+
+  const width = Utils.getWidthByRating(rating);
 
   return (
     <li className="reviews__item">
@@ -23,7 +26,7 @@ function PropertyComment ( props ) {
       <div className="reviews__info">
         <div className="reviews__rating rating">
           <div className="reviews__stars rating__stars">
-            <span style={{ width: '80%'}}>
+            <span style={{ width:`${width}%`}}>
             </span>
             <span className="visually-hidden">Rating</span>
           </div>
@@ -42,6 +45,7 @@ PropertyComment.propTypes = {
   date: PropTypes.string,
   text: PropTypes.string,
   name: PropTypes.string,
+  rating: PropTypes.number,
 };
 
 export default PropertyComment;

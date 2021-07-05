@@ -39,5 +39,5 @@ export const placeHotel =
   },
   'max_adults': 40,
   'preview_image': 'img/1.png',
-  'rating': 4.2,
+  'rating': 0.5,
 };
