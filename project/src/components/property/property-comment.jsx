@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Utils from '../../utils/utils';
-import PropertyCommentStarsList from './property-comment-stars-list';
 
 function PropertyComment ( props ) {
   const {
@@ -9,7 +8,6 @@ function PropertyComment ( props ) {
     date,
     text,
     name,
-    rating,
   } = props;
 
   return (
@@ -25,8 +23,7 @@ function PropertyComment ( props ) {
       <div className="reviews__info">
         <div className="reviews__rating rating">
           <div className="reviews__stars rating__stars">
-            <span>
-              <PropertyCommentStarsList rating={ rating } />
+            <span style={{ width: '80%'}}>
             </span>
             <span className="visually-hidden">Rating</span>
           </div>
@@ -45,7 +42,6 @@ PropertyComment.propTypes = {
   date: PropTypes.string,
   text: PropTypes.string,
   name: PropTypes.string,
-  rating: PropTypes.number,
 };
 
 export default PropertyComment;
