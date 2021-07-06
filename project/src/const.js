@@ -2,8 +2,12 @@ export const AppRoute = {
   ROOT: '/',
   LOGIN: '/login',
   FAVORITES: '/favorites',
-  PROPERTY: '/property/:id?',
+  HOTELS: '/hotels/:id?',
 };
+
+export const MAX_RATING = 5;
+export const MAX_PERCENT = 100;
+export const MAX_COMMENTS_AMOUNT = 10;
 
 export const zoom = 9;
 

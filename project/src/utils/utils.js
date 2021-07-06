@@ -1,4 +1,7 @@
 import { AuthorizationStatus } from '../const';
+import nanoid from 'nanoid';
+import { MAX_RATING } from '../const';
+import { MAX_PERCENT } from '../const';
 
 class Utils {
 
@@ -8,6 +11,7 @@ class Utils {
       offerFromServer,
       {
         host: Object.assign(
+          {},
           offerFromServer.host,
           {
             avatarUrl: offerFromServer.host.avatar_url,
@@ -31,6 +35,35 @@ class Utils {
     delete adaptedOfferForClient.preview_image;
 
     return adaptedOfferForClient;
+  }
+
+  static adaptCommentToClient(commentFromServer) {
+    const adaptedCommentForClient = Object.assign(
+      {},
+      commentFromServer,
+      {
+        comment: commentFromServer.comment,
+        date: commentFromServer.date,
+        id: commentFromServer.id,
+        rating: commentFromServer.rating,
+        user: Object.assign(
+          {},
+          commentFromServer.user,
+          {
+            avatarUrl: commentFromServer.user.avatar_url,
+            isPro: commentFromServer.user.is_pro,
+            id: commentFromServer.user.id,
+            name: commentFromServer.user.name,
+          },
+        ),
+      },
+    );
+
+    // Ненужные ключи мы удаляем
+    delete adaptedCommentForClient.user.avatar_url;
+    delete adaptedCommentForClient.user.is_pro;
+
+    return adaptedCommentForClient;
   }
 
   static adaptToServer(filmFromClient) {
@@ -67,6 +100,24 @@ class Utils {
 
   static isCheckedAuth = (authorizationStatus) =>
     authorizationStatus === AuthorizationStatus.UNKNOWN;
+
+  static formatDate = (dateString) => {
+    const DATE_OPTIONS = { year: 'numeric', month: 'short' };
+
+    return (new Date(dateString)).toLocaleDateString('en-US', DATE_OPTIONS);
+  }
+
+  static generateIdKeys(listLength) {
+    const list = new Array(listLength).fill('');
+    const generatedIdList = list.map(() => nanoid(10));
+    return generatedIdList;
+  }
+
+  static getWidthByRating(rating) {
+    const roundedRating = Math.round(rating);
+    const widthValue = (MAX_PERCENT * roundedRating) / MAX_RATING;
+    return widthValue;
+  }
 }
 
 export default Utils;

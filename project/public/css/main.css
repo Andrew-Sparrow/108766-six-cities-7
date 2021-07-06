@@ -1010,7 +1010,8 @@ img {
   margin-top: 0;
   margin-bottom: 0;
   font-size: 12px;
-  line-height: 1.1667
+  line-height: 1.1667;
+  text-transform: capitalize;
 }
 
 .place-card__mark {
@@ -1217,12 +1218,22 @@ img {
 }
 
 .property__stars span {
-  width: 0%
+  width: 0%;
 }
 
 .property__stars span::before {
   width: 147px;
   background-size: 147px 24px
+}
+
+.property__star {
+  width: 24px;
+  height: 24px;
+  content: "";
+  display: inline-block;
+  position: relative;
+  background-size: 24px 24px;
+  background:  no-repeat contain center;
 }
 
 .property__rating-value {
@@ -1250,7 +1261,8 @@ img {
   padding-left: 18px;
   font-size: 16px;
   line-height: 1.3;
-  background-repeat: no-repeat
+  background-repeat: no-repeat;
+  text-transform: capitalize;
 }
 
 .property__feature--entire {
@@ -1558,7 +1570,7 @@ img {
 
 .reviews__stars::before {
   width: 98px;
-  background-size: 98px 16px
+  background-size: 93px 16px
 }
 
 .reviews__stars span {

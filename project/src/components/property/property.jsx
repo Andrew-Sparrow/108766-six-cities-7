@@ -1,44 +1,49 @@
 import React from 'react';
 import { Fragment } from 'react';
-import { Link } from 'react-router-dom';
-import Comment from '../comment/comment';
-import withLayout from '../hocs/with-layout';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-function Property() {
+import {
+  Link,
+  useParams
+} from 'react-router-dom';
+
+import CommentForm from '../comment-form/comment-form';
+import PropertyCommentList from './property-comment-list';
+import withLayout from '../hocs/with-layout';
+import PropertyImagesList from './property-images-list';
+import PropertyGoodsList from './property-goods-list';
+import { neighbourhoodPlaces } from '../../mock/neighbourhood-places';
+import PropertyNearPlacesList from './property-near-places-list';
+
+import { comments } from '../../mock/comments';
+import Utils from '../../utils/utils';
+import Map from '../map/map';
+
+function Property ( props ) {
+  const { id } = useParams();
+
+  const { places } = props;
+
+  const hotelFromServer = places.find((place) => place.id === +id);
+
+  const adaptedPlaceForClient = Utils.adaptToClient(hotelFromServer);
+  const width = Utils.getWidthByRating(adaptedPlaceForClient.rating);
+
   return (
     <Fragment>
       <main className="page__main">
         <section className="property">
-          <div className="property__gallery-container container">
-            <div className="property__gallery">
-              <div className="property__image-wrapper">
-                <img className="property__image" src="img/room.jpg" alt="studio" />
-              </div>
-              <div className="property__image-wrapper">
-                <img className="property__image" src="img/apartment-01.jpg" alt="studio" />
-              </div>
-              <div className="property__image-wrapper">
-                <img className="property__image" src="img/apartment-02.jpg" alt="studio" />
-              </div>
-              <div className="property__image-wrapper">
-                <img className="property__image" src="img/apartment-03.jpg" alt="studio" />
-              </div>
-              <div className="property__image-wrapper">
-                <img className="property__image" src="img/studio-01.jpg" alt="studio" />
-              </div>
-              <div className="property__image-wrapper">
-                <img className="property__image" src="img/apartment-01.jpg" alt="studio" />
-              </div>
-            </div>
-          </div>
+          < PropertyImagesList images={adaptedPlaceForClient.images} />
           <div className="property__container container">
             <div className="property__wrapper">
-              <div className="property__mark">
-                <span>Premium</span>
-              </div>
+              {adaptedPlaceForClient.isPremium && (
+                <div className="property__mark">
+                  <span>Premium</span>
+                </div>)}
               <div className="property__name-wrapper">
                 <h1 className="property__name">
-                  Beautiful &amp; luxurious studio at great location
+                  { adaptedPlaceForClient.description }
                 </h1>
                 <button className="property__bookmark-button button" type="button">
                   <svg className="property__bookmark-icon" width={31} height={33}>
@@ -49,118 +54,77 @@ function Property() {
               </div>
               <div className="property__rating rating">
                 <div className="property__stars rating__stars">
-                  <span style={{width: '80%'}} />
+                  <span style={{ width: `${width}%` }} />
                   <span className="visually-hidden">Rating</span>
                 </div>
-                <span className="property__rating-value rating__value">4.8</span>
+                <span className="property__rating-value rating__value">{ Math.round(adaptedPlaceForClient.rating) }</span>
               </div>
               <ul className="property__features">
                 <li className="property__feature property__feature--entire">
-                  Apartment
+                  {adaptedPlaceForClient.type}
                 </li>
                 <li className="property__feature property__feature--bedrooms">
-                  3 Bedrooms
+                  { adaptedPlaceForClient.bedrooms } Bedrooms
                 </li>
                 <li className="property__feature property__feature--adults">
-                  Max 4 adults
+                  Max { adaptedPlaceForClient.maxAdults } adults
                 </li>
               </ul>
               <div className="property__price">
-                <b className="property__price-value">€120</b>
+                <b className="property__price-value">€{ adaptedPlaceForClient.price }</b>
                 <span className="property__price-text">&nbsp;night</span>
               </div>
               <div className="property__inside">
                 <h2 className="property__inside-title">What&apos;s inside</h2>
-                <ul className="property__inside-list">
-                  <li className="property__inside-item">
-                    Wi-Fi
-                  </li>
-                  <li className="property__inside-item">
-                    Washing machine
-                  </li>
-                  <li className="property__inside-item">
-                    Towels
-                  </li>
-                  <li className="property__inside-item">
-                    Heating
-                  </li>
-                  <li className="property__inside-item">
-                    Coffee machine
-                  </li>
-                  <li className="property__inside-item">
-                    Baby seat
-                  </li>
-                  <li className="property__inside-item">
-                    Kitchen
-                  </li>
-                  <li className="property__inside-item">
-                    Dishwasher
-                  </li>
-                  <li className="property__inside-item">
-                    Cabel TV
-                  </li>
-                  <li className="property__inside-item">
-                    Fridge
-                  </li>
-                </ul>
+                < PropertyGoodsList goods={ adaptedPlaceForClient.goods } />
               </div>
               <div className="property__host">
                 <h2 className="property__host-title">Meet the host</h2>
                 <div className="property__host-user user">
-                  <div className="property__avatar-wrapper property__avatar-wrapper--pro user__avatar-wrapper">
-                    <img className="property__avatar user__avatar" src="img/avatar-angelina.jpg" width={74} height={74} alt="Host avatar" />
+                  <div className={`property__avatar-wrapper ${adaptedPlaceForClient.host.isPro && 'property__avatar-wrapper--pro'} user__avatar-wrapper`}>
+                    <img
+                      className="property__avatar user__avatar"
+                      src={adaptedPlaceForClient.host.avatarUrl}
+                      width={74}
+                      height={74}
+                      alt="Host avatar"
+                    />
                   </div>
                   <span className="property__user-name">
-                    Angelina
+                    { adaptedPlaceForClient.host.name}
                   </span>
-                  <span className="property__user-status">
-                    Pro
-                  </span>
+                  {adaptedPlaceForClient.host.isPro && (
+                    <span className="property__user-status">
+                      Pro
+                    </span>
+                  )}
                 </div>
                 <div className="property__description">
                   <p className="property__text">
-                    A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.
-                  </p>
-                  <p className="property__text">
-                    An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.
+                    { adaptedPlaceForClient.description }
                   </p>
                 </div>
               </div>
               <section className="property__reviews reviews">
-                <h2 className="reviews__title">Reviews · <span className="reviews__amount">1</span></h2>
-                <ul className="reviews__list">
-                  <li className="reviews__item">
-                    <div className="reviews__user user">
-                      <div className="reviews__avatar-wrapper user__avatar-wrapper">
-                        <img className="reviews__avatar user__avatar" src="img/avatar-max.jpg" width={54} height={54} alt="Reviews avatar" />
-                      </div>
-                      <span className="reviews__user-name">
-                        Max
-                      </span>
-                    </div>
-                    <div className="reviews__info">
-                      <div className="reviews__rating rating">
-                        <div className="reviews__stars rating__stars">
-                          <span style={{width: '80%'}} />
-                          <span className="visually-hidden">Rating</span>
-                        </div>
-                      </div>
-                      <p className="reviews__text">
-                        A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.
-                      </p>
-                      <time className="reviews__time" dateTime="2019-04-24">April 2019</time>
-                    </div>
-                  </li>
-                </ul>
-                <Comment />
+                <h2 className="reviews__title">Reviews · <span className="reviews__amount">{ comments.length }</span></h2>
+                < PropertyCommentList reviews={ comments } />
+                < CommentForm />
               </section>
             </div>
           </div>
-          <section className="property__map map" />
+          <section className="property__map map">
+            <Map
+              activeCityName={adaptedPlaceForClient.city.name}
+              city={adaptedPlaceForClient.city}
+              points={neighbourhoodPlaces}
+              selectedPoint={adaptedPlaceForClient}
+            />
+          </section>
         </section>
         <div className="container">
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
+            < PropertyNearPlacesList />
             <div className="near-places__list places__list">
               <article className="near-places__card place-card">
                 <div className="near-places__image-wrapper place-card__image-wrapper">
@@ -269,4 +233,16 @@ function Property() {
   );
 }
 
-export default withLayout(Property);
+Property.propTypes = {
+  places: PropTypes.array,
+};
+
+const mapStateToProps = (state) => ({
+  places: state.places,
+});
+
+const withLayoutProperty =  withLayout(Property);
+
+export { withLayoutProperty };
+export default connect(mapStateToProps, null)(withLayoutProperty);
+

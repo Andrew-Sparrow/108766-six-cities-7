@@ -66,4 +66,4 @@ Main.propTypes = {
 
 const withLayoutMain = withLayout(Main);
 export { withLayoutMain };
-export default connect(mapStateToProps, null)(Main);
+export default connect(mapStateToProps, null)(withLayoutMain);
