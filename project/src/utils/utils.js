@@ -118,6 +118,21 @@ class Utils {
     const widthValue = (MAX_PERCENT * roundedRating) / MAX_RATING;
     return widthValue;
   }
+
+  static sortByPriceFromLowToHigh(places) {
+    const newPlaces = places.slice();
+    return newPlaces.sort((firstPlace, secondPlace) => secondPlace.price - firstPlace.price);
+  }
+
+  static sortByPriceFromHighToLow(places) {
+    const newPlaces = places.slice();
+    return newPlaces.sort((firstPlace, secondPlace) => firstPlace.price - secondPlace.price);
+  }
+
+  static sortByRating(places) {
+    const newPlaces = places.slice();
+    return newPlaces.sort((firstPlace, secondPlace) => firstPlace.rating - secondPlace.rating);
+  }
 }
 
 export default Utils;

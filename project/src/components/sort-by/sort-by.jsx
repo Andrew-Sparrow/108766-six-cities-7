@@ -1,20 +1,23 @@
 import React, { useState } from 'react';
+import { SortByValues } from '../../const';
+import PropTypes from 'prop-types';
 
-function SortBy() {
-  const [sortByValue, setSortByValue] = useState('Popular');
+function SortBy( props ) {
+  const { handleChange, sortByValue } = props;
   const [isOpened, setIsOpened] = useState(false);
 
-  const handleChange = (evt) => {
+  const handleOpen = (evt) => {
     evt.preventDefault();
     setIsOpened((prevValue) => !prevValue);
-
-    if (evt.target.tagName === 'LI') {
-      setSortByValue(evt.target.innerText);
-    }
   };
 
   return (
-    <form className="places__sorting" action="#" method="get" onClick={(evt) => handleChange(evt)}>
+    <form
+      className="places__sorting"
+      action="#"
+      method="get"
+      onClick={(evt) => handleOpen(evt)}
+    >
       <span className="places__sorting-caption">Sort by&nbsp;</span>
       <span className="places__sorting-type" tabIndex="0">
         { sortByValue }
@@ -23,13 +26,42 @@ function SortBy() {
         </svg>
       </span>
       <ul className={`places__options places__options--custom ${isOpened && 'places__options--opened'}`}>
-        <li className={`places__option ${sortByValue === 'Popular' && 'places__option--active'}`} tabIndex="0">Popular</li>
-        <li className={`places__option ${sortByValue === 'Price: low to high' && 'places__option--active'}`} tabIndex="0">Price: low to high</li>
-        <li className={`places__option ${sortByValue === 'Price: high to low' && 'places__option--active'}`} tabIndex="0">Price: high to low</li>
-        <li className={`places__option ${sortByValue === 'Top rated first' && 'places__option--active'}`} tabIndex="0">Top rated first</li>
+        <li
+          className={`places__option ${ sortByValue === SortByValues.POPULAR && 'places__option--active' }`}
+          tabIndex="0"
+          onClick={(evt) => handleChange(evt)}
+        >
+          { SortByValues.POPULAR }
+        </li>
+        <li
+          className={`places__option ${ sortByValue === SortByValues.PRICE_LOW_TO_HIGH && 'places__option--active' }`}
+          tabIndex="0"
+          onClick={(evt) => handleChange(evt)}
+        >
+          { SortByValues.PRICE_LOW_TO_HIGH }
+        </li>
+        <li
+          className={`places__option ${ sortByValue === SortByValues.PRICE_HIGH_TO_LOW && 'places__option--active' }`}
+          tabIndex="0"
+          onClick={(evt) => handleChange(evt)}
+        >
+          { SortByValues.PRICE_HIGH_TO_LOW }
+        </li>
+        <li
+          className={`places__option ${ sortByValue === SortByValues.TOP_RATED_FIRST && 'places__option--active' }`}
+          tabIndex="0"
+          onClick={(evt) => handleChange(evt)}
+        >
+          { SortByValues.TOP_RATED_FIRST }
+        </li>
       </ul>
     </form>
   );
 }
+
+SortBy.propTypes = {
+  sortByValue: PropTypes.string,
+  handleChange: PropTypes.func,
+};
 
 export default SortBy;
