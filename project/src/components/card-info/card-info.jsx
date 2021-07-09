@@ -9,6 +9,7 @@ function CardInfo (props) {
     title,
     isFavorite,
     type,
+    width,
   } = props;
 
   return (
@@ -27,7 +28,7 @@ function CardInfo (props) {
       </div>
       <div className="place-card__rating rating">
         <div className="place-card__stars rating__stars">
-          <span style={{ width: '80%' }}></span>
+          <span style={{ width: `${width}%` }}></span>
           <span className="visually-hidden">Rating</span>
         </div>
       </div>
@@ -44,6 +45,7 @@ CardInfo.propTypes = {
   title: PropTypes.string.isRequired,
   isFavorite: PropTypes.bool,
   type: PropTypes.string,
+  width: PropTypes.number,
 };
 
 export default CardInfo;

@@ -121,17 +121,17 @@ class Utils {
 
   static sortByPriceFromLowToHigh(places) {
     const newPlaces = places.slice();
-    return newPlaces.sort((firstPlace, secondPlace) => secondPlace.price - firstPlace.price);
+    return newPlaces.sort((firstPlace, secondPlace) => firstPlace.price - secondPlace.price);
   }
 
   static sortByPriceFromHighToLow(places) {
     const newPlaces = places.slice();
-    return newPlaces.sort((firstPlace, secondPlace) => firstPlace.price - secondPlace.price);
+    return newPlaces.sort((firstPlace, secondPlace) => secondPlace.price - firstPlace.price);
   }
 
   static sortByRating(places) {
     const newPlaces = places.slice();
-    return newPlaces.sort((firstPlace, secondPlace) => firstPlace.rating - secondPlace.rating);
+    return newPlaces.sort((firstPlace, secondPlace) => secondPlace.rating - firstPlace.rating);
   }
 }
 

@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import Utils from '../../utils/utils';
+
 
 import {
   Link,
@@ -18,7 +20,10 @@ function Room(props) {
     isPremium,
     isFavorite,
     type,
+    rating,
   } = props;
+
+  const width = Utils.getWidthByRating(rating);
 
   const listItemHoverHandler = (evt) => {
     onListItemHover(evt.currentTarget);
@@ -51,6 +56,7 @@ function Room(props) {
         title={title}
         isFavorite={isFavorite}
         type={type}
+        width={width}
       />
     </article>
   );
@@ -64,6 +70,7 @@ Room.propTypes = {
   isPremium: PropTypes.bool,
   isFavorite: PropTypes.bool,
   type: PropTypes.string,
+  rating: PropTypes.number,
 };
 
 export default Room;

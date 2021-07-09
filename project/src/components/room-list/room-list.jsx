@@ -22,6 +22,7 @@ function RoomList(props)
           isPremium={place.isPremium}
           isFavorite={place.isFavorite}
           type={place.type}
+          rating={place.rating}
         />
       ))}
     </div>
