@@ -27,7 +27,7 @@ function App(props) {
     <BrowserRouter history={ browserHistory }>
       <Switch>
         <Route exact path={AppRoute.ROOT}>
-          <Main places={places} className="page page--gray page--main" />
+          <Main className="page page--gray page--main" />
         </Route>
         <Route exact path={AppRoute.LOGIN}>
           <Login />

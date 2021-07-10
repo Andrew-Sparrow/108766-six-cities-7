@@ -1,10 +1,13 @@
 import { AuthorizationStatus } from '../const';
 import nanoid from 'nanoid';
-import { MAX_RATING } from '../const';
-import { MAX_PERCENT } from '../const';
+
+import {
+  MAX_RATING,
+  MAX_PERCENT,
+  SortByValues
+} from '../const';
 
 class Utils {
-
   static adaptToClient(offerFromServer) {
     const adaptedOfferForClient = Object.assign(
       {},
@@ -119,19 +122,27 @@ class Utils {
     return widthValue;
   }
 
-  static sortByPriceFromLowToHigh(places) {
-    const newPlaces = places.slice();
-    return newPlaces.sort((firstPlace, secondPlace) => firstPlace.price - secondPlace.price);
-  }
+  static getSortedPlaces = (sortTypeValue, places) => {
+    const clonedPlaces = places.slice();
 
-  static sortByPriceFromHighToLow(places) {
-    const newPlaces = places.slice();
-    return newPlaces.sort((firstPlace, secondPlace) => secondPlace.price - firstPlace.price);
-  }
+    const _sortByPriceFromLowToHigh = (hotels) => hotels.sort((firstPlace, secondPlace) => firstPlace.price - secondPlace.price);
 
-  static sortByRating(places) {
-    const newPlaces = places.slice();
-    return newPlaces.sort((firstPlace, secondPlace) => secondPlace.rating - firstPlace.rating);
+    const _sortByPriceFromHighToLow = (hotels) => hotels.sort((firstPlace, secondPlace) => secondPlace.price - firstPlace.price);
+
+    const _sortByRating = (hotels) => hotels.sort((firstPlace, secondPlace) => secondPlace.rating - firstPlace.rating);
+
+    switch (sortTypeValue) {
+      case SortByValues.POPULAR:
+        return clonedPlaces;
+      case SortByValues.PRICE_LOW_TO_HIGH:
+        return _sortByPriceFromLowToHigh(places);
+      case SortByValues.PRICE_HIGH_TO_LOW:
+        return _sortByPriceFromHighToLow(places);
+      case SortByValues.TOP_RATED_FIRST:
+        return _sortByRating(places);
+      default:
+        return clonedPlaces;
+    }
   }
 }
 

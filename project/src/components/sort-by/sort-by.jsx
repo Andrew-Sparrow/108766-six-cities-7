@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { SortByValues } from '../../const';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+
+import { ActionCreator } from '../../store/action';
 
 function SortBy( props ) {
-  const { handleChange, sortByValue } = props;
+  const { sortByValue, onSortChange } = props;
   const [isOpened, setIsOpened] = useState(false);
 
   const handleOpen = (evt) => {
@@ -29,28 +32,48 @@ function SortBy( props ) {
         <li
           className={`places__option ${ sortByValue === SortByValues.POPULAR && 'places__option--active' }`}
           tabIndex="0"
-          onClick={(evt) => handleChange(evt)}
+          onClick={(evt) =>{
+            evt.preventDefault();
+            if (evt.target.tagName === 'LI') {
+              onSortChange(evt.target.innerText);
+            }
+          }}
         >
           { SortByValues.POPULAR }
         </li>
         <li
           className={`places__option ${ sortByValue === SortByValues.PRICE_LOW_TO_HIGH && 'places__option--active' }`}
           tabIndex="0"
-          onClick={(evt) => handleChange(evt)}
+          onClick={(evt) =>{
+            evt.preventDefault();
+            if (evt.target.tagName === 'LI') {
+              onSortChange(evt.target.innerText);
+            }
+          }}
         >
           { SortByValues.PRICE_LOW_TO_HIGH }
         </li>
         <li
           className={`places__option ${ sortByValue === SortByValues.PRICE_HIGH_TO_LOW && 'places__option--active' }`}
           tabIndex="0"
-          onClick={(evt) => handleChange(evt)}
+          onClick={(evt) =>{
+            evt.preventDefault();
+            if (evt.target.tagName === 'LI') {
+              onSortChange(evt.target.innerText);
+            }
+          }}
         >
           { SortByValues.PRICE_HIGH_TO_LOW }
         </li>
         <li
           className={`places__option ${ sortByValue === SortByValues.TOP_RATED_FIRST && 'places__option--active' }`}
           tabIndex="0"
-          onClick={(evt) => handleChange(evt)}
+          onClick={(evt) =>{
+            evt.preventDefault();
+            if (evt.target.tagName === 'LI') {
+              onSortChange(evt.target.innerText);
+            }
+          }}
         >
           { SortByValues.TOP_RATED_FIRST }
         </li>
@@ -59,9 +82,20 @@ function SortBy( props ) {
   );
 }
 
+const mapStateToProps = (state) => ({
+  sortByValue: state.sortBy,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onSortChange(sortByValue) {
+    dispatch(ActionCreator.changeSortBy(sortByValue));
+  },
+});
+
 SortBy.propTypes = {
-  sortByValue: PropTypes.string,
-  handleChange: PropTypes.func,
+  sortByValue: PropTypes.string.isRequired,
+  onSortChange: PropTypes.func.isRequired,
 };
 
-export default SortBy;
+export { SortBy };
+export default connect(mapStateToProps, mapDispatchToProps)(SortBy);

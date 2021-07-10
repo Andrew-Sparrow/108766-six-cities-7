@@ -1,11 +1,15 @@
 import { ActionType } from './action';
-import { AuthorizationStatus } from '../const';
+import {
+  AuthorizationStatus,
+  SortByValues
+} from '../const';
 
 const initialState = {
   activeCityName: 'Paris',
   places: [],
   authorizationStatus: AuthorizationStatus.UNKNOWN,
   isDataLoaded: false,
+  sortBy: SortByValues.POPULAR,
 };
 
 function reducer (state = initialState, action) {
@@ -14,6 +18,12 @@ function reducer (state = initialState, action) {
       return {
         ...state,
         activeCityName: action.payload,
+      };
+    }
+    case ActionType.CHANGE_SORT_BY: {
+      return {
+        ...state,
+        sortBy: action.payload,
       };
     }
     case ActionType.LOAD_PLACES:
