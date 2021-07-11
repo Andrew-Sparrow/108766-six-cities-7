@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Switch, Route, BrowserRouter } from 'react-router-dom';
+import { Switch, Route, Router as BrowserRouter } from 'react-router-dom';
 
 import { AppRoute } from '../../const.js';
 import Main from '../main/main';
