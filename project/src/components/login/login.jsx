@@ -1,13 +1,16 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { login } from '../../store/api-actions';
-import { AppRoute } from '../../const.js';
+import {
+  AppRoute,
+  AuthorizationStatus
+} from '../../const.js';
 
-function Login ({ onSubmit }) {
+function Login ({ onSubmit, authorizationStatus }) {
   const loginRef = useRef();
   const passwordRef = useRef();
 
@@ -21,6 +24,12 @@ function Login ({ onSubmit }) {
       password: passwordRef.current.value,
     });
   };
+
+  useEffect(() => {
+    if (authorizationStatus === AuthorizationStatus.AUTH) {
+      history.push(AppRoute.FAVORITES);
+    }
+  }, [authorizationStatus, history]);
 
   return (
     <Fragment>
@@ -41,6 +50,7 @@ function Login ({ onSubmit }) {
                   <li className="header__nav-item user">
                     <Link className="header__nav-link header__nav-link--profile" to="/">
                       <div className="header__avatar-wrapper user__avatar-wrapper">
+                        2222222222222222
                       </div>
                       <span className="header__login">Sign in</span>
                     </Link>
@@ -83,7 +93,6 @@ function Login ({ onSubmit }) {
                   />
                 </div>
                 <button
-                  onClick={() => history.push(AppRoute.ROOT)}
                   className="login__submit form__submit button"
                   type="submit"
                 >
@@ -107,7 +116,12 @@ function Login ({ onSubmit }) {
 
 Login.propTypes = {
   onSubmit: PropTypes.func.isRequired,
+  authorizationStatus: PropTypes.string,
 };
+
+const mapStateToProps = (state) => ({
+  authorizationStatus: state.authorizationStatus,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   onSubmit(authData) {
@@ -116,4 +130,4 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export { Login };
-export default connect(null, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

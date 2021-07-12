@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { APIRoute } from '../const';
+// import { APIRoute } from '../const';
 
 const BACKEND_URL = 'https://7.react.pages.academy/six-cities';
 const REQUEST_TIMEOUT = 5000;
@@ -36,13 +36,13 @@ export const getAxiosInstance = (history = null) => {
       }
 
       if (error.response.status === HttpCode.UNAUTHORIZED) {
-        localStorage.removeItem('token');
+        // localStorage.removeItem('token');
 
-        if (history) {
-          history.push(APIRoute.LOGIN);
-        } else {
-          window.location = APIRoute.LOGIN;
-        }
+        // if (history) {
+        //   history.push(APIRoute.LOGIN);
+        // } else {
+        //   window.location = APIRoute.LOGIN;
+        // }
       } else {
         return new Promise((resolve, reject) =>
         {
@@ -53,31 +53,4 @@ export const getAxiosInstance = (history = null) => {
   );
 
   return axiosInstance;
-};
-
-export const createApi = (onUnauthorized) => {
-
-  const api = axios.create({
-    baseURL: BACKEND_URL,
-    timeout: REQUEST_TIMEOUT,
-    headers: {
-      'x-token': token,
-    },
-  });
-
-  const onSuccess = (response) => response;
-
-  const onFail = (err) => {
-    const { response } = err;
-
-    if (response.status === HttpCode.UNAUTHORIZED) {
-      onUnauthorized();
-    }
-
-    throw err;
-  };
-
-  api.interceptors.response.use(onSuccess, onFail);
-
-  return api;
 };

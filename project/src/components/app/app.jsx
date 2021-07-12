@@ -11,13 +11,17 @@ import Property from '../property/property';
 import Error from '../error/error';
 import LoadingScreen from '../loading-screen/loading-screen.jsx';
 import PrivateRoute from '../private-route/private-route.jsx';
-import Utils from '../../utils/utils';
+// import Utils from '../../utils/utils';
 import browserHistory from '../../browser-history';
 
 function App(props) {
-  const { authorizationStatus, isDataLoaded, places } = props;
+  const {
+    // authorizationStatus,
+    isDataLoaded,
+    places,
+  } = props;
 
-  if (Utils.isCheckedAuth(authorizationStatus) || !isDataLoaded) {
+  if (!isDataLoaded) {
     return (
       <LoadingScreen />
     );
@@ -51,7 +55,7 @@ function App(props) {
 
 App.propTypes = {
   places: PropTypes.array.isRequired,
-  authorizationStatus: PropTypes.string.isRequired,
+  // authorizationStatus: PropTypes.string.isRequired,
   isDataLoaded: PropTypes.bool.isRequired,
 };
 

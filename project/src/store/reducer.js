@@ -10,6 +10,7 @@ const initialState = {
   authorizationStatus: AuthorizationStatus.UNKNOWN,
   isDataLoaded: false,
   sortBy: SortByValues.POPULAR,
+  login: 'unknown',
 };
 
 function reducer (state = initialState, action) {
@@ -32,7 +33,7 @@ function reducer (state = initialState, action) {
         places: action.payload,
         isDataLoaded: true,
       };
-    case ActionType.REQUIRED_AUTHORIZATION:
+    case ActionType.CHANGE_AUTHORIZATION_STATUS:
       return {
         ...state,
         authorizationStatus: action.payload,

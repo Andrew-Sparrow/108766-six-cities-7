@@ -14,7 +14,9 @@ import { Provider } from 'react-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { reducer } from './store/reducer';
 
-import { checkAuth, fetchPlacesList } from './store/api-actions';
+import {
+  fetchPlacesList
+} from './store/api-actions';
 
 const api = getAxiosInstance(browserHistory);
 
@@ -25,7 +27,6 @@ const store = createStore(
   ),
 );
 
-store.dispatch(checkAuth());
 store.dispatch(fetchPlacesList());
 
 ReactDOM.render(

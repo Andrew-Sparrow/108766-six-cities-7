@@ -2,7 +2,7 @@ export const ActionType = {
   CHANGE_CITY: 'changeCity',
   CHANGE_SORT_BY: 'sortBy',
   LOAD_PLACES: 'data/loadPlaces',
-  REQUIRED_AUTHORIZATION: 'user/requiredAuthorization',
+  CHANGE_AUTHORIZATION_STATUS: 'user/changeAuthorizationStatus',
   LOGOUT: 'user/logout',
 };
 
@@ -19,8 +19,8 @@ export const ActionCreator = {
     type: ActionType.LOAD_PLACES,
     payload: places,
   }),
-  requireAuthorization: (status) => ({
-    type: ActionType.REQUIRED_AUTHORIZATION,
+  changeAuthorizationStatus: (status) => ({
+    type: ActionType.CHANGE_AUTHORIZATION_STATUS,
     payload: status,
   }),
   logout: () => ({
