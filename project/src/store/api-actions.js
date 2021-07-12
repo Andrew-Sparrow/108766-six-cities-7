@@ -8,8 +8,21 @@ export const fetchPlacesList = () => (dispatch, _getState, api) => (
 
 export const login = ({ login: email, password }) => (dispatch, _getState, api) => (
   api.post(APIRoute.LOGIN, { email, password })
-    .then(({ data }) => localStorage.setItem('token', data.token))
-    .then(() => dispatch(ActionCreator.changeAuthorizationStatus(AuthorizationStatus.AUTH)))
+    .then((info) => {
+      // eslint-disable-next-line
+      console.log(info);
+      localStorage.setItem('token', info.data.token);
+    })
+    .then((data) => {
+      // eslint-disable-next-line
+      console.log(data);
+      dispatch(ActionCreator.changeAuthorizationStatus(AuthorizationStatus.AUTH));
+    })
+    .then((data) => {
+      // eslint-disable-next-line
+      console.log(data);
+      dispatch(ActionCreator.changeLogin('11111'));
+    })
 );
 
 export const logout = () => (dispatch, _getState, api) => (

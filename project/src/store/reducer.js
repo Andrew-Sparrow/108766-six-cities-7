@@ -1,7 +1,8 @@
 import { ActionType } from './action';
 import {
   AuthorizationStatus,
-  SortByValues
+  SortByValues,
+  LoginValue
 } from '../const';
 
 const initialState = {
@@ -10,7 +11,7 @@ const initialState = {
   authorizationStatus: AuthorizationStatus.UNKNOWN,
   isDataLoaded: false,
   sortBy: SortByValues.POPULAR,
-  login: 'unknown',
+  login: LoginValue.UNKNOWN,
 };
 
 function reducer (state = initialState, action) {
@@ -38,10 +39,16 @@ function reducer (state = initialState, action) {
         ...state,
         authorizationStatus: action.payload,
       };
+    case ActionType.CHANGE_LOGIN:
+      return {
+        ...state,
+        login: action.payload,
+      };
     case ActionType.LOGOUT:
       return {
         ...state,
         authorizationStatus: AuthorizationStatus.NO_AUTH,
+        login: LoginValue.UNKNOWN,
       };
     default:
       return state;

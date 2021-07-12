@@ -30,6 +30,10 @@ export const AuthorizationStatus = {
   UNKNOWN: 'UNKNOWN',
 };
 
+export const LoginValue = {
+  UNKNOWN: 'UNKNOWN',
+};
+
 export const APIRoute = {
   HOTELS: '/hotels',
   FAVORITE: '/favorite',

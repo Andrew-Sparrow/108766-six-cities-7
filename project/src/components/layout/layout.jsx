@@ -1,11 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+
 import PropTypes from 'prop-types';
 import { AppRoute} from '../../const.js';
 
 function Layout (props) {
-  const className = props.className;
-  const children = props.children;
+  const {
+    className,
+    children,
+    login,
+  } = props;
 
   return (
     <div className={className}>
@@ -23,7 +28,7 @@ function Layout (props) {
                   <Link className="header__nav-link header__nav-link--profile" to={ AppRoute.FAVORITES }>
                     <div className="header__avatar-wrapper user__avatar-wrapper">
                     </div>
-                    <span className="header__user-name user__name">ddddddddd</span>
+                    <span className="header__user-name user__name">{ login }</span>
                   </Link>
                 </li>
                 <li className="header__nav-item">
@@ -41,9 +46,17 @@ function Layout (props) {
   );
 }
 
+const mapStateToProps = (state) => ({
+  login: state.login,
+  places: state.places,
+  sortBy: state.sortBy,
+});
+
 Layout.propTypes = {
   className: PropTypes.string,
   children: PropTypes.object,
+  login: PropTypes.string,
 };
 
-export default Layout;
+export { Layout };
+export default connect(mapStateToProps, null)(Layout);

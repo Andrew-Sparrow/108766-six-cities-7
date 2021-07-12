@@ -3,6 +3,7 @@ export const ActionType = {
   CHANGE_SORT_BY: 'sortBy',
   LOAD_PLACES: 'data/loadPlaces',
   CHANGE_AUTHORIZATION_STATUS: 'user/changeAuthorizationStatus',
+  CHANGE_LOGIN: 'user/changeLogin',
   LOGOUT: 'user/logout',
 };
 
@@ -22,6 +23,10 @@ export const ActionCreator = {
   changeAuthorizationStatus: (status) => ({
     type: ActionType.CHANGE_AUTHORIZATION_STATUS,
     payload: status,
+  }),
+  changeLogin: (login) => ({
+    type: ActionType.CHANGE_LOGIN,
+    payload: login,
   }),
   logout: () => ({
     type: ActionType.LOGOUT,
