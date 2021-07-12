@@ -2,7 +2,7 @@ export const AppRoute = {
   ROOT: '/',
   LOGIN: '/login',
   FAVORITES: '/favorites',
-  HOTELS: '/hotels/:id?',
+  HOTELS: '/hotels/:id',
 };
 
 export const MAX_RATING = 5;

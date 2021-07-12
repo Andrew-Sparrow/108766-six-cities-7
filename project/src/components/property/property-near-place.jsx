@@ -5,8 +5,8 @@ import CardInfo from '../card-info/card-info';
 
 function PropertyNearPlace(props) {
   const {
-    price,
     id,
+    price,
     title,
     isPremium,
     isFavorite,

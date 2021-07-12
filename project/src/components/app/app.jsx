@@ -39,7 +39,7 @@ function App(props) {
         >
         </PrivateRoute>
         <Route exact path={AppRoute.HOTELS}>
-          <Property price={0} className="page" />
+          <Property className="page" />
         </Route>
         <Route>
           <Error />
