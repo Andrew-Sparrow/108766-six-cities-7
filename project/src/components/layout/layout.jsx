@@ -32,7 +32,7 @@ function Layout (props) {
                   </Link>
                 </li>
                 <li className="header__nav-item">
-                  <Link className="header__nav-link" to="/">
+                  <Link className="header__nav-link" to={ AppRoute.ROOT }>
                     <span className="header__signout">Sign out</span>
                   </Link>
                 </li>

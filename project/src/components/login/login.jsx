@@ -48,9 +48,8 @@ function Login ({ onSubmit, authorizationStatus }) {
               <nav className="header__nav">
                 <ul className="header__nav-list">
                   <li className="header__nav-item user">
-                    <Link className="header__nav-link header__nav-link--profile" to="/">
+                    <Link className="header__nav-link header__nav-link--profile" to={AppRoute.LOGIN}>
                       <div className="header__avatar-wrapper user__avatar-wrapper">
-                        2222222222222222
                       </div>
                       <span className="header__login">Sign in</span>
                     </Link>

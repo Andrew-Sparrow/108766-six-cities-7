@@ -31,7 +31,7 @@ export const AuthorizationStatus = {
 };
 
 export const LoginValue = {
-  UNKNOWN: 'UNKNOWN',
+  UNAUTHORIZED: 'UNAUTHORIZED',
 };
 
 export const APIRoute = {
