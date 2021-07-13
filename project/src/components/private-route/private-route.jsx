@@ -11,9 +11,9 @@ function PrivateRoute(props) {
     <Route
       path={path}
       exact={exact}
-      render={(routeProps) => (
+      render={() => (
         authorizationStatus === AuthorizationStatus.AUTH
-          ? render(routeProps)
+          ? render()
           : <Redirect to={AppRoute.LOGIN} />
       )}
     />
