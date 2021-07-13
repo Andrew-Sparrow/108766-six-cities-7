@@ -7,6 +7,7 @@ export const fetchPlacesList = () => (dispatch, _getState, api) => (
       dispatch(ActionCreator.loadPlaces(data));
       dispatch(ActionCreator.changeAuthorizationStatus(AuthorizationStatus.NO_AUTH));
     })
+    .catch((err) => {})
 );
 
 export const login = ({ login: email, password }) => (dispatch, _getState, api) => (
@@ -16,6 +17,7 @@ export const login = ({ login: email, password }) => (dispatch, _getState, api) 
       dispatch(ActionCreator.changeLogin(info.data.email));
       dispatch(ActionCreator.changeAuthorizationStatus(AuthorizationStatus.AUTH));
     })
+    .catch((err) => {})
 );
 
 export const logout = () => (dispatch, _getState, api) => (

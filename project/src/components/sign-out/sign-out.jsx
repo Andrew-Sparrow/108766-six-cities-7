@@ -1,11 +1,13 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import { AppRoute } from '../../const.js';
+import { ActionCreator } from '../../store/action';
 
 function SignOut(props) {
-  const { login } = props;
+  const { login, onSignOutClick } = props;
 
   return (
     <Fragment>
@@ -17,7 +19,13 @@ function SignOut(props) {
         </Link>
       </li>
       <li className="header__nav-item">
-        <Link className="header__nav-link" to={ AppRoute.ROOT }>
+        <Link
+          className="header__nav-link"
+          to={AppRoute.ROOT}
+          onClick={() => {
+            onSignOutClick();
+          }}
+        >
           <span className="header__signout">Sign out</span>
         </Link>
       </li>
@@ -25,8 +33,16 @@ function SignOut(props) {
   );
 }
 
+const mapDispatchToProps = (dispatch) => ({
+  onSignOutClick() {
+    dispatch(ActionCreator.logout());
+  },
+});
+
 SignOut.propTypes = {
   login: PropTypes.string,
+  onSignOutClick: PropTypes.func.isRequired,
 };
 
-export default SignOut;
+export { SignOut };
+export default connect(null, mapDispatchToProps)(SignOut);
