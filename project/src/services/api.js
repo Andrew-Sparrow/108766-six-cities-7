@@ -22,14 +22,9 @@ export const getAxiosInstance = (history = null) => {
         resolve(response);
       }),
     (error) =>
-    {
-      if (!error.response) {
-        return new Promise((resolve, reject) =>
-        {
-          reject(error);
-        });
-      }
-    },
+      new Promise((resolve, reject) => {
+        reject(error);
+      }),
   );
 
   return axiosInstance;
