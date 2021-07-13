@@ -11,7 +11,7 @@ const initialState = {
   authorizationStatus: AuthorizationStatus.UNKNOWN,
   isDataLoaded: false,
   sortBy: SortByValues.POPULAR,
-  login: LoginValue.unauthorized,
+  login: LoginValue.UNAUTHORIZED,
 };
 
 function reducer (state = initialState, action) {
@@ -48,7 +48,7 @@ function reducer (state = initialState, action) {
       return {
         ...state,
         authorizationStatus: AuthorizationStatus.NO_AUTH,
-        login: LoginValue.unauthorized,
+        login: LoginValue.UNAUTHORIZED,
       };
     default:
       return state;

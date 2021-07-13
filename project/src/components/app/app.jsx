@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Switch, Route, Router as BrowserRouter } from 'react-router-dom';
 
-import { AppRoute } from '../../const.js';
+import { AppRoute, AuthorizationStatus } from '../../const.js';
 import Main from '../main/main';
 import Favorites from '../favorites/favorites';
 import Login from '../login/login';
@@ -17,6 +17,7 @@ function App(props) {
   const {
     isDataLoaded,
     places,
+    authorizationStatus,
   } = props;
 
   if (!isDataLoaded) {
@@ -32,7 +33,9 @@ function App(props) {
           <Main className="page page--gray page--main" />
         </Route>
         <Route exact path={AppRoute.LOGIN}>
-          <Login />
+          {authorizationStatus === AuthorizationStatus.NO_AUTH
+            ? <Login />
+            : <Main className="page page--gray page--main" />}
         </Route>
         <PrivateRoute
           exact
@@ -53,7 +56,7 @@ function App(props) {
 
 App.propTypes = {
   places: PropTypes.array.isRequired,
-  // authorizationStatus: PropTypes.string.isRequired,
+  authorizationStatus: PropTypes.string.isRequired,
   isDataLoaded: PropTypes.bool.isRequired,
 };
 

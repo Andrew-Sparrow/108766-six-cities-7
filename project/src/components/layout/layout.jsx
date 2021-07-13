@@ -3,13 +3,19 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import PropTypes from 'prop-types';
-import { AppRoute} from '../../const.js';
+
+import
+  {
+  AppRoute,
+  AuthorizationStatus
+} from '../../const.js';
 
 function Layout (props) {
   const {
     className,
     children,
     login,
+    authorizationStatus,
   } = props;
 
   return (
@@ -24,18 +30,9 @@ function Layout (props) {
             </div>
             <nav className="header__nav">
               <ul className="header__nav-list">
-                <li className="header__nav-item user">
-                  <Link className="header__nav-link header__nav-link--profile" to={ AppRoute.FAVORITES }>
-                    <div className="header__avatar-wrapper user__avatar-wrapper">
-                    </div>
-                    <span className="header__user-name user__name">{ login }</span>
-                  </Link>
-                </li>
-                <li className="header__nav-item">
-                  <Link className="header__nav-link" to={ AppRoute.ROOT }>
-                    <span className="header__signout">Sign out</span>
-                  </Link>
-                </li>
+                { authorizationStatus === AuthorizationStatus.AUTH
+                 ? 
+                }
               </ul>
             </nav>
           </div>
@@ -50,12 +47,14 @@ const mapStateToProps = (state) => ({
   login: state.login,
   places: state.places,
   sortBy: state.sortBy,
+  authorizationStatus: state.authorizationStatus,
 });
 
 Layout.propTypes = {
   className: PropTypes.string,
   children: PropTypes.object,
   login: PropTypes.string,
+  authorizationStatus: PropTypes.string.isRequired,
 };
 
 export { Layout };
