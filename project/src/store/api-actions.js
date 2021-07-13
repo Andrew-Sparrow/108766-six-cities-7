@@ -3,14 +3,15 @@ import { AuthorizationStatus, APIRoute } from '../const';
 
 export const fetchPlacesList = () => (dispatch, _getState, api) => (
   api.get(APIRoute.HOTELS)
-    .then(({ data }) => dispatch(ActionCreator.loadPlaces(data)))
+    .then(({ data }) => {
+      dispatch(ActionCreator.loadPlaces(data));
+      dispatch(ActionCreator.changeAuthorizationStatus(AuthorizationStatus.NO_AUTH));
+    })
 );
 
 export const login = ({ login: email, password }) => (dispatch, _getState, api) => (
   api.post(APIRoute.LOGIN, { email, password })
     .then((info) => {
-      // eslint-disable-next-line
-      // console.log(info);
       localStorage.setItem('token', info.data.token);
       dispatch(ActionCreator.changeLogin(info.data.email));
       dispatch(ActionCreator.changeAuthorizationStatus(AuthorizationStatus.AUTH));

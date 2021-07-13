@@ -11,7 +11,7 @@ const initialState = {
   authorizationStatus: AuthorizationStatus.UNKNOWN,
   isDataLoaded: false,
   sortBy: SortByValues.POPULAR,
-  login: LoginValue.UNAUTHORIZED,
+  loginValue: LoginValue.UNAUTHORIZED,
 };
 
 function reducer (state = initialState, action) {
@@ -42,13 +42,13 @@ function reducer (state = initialState, action) {
     case ActionType.CHANGE_LOGIN:
       return {
         ...state,
-        login: action.payload,
+        loginValue: action.payload,
       };
     case ActionType.LOGOUT:
       return {
         ...state,
         authorizationStatus: AuthorizationStatus.NO_AUTH,
-        login: LoginValue.UNAUTHORIZED,
+        loginValue: LoginValue.UNAUTHORIZED,
       };
     default:
       return state;
