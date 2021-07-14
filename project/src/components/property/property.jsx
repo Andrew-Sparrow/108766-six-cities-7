@@ -39,7 +39,7 @@ function Property ( props ) {
 
   useEffect(() => {
     dispatch(fetchCommentsList(id));
-  }, []);
+  }, [id, dispatch]);
 
   return (
     <Fragment>
