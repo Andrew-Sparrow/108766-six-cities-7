@@ -25,6 +25,8 @@ import {
 
 import { ActionCreator } from '../../store/actions';
 
+import { AuthorizationStatus } from '../../const.js';
+
 import Utils from '../../utils/utils';
 import Map from '../map/map';
 
@@ -37,6 +39,7 @@ function Property ( props ) {
     isCommentsLoaded,
     isNearbyPlacesLoaded,
     comments,
+    authorizationStatus,
   } = props;
 
   const hotelFromServer = places.find((place) => place.id === +id);
@@ -137,7 +140,7 @@ function Property ( props ) {
                     < PropertyCommentList reviews={comments} />
                   </Fragment>
                   : <LoadingScreen />}
-                < CommentForm />
+                { authorizationStatus === AuthorizationStatus.AUTH && < CommentForm />}
               </section>
             </div>
           </div>
@@ -174,6 +177,7 @@ Property.propTypes = {
   comments: PropTypes.array,
   isCommentsLoaded: PropTypes.bool.isRequired,
   isNearbyPlacesLoaded: PropTypes.bool.isRequired,
+  authorizationStatus: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -181,6 +185,7 @@ const mapStateToProps = (state) => ({
   comments: state.comments,
   isCommentsLoaded: state.isCommentsLoaded,
   isNearbyPlacesLoaded: state.isNearbyPlacesLoaded,
+  authorizationStatus: state.authorizationStatus,
 });
 
 const withLayoutProperty =  withLayout(Property);
