@@ -1,10 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+
 import PropTypes from 'prop-types';
+import SignIn from '../sign-in/sign-in';
+import SignOut from '../sign-out/sign-out';
+
+import {
+  AuthorizationStatus
+} from '../../const.js';
 
 function Layout (props) {
-  const className = props.className;
-  const children = props.children;
+  const {
+    className,
+    children,
+    login,
+    authorizationStatus,
+  } = props;
 
   return (
     <div className={className}>
@@ -18,18 +30,9 @@ function Layout (props) {
             </div>
             <nav className="header__nav">
               <ul className="header__nav-list">
-                <li className="header__nav-item user">
-                  <Link className="header__nav-link header__nav-link--profile" to="/">
-                    <div className="header__avatar-wrapper user__avatar-wrapper">
-                    </div>
-                    <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
-                  </Link>
-                </li>
-                <li className="header__nav-item">
-                  <Link className="header__nav-link" to="/">
-                    <span className="header__signout">Sign out</span>
-                  </Link>
-                </li>
+                {authorizationStatus === AuthorizationStatus.AUTH
+                  ? <SignOut login={login} />
+                  : < SignIn />}
               </ul>
             </nav>
           </div>
@@ -40,9 +43,19 @@ function Layout (props) {
   );
 }
 
+const mapStateToProps = (state) => ({
+  login: state.loginValue,
+  places: state.places,
+  sortBy: state.sortBy,
+  authorizationStatus: state.authorizationStatus,
+});
+
 Layout.propTypes = {
   className: PropTypes.string,
   children: PropTypes.object,
+  login: PropTypes.string,
+  authorizationStatus: PropTypes.string.isRequired,
 };
 
-export default Layout;
+export { Layout };
+export default connect(mapStateToProps, null)(Layout);

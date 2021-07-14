@@ -1,14 +1,18 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { AppRoute } from '../../const.js';
+
+import {
+  Link
+} from 'react-router-dom';
 
 function CardInfo (props) {
   const {
+    id,
     price,
     title,
     isFavorite,
     type,
+    width,
   } = props;
 
   return (
@@ -27,12 +31,12 @@ function CardInfo (props) {
       </div>
       <div className="place-card__rating rating">
         <div className="place-card__stars rating__stars">
-          <span style={{ width: '80%' }}></span>
+          <span style={{ width: `${width}%` }}></span>
           <span className="visually-hidden">Rating</span>
         </div>
       </div>
       <h2 className="place-card__name">
-        <Link to={AppRoute.HOTELS}>{title}</Link>
+        <Link to={`/hotels/${id}`}>{title}</Link>
       </h2>
       <p className="place-card__type">{type}</p>
     </div>
@@ -40,10 +44,12 @@ function CardInfo (props) {
 }
 
 CardInfo.propTypes = {
+  id: PropTypes.number,
   price: PropTypes.number,
   title: PropTypes.string.isRequired,
   isFavorite: PropTypes.bool,
   type: PropTypes.string,
+  width: PropTypes.number,
 };
 
 export default CardInfo;

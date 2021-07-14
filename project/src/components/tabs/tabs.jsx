@@ -2,7 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { cityList } from '../../const';
+
+import {
+  cityList,
+  SortByValues
+} from '../../const';
 import { ActionCreator } from '../../store/action';
 
 function Tabs(props) {
@@ -40,6 +44,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   onTabClick(cityName) {
     dispatch(ActionCreator.changeCity(cityName));
+    dispatch(ActionCreator.changeSortBy(SortByValues.POPULAR));
   },
 });
 

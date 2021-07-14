@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Switch, Route, BrowserRouter } from 'react-router-dom';
+import { Switch, Route, Router as BrowserRouter } from 'react-router-dom';
 
-import { AppRoute } from '../../const.js';
+import { AppRoute, AuthorizationStatus } from '../../const.js';
 import Main from '../main/main';
 import Favorites from '../favorites/favorites';
 import Login from '../login/login';
@@ -11,13 +11,16 @@ import Property from '../property/property';
 import Error from '../error/error';
 import LoadingScreen from '../loading-screen/loading-screen.jsx';
 import PrivateRoute from '../private-route/private-route.jsx';
-import Utils from '../../utils/utils';
 import browserHistory from '../../browser-history';
 
 function App(props) {
-  const { authorizationStatus, isDataLoaded, places } = props;
+  const {
+    isDataLoaded,
+    places,
+    authorizationStatus,
+  } = props;
 
-  if (Utils.isCheckedAuth(authorizationStatus) || !isDataLoaded) {
+  if (!isDataLoaded) {
     return (
       <LoadingScreen />
     );
@@ -27,10 +30,12 @@ function App(props) {
     <BrowserRouter history={ browserHistory }>
       <Switch>
         <Route exact path={AppRoute.ROOT}>
-          <Main places={places} className="page page--gray page--main" />
+          <Main className="page page--gray page--main" />
         </Route>
         <Route exact path={AppRoute.LOGIN}>
-          <Login />
+          {authorizationStatus === AuthorizationStatus.NO_AUTH
+            ? <Login />
+            : <Main className="page page--gray page--main" />}
         </Route>
         <PrivateRoute
           exact
@@ -39,7 +44,7 @@ function App(props) {
         >
         </PrivateRoute>
         <Route exact path={AppRoute.HOTELS}>
-          <Property price={0} className="page" />
+          <Property className="page" />
         </Route>
         <Route>
           <Error />

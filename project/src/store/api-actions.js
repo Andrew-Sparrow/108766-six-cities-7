@@ -3,19 +3,21 @@ import { AuthorizationStatus, APIRoute } from '../const';
 
 export const fetchPlacesList = () => (dispatch, _getState, api) => (
   api.get(APIRoute.HOTELS)
-    .then(({ data }) => dispatch(ActionCreator.loadPlaces(data)))
-);
-
-export const checkAuth = () => (dispatch, _getState, api) => (
-  api.get(APIRoute.LOGIN)
-    .then(() => dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH)))
-    .catch(() => {})
+    .then(({ data }) => {
+      dispatch(ActionCreator.loadPlaces(data));
+      dispatch(ActionCreator.changeAuthorizationStatus(AuthorizationStatus.NO_AUTH));
+    })
+    .catch((err) => {})
 );
 
 export const login = ({ login: email, password }) => (dispatch, _getState, api) => (
   api.post(APIRoute.LOGIN, { email, password })
-    .then(({ data }) => localStorage.setItem('token', data.token))
-    .then(() => dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH)))
+    .then((info) => {
+      localStorage.setItem('token', info.data.token);
+      dispatch(ActionCreator.changeLogin(info.data.email));
+      dispatch(ActionCreator.changeAuthorizationStatus(AuthorizationStatus.AUTH));
+    })
+    .catch((err) => {})
 );
 
 export const logout = () => (dispatch, _getState, api) => (

@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 function Error() {
   return (
-    <h1>Ups..., Page Not Found</h1>
+    < Fragment >
+      <h1>404</h1>
+      <h2>Page Not Found</h2>
+    </ Fragment>
   );
 }
 

@@ -11,13 +11,15 @@ import Utils from '../../utils/utils';
 import MainEmpty from '../main-empty/main-empty';
 
 function Main(props) {
-  const { places, activeCityName } = props;
+  const { places, activeCityName, sortBy } = props;
 
   const [selectedPoint, setSelectedPoint] = useState({});
+
   const filteredPlaces = Utils.getFilteredPlaces(activeCityName, places);
+  const sortedPlaces = Utils.getSortedPlaces(sortBy, filteredPlaces);
 
   const onListItemHover = (listItem) => {
-    const currentPoint = places.find((place) => place.id === parseInt(listItem.id, 10));
+    const currentPoint = sortedPlaces.find((place) => place.id === parseInt(listItem.id, 10));
     setSelectedPoint(currentPoint);
   };
 
@@ -26,23 +28,23 @@ function Main(props) {
       <h1 className="visually-hidden">Cities</h1>
       <Tabs />
       {
-        filteredPlaces.length === 0
+        sortedPlaces.length === 0
           ? < MainEmpty activeCityName={activeCityName}/>
           : (
             <div className="cities">
               <div className="cities__places-container container">
                 <section className="cities__places places">
                   <h2 className="visually-hidden">Places</h2>
-                  <b className="places__found">{filteredPlaces.length} places to stay in {activeCityName}</b>
+                  <b className="places__found">{sortedPlaces.length} places to stay in {activeCityName}</b>
                   <SortBy />
-                  < RoomList places={filteredPlaces} onListItemHover={onListItemHover} />
+                  < RoomList places={sortedPlaces} onListItemHover={onListItemHover} />
                 </section>
                 <div className="cities__right-section">
                   <section className="cities__map map">
                     <Map
                       activeCityName={activeCityName}
-                      city={filteredPlaces.length !== 0 && filteredPlaces[0].city}
-                      points={filteredPlaces}
+                      city={sortedPlaces.length !== 0 && sortedPlaces[0].city}
+                      points={sortedPlaces}
                       selectedPoint={selectedPoint}
                     />
                   </section>
@@ -57,11 +59,14 @@ function Main(props) {
 
 const mapStateToProps = (state) => ({
   activeCityName: state.activeCityName,
+  places: state.places,
+  sortBy: state.sortBy,
 });
 
 Main.propTypes = {
   places: PropTypes.array,
   activeCityName: PropTypes.string.isRequired,
+  sortBy: PropTypes.string.isRequired,
 };
 
 const withLayoutMain = withLayout(Main);
