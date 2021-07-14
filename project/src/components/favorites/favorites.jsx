@@ -3,11 +3,16 @@ import { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import FavoriteList from '../favorite-list/favorite-list';
+import FavoritesEmpty from './favorites-empty';
+
 import offerProp from '../room/room.prop.js';
 import withLayout from '../hocs/with-layout';
 
+import Utils from '../../utils/utils';
+
 function Favorites(props) {
   const { places } = props;
+  const favoriteList = Utils.getFavoritePlacesSeparatedByCity(places);
 
   return (
     <Fragment>
@@ -15,7 +20,9 @@ function Favorites(props) {
         <div className="page__favorites-container container">
           <section className="favorites">
             <h1 className="favorites__title">Saved listing</h1>
-            <FavoriteList places={places}/>
+            { favoriteList.size === 0
+              ? <FavoritesEmpty />
+              : <FavoriteList favoriteList={favoriteList}/>}
           </section>
         </div>
       </main>

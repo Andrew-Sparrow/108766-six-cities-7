@@ -1,12 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Utils from '../../utils/utils';
 import FavoriteCity from '../favorite-city/favorite-city';
 import offerProp from '../room/room.prop.js';
 
 function FavoriteList(props) {
-  const {places} = props;
-  const favoriteList = Utils.getFavoritePlacesSeparatedByCity(places);
+  const { favoriteList } = props;
 
   function getPlaces(list) {
     const cityList = [];
@@ -26,7 +24,7 @@ function FavoriteList(props) {
 }
 
 FavoriteList.propTypes = {
-  places: PropTypes.arrayOf(offerProp),
+  favoriteList: PropTypes.arrayOf(offerProp),
 };
 
 export default FavoriteList;
