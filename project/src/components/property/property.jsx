@@ -23,6 +23,8 @@ import {
   fetchNearbyPlacesList
 } from '../../store/api-actions';
 
+import { ActionCreator } from '../../store/actions';
+
 import Utils from '../../utils/utils';
 import Map from '../map/map';
 
@@ -45,8 +47,10 @@ function Property ( props ) {
   useEffect(() => {
     dispatch(fetchCommentsList(id));
     dispatch(fetchNearbyPlacesList(id));
+
     return () => {
-      
+      dispatch(ActionCreator.removeNearbyPlaces());
+      dispatch(ActionCreator.removeComments());
     };
   }, [id, dispatch]);
 

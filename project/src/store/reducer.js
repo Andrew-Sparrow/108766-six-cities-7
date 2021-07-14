@@ -44,11 +44,23 @@ function reducer (state = initialState, action) {
         nearbyPlaces: action.payload,
         isNearbyPlacesLoaded: true,
       };
+    case ActionType.REMOVE_NEARBY_PLACES:
+      return {
+        ...state,
+        nearbyPlaces: [],
+        isNearbyPlacesLoaded: false,
+      };
     case ActionType.LOAD_COMMENTS:
       return {
         ...state,
         comments: action.payload,
         isCommentsLoaded: true,
+      };
+    case ActionType.REMOVE_COMMENTS:
+      return {
+        ...state,
+        comments: [],
+        isCommentsLoaded: false,
       };
     case ActionType.CHANGE_AUTHORIZATION_STATUS:
       return {
