@@ -9,6 +9,14 @@ export const fetchPlacesList = () => (dispatch, _getState, api) => (
     .catch((err) => {})
 );
 
+export const fetchNearbyPlacesList = (id) => (dispatch, _getState, api) => (
+  api.get(`${APIRoute.HOTELS}/${id}/nearby`)
+    .then(({ data }) => {
+      dispatch(ActionCreator.loadNearbyPlaces(data));
+    })
+    .catch((err) => {})
+);
+
 export const fetchCommentsList = (id) => (dispatch, _getState, api) => (
   api.get(`${APIRoute.COMMENTS}/${id}`)
     .then((info) => {

@@ -1,4 +1,5 @@
 import { ActionType } from './actions';
+
 import {
   AuthorizationStatus,
   SortByValues,
@@ -14,6 +15,7 @@ const initialState = {
   isCommentsLoaded: false,
   sortBy: SortByValues.POPULAR,
   loginValue: LoginValue.UNAUTHORIZED,
+  isNearbyPlacesLoaded: false,
 };
 
 function reducer (state = initialState, action) {
@@ -35,6 +37,12 @@ function reducer (state = initialState, action) {
         ...state,
         places: action.payload,
         isDataLoaded: true,
+      };
+    case ActionType.LOAD_NEARBY_PLACES:
+      return {
+        ...state,
+        nearbyPlaces: action.payload,
+        isNearbyPlacesLoaded: true,
       };
     case ActionType.LOAD_COMMENTS:
       return {
