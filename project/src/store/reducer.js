@@ -8,8 +8,10 @@ import {
 const initialState = {
   activeCityName: 'Paris',
   places: [],
-  authorizationStatus: AuthorizationStatus.UNKNOWN,
+  comments: [],
+  authorizationStatus: AuthorizationStatus.NO_AUTH,
   isDataLoaded: false,
+  isCommentsLoaded: false,
   sortBy: SortByValues.POPULAR,
   loginValue: LoginValue.UNAUTHORIZED,
 };
@@ -33,6 +35,12 @@ function reducer (state = initialState, action) {
         ...state,
         places: action.payload,
         isDataLoaded: true,
+      };
+    case ActionType.LOAD_COMMENTS:
+      return {
+        ...state,
+        comments: action.payload,
+        isCommentsLoaded: true,
       };
     case ActionType.CHANGE_AUTHORIZATION_STATUS:
       return {

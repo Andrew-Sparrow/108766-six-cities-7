@@ -5,6 +5,14 @@ export const fetchPlacesList = () => (dispatch, _getState, api) => (
   api.get(APIRoute.HOTELS)
     .then(({ data }) => {
       dispatch(ActionCreator.loadPlaces(data));
+    })
+    .catch((err) => {})
+);
+
+export const fetchCommentsList = () => (dispatch, _getState, api) => (
+  api.get(APIRoute.COMMENTS)
+    .then(({ data }) => {
+      dispatch(ActionCreator.loadComments(data));
       dispatch(ActionCreator.changeAuthorizationStatus(AuthorizationStatus.NO_AUTH));
     })
     .catch((err) => {})

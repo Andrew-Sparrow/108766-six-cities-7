@@ -2,6 +2,7 @@ export const ActionType = {
   CHANGE_CITY: 'changeCity',
   CHANGE_SORT_BY: 'sortBy',
   LOAD_PLACES: 'data/loadPlaces',
+  LOAD_COMMENTS: 'data/loadComments',
   CHANGE_AUTHORIZATION_STATUS: 'user/changeAuthorizationStatus',
   CHANGE_LOGIN: 'user/changeLogin',
   LOGOUT: 'user/logout',
@@ -19,6 +20,10 @@ export const ActionCreator = {
   loadPlaces: (places) => ({
     type: ActionType.LOAD_PLACES,
     payload: places,
+  }),
+  loadComments: (comments) => ({
+    type: ActionType.LOAD_PLACES,
+    payload: comments,
   }),
   changeAuthorizationStatus: (status) => ({
     type: ActionType.CHANGE_AUTHORIZATION_STATUS,
