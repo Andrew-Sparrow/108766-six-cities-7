@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { AppRoute } from '../../const.js';
-import { ActionCreator } from '../../store/action';
+import { ActionCreator } from '../../store/actions';
 
 function SignOut(props) {
   const { login, onSignOutClick } = props;

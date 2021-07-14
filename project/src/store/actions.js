@@ -22,7 +22,7 @@ export const ActionCreator = {
     payload: places,
   }),
   loadComments: (comments) => ({
-    type: ActionType.LOAD_PLACES,
+    type: ActionType.LOAD_COMMENTS,
     payload: comments,
   }),
   changeAuthorizationStatus: (status) => ({

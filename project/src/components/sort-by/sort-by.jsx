@@ -3,7 +3,7 @@ import { SortByValues } from '../../const';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { ActionCreator } from '../../store/action';
+import { ActionCreator } from '../../store/actions';
 
 function SortBy( props ) {
   const { sortByValue, onSortChange } = props;

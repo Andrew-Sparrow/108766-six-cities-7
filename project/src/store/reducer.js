@@ -1,4 +1,4 @@
-import { ActionType } from './action';
+import { ActionType } from './actions';
 import {
   AuthorizationStatus,
   SortByValues,

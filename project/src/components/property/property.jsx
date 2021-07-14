@@ -1,5 +1,6 @@
-import React from 'react';
-import { Fragment } from 'react';
+import React, { useEffect, Fragment } from 'react';
+import { useDispatch } from 'react-redux';
+
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -15,20 +16,30 @@ import PropertyImagesList from './property-images-list';
 import PropertyGoodsList from './property-goods-list';
 import { neighbourhoodPlaces } from '../../mock/neighbourhood-places';
 import PropertyNearPlacesList from './property-near-places-list';
+import LoadingScreen from '../loading-screen/loading-screen.jsx';
+import { fetchCommentsList } from '../../store/api-actions';
 
-import { comments } from '../../mock/comments';
 import Utils from '../../utils/utils';
 import Map from '../map/map';
 
 function Property ( props ) {
   const { id } = useParams();
+  const dispatch = useDispatch();
 
-  const { places } = props;
+  const {
+    places,
+    isCommentsLoaded,
+    comments,
+  } = props;
 
   const hotelFromServer = places.find((place) => place.id === +id);
 
   const adaptedPlaceForClient = Utils.adaptToClient(hotelFromServer);
   const width = Utils.getWidthByRating(adaptedPlaceForClient.rating);
+
+  useEffect(() => {
+    dispatch(fetchCommentsList(id));
+  }, []);
 
   return (
     <Fragment>
@@ -106,8 +117,13 @@ function Property ( props ) {
                 </div>
               </div>
               <section className="property__reviews reviews">
-                <h2 className="reviews__title">Reviews · <span className="reviews__amount">{ comments.length }</span></h2>
-                < PropertyCommentList reviews={ comments } />
+                {isCommentsLoaded
+                  ?
+                  <Fragment>
+                    <h2 className="reviews__title">Reviews · <span className="reviews__amount">{comments.length}</span></h2>
+                    < PropertyCommentList reviews={comments} />
+                  </Fragment>
+                  : <LoadingScreen />}
                 < CommentForm />
               </section>
             </div>
@@ -140,10 +156,14 @@ function Property ( props ) {
 
 Property.propTypes = {
   places: PropTypes.array,
+  comments: PropTypes.array,
+  isCommentsLoaded: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   places: state.places,
+  comments: state.comments,
+  isCommentsLoaded: state.isCommentsLoaded,
 });
 
 const withLayoutProperty =  withLayout(Property);

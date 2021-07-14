@@ -7,7 +7,7 @@ import {
   cityList,
   SortByValues
 } from '../../const';
-import { ActionCreator } from '../../store/action';
+import { ActionCreator } from '../../store/actions';
 
 function Tabs(props) {
   const { activeCityName, onTabClick } = props;

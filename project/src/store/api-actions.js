@@ -1,4 +1,4 @@
-import { ActionCreator } from './action';
+import { ActionCreator } from './actions';
 import { AuthorizationStatus, APIRoute } from '../const';
 
 export const fetchPlacesList = () => (dispatch, _getState, api) => (
@@ -9,11 +9,10 @@ export const fetchPlacesList = () => (dispatch, _getState, api) => (
     .catch((err) => {})
 );
 
-export const fetchCommentsList = () => (dispatch, _getState, api) => (
-  api.get(APIRoute.COMMENTS)
-    .then(({ data }) => {
-      dispatch(ActionCreator.loadComments(data));
-      dispatch(ActionCreator.changeAuthorizationStatus(AuthorizationStatus.NO_AUTH));
+export const fetchCommentsList = (id) => (dispatch, _getState, api) => (
+  api.get(`${APIRoute.COMMENTS}/${id}`)
+    .then((info) => {
+      dispatch(ActionCreator.loadComments(info.data));
     })
     .catch((err) => {})
 );
