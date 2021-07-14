@@ -22,6 +22,7 @@ function RoomList(props) {
           isFavorite={place.isFavorite}
           type={place.type}
           rating={place.rating}
+          previewImage={place.previewImage}
         />
       ))}
     </div>

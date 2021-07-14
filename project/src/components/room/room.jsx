@@ -18,6 +18,7 @@ function Room(props) {
     isFavorite,
     type,
     rating,
+    previewImage,
   } = props;
 
   const width = Utils.getWidthByRating(rating);
@@ -38,7 +39,7 @@ function Room(props) {
         </div>}
       <div className="cities__image-wrapper place-card__image-wrapper">
         <Link to={`/hotels/${id}`}>
-          <img className="place-card__image" src="img/apartment-01.jpg" width="260" height="200" alt="Place" />
+          <img className="place-card__image" src={ previewImage } width="260" height="200" alt="Place" />
         </Link>
       </div>
       < CardInfo
@@ -61,6 +62,7 @@ Room.propTypes = {
   isPremium: PropTypes.bool,
   isFavorite: PropTypes.bool,
   type: PropTypes.string,
+  previewImage: PropTypes.string,
   rating: PropTypes.number,
 };
 
