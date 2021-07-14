@@ -17,7 +17,11 @@ import PropertyGoodsList from './property-goods-list';
 import { neighbourhoodPlaces } from '../../mock/neighbourhood-places';
 import PropertyNearPlacesList from './property-near-places-list';
 import LoadingScreen from '../loading-screen/loading-screen.jsx';
-import { fetchCommentsList } from '../../store/api-actions';
+
+import {
+  fetchCommentsList,
+  fetchNearbyPlacesList
+} from '../../store/api-actions';
 
 import Utils from '../../utils/utils';
 import Map from '../map/map';
@@ -29,6 +33,7 @@ function Property ( props ) {
   const {
     places,
     isCommentsLoaded,
+    isNearbyPlacesLoaded,
     comments,
   } = props;
 
@@ -39,6 +44,10 @@ function Property ( props ) {
 
   useEffect(() => {
     dispatch(fetchCommentsList(id));
+    dispatch(fetchNearbyPlacesList(id));
+    return () => {
+      
+    };
   }, [id, dispatch]);
 
   return (
@@ -140,7 +149,9 @@ function Property ( props ) {
         <div className="container">
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
-            < PropertyNearPlacesList />
+            { isNearbyPlacesLoaded
+              ? < PropertyNearPlacesList />
+              : <LoadingScreen />}
           </section>
         </div>
       </main>
@@ -158,12 +169,14 @@ Property.propTypes = {
   places: PropTypes.array,
   comments: PropTypes.array,
   isCommentsLoaded: PropTypes.bool.isRequired,
+  isNearbyPlacesLoaded: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   places: state.places,
   comments: state.comments,
   isCommentsLoaded: state.isCommentsLoaded,
+  isNearbyPlacesLoaded: state.isNearbyPlacesLoaded,
 });
 
 const withLayoutProperty =  withLayout(Property);

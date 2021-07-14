@@ -3,7 +3,9 @@ export const ActionType = {
   CHANGE_SORT_BY: 'sortBy',
   LOAD_PLACES: 'data/loadPlaces',
   LOAD_NEARBY_PLACES: 'data/loadNearbyPlaces',
+  REMOVE_NEARBY_PLACES: 'data/removeNearbyPlaces',
   LOAD_COMMENTS: 'data/loadComments',
+  REMOVE_COMMENTS: 'data/removeComments',
   CHANGE_AUTHORIZATION_STATUS: 'user/changeAuthorizationStatus',
   CHANGE_LOGIN: 'user/changeLogin',
   LOGOUT: 'user/logout',
@@ -37,6 +39,12 @@ export const ActionCreator = {
   changeLogin: (login) => ({
     type: ActionType.CHANGE_LOGIN,
     payload: login,
+  }),
+  removeNearbyPlaces: () => ({
+    type: ActionType.REMOVE_NEARBY_PLACES,
+  }),
+  removeComments: () => ({
+    type: ActionType.REMOVE_COMMENTS,
   }),
   logout: () => ({
     type: ActionType.LOGOUT,
