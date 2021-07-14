@@ -12,10 +12,10 @@ import {
 
 function Layout (props) {
   const {
-    className,
     children,
     login,
     authorizationStatus,
+    className,
   } = props;
 
   return (
@@ -39,7 +39,7 @@ function Layout (props) {
         </div>
       </header>
       {children}
-    </div>
+    </ div>
   );
 }
 
@@ -51,9 +51,9 @@ const mapStateToProps = (state) => ({
 });
 
 Layout.propTypes = {
-  className: PropTypes.string,
   children: PropTypes.object,
   login: PropTypes.string,
+  className: PropTypes.string,
   authorizationStatus: PropTypes.string.isRequired,
 };
 

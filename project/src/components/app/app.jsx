@@ -30,12 +30,12 @@ function App(props) {
     <BrowserRouter history={ browserHistory }>
       <Switch>
         <Route exact path={AppRoute.ROOT}>
-          <Main className="page page--gray page--main" />
+          <Main className="page page--gray page--index" />
         </Route>
         <Route exact path={AppRoute.LOGIN}>
           {authorizationStatus === AuthorizationStatus.NO_AUTH
             ? <Login />
-            : <Main className="page page--gray page--main" />}
+            : <Main className="page page--gray page--index" />}
         </Route>
         <PrivateRoute
           exact
