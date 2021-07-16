@@ -25,7 +25,9 @@ import {
 
 import { ActionCreator } from '../../store/actions';
 
-import { AuthorizationStatus } from '../../const.js';
+import {
+  AuthorizationStatus
+} from '../../const.js';
 
 import Utils from '../../utils/utils';
 import Map from '../map/map';
@@ -36,9 +38,10 @@ function Property ( props ) {
 
   const {
     places,
+    nearbyPlaces,
+    comments,
     isCommentsLoaded,
     isNearbyPlacesLoaded,
-    comments,
     authorizationStatus,
   } = props;
 
@@ -157,7 +160,7 @@ function Property ( props ) {
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
             { isNearbyPlacesLoaded
-              ? < PropertyNearPlacesList />
+              ? < PropertyNearPlacesList nearbyPlaces={nearbyPlaces}/>
               : <LoadingScreen />}
           </section>
         </div>
@@ -175,6 +178,7 @@ function Property ( props ) {
 Property.propTypes = {
   places: PropTypes.array,
   comments: PropTypes.array,
+  nearbyPlaces: PropTypes.array,
   isCommentsLoaded: PropTypes.bool.isRequired,
   isNearbyPlacesLoaded: PropTypes.bool.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
@@ -183,6 +187,7 @@ Property.propTypes = {
 const mapStateToProps = (state) => ({
   places: state.places,
   comments: state.comments,
+  nearbyPlaces: state.nearbyPlaces,
   isCommentsLoaded: state.isCommentsLoaded,
   isNearbyPlacesLoaded: state.isNearbyPlacesLoaded,
   authorizationStatus: state.authorizationStatus,
