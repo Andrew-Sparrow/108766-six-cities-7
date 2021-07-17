@@ -26,13 +26,16 @@ export const fetchCommentsList = (id) => (dispatch, _getState, api) => (
 );
 
 export const addToFavorite = (id, isFavorite) => (dispatch, _getState, api) => (
-  api.get(`${APIRoute.FAVORITE}/${id}/${isFavorite ? 1 : 0}`)
+  api.post(`${ APIRoute.FAVORITE }/${ id }/${ isFavorite ? 1 : 0 }`)
     .then((info) => {
       // eslint-disable-next-line
       console.log(info.data.is_favorite);
       dispatch(ActionCreator.changeFavorite(info.data.is_favorite));
     })
-    .catch((err) => {})
+    .catch((err) => {
+      // eslint-disable-next-line
+      console.log(err.message);
+    })
 );
 
 export const login = ({ login: email, password }) => (dispatch, _getState, api) => (

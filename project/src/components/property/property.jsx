@@ -10,7 +10,8 @@ import PropTypes from 'prop-types';
 
 import {
   Link,
-  useParams
+  useParams,
+  useHistory
 } from 'react-router-dom';
 
 import PropertyCommentForm from './property-comment-form';
@@ -31,7 +32,8 @@ import {
 import { ActionCreator } from '../../store/actions';
 
 import {
-  AuthorizationStatus
+  AuthorizationStatus,
+  AppRoute
 } from '../../const.js';
 
 import Utils from '../../utils/utils';
@@ -40,6 +42,7 @@ import Map from '../map/map';
 function Property ( props ) {
   const { id } = useParams();
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const {
     places,
@@ -69,7 +72,11 @@ function Property ( props ) {
 
   const onFavoriteClick = (evt) => {
     evt.preventDefault();
-    favoriteClickHandler(adaptedPlaceForClient.id, !adaptedPlaceForClient.isFavorite);
+    if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
+      history.push(AppRoute.LOGIN);
+    } else {
+      favoriteClickHandler(adaptedPlaceForClient.id, !isFavorite);
+    }
   };
 
   return (
@@ -88,7 +95,7 @@ function Property ( props ) {
                   { adaptedPlaceForClient.description }
                 </h1>
                 <button
-                  className={`${isFavorite ? 'property__bookmark-button--active button' : 'property__bookmark-button button'}`}
+                  className={`property__bookmark-button button ${isFavorite ? 'property__bookmark-button--active' : ''}`}
                   type="button"
                   onClick={(evt) => { onFavoriteClick(evt); }}
                 >
