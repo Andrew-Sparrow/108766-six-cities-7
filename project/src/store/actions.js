@@ -34,14 +34,6 @@ export const ActionCreator = {
     type: ActionType.LOAD_COMMENTS,
     payload: comments,
   }),
-  sendingComment: (comments) => ({
-    type: ActionType.SEND_COMMENT,
-    payload: comments,
-  }),
-  sendCommentRating: (rating) => ({
-    type: ActionType.SEND_COMMENT_RATING,
-    payload: rating,
-  }),
   changeAuthorizationStatus: (status) => ({
     type: ActionType.CHANGE_AUTHORIZATION_STATUS,
     payload: status,

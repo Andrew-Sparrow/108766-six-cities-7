@@ -60,18 +60,6 @@ function reducer (state = initialState, action) {
         comments: action.payload,
         isCommentsLoaded: true,
       };
-    case ActionType.SEND_COMMENT:
-      return {
-        ...state,
-        commentText: action.payload,
-        isCommentTextSended: true,
-      };
-    case ActionType.SEND_COMMENT_RATING:
-      return {
-        ...state,
-        commentRating: action.payload,
-        isCommentRatingSended: true,
-      };
     case ActionType.REMOVE_COMMENTS:
       return {
         ...state,
