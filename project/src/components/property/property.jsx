@@ -9,7 +9,7 @@ import {
   useParams
 } from 'react-router-dom';
 
-import CommentForm from '../comment-form/comment-form';
+import PropertyCommentForm from './property-comment-form';
 import PropertyCommentList from './property-comment-list';
 import withLayout from '../hocs/with-layout';
 import PropertyImagesList from './property-images-list';
@@ -143,7 +143,7 @@ function Property ( props ) {
                     < PropertyCommentList reviews={comments} />
                   </Fragment>
                   : <LoadingScreen />}
-                { authorizationStatus === AuthorizationStatus.AUTH && < CommentForm />}
+                { authorizationStatus === AuthorizationStatus.AUTH && < PropertyCommentForm />}
               </section>
             </div>
           </div>

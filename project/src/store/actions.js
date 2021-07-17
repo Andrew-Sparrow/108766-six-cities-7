@@ -6,6 +6,8 @@ export const ActionType = {
   REMOVE_NEARBY_PLACES: 'data/removeNearbyPlaces',
   LOAD_COMMENTS: 'data/loadComments',
   REMOVE_COMMENTS: 'data/removeComments',
+  SEND_COMMENT: 'data/sendComment',
+  SEND_COMMENT_RATING: 'data/sendCommentRating',
   CHANGE_AUTHORIZATION_STATUS: 'user/changeAuthorizationStatus',
   CHANGE_LOGIN: 'user/changeLogin',
   LOGOUT: 'user/logout',
@@ -31,6 +33,14 @@ export const ActionCreator = {
   loadComments: (comments) => ({
     type: ActionType.LOAD_COMMENTS,
     payload: comments,
+  }),
+  sendingComment: (comments) => ({
+    type: ActionType.SEND_COMMENT,
+    payload: comments,
+  }),
+  sendCommentRating: (rating) => ({
+    type: ActionType.SEND_COMMENT_RATING,
+    payload: rating,
   }),
   changeAuthorizationStatus: (status) => ({
     type: ActionType.CHANGE_AUTHORIZATION_STATUS,

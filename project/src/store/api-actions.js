@@ -35,6 +35,16 @@ export const login = ({ login: email, password }) => (dispatch, _getState, api) 
     .catch((err) => {})
 );
 
+export const sendComment = (id, comment, rating) => (dispatch, _getState, api) => (
+  api.post(`${APIRoute.COMMENTS}/${id}`, { comment, rating })
+    .then((info) => {
+      // eslint-disable-next-line
+      console.log(info);
+      dispatch(ActionCreator.loadComments(info.data));
+    })
+    .catch((err) => {})
+);
+
 export const logout = () => (dispatch, _getState, api) => (
   api.delete(APIRoute.LOGOUT)
     .then(() => localStorage.removeItem('token'))
