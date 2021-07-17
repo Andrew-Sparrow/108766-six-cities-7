@@ -1179,10 +1179,10 @@ img {
   margin-top: 2px
 }
 
-.property__bookmark-button:focus .property__bookmark-icon,
+/* .property__bookmark-button:focus .property__bookmark-icon,
 .property__bookmark-button:hover .property__bookmark-icon {
   stroke: #4481c3
-}
+} */
 
 .property__bookmark-button--active .property__bookmark-icon {
   stroke: #4481c3;

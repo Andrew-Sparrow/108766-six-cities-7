@@ -20,6 +20,7 @@ const initialState = {
   commentRating: 0,
   isCommentTextSended: false,
   isCommentRatingSended: false,
+  isFavorite: false,
 };
 
 function reducer (state = initialState, action) {
@@ -70,6 +71,11 @@ function reducer (state = initialState, action) {
       return {
         ...state,
         authorizationStatus: action.payload,
+      };
+    case ActionType.CHANGE_FAVORITE:
+      return {
+        ...state,
+        isFavorite: action.payload,
       };
     case ActionType.CHANGE_LOGIN:
       return {

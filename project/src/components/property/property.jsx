@@ -1,4 +1,8 @@
-import React, { useEffect, Fragment } from 'react';
+import React, {
+  useEffect,
+  Fragment
+} from 'react';
+
 import { useDispatch } from 'react-redux';
 
 import { connect } from 'react-redux';
@@ -20,7 +24,8 @@ import LoadingScreen from '../loading-screen/loading-screen.jsx';
 
 import {
   fetchCommentsList,
-  fetchNearbyPlacesList
+  fetchNearbyPlacesList,
+  addToFavorite
 } from '../../store/api-actions';
 
 import { ActionCreator } from '../../store/actions';
@@ -43,6 +48,8 @@ function Property ( props ) {
     isCommentsLoaded,
     isNearbyPlacesLoaded,
     authorizationStatus,
+    favoriteClickHandler,
+    isFavorite,
   } = props;
 
   const hotelFromServer = places.find((place) => place.id === +id);
@@ -60,6 +67,11 @@ function Property ( props ) {
     };
   }, [id, dispatch]);
 
+  const onFavoriteClick = (evt) => {
+    evt.preventDefault();
+    favoriteClickHandler(adaptedPlaceForClient.id, !adaptedPlaceForClient.isFavorite);
+  };
+
   return (
     <Fragment>
       <main className="page__main">
@@ -75,7 +87,11 @@ function Property ( props ) {
                 <h1 className="property__name">
                   { adaptedPlaceForClient.description }
                 </h1>
-                <button className="property__bookmark-button button" type="button">
+                <button
+                  className={`${isFavorite ? 'property__bookmark-button--active button' : 'property__bookmark-button button'}`}
+                  type="button"
+                  onClick={(evt) => { onFavoriteClick(evt); }}
+                >
                   <svg className="property__bookmark-icon" width={31} height={33}>
                     <use xlinkHref="#icon-bookmark" />
                   </svg>
@@ -181,12 +197,21 @@ Property.propTypes = {
   nearbyPlaces: PropTypes.array,
   isCommentsLoaded: PropTypes.bool.isRequired,
   isNearbyPlacesLoaded: PropTypes.bool.isRequired,
+  isFavorite: PropTypes.bool.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
+  favoriteClickHandler: PropTypes.func,
 };
+
+const mapDispatchToProps = (dispatch) => ({
+  favoriteClickHandler(idPlace, isFavoritePlace) {
+    dispatch(addToFavorite(idPlace, isFavoritePlace));
+  },
+});
 
 const mapStateToProps = (state) => ({
   places: state.places,
   comments: state.comments,
+  isFavorite: state.isFavorite,
   nearbyPlaces: state.nearbyPlaces,
   isCommentsLoaded: state.isCommentsLoaded,
   isNearbyPlacesLoaded: state.isNearbyPlacesLoaded,
@@ -196,5 +221,5 @@ const mapStateToProps = (state) => ({
 const withLayoutProperty =  withLayout(Property);
 
 export { withLayoutProperty };
-export default connect(mapStateToProps, null)(withLayoutProperty);
+export default connect(mapStateToProps, mapDispatchToProps)(withLayoutProperty);
 

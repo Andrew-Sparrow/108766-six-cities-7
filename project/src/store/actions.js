@@ -11,6 +11,7 @@ export const ActionType = {
   CHANGE_AUTHORIZATION_STATUS: 'user/changeAuthorizationStatus',
   CHANGE_LOGIN: 'user/changeLogin',
   LOGOUT: 'user/logout',
+  CHANGE_FAVORITE: 'data/isFavorite',
 };
 
 export const ActionCreator = {
@@ -41,6 +42,10 @@ export const ActionCreator = {
   changeLogin: (login) => ({
     type: ActionType.CHANGE_LOGIN,
     payload: login,
+  }),
+  changeFavorite: (isFavorite) => ({
+    type: ActionType.CHANGE_FAVORITE,
+    payload: isFavorite,
   }),
   removeNearbyPlaces: () => ({
     type: ActionType.REMOVE_NEARBY_PLACES,
