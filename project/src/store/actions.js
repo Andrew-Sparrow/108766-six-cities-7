@@ -43,9 +43,9 @@ export const ActionCreator = {
     type: ActionType.CHANGE_LOGIN,
     payload: login,
   }),
-  changeFavorite: (isFavorite) => ({
+  changeFavorite: (id, newPlace) => ({
     type: ActionType.CHANGE_FAVORITE,
-    payload: isFavorite,
+    payload: {id, newPlace},
   }),
   removeNearbyPlaces: () => ({
     type: ActionType.REMOVE_NEARBY_PLACES,

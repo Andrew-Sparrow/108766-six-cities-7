@@ -6,6 +6,8 @@ import {
   LoginValue
 } from '../const';
 
+import Utils from '../utils/utils';
+
 const initialState = {
   activeCityName: 'Paris',
   places: [],
@@ -20,7 +22,6 @@ const initialState = {
   commentRating: 0,
   isCommentTextSended: false,
   isCommentRatingSended: false,
-  isFavorite: false,
 };
 
 function reducer (state = initialState, action) {
@@ -75,7 +76,7 @@ function reducer (state = initialState, action) {
     case ActionType.CHANGE_FAVORITE:
       return {
         ...state,
-        isFavorite: action.payload,
+        places: Utils.getUpdatePlaces(action.payload.id, state.places, action.payload.newPlace),
       };
     case ActionType.CHANGE_LOGIN:
       return {

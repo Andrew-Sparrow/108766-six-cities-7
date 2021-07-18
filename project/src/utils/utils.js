@@ -144,6 +144,13 @@ class Utils {
         return clonedPlaces;
     }
   }
+
+  static getUpdatePlaces(id, places, newPlace) {
+    const newPlaces = [...places];
+    const index = newPlaces.findIndex((place) => place.id === id);
+    newPlaces[index] = newPlace;
+    return newPlaces;
+  }
 }
 
 export default Utils;

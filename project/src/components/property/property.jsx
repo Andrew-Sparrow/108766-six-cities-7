@@ -52,12 +52,13 @@ function Property ( props ) {
     isNearbyPlacesLoaded,
     authorizationStatus,
     favoriteClickHandler,
-    isFavorite,
   } = props;
 
   const hotelFromServer = places.find((place) => place.id === +id);
 
   const adaptedPlaceForClient = Utils.adaptToClient(hotelFromServer);
+  // eslint-disable-next-line
+  console.log(adaptedPlaceForClient);
   const width = Utils.getWidthByRating(adaptedPlaceForClient.rating);
 
   useEffect(() => {
@@ -75,7 +76,7 @@ function Property ( props ) {
     if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
       history.push(AppRoute.LOGIN);
     } else {
-      favoriteClickHandler(adaptedPlaceForClient.id, !isFavorite);
+      favoriteClickHandler(adaptedPlaceForClient.id, !adaptedPlaceForClient.isFavorite);
     }
   };
 
@@ -95,7 +96,7 @@ function Property ( props ) {
                   { adaptedPlaceForClient.description }
                 </h1>
                 <button
-                  className={`property__bookmark-button button ${isFavorite ? 'property__bookmark-button--active' : ''}`}
+                  className={`property__bookmark-button button ${adaptedPlaceForClient.isFavorite ? 'property__bookmark-button--active' : ''}`}
                   type="button"
                   onClick={(evt) => { onFavoriteClick(evt); }}
                 >
@@ -204,7 +205,6 @@ Property.propTypes = {
   nearbyPlaces: PropTypes.array,
   isCommentsLoaded: PropTypes.bool.isRequired,
   isNearbyPlacesLoaded: PropTypes.bool.isRequired,
-  isFavorite: PropTypes.bool.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
   favoriteClickHandler: PropTypes.func,
 };
@@ -218,7 +218,6 @@ const mapDispatchToProps = (dispatch) => ({
 const mapStateToProps = (state) => ({
   places: state.places,
   comments: state.comments,
-  isFavorite: state.isFavorite,
   nearbyPlaces: state.nearbyPlaces,
   isCommentsLoaded: state.isCommentsLoaded,
   isNearbyPlacesLoaded: state.isNearbyPlacesLoaded,
