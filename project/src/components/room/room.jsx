@@ -6,6 +6,10 @@ import {
   Link
 } from 'react-router-dom';
 
+import { useDispatch } from 'react-redux';
+
+import { addToFavorite } from '../../store/api-actions';
+
 import CardInfo from '../card-info/card-info';
 
 function Room(props) {
@@ -23,8 +27,15 @@ function Room(props) {
 
   const width = Utils.getWidthByRating(rating);
 
+  const dispatch = useDispatch();
+
   const listItemHoverHandler = (evt) => {
     onListItemHover(evt.currentTarget);
+  };
+
+  const favoriteClickHandler = (evt) => {
+    evt.preventDefault();
+    dispatch(addToFavorite(id, !isFavorite));
   };
 
   return (
@@ -48,7 +59,8 @@ function Room(props) {
         title={title}
         isFavorite={isFavorite}
         type={type}
-        width={width}
+        width={ width }
+        favoriteClickHandler={favoriteClickHandler}
       />
     </article>
   );
