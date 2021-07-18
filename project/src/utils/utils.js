@@ -145,7 +145,7 @@ class Utils {
     }
   }
 
-  static getUpdatePlaces(id, places, newPlace) {
+  static getUpdatedPlaces(id, places, newPlace) {
     const newPlaces = [...places];
     const index = newPlaces.findIndex((place) => place.id === id);
     newPlaces[index] = newPlace;

@@ -76,7 +76,7 @@ function reducer (state = initialState, action) {
     case ActionType.CHANGE_FAVORITE:
       return {
         ...state,
-        places: Utils.getUpdatePlaces(action.payload.id, state.places, action.payload.newPlace),
+        places: Utils.getUpdatedPlaces(action.payload.id, state.places, action.payload.newPlace),
       };
     case ActionType.CHANGE_LOGIN:
       return {

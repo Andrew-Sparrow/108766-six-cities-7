@@ -1679,8 +1679,10 @@ img {
   margin-right: 0
 }
 
-.form__rating-input:checked~.form__rating-label .form__star-image,
-.form__rating-input:focus~.form__rating-label .form__star-image,
+/* .form__rating-input:checked~.form__rating-label .form__star-image,
+.form__rating-input:focus~.form__rating-label .form__star-image, */
+/* .form__rating-label--active .form__star-image, */
+.form__rating-input--active~.form__rating-label .form__star-image,
 .form__rating-label:hover .form__star-image,
 .form__rating-label:hover~.form__rating-label .form__star-image {
   fill: #ff9000

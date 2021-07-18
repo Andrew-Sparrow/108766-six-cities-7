@@ -57,8 +57,7 @@ function Property ( props ) {
   const hotelFromServer = places.find((place) => place.id === +id);
 
   const adaptedPlaceForClient = Utils.adaptToClient(hotelFromServer);
-  // eslint-disable-next-line
-  console.log(adaptedPlaceForClient);
+
   const width = Utils.getWidthByRating(adaptedPlaceForClient.rating);
 
   useEffect(() => {
