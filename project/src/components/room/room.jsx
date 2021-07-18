@@ -3,14 +3,23 @@ import React from 'react';
 import Utils from '../../utils/utils';
 
 import {
-  Link
+  Link,
+  useHistory
 } from 'react-router-dom';
 
-import { useDispatch } from 'react-redux';
+import {
+  useDispatch,
+  useSelector
+} from 'react-redux';
 
 import { addToFavorite } from '../../store/api-actions';
 
 import CardInfo from '../card-info/card-info';
+
+import {
+  AuthorizationStatus,
+  AppRoute
+} from '../../const.js';
 
 function Room(props) {
   const {
@@ -27,7 +36,10 @@ function Room(props) {
 
   const width = Utils.getWidthByRating(rating);
 
+  const history = useHistory();
+
   const dispatch = useDispatch();
+  const authorizationStatus = useSelector((state) => state.authorizationStatus);
 
   const listItemHoverHandler = (evt) => {
     onListItemHover(evt.currentTarget);
@@ -35,7 +47,11 @@ function Room(props) {
 
   const favoriteClickHandler = (evt) => {
     evt.preventDefault();
-    dispatch(addToFavorite(id, !isFavorite));
+    if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
+      history.push(AppRoute.LOGIN);
+    } else {
+      dispatch(addToFavorite(id, !isFavorite));
+    }
   };
 
   return (
