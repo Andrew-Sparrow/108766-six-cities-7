@@ -43,13 +43,19 @@ export const login = ({ login: email, password }) => (dispatch, _getState, api) 
     .catch((err) => {})
 );
 
-export const sendComment = (id, comment, rating) => (dispatch, _getState, api) => (
-  api.post(`${APIRoute.COMMENTS}/${id}`, { comment, rating })
+export const sendComment = (id, comment, rating) => (dispatch, _getState, api) => {
+  dispatch(ActionCreator.changeLoadingCommentProcessStatus(true));
+
+  api.post(`${ APIRoute.COMMENTS }/${ id }`, { comment, rating })
     .then((info) => {
       dispatch(ActionCreator.loadComments(info.data));
+      dispatch(ActionCreator.changeLoadingCommentProcessStatus(false));
+      dispatch(ActionCreator.changeLoadingCommentSuccessfulStatus(true));
     })
-    .catch((err) => {})
-);
+    .catch((err) => {
+      dispatch(ActionCreator.changeLoadingCommentProcessStatus(false));
+    });
+};
 
 export const logout = () => (dispatch, _getState, api) => (
   api.delete(APIRoute.LOGOUT)
