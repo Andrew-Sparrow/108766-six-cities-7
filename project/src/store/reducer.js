@@ -20,12 +20,24 @@ const initialState = {
   isNearbyPlacesLoaded: false,
   commentText: '',
   commentRating: 0,
-  isCommentTextSended: false,
-  isCommentRatingSended: false,
+  isCommentLoading: false,
+  isCommentLoadedSuccessfully: true,
 };
 
 function reducer (state = initialState, action) {
   switch (action.type) {
+    case ActionType.CHANGE_LOADING_COMMENT_PROCESS_STATUS: {
+      return {
+        ...state,
+        isCommentLoading: action.payload,
+      };
+    }
+    case ActionType.CHANGE_LOADING_COMMENT_SUCCESSFUL_STATUS: {
+      return {
+        ...state,
+        isCommentLoadedSuccessfully: action.payload,
+      };
+    }
     case ActionType.CHANGE_CITY: {
       return {
         ...state,

@@ -1,20 +1,30 @@
 export const ActionType = {
-  CHANGE_CITY: 'changeCity',
-  CHANGE_SORT_BY: 'sortBy',
-  LOAD_PLACES: 'data/loadPlaces',
-  LOAD_NEARBY_PLACES: 'data/loadNearbyPlaces',
-  REMOVE_NEARBY_PLACES: 'data/removeNearbyPlaces',
-  LOAD_COMMENTS: 'data/loadComments',
-  REMOVE_COMMENTS: 'data/removeComments',
-  SEND_COMMENT: 'data/sendComment',
-  SEND_COMMENT_RATING: 'data/sendCommentRating',
+  CHANGE_CITY: 'places/changeCity',
+  CHANGE_SORT_BY: 'places/sortBy',
+  LOAD_PLACES: 'places/loadPlaces',
+  LOAD_NEARBY_PLACES: 'places/loadNearbyPlaces',
+  REMOVE_NEARBY_PLACES: 'places/removeNearbyPlaces',
+  LOAD_COMMENTS: 'comments/loadComments',
+  REMOVE_COMMENTS: 'comments/removeComments',
+  SEND_COMMENT: 'comment/sendComment',
+  SEND_COMMENT_RATING: 'comment/sendCommentRating',
   CHANGE_AUTHORIZATION_STATUS: 'user/changeAuthorizationStatus',
   CHANGE_LOGIN: 'user/changeLogin',
   LOGOUT: 'user/logout',
-  CHANGE_FAVORITE: 'data/isFavorite',
+  CHANGE_FAVORITE: 'place/isFavorite',
+  CHANGE_LOADING_COMMENT_PROCESS_STATUS: 'comment/changeLoadingCommentProcessStatus',
+  CHANGE_LOADING_COMMENT_SUCCESSFUL_STATUS: 'comment/changeLoadingCommentSuccessfulStatus',
 };
 
 export const ActionCreator = {
+  changeLoadingCommentProcessStatus: (isLoading) => ({
+    type: ActionType.CHANGE_LOADING_COMMENT_PROCESS_STATUS,
+    payload: isLoading,
+  }),
+  changeLoadingCommentSuccessfulStatus: (isLoadedSuccessfully) => ({
+    type: ActionType.CHANGE_LOADING_COMMENT_SUCCESSFUL_STATUS,
+    payload: isLoadedSuccessfully,
+  }),
   changeCity: (cityName) => ({
     type: ActionType.CHANGE_CITY,
     payload: cityName,
