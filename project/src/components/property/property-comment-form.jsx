@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 
 import { useParams } from 'react-router-dom';
 import { sendComment } from '../../store/api-actions';
+import { ActionCreator } from '../../store/actions';
+
 import PropertyCommentSubmitButton from './property-comment-submit-button';
 import PropertyRatingStar from './property-rating-star';
 
@@ -11,17 +13,25 @@ import { MAX_RATING } from '../../const';
 import Utils from '../../utils/utils';
 
 function PropertyCommentForm(props) {
-  const { onSubmit } = props;
+  const {
+    onSubmit,
+    isCommentLoading,
+    isCommentLoadedSuccessfully,
+  } = props;
 
   const MAX_LETTERS_AMOUNT = 300;
   const MIN_LETTERS_AMOUNT = 50;
 
   const [commentText, setCommentText] = useState('');
   const [rating, setRating] = useState(0);
+  const dispatch = useDispatch();
 
   const { id } = useParams();
 
-  const isSubmitButtonDisabled = (commentText.length < MIN_LETTERS_AMOUNT) || (commentText.length > MAX_LETTERS_AMOUNT) || (rating === 0);
+  const isSubmitButtonDisabled =
+    (commentText.length < MIN_LETTERS_AMOUNT)
+    || (commentText.length > MAX_LETTERS_AMOUNT)
+    || (rating === 0);
 
   const generatedKeys = Utils.generateIdKeys(MAX_RATING);
 
@@ -36,12 +46,35 @@ function PropertyCommentForm(props) {
   const onSubmitHandler = (evt) => {
     evt.preventDefault();
     onSubmit(id, commentText, rating);
+  };
+
+  const setSuccessfulCommentActions = () => {
     setCommentText('');
     setRating(0);
   };
 
+  const showErrorMessage = () => {
+    // eslint-disable-next-line
+    alert('smth went wrong !');
+  };
+
+  useEffect(() => {
+    isCommentLoadedSuccessfully
+      ? setSuccessfulCommentActions()
+      : showErrorMessage();
+    return () => {
+      dispatch(ActionCreator.changeLoadingCommentSuccessfulStatus(true));
+    };
+  }, [isCommentLoading, isCommentLoadedSuccessfully, dispatch]);
+
   return (
-    <form className="reviews__form form" action="" method="post" onSubmit={(evt) => { onSubmitHandler(evt); }}>
+    <form
+      className="reviews__form form"
+      action=""
+      method="post"
+      onSubmit={ (evt) => { onSubmitHandler(evt); } }
+      disabled={isCommentLoading}
+    >
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
       <div className="reviews__rating-form form__rating" onChange={ onChangeRatingHandler }>
         { generatedKeys.map((idValue, index) => <PropertyRatingStar key={ idValue } index={ index } rating={rating}/>).reverse() }
@@ -67,6 +100,11 @@ function PropertyCommentForm(props) {
   );
 }
 
+const mapStateToProps = (state) => ({
+  isCommentLoading: state.isCommentLoading,
+  isCommentLoadedSuccessfully: state.isCommentLoadedSuccessfully,
+});
+
 const mapDispatchToProps = (dispatch) => ({
   onSubmit(idHotel, text, hotelRating) {
     dispatch(sendComment(idHotel, text, hotelRating));
@@ -75,7 +113,9 @@ const mapDispatchToProps = (dispatch) => ({
 
 PropertyCommentForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
+  isCommentLoading: PropTypes.bool.isRequired,
+  isCommentLoadedSuccessfully: PropTypes.bool.isRequired,
 };
 
 export { PropertyCommentForm };
-export default connect(null, mapDispatchToProps)(PropertyCommentForm);
+export default connect(mapStateToProps, mapDispatchToProps)(PropertyCommentForm);

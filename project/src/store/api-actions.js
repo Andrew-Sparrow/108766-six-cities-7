@@ -53,6 +53,7 @@ export const sendComment = (id, comment, rating) => (dispatch, _getState, api) =
       dispatch(ActionCreator.changeLoadingCommentSuccessfulStatus(true));
     })
     .catch((err) => {
+      dispatch(ActionCreator.changeLoadingCommentSuccessfulStatus(false));
       dispatch(ActionCreator.changeLoadingCommentProcessStatus(false));
     });
 };
