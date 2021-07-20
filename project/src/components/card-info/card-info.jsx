@@ -51,7 +51,7 @@ CardInfo.propTypes = {
   isFavorite: PropTypes.bool,
   type: PropTypes.string,
   width: PropTypes.number,
-  favoriteClickHandler: PropTypes.func.isRequired,
+  favoriteClickHandler: PropTypes.func,
 };
 
 export default CardInfo;

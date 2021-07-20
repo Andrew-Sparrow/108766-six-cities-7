@@ -53,6 +53,8 @@ export const sendComment = (id, comment, rating) => (dispatch, _getState, api) =
       dispatch(ActionCreator.changeLoadingCommentSuccessfulStatus(true));
     })
     .catch((err) => {
+      // eslint-disable-next-line
+      console.log(err.message);
       dispatch(ActionCreator.changeLoadingCommentSuccessfulStatus(false));
       dispatch(ActionCreator.changeLoadingCommentProcessStatus(false));
     });

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect, useDispatch } from 'react-redux';
 
+import ReactTooltip from 'react-tooltip';
+
 import { useParams } from 'react-router-dom';
 import { sendComment } from '../../store/api-actions';
 import { ActionCreator } from '../../store/actions';
@@ -53,15 +55,8 @@ function PropertyCommentForm(props) {
     setRating(0);
   };
 
-  const showErrorMessage = () => {
-    // eslint-disable-next-line
-    alert('smth went wrong !');
-  };
-
   useEffect(() => {
-    isCommentLoadedSuccessfully
-      ? setSuccessfulCommentActions()
-      : showErrorMessage();
+    isCommentLoadedSuccessfully && setSuccessfulCommentActions();
     return () => {
       dispatch(ActionCreator.changeLoadingCommentSuccessfulStatus(true));
     };
@@ -81,12 +76,23 @@ function PropertyCommentForm(props) {
       </div>
       <textarea
         className="reviews__textarea form__textarea"
+        data-tip
+        data-for="textAreaTip"
         onChange={(evt) => onChangeCommentHandler(evt)}
         value={commentText}
         id="review"
         name="review"
         placeholder="Tell how was your stay, what you like and what can be improved"
       />
+      { !isCommentLoadedSuccessfully &&
+        <ReactTooltip
+          id="textAreaTip"
+          place="top"
+          effect="solid"
+          type="error"
+        >
+          Something went wrong
+        </ReactTooltip>}
       <div className="reviews__button-wrapper">
         <p className="reviews__help">
           To submit review please make sure to set
