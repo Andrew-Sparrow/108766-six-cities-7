@@ -57,13 +57,9 @@ function PropertyCommentForm(props) {
     onSubmit(id, commentText, rating);
   };
 
-  const setSuccessfulCommentActions = () => {
-    setCommentText('');
-    setRating(0);
-  };
-
   useEffect(() => {
-    !isShowCommentErrorMessage && setSuccessfulCommentActions();
+    !isShowCommentErrorMessage && setCommentText('');
+    !isShowCommentErrorMessage && setRating(0);
   }, [isCommentLoading, isShowCommentErrorMessage]);
 
   return (
@@ -87,8 +83,8 @@ function PropertyCommentForm(props) {
         <textarea
           className="reviews__textarea form__textarea"
           onChange={(evt) => onChangeCommentHandler(evt)}
-          value={commentText}
           id="review"
+          value={commentText}
           name="review"
           placeholder="Tell how was your stay, what you like and what can be improved"
           onFocus={ () => {
@@ -96,7 +92,8 @@ function PropertyCommentForm(props) {
               dispatch(ActionCreator.showErrorCommentFormMessage(false));
             }
           }}
-        />
+        >
+        </textarea>
       </Tooltip>
       <div className="reviews__button-wrapper">
         <p className="reviews__help">
