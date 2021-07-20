@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect, useDispatch } from 'react-redux';
 
-import ReactTooltip from 'react-tooltip';
+import Tooltip from 'rc-tooltip';
+import 'rc-tooltip/assets/bootstrap.css';
 
 import { useParams } from 'react-router-dom';
 import { sendComment } from '../../store/api-actions';
-import { ActionCreator } from '../../store/actions';
+// import { ActionCreator } from '../../store/actions';
 
 import PropertyCommentSubmitButton from './property-comment-submit-button';
 import PropertyRatingStar from './property-rating-star';
@@ -57,9 +58,6 @@ function PropertyCommentForm(props) {
 
   useEffect(() => {
     isCommentLoadedSuccessfully && setSuccessfulCommentActions();
-    return () => {
-      dispatch(ActionCreator.changeLoadingCommentSuccessfulStatus(true));
-    };
   }, [isCommentLoading, isCommentLoadedSuccessfully, dispatch]);
 
   return (
@@ -74,25 +72,21 @@ function PropertyCommentForm(props) {
       <div className="reviews__rating-form form__rating" onChange={ onChangeRatingHandler }>
         { generatedKeys.map((idValue, index) => <PropertyRatingStar key={ idValue } index={ index } rating={rating}/>).reverse() }
       </div>
-      <textarea
-        className="reviews__textarea form__textarea"
-        data-tip
-        data-for="textAreaTip"
-        onChange={(evt) => onChangeCommentHandler(evt)}
-        value={commentText}
-        id="review"
-        name="review"
-        placeholder="Tell how was your stay, what you like and what can be improved"
-      />
-      { !isCommentLoadedSuccessfully &&
-        <ReactTooltip
-          id="textAreaTip"
-          place="top"
-          effect="solid"
-          type="error"
-        >
-          Something went wrong
-        </ReactTooltip>}
+      <Tooltip
+        overlay={<span>Something went wrong</span>}
+        placement="top"
+        visible={ isCommentLoadedSuccessfully }
+        animation="zoom"
+      >
+        <textarea
+          className="reviews__textarea form__textarea"
+          onChange={(evt) => onChangeCommentHandler(evt)}
+          value={commentText}
+          id="review"
+          name="review"
+          placeholder="Tell how was your stay, what you like and what can be improved"
+        />
+      </Tooltip>
       <div className="reviews__button-wrapper">
         <p className="reviews__help">
           To submit review please make sure to set
