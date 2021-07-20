@@ -4,8 +4,8 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 import {
-  connect
-  // useDispatch
+  connect,
+  useDispatch
 } from 'react-redux';
 
 import Tooltip from 'rc-tooltip';
@@ -13,7 +13,7 @@ import 'rc-tooltip/assets/bootstrap.css';
 
 import { useParams } from 'react-router-dom';
 import { sendComment } from '../../store/api-actions';
-// import { ActionCreator } from '../../store/actions';
+import { ActionCreator } from '../../store/actions';
 
 import PropertyCommentSubmitButton from './property-comment-submit-button';
 import PropertyRatingStar from './property-rating-star';
@@ -33,7 +33,7 @@ function PropertyCommentForm(props) {
 
   const [commentText, setCommentText] = useState('');
   const [rating, setRating] = useState(0);
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const { id } = useParams();
 
@@ -55,8 +55,6 @@ function PropertyCommentForm(props) {
   const onSubmitHandler = (evt) => {
     evt.preventDefault();
     onSubmit(id, commentText, rating);
-    // eslint-disable-next-line
-    console.log(isShowCommentErrorMessage);
   };
 
   const setSuccessfulCommentActions = () => {
@@ -81,11 +79,10 @@ function PropertyCommentForm(props) {
         { generatedKeys.map((idValue, index) => <PropertyRatingStar key={ idValue } index={ index } rating={rating}/>).reverse() }
       </div>
       <Tooltip
-        overlay={ <div style={{ height: 100, width: 150, backgroundColor: 'red', color: 'white', fontSize: 25 }}>Something went wrong</div> }
+        overlay={ <div style={ { height: 100, width: 150, fontSize: 25 } }>Something went wrong</div> }
         placement="top"
-        visible={isShowCommentErrorMessage}
+        visible={ isShowCommentErrorMessage }
         animation="zoom"
-        trigger={['focus']}
       >
         <textarea
           className="reviews__textarea form__textarea"
@@ -94,6 +91,11 @@ function PropertyCommentForm(props) {
           id="review"
           name="review"
           placeholder="Tell how was your stay, what you like and what can be improved"
+          onFocus={ () => {
+            if (isShowCommentErrorMessage) {
+              dispatch(ActionCreator.showErrorCommentFormMessage(false));
+            }
+          }}
         />
       </Tooltip>
       <div className="reviews__button-wrapper">
