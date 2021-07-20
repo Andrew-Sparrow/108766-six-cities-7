@@ -1,6 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, {
+  useState,
+  useEffect
+} from 'react';
 import PropTypes from 'prop-types';
-import { connect, useDispatch } from 'react-redux';
+import {
+  connect
+  // useDispatch
+} from 'react-redux';
 
 import Tooltip from 'rc-tooltip';
 import 'rc-tooltip/assets/bootstrap.css';
@@ -19,7 +25,7 @@ function PropertyCommentForm(props) {
   const {
     onSubmit,
     isCommentLoading,
-    isCommentLoadedSuccessfully,
+    isShowCommentErrorMessage,
   } = props;
 
   const MAX_LETTERS_AMOUNT = 300;
@@ -27,7 +33,7 @@ function PropertyCommentForm(props) {
 
   const [commentText, setCommentText] = useState('');
   const [rating, setRating] = useState(0);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const { id } = useParams();
 
@@ -49,6 +55,8 @@ function PropertyCommentForm(props) {
   const onSubmitHandler = (evt) => {
     evt.preventDefault();
     onSubmit(id, commentText, rating);
+    // eslint-disable-next-line
+    console.log(isShowCommentErrorMessage);
   };
 
   const setSuccessfulCommentActions = () => {
@@ -57,8 +65,8 @@ function PropertyCommentForm(props) {
   };
 
   useEffect(() => {
-    isCommentLoadedSuccessfully && setSuccessfulCommentActions();
-  }, [isCommentLoading, isCommentLoadedSuccessfully, dispatch]);
+    !isShowCommentErrorMessage && setSuccessfulCommentActions();
+  }, [isCommentLoading, isShowCommentErrorMessage]);
 
   return (
     <form
@@ -73,10 +81,11 @@ function PropertyCommentForm(props) {
         { generatedKeys.map((idValue, index) => <PropertyRatingStar key={ idValue } index={ index } rating={rating}/>).reverse() }
       </div>
       <Tooltip
-        overlay={<span>Something went wrong</span>}
+        overlay={ <div style={{ height: 100, width: 150, backgroundColor: 'red', color: 'white', fontSize: 25 }}>Something went wrong</div> }
         placement="top"
-        visible={ isCommentLoadedSuccessfully }
+        visible={isShowCommentErrorMessage}
         animation="zoom"
+        trigger={['focus']}
       >
         <textarea
           className="reviews__textarea form__textarea"
@@ -94,7 +103,10 @@ function PropertyCommentForm(props) {
           and describe your stay with at least
           <b className="reviews__text-amount">50 characters</b>.
         </p>
-        <PropertyCommentSubmitButton disabled={isSubmitButtonDisabled}/>
+        <PropertyCommentSubmitButton
+          disabled={ isSubmitButtonDisabled }
+          isSending={isCommentLoading}
+        />
       </div>
     </form>
   );
@@ -102,7 +114,7 @@ function PropertyCommentForm(props) {
 
 const mapStateToProps = (state) => ({
   isCommentLoading: state.isCommentLoading,
-  isCommentLoadedSuccessfully: state.isCommentLoadedSuccessfully,
+  isShowCommentErrorMessage: state.isShowCommentErrorMessage,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -114,7 +126,7 @@ const mapDispatchToProps = (dispatch) => ({
 PropertyCommentForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   isCommentLoading: PropTypes.bool.isRequired,
-  isCommentLoadedSuccessfully: PropTypes.bool.isRequired,
+  isShowCommentErrorMessage: PropTypes.bool,
 };
 
 export { PropertyCommentForm };

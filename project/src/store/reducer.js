@@ -21,7 +21,7 @@ const initialState = {
   commentText: '',
   commentRating: 0,
   isCommentLoading: false,
-  isCommentLoadedSuccessfully: true,
+  isShowCommentErrorMessage: false,
 };
 
 function reducer (state = initialState, action) {
@@ -32,10 +32,10 @@ function reducer (state = initialState, action) {
         isCommentLoading: action.payload,
       };
     }
-    case ActionType.CHANGE_LOADING_COMMENT_SUCCESSFUL_STATUS: {
+    case ActionType.SHOW_COMMENT_ERROR_MESSAGE: {
       return {
         ...state,
-        isCommentLoadedSuccessfully: action.payload,
+        isShowCommentErrorMessage: action.payload,
       };
     }
     case ActionType.CHANGE_CITY: {

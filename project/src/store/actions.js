@@ -13,7 +13,7 @@ export const ActionType = {
   LOGOUT: 'user/logout',
   CHANGE_FAVORITE: 'place/isFavorite',
   CHANGE_LOADING_COMMENT_PROCESS_STATUS: 'comment/changeLoadingCommentProcessStatus',
-  CHANGE_LOADING_COMMENT_SUCCESSFUL_STATUS: 'comment/changeLoadingCommentSuccessfulStatus',
+  SHOW_COMMENT_ERROR_MESSAGE: 'comment/showErrorCommentFormMessage',
 };
 
 export const ActionCreator = {
@@ -21,8 +21,8 @@ export const ActionCreator = {
     type: ActionType.CHANGE_LOADING_COMMENT_PROCESS_STATUS,
     payload: isLoading,
   }),
-  changeLoadingCommentSuccessfulStatus: (isLoadedSuccessfully) => ({
-    type: ActionType.CHANGE_LOADING_COMMENT_SUCCESSFUL_STATUS,
+  showErrorCommentFormMessage: (isLoadedSuccessfully) => ({
+    type: ActionType.SHOW_COMMENT_ERROR_MESSAGE,
     payload: isLoadedSuccessfully,
   }),
   changeCity: (cityName) => ({
