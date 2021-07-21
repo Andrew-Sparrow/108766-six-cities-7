@@ -37,8 +37,8 @@ function Room(props) {
   const width = Utils.getWidthByRating(rating);
 
   const history = useHistory();
-
   const dispatch = useDispatch();
+
   const authorizationStatus = useSelector((state) => state.authorizationStatus);
 
   const listItemHoverHandler = (evt) => {
@@ -66,7 +66,13 @@ function Room(props) {
         </div>}
       <div className="cities__image-wrapper place-card__image-wrapper">
         <Link to={`/hotels/${id}`}>
-          <img className="place-card__image" src={ previewImage } width="260" height="200" alt="Place" />
+          <img
+            className="place-card__image"
+            src={ previewImage }
+            width="260"
+            height="200"
+            alt="Place"
+          />
         </Link>
       </div>
       < CardInfo
@@ -88,7 +94,7 @@ Room.propTypes = {
   onListItemHover: PropTypes.func,
   title: PropTypes.string.isRequired,
   isPremium: PropTypes.bool,
-  isFavorite: PropTypes.bool,
+  isFavorite: PropTypes.bool.isRequired,
   type: PropTypes.string,
   previewImage: PropTypes.string,
   rating: PropTypes.number,

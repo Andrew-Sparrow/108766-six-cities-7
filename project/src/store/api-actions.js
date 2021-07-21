@@ -14,7 +14,8 @@ export const fetchPlacesList = () => (dispatch, _getState, api) => (
 export const fetchNearbyPlacesList = (id) => (dispatch, _getState, api) => (
   api.get(`${APIRoute.HOTELS}/${id}/nearby`)
     .then(({ data }) => {
-      dispatch(ActionCreator.loadNearbyPlaces(data));
+      const adaptedPlacesToClient = Utils.adaptPlacesToClient(data);
+      dispatch(ActionCreator.loadNearbyPlaces(adaptedPlacesToClient));
     })
     .catch((err) => {})
 );
@@ -66,11 +67,12 @@ export const sendComment = (id, comment, rating) => (dispatch, _getState, api) =
 export const logout = () => (dispatch, _getState, api) => (
   api.delete(APIRoute.LOGOUT)
     .then(() => localStorage.removeItem('token'))
+    .then(() => localStorage.removeItem('login'))
     .then(() => {
-      if ((localStorage.getItem('login') !== null || localStorage.getItem('token') !== null)) {
-        localStorage.setItem('token', null);
-        localStorage.setItem('login', null);
-      }
+      // if ((localStorage.getItem('login') !== null || localStorage.getItem('token') !== null)) {
+      //   localStorage.setItem('token', null);
+      //   localStorage.setItem('login', null);
+      // }
       dispatch(ActionCreator.logout());
     })
 );
