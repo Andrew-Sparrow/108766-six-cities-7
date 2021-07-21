@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import { Switch, Route, Router as BrowserRouter } from 'react-router-dom';
 
-import { AppRoute, AuthorizationStatus } from '../../const.js';
+import {
+  AppRoute,
+  AuthorizationStatus
+} from '../../const.js';
+
+import { ActionCreator } from '../../store/actions';
+
 import Main from '../main/main';
 import Favorites from '../favorites/favorites';
 import Login from '../login/login';
@@ -19,6 +26,19 @@ function App(props) {
     places,
     authorizationStatus,
   } = props;
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if ((authorizationStatus === AuthorizationStatus.UNKNOWN)
+      && (localStorage.getItem('login') !== null || localStorage.getItem('token') !== null)) {
+
+      const email = localStorage.getItem('login');
+
+      dispatch(ActionCreator.changeAuthorizationStatus(AuthorizationStatus.AUTH));
+      dispatch(ActionCreator.changeLogin(email));
+    }
+  }, [authorizationStatus, dispatch]);
 
   if (!isDataLoaded) {
     return (
