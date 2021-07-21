@@ -1,10 +1,12 @@
 import { ActionCreator } from './actions';
 import { AuthorizationStatus, APIRoute } from '../const';
+import Utils from '../utils/utils';
 
 export const fetchPlacesList = () => (dispatch, _getState, api) => (
   api.get(APIRoute.HOTELS)
     .then(({ data }) => {
-      dispatch(ActionCreator.loadPlaces(data));
+      const adaptedPlacesToClient = Utils.adaptPlacesToClient(data);
+      dispatch(ActionCreator.loadPlaces(adaptedPlacesToClient));
     })
     .catch((err) => {})
 );

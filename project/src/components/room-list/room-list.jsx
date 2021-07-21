@@ -1,17 +1,15 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import Utils from '../../utils/utils';
 import Room from '../room/room';
 import placeProp from '../room/room.prop';
 
 function RoomList(props) {
   const { places, onListItemHover } = props;
-  const adaptedPlacesToClient = places.map((place) => Utils.adaptToClient(place));
 
   return (
     <div className="cities__places-list places__list tabs__content">
-      {adaptedPlacesToClient.map((place) => (
+      {places.map((place) => (
         <Room
           key={place.id}
           id={place.id}

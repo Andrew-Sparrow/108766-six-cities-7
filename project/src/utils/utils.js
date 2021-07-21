@@ -40,6 +40,10 @@ class Utils {
     return adaptedOfferForClient;
   }
 
+  static adaptPlacesToClient(placesFromServer) {
+    return placesFromServer.map((place) => this.adaptToClient(place));
+  }
+
   static adaptCommentToClient(commentFromServer) {
     const adaptedCommentForClient = Object.assign(
       {},

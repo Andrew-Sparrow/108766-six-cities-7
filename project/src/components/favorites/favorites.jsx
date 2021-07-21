@@ -13,6 +13,8 @@ import Utils from '../../utils/utils';
 function Favorites(props) {
   const { places } = props;
   const favoriteList = Utils.getFavoritePlacesSeparatedByCity(places);
+  // eslint-disable-next-line
+  console.log(favoriteList);
 
   return (
     <Fragment>
