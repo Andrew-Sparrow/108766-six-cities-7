@@ -6,14 +6,15 @@ export const ActionType = {
   REMOVE_NEARBY_PLACES: 'places/removeNearbyPlaces',
   LOAD_COMMENTS: 'comments/loadComments',
   REMOVE_COMMENTS: 'comments/removeComments',
-  SEND_COMMENT: 'comment/sendComment',
-  SEND_COMMENT_RATING: 'comment/sendCommentRating',
   CHANGE_AUTHORIZATION_STATUS: 'user/changeAuthorizationStatus',
   CHANGE_LOGIN: 'user/changeLogin',
   LOGOUT: 'user/logout',
   CHANGE_FAVORITE: 'place/isFavorite',
   CHANGE_LOADING_COMMENT_PROCESS_STATUS: 'comment/changeLoadingCommentProcessStatus',
   SHOW_COMMENT_ERROR_MESSAGE: 'comment/showErrorCommentFormMessage',
+  SEND_COMMENT: 'comment/sendComment',
+  SEND_COMMENT_RATING: 'comment/sendCommentRating',
+  CHANGE_COMMENT_SENDED_SUCCESSFULLY_STATUS: 'comment/changeCommentSendedSuccessfulyStatus',
 };
 
 export const ActionCreator = {
@@ -21,9 +22,13 @@ export const ActionCreator = {
     type: ActionType.CHANGE_LOADING_COMMENT_PROCESS_STATUS,
     payload: isLoading,
   }),
-  showErrorCommentFormMessage: (isLoadedSuccessfully) => ({
+  changeIsCommentSendedSuccessfullyStatus: (isCommentSendedSuccessfully) => ({
+    type: ActionType.CHANGE_COMMENT_SENDED_SUCCESSFULLY_STATUS,
+    payload: isCommentSendedSuccessfully,
+  }),
+  showErrorCommentFormMessage: (isShowErrorMessage, errorMessageText) => ({
     type: ActionType.SHOW_COMMENT_ERROR_MESSAGE,
-    payload: isLoadedSuccessfully,
+    payload: {isShowErrorMessage, errorMessageText},
   }),
   changeCity: (cityName) => ({
     type: ActionType.CHANGE_CITY,

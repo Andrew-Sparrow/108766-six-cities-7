@@ -52,10 +52,12 @@ export const sendComment = (id, comment, rating) => (dispatch, _getState, api) =
       dispatch(ActionCreator.loadComments(info.data));
       dispatch(ActionCreator.changeLoadingCommentProcessStatus(false));
       dispatch(ActionCreator.showErrorCommentFormMessage(false));
+      dispatch(ActionCreator.changeIsCommentSendedSuccessfullyStatus(true));
     })
     .catch((err) => {
-      dispatch(ActionCreator.showErrorCommentFormMessage(true));
+      dispatch(ActionCreator.showErrorCommentFormMessage(true, err.message));
       dispatch(ActionCreator.changeLoadingCommentProcessStatus(false));
+      dispatch(ActionCreator.changeIsCommentSendedSuccessfullyStatus(false));
     });
 };
 

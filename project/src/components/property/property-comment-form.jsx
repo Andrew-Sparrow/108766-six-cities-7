@@ -24,8 +24,10 @@ import Utils from '../../utils/utils';
 function PropertyCommentForm(props) {
   const {
     onSubmit,
-    isCommentLoading: isCommentSending,
+    isCommentSending,
     isShowCommentErrorMessage,
+    isCommentFormSendedSuccessfully,
+    commentErrorMessage,
   } = props;
 
   const MAX_LETTERS_AMOUNT = 300;
@@ -58,11 +60,11 @@ function PropertyCommentForm(props) {
   };
 
   useEffect(() => {
-    if (!isShowCommentErrorMessage) {
+    if (isCommentFormSendedSuccessfully) {
       setCommentText('');
       setRating(0);
     }
-  }, [isCommentSending, isShowCommentErrorMessage]);
+  }, [isCommentSending, isCommentFormSendedSuccessfully]);
 
   return (
     <fieldset disabled={ isCommentSending } style={{ border: 'none'}}>
@@ -77,7 +79,7 @@ function PropertyCommentForm(props) {
           { generatedKeys.map((idValue, index) => <PropertyRatingStar key={ idValue } index={ index } rating={rating}/>).reverse() }
         </div>
         <Tooltip
-          overlay={ <div style={ { height: 100, width: 150, fontSize: 25 } }>Something went wrong</div> }
+          overlay={ <div style={{ height: 100, width: 200, fontSize: 25, textAlign: 'center' }}>{commentErrorMessage}</div> }
           placement="top"
           visible={ isShowCommentErrorMessage }
           animation="zoom"
@@ -115,8 +117,10 @@ function PropertyCommentForm(props) {
 }
 
 const mapStateToProps = (state) => ({
-  isCommentLoading: state.isCommentLoading,
+  isCommentSending: state.isCommentSending,
   isShowCommentErrorMessage: state.isShowCommentErrorMessage,
+  isCommentFormSendedSuccessfully: state.isCommentFormSendedSuccessfully,
+  commentErrorMessage: state.commentErrorMessage,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -127,8 +131,10 @@ const mapDispatchToProps = (dispatch) => ({
 
 PropertyCommentForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
-  isCommentLoading: PropTypes.bool.isRequired,
+  isCommentSending: PropTypes.bool.isRequired,
   isShowCommentErrorMessage: PropTypes.bool,
+  isCommentFormSendedSuccessfully: PropTypes.bool,
+  commentErrorMessage: PropTypes.string,
 };
 
 export { PropertyCommentForm };

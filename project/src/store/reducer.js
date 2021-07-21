@@ -23,6 +23,7 @@ const initialState = {
   isCommentSending: false,
   isShowCommentErrorMessage: false,
   isCommentFormSendedSuccessfully: null,
+  commentErrorMessage: null,
 };
 
 function reducer (state = initialState, action) {
@@ -33,10 +34,17 @@ function reducer (state = initialState, action) {
         isCommentSending: action.payload,
       };
     }
+    case ActionType.CHANGE_COMMENT_SENDED_SUCCESSFULLY_STATUS: {
+      return {
+        ...state,
+        isCommentFormSendedSuccessfully: action.payload,
+      };
+    }
     case ActionType.SHOW_COMMENT_ERROR_MESSAGE: {
       return {
         ...state,
-        isShowCommentErrorMessage: action.payload,
+        isShowCommentErrorMessage: action.payload.isShowErrorMessage,
+        commentErrorMessage: action.payload.errorMessageText,
       };
     }
     case ActionType.CHANGE_CITY: {
