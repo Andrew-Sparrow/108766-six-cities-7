@@ -66,13 +66,9 @@ export const sendComment = (id, comment, rating) => (dispatch, _getState, api) =
 
 export const logout = () => (dispatch, _getState, api) => (
   api.delete(APIRoute.LOGOUT)
-    .then(() => localStorage.removeItem('token'))
-    .then(() => localStorage.removeItem('login'))
     .then(() => {
-      // if ((localStorage.getItem('login') !== null || localStorage.getItem('token') !== null)) {
-      //   localStorage.setItem('token', null);
-      //   localStorage.setItem('login', null);
-      // }
+      localStorage.removeItem('token');
+      localStorage.removeItem('login');
       dispatch(ActionCreator.logout());
     })
 );
