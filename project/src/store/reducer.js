@@ -30,7 +30,7 @@ function reducer (state = initialState, action) {
     case ActionType.CHANGE_LOADING_COMMENT_PROCESS_STATUS: {
       return {
         ...state,
-        isCommentLoading: action.payload,
+        isCommentSending: action.payload,
       };
     }
     case ActionType.SHOW_COMMENT_ERROR_MESSAGE: {
