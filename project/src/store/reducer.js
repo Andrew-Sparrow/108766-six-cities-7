@@ -20,8 +20,9 @@ const initialState = {
   isNearbyPlacesLoaded: false,
   commentText: '',
   commentRating: 0,
-  isCommentLoading: false,
+  isCommentSending: false,
   isShowCommentErrorMessage: false,
+  isCommentFormSendedSuccessfully: null,
 };
 
 function reducer (state = initialState, action) {

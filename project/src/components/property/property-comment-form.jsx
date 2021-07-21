@@ -24,7 +24,7 @@ import Utils from '../../utils/utils';
 function PropertyCommentForm(props) {
   const {
     onSubmit,
-    isCommentLoading,
+    isCommentLoading: isCommentSending,
     isShowCommentErrorMessage,
   } = props;
 
@@ -58,56 +58,59 @@ function PropertyCommentForm(props) {
   };
 
   useEffect(() => {
-    !isShowCommentErrorMessage && setCommentText('');
-    !isShowCommentErrorMessage && setRating(0);
-  }, [isCommentLoading, isShowCommentErrorMessage]);
+    if (!isShowCommentErrorMessage) {
+      setCommentText('');
+      setRating(0);
+    }
+  }, [isCommentSending, isShowCommentErrorMessage]);
 
   return (
-    <form
-      className="reviews__form form"
-      action=""
-      method="post"
-      onSubmit={ (evt) => { onSubmitHandler(evt); } }
-      disabled={isCommentLoading}
-    >
-      <label className="reviews__label form__label" htmlFor="review">Your review</label>
-      <div className="reviews__rating-form form__rating" onChange={ onChangeRatingHandler }>
-        { generatedKeys.map((idValue, index) => <PropertyRatingStar key={ idValue } index={ index } rating={rating}/>).reverse() }
-      </div>
-      <Tooltip
-        overlay={ <div style={ { height: 100, width: 150, fontSize: 25 } }>Something went wrong</div> }
-        placement="top"
-        visible={ isShowCommentErrorMessage }
-        animation="zoom"
+    <fieldset disabled={ isCommentSending } style={{ border: 'none'}}>
+      <form
+        className="reviews__form form"
+        action=""
+        method="post"
+        onSubmit={ (evt) => { onSubmitHandler(evt); } }
       >
-        <textarea
-          className="reviews__textarea form__textarea"
-          onChange={(evt) => onChangeCommentHandler(evt)}
-          id="review"
-          value={commentText}
-          name="review"
-          placeholder="Tell how was your stay, what you like and what can be improved"
-          onFocus={ () => {
-            if (isShowCommentErrorMessage) {
-              dispatch(ActionCreator.showErrorCommentFormMessage(false));
-            }
-          }}
+        <label className="reviews__label form__label" htmlFor="review">Your review</label>
+        <div className="reviews__rating-form form__rating" onChange={ onChangeRatingHandler }>
+          { generatedKeys.map((idValue, index) => <PropertyRatingStar key={ idValue } index={ index } rating={rating}/>).reverse() }
+        </div>
+        <Tooltip
+          overlay={ <div style={ { height: 100, width: 150, fontSize: 25 } }>Something went wrong</div> }
+          placement="top"
+          visible={ isShowCommentErrorMessage }
+          animation="zoom"
         >
-        </textarea>
-      </Tooltip>
-      <div className="reviews__button-wrapper">
-        <p className="reviews__help">
-          To submit review please make sure to set
-          <span className="reviews__star">rating</span>
-          and describe your stay with at least
-          <b className="reviews__text-amount">50 characters</b>.
-        </p>
-        <PropertyCommentSubmitButton
-          disabled={ isSubmitButtonDisabled }
-          isSending={isCommentLoading}
-        />
-      </div>
-    </form>
+          <textarea
+            className="reviews__textarea form__textarea"
+            onChange={(evt) => onChangeCommentHandler(evt)}
+            id="review"
+            value={commentText}
+            name="review"
+            placeholder="Tell how was your stay, what you like and what can be improved"
+            onFocus={ () => {
+              if (isShowCommentErrorMessage) {
+                dispatch(ActionCreator.showErrorCommentFormMessage(false));
+              }
+            }}
+          >
+          </textarea>
+        </Tooltip>
+        <div className="reviews__button-wrapper">
+          <p className="reviews__help">
+            To submit review please make sure to set
+            <span className="reviews__star">rating</span>
+            and describe your stay with at least
+            <b className="reviews__text-amount">50 characters</b>.
+          </p>
+          <PropertyCommentSubmitButton
+            disabled={ isSubmitButtonDisabled }
+            isSending={isCommentSending}
+          />
+        </div>
+      </form>
+    </fieldset>
   );
 }
 
