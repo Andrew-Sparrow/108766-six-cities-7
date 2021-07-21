@@ -56,7 +56,8 @@ function Property ( props ) {
 
   const hotelFromServer = places.find((place) => place.id === +id);
 
-  const adaptedPlaceForClient = Utils.adaptToClient(hotelFromServer);
+  // const adaptedPlaceForClient = Utils.adaptToClient(hotelFromServer);
+  const adaptedPlaceForClient = hotelFromServer;
 
   const width = Utils.getWidthByRating(adaptedPlaceForClient.rating);
 
