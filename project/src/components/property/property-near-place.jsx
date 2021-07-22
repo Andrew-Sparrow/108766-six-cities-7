@@ -85,7 +85,7 @@ PropertyNearPlace.propTypes = {
   rating: PropTypes.number,
   title: PropTypes.string.isRequired,
   isPremium: PropTypes.bool,
-  isFavorite: PropTypes.bool,
+  isFavorite: PropTypes.bool.isRequired,
   type: PropTypes.string,
   previewImage: PropTypes.string,
 };

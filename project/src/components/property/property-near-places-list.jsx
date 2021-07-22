@@ -1,14 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Utils from '../../utils/utils';
+
 import PropertyNearPlace from './property-near-place';
 
 function PropertyNearPlacesList(props) {
-  const { nearbyPlaces } = props;
+  const { nearbyPlaces, commonPlaces } = props;
+
+  const commonPlacesLinksGottenByNearbyPlaces = Utils.getNearbyPlacesFromCommonPlaces(nearbyPlaces, commonPlaces);
 
   return (
     <div className="near-places__list places__list">
-      {nearbyPlaces.map((place) => (
+      {commonPlacesLinksGottenByNearbyPlaces.map((place) => (
         <PropertyNearPlace
           key={place.id}
           id={place.id}
@@ -26,6 +30,7 @@ function PropertyNearPlacesList(props) {
 
 PropertyNearPlacesList.propTypes = {
   nearbyPlaces: PropTypes.array,
+  commonPlaces: PropTypes.array,
 };
 
 export default PropertyNearPlacesList;

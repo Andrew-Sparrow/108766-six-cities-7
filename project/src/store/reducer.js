@@ -24,6 +24,7 @@ const initialState = {
   isShowCommentErrorMessage: false,
   isCommentFormSendedSuccessfully: null,
   commentErrorMessage: null,
+  nearbyPlaces: [],
 };
 
 function reducer (state = initialState, action) {

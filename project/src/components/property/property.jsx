@@ -183,7 +183,7 @@ function Property ( props ) {
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
             { isNearbyPlacesLoaded
-              ? < PropertyNearPlacesList nearbyPlaces={nearbyPlaces}/>
+              ? < PropertyNearPlacesList nearbyPlaces={ nearbyPlaces } commonPlaces={places}/>
               : <LoadingScreen />}
           </section>
         </div>

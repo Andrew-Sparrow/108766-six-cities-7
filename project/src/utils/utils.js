@@ -156,6 +156,17 @@ class Utils {
     newPlaces[index] = adaptedPlaceForClient;
     return newPlaces;
   }
+
+  static getNearbyPlacesFromCommonPlaces(nearbyPlaces, commonPlaces) {
+    const nearbyPlacesLinks = [];
+
+    nearbyPlaces.forEach((nearbyPlace) => {
+      const indexFromCommonPlaces = commonPlaces.findIndex((commonPlace) => commonPlace.id === nearbyPlace.id);
+      nearbyPlacesLinks.push(commonPlaces[indexFromCommonPlaces]);
+    });
+
+    return nearbyPlacesLinks;
+  }
 }
 
 export default Utils;
