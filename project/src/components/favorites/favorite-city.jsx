@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import FavoritePlace from '../favorite-place/favorite-place';
+import FavoritePlace from './favorite-place';
 import offerProp from '../room/room.prop.js';
 
 function FavoriteCity({ city, favoritePlaces }) {

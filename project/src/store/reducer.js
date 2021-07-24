@@ -12,7 +12,7 @@ const initialState = {
   activeCityName: 'Paris',
   places: [],
   comments: [],
-  authorizationStatus: AuthorizationStatus.UNKNOWN,
+  authorizationStatus: AuthorizationStatus.NO_AUTH,
   isDataLoaded: false,
   isCommentsLoaded: false,
   sortBy: SortByValues.POPULAR,

@@ -16,6 +16,7 @@ import {
 
 import PropertyCommentForm from './property-comment-form';
 import PropertyCommentList from './property-comment-list';
+import { PropertyFavoriteButton } from './property-favorite-button';
 import withLayout from '../hocs/with-layout';
 import PropertyImagesList from './property-images-list';
 import PropertyGoodsList from './property-goods-list';
@@ -54,9 +55,7 @@ function Property ( props ) {
     favoriteClickHandler,
   } = props;
 
-  const hotelFromServer = places.find((place) => place.id === +id);
-
-  const adaptedPlaceForClient = hotelFromServer;
+  const adaptedPlaceForClient = places.find((place) => place.id === +id);
 
   const width = Utils.getWidthByRating(adaptedPlaceForClient.rating);
 
@@ -94,7 +93,7 @@ function Property ( props ) {
                 <h1 className="property__name">
                   { adaptedPlaceForClient.description }
                 </h1>
-                <button
+                {/* <button
                   className={`property__bookmark-button button ${adaptedPlaceForClient.isFavorite ? 'property__bookmark-button--active' : ''}`}
                   type="button"
                   onClick={(evt) => { onFavoriteClick(evt); }}
@@ -103,7 +102,8 @@ function Property ( props ) {
                     <use xlinkHref="#icon-bookmark" />
                   </svg>
                   <span className="visually-hidden">To bookmarks</span>
-                </button>
+                </button> */}
+                < PropertyFavoriteButton adaptedPlaceForClient={ adaptedPlaceForClient } onFavoriteClick={onFavoriteClick} />
               </div>
               <div className="property__rating rating">
                 <div className="property__stars rating__stars">
@@ -227,4 +227,4 @@ const withLayoutProperty =  withLayout(Property);
 
 export { withLayoutProperty };
 export default connect(mapStateToProps, mapDispatchToProps)(withLayoutProperty);
-
+// export default connect(mapStateToProps, null)(withLayoutProperty);

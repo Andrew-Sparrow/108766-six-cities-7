@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import FavoriteCity from '../favorite-city/favorite-city';
+import FavoriteCity from './favorite-city';
 
 function FavoriteList(props) {
   const { favoriteList } = props;
