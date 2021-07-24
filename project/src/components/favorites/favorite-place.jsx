@@ -2,8 +2,21 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+import {
+  useDispatch
+} from 'react-redux';
+
+import { addToFavorite } from '../../store/api-actions';
+
 function FavoritePlace(props) {
-  const { price, title, type } = props;
+  const { id, price, title, type, isFavorite } = props;
+
+  const dispatch = useDispatch();
+
+  const favoriteClickHandler = (evt) => {
+    evt.preventDefault();
+    dispatch(addToFavorite(id, !isFavorite));
+  };
 
   return (
     <article className="favorites__card place-card">
@@ -18,7 +31,7 @@ function FavoritePlace(props) {
             <b className="place-card__price-value">€{price}</b>
             <span className="place-card__price-text">/&nbsp;night</span>
           </div>
-          <button className="place-card__bookmark-button place-card__bookmark-button--active button" type="button">
+          <button className="place-card__bookmark-button place-card__bookmark-button--active button" type="button" onClick={favoriteClickHandler}>
             <svg className="place-card__bookmark-icon" width={18} height={19}>
               <use xlinkHref="#icon-bookmark" />
             </svg>
@@ -41,6 +54,8 @@ function FavoritePlace(props) {
 }
 
 FavoritePlace.propTypes = {
+  id: PropTypes.number.isRequired,
+  isFavorite: PropTypes.bool.isRequired,
   price: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,

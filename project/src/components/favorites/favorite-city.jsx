@@ -4,7 +4,9 @@ import PropTypes from 'prop-types';
 import FavoritePlace from './favorite-place';
 import offerProp from '../room/room.prop.js';
 
-function FavoriteCity({ city, favoritePlaces }) {
+function FavoriteCity(props) {
+  const { city, favoritePlaces } = props;
+
   return (
     <li className="favorites__locations-items">
       <div className="favorites__locations locations locations--current">
@@ -15,7 +17,15 @@ function FavoriteCity({ city, favoritePlaces }) {
         </div>
       </div>
       <div className="favorites__places">
-        {favoritePlaces.map((place) => <FavoritePlace price={place.price} title={place.title} type={place.type} key={place.id} />)}
+        { favoritePlaces.map((place) => (
+          <FavoritePlace
+            id={place.id}
+            isFavorite={place.isFavorite}
+            price={ place.price }
+            title={ place.title }
+            type={ place.type }
+            key={ place.id }
+          />)) }
       </div>
     </li>);
 }
