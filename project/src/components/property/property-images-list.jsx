@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import PropertyImage from './property-image';
 import Utils from '../../utils/utils';
@@ -20,4 +20,4 @@ PropertyImagesList.propTypes = {
   images: PropTypes.arrayOf(PropTypes.string),
 };
 
-export default PropertyImagesList;
+export default memo(PropertyImagesList, (prevProps, nextProps) =>  prevProps.images === nextProps.images);

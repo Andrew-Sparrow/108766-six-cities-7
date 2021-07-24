@@ -153,7 +153,7 @@ class Utils {
     const adaptedPlaceForClient = this.adaptToClient(newPlace);
     const newPlaces = [...places];
     const index = newPlaces.findIndex((place) => place.id === id);
-    newPlaces[index] = adaptedPlaceForClient;
+    newPlaces[index].isFavorite = adaptedPlaceForClient.isFavorite;
     return newPlaces;
   }
 
