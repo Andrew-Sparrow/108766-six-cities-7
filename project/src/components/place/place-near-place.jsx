@@ -56,7 +56,7 @@ function PlaceNearPlace(props) {
           <span>Premium</span>
         </div>}
       <div className="near-places__image-wrapper place-card__image-wrapper">
-        <Link to={`/hotels/${id}`}>
+        <Link to={`/offer/${id}`}>
           <img
             className="place-card__image"
             src={ previewImage }

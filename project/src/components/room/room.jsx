@@ -65,7 +65,7 @@ function Room(props) {
           <span>Premium</span>
         </div>}
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <Link to={`/hotels/${id}`}>
+        <Link to={`/offer/${id}`}>
           <img
             className="place-card__image"
             src={ previewImage }

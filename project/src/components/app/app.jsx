@@ -12,7 +12,7 @@ import {
 import Main from '../main/main';
 import Favorites from '../favorites/favorites';
 import Login from '../login/login';
-import Property from '../place/place';
+import Place from '../place/place';
 import Error from '../error/error';
 import LoadingScreen from '../loading-screen/loading-screen.jsx';
 import PrivateRoute from '../private-route/private-route.jsx';
@@ -49,7 +49,7 @@ function App(props) {
         >
         </PrivateRoute>
         <Route exact path={AppRoute.ROOM}>
-          <Property className="page" />
+          <Place className="page" />
         </Route>
         <Route>
           <Error />

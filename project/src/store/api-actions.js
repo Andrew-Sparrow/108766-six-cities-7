@@ -1,4 +1,7 @@
 import { ActionCreator } from './actions';
+
+import { changeLoadingCommentProcessStatus } from './actions';
+
 import { AuthorizationStatus, APIRoute } from '../const';
 import Utils from '../utils/utils';
 
@@ -53,7 +56,7 @@ export const sendComment = (id, comment, rating) => (dispatch, _getState, api) =
   api.post(`${APIRoute.COMMENTS}/${ id }`, { comment, rating })
     .then((info) => {
       dispatch(ActionCreator.loadComments(info.data));
-      dispatch(ActionCreator.changeLoadingCommentProcessStatus(false));
+      dispatch(changeLoadingCommentProcessStatus(false));
       dispatch(ActionCreator.showErrorCommentFormMessage(false));
       dispatch(ActionCreator.changeIsCommentSendedSuccessfullyStatus(true));
     })

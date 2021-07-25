@@ -15,7 +15,7 @@ import {
 } from 'react-router-dom';
 
 import PlaceCommentForm from './place-comment-form';
-import PropertyCommentList from './place-comment-list';
+import PlaceCommentList from './place-comment-list';
 import { PlaceFavoriteButton } from './place-favorite-button';
 import withLayout from '../hocs/with-layout';
 import PlaceImageList from './place-images-list';
@@ -40,7 +40,7 @@ import {
 import Utils from '../../utils/utils';
 import Map from '../map/map';
 
-function Property(props) {
+function Place(props) {
   const { id } = useParams();
   const dispatch = useDispatch();
   const history = useHistory();
@@ -153,7 +153,7 @@ function Property(props) {
                   ?
                   <Fragment>
                     <h2 className="reviews__title">Reviews · <span className="reviews__amount">{ comments.length }</span></h2>
-                    < PropertyCommentList reviews={ comments } />
+                    < PlaceCommentList reviews={ comments } />
                   </Fragment>
                   : <LoadingScreen /> }
                 { authorizationStatus === AuthorizationStatus.AUTH && < PlaceCommentForm /> }
@@ -188,7 +188,7 @@ function Property(props) {
   );
 }
 
-Property.propTypes = {
+Place.propTypes = {
   places: PropTypes.array,
   comments: PropTypes.array,
   nearbyPlaces: PropTypes.array,
@@ -213,7 +213,7 @@ const mapStateToProps = (state) => ({
   authorizationStatus: state.authorizationStatus,
 });
 
-const withLayoutProperty = withLayout(Property);
+const withLayoutPlace = withLayout(Place);
 
-export { withLayoutProperty };
-export default connect(mapStateToProps, mapDispatchToProps)(withLayoutProperty);
+export { withLayoutPlace };
+export default connect(mapStateToProps, mapDispatchToProps)(withLayoutPlace);
