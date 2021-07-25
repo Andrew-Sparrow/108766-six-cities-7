@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 import { addToFavorite } from '../../store/api-actions';
 
-function PlaceFavoriteButton ( props ) {
+function PlaceFavoriteButton(props) {
   const {
     place,
     onFavoriteClick,
@@ -13,11 +13,11 @@ function PlaceFavoriteButton ( props ) {
 
   return (
     <button
-      className={`property__bookmark-button button ${place.isFavorite ? 'property__bookmark-button--active' : ''}`}
+      className={ `property__bookmark-button button ${ place.isFavorite ? 'property__bookmark-button--active' : '' }` }
       type="button"
-      onClick={(evt) => { onFavoriteClick(evt); }}
+      onClick={ (evt) => { onFavoriteClick(evt); } }
     >
-      <svg className="property__bookmark-icon" width={31} height={33}>
+      <svg className="property__bookmark-icon" width={ 31 } height={ 33 }>
         <use xlinkHref="#icon-bookmark" />
       </svg>
       <span className="visually-hidden">To bookmarks</span>
