@@ -17,16 +17,6 @@ export const ActionType = {
   CHANGE_COMMENT_SENDED_SUCCESSFULLY_STATUS: 'comment/changeCommentSendedSuccessfulyStatus',
 };
 
-// export const changeLoadingCommentProcessStatus = (isLoading) => ({
-//   type: ActionType.CHANGE_LOADING_COMMENT_PROCESS_STATUS,
-//   payload: isLoading,
-// });
-
-// export const changeLoadingCommentchangeIsCommentSendedSuccessfullyStatus = (isCommentSendedSuccessfully) => ({
-//   type: ActionType.CHANGE_COMMENT_SENDED_SUCCESSFULLY_STATUS,
-//   payload: isCommentSendedSuccessfully,
-// });
-
 export const ActionCreator = {
   changeLoadingCommentProcessStatus: (isLoading) => ({
     type: ActionType.CHANGE_LOADING_COMMENT_PROCESS_STATUS,
