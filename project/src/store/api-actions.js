@@ -8,7 +8,8 @@ import {
   loadNearbyPlaces,
   loadComments,
   changeAuthorizationStatus,
-  changeLogin
+  changeLogin,
+  changeFavorite
 } from './actions';
 
 import { AuthorizationStatus, APIRoute } from '../const';
@@ -43,7 +44,7 @@ export const fetchCommentsList = (id) => (dispatch, _getState, api) => (
 export const addToFavorite = (id, isFavorite) => (dispatch, _getState, api) => (
   api.post(`${ APIRoute.FAVORITE }/${ id }/${ isFavorite ? 1 : 0 }`)
     .then((info) => {
-      dispatch(ActionCreator.changeFavorite(id, info.data));
+      dispatch(changeFavorite(id, info.data));
     })
     .catch((err) => {})
 );
