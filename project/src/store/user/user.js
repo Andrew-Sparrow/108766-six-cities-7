@@ -1,7 +1,7 @@
 import { ActionType } from '../actions';
 
 import {
-  AuthorizationStatus,
+  AuthorizationStatus
 } from '../../const';
 
 const initialState = {
