@@ -7,13 +7,13 @@ import { addToFavorite } from '../../store/api-actions';
 
 function PlaceFavoriteButton ( props ) {
   const {
-    adaptedPlaceForClient,
+    place,
     onFavoriteClick,
   } = props;
 
   return (
     <button
-      className={`property__bookmark-button button ${adaptedPlaceForClient.isFavorite ? 'property__bookmark-button--active' : ''}`}
+      className={`property__bookmark-button button ${place.isFavorite ? 'property__bookmark-button--active' : ''}`}
       type="button"
       onClick={(evt) => { onFavoriteClick(evt); }}
     >
@@ -37,7 +37,7 @@ const mapStateToProps = (state) => ({
 });
 
 PlaceFavoriteButton.propTypes = {
-  adaptedPlaceForClient: PropTypes.object,
+  place: PropTypes.object,
   onFavoriteClick: PropTypes.func.isRequired,
 };
 
