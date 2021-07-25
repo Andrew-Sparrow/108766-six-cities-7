@@ -17,7 +17,7 @@ const RatingCombination = {
   1: RatingTitles.TERRIBLY,
 };
 
-function PropertyRatingStar(props) {
+function PlaceRatingStar(props) {
   const {
     index,
     rating,
@@ -49,9 +49,9 @@ function PropertyRatingStar(props) {
   );
 }
 
-PropertyRatingStar.propTypes = {
+PlaceRatingStar.propTypes = {
   rating: PropTypes.number.isRequired,
   index: PropTypes.number.isRequired,
 };
 
-export default PropertyRatingStar;
+export default PlaceRatingStar;

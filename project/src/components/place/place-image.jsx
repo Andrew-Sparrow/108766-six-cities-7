@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function PropertyImage (props) {
+function PlaceImage (props) {
   const { imgPath } = props;
 
   return (
@@ -11,8 +11,8 @@ function PropertyImage (props) {
   );
 }
 
-PropertyImage.propTypes = {
+PlaceImage.propTypes = {
   imgPath: PropTypes.string,
 };
 
-export default PropertyImage;
+export default PlaceImage;

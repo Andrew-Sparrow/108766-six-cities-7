@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import PropertyComment from './property-comment';
+import PlaceComment from './place-comment';
 import Utils from '../../utils/utils';
 import { MAX_COMMENTS_AMOUNT } from '../../const';
 
-function PropertyReviewList (props) {
+function PlaceCommentList (props) {
   const { reviews } = props;
   const slicedReviews = reviews.slice(0, MAX_COMMENTS_AMOUNT);
 
@@ -15,7 +15,7 @@ function PropertyReviewList (props) {
         const adaptedCommentForClient = Utils.adaptCommentToClient(item);
 
         return (
-          <PropertyComment
+          <PlaceComment
             key={adaptedCommentForClient.id}
             avatarImgPath={adaptedCommentForClient.user.avatarUrl}
             date={adaptedCommentForClient.date}
@@ -29,8 +29,8 @@ function PropertyReviewList (props) {
   );
 }
 
-PropertyReviewList.propTypes = {
+PlaceCommentList.propTypes = {
   reviews: PropTypes.array,
 };
 
-export default PropertyReviewList;
+export default PlaceCommentList;

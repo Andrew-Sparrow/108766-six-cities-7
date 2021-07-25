@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function PropertyCommentSubmitButton (props) {
+function PlaceCommentSubmitButton (props) {
   const {
     disabled,
     isSending,
@@ -17,9 +17,9 @@ function PropertyCommentSubmitButton (props) {
     </button>
   );
 }
-PropertyCommentSubmitButton.propTypes = {
+PlaceCommentSubmitButton.propTypes = {
   disabled: PropTypes.bool.isRequired,
   isSending: PropTypes.bool.isRequired,
 };
 
-export default PropertyCommentSubmitButton;
+export default PlaceCommentSubmitButton;

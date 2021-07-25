@@ -21,7 +21,7 @@ import {
 
 import { addToFavorite } from '../../store/api-actions';
 
-function PropertyNearPlace(props) {
+function PlaceNearPlace(props) {
   const {
     id,
     price,
@@ -79,7 +79,7 @@ function PropertyNearPlace(props) {
   );
 }
 
-PropertyNearPlace.propTypes = {
+PlaceNearPlace.propTypes = {
   id: PropTypes.number.isRequired,
   price: PropTypes.number,
   rating: PropTypes.number,
@@ -90,4 +90,4 @@ PropertyNearPlace.propTypes = {
   previewImage: PropTypes.string,
 };
 
-export default PropertyNearPlace;
+export default PlaceNearPlace;

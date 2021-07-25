@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function PropertyGood (props) {
+function PlaceGood (props) {
   const { good } = props;
 
   return (
@@ -11,8 +11,8 @@ function PropertyGood (props) {
   );
 }
 
-PropertyGood.propTypes = {
+PlaceGood.propTypes = {
   good: PropTypes.string,
 };
 
-export default PropertyGood;
+export default PlaceGood;

@@ -12,7 +12,7 @@ import {
 import Main from '../main/main';
 import Favorites from '../favorites/favorites';
 import Login from '../login/login';
-import Property from '../property/property';
+import Property from '../place/place';
 import Error from '../error/error';
 import LoadingScreen from '../loading-screen/loading-screen.jsx';
 import PrivateRoute from '../private-route/private-route.jsx';

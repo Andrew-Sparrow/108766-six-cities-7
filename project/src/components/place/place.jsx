@@ -14,14 +14,14 @@ import {
   useHistory
 } from 'react-router-dom';
 
-import PropertyCommentForm from './property-comment-form';
-import PropertyCommentList from './property-comment-list';
-import { PropertyFavoriteButton } from './property-favorite-button';
+import PlaceCommentForm from './place-comment-form';
+import PropertyCommentList from './place-comment-list';
+import { PlaceFavoriteButton } from './place-favorite-button';
 import withLayout from '../hocs/with-layout';
-import PropertyImagesList from './property-images-list';
-import PropertyGoodsList from './property-goods-list';
+import PlaceImageList from './place-images-list';
+import PlaceGoodList from './place-goods-list';
 import { neighbourhoodPlaces } from '../../mock/neighbourhood-places';
-import PropertyNearPlacesList from './property-near-places-list';
+import PlaceNearPlaceList from './place-near-place-list';
 import LoadingScreen from '../loading-screen/loading-screen.jsx';
 
 import {
@@ -82,7 +82,7 @@ function Property ( props ) {
     <Fragment>
       <main className="page__main">
         <section className="property">
-          < PropertyImagesList images={adaptedPlaceForClient.images} />
+          < PlaceImageList images={adaptedPlaceForClient.images} />
           <div className="property__container container">
             <div className="property__wrapper">
               {adaptedPlaceForClient.isPremium && (
@@ -93,7 +93,7 @@ function Property ( props ) {
                 <h1 className="property__name">
                   { adaptedPlaceForClient.description }
                 </h1>
-                < PropertyFavoriteButton adaptedPlaceForClient={ adaptedPlaceForClient } onFavoriteClick={onFavoriteClick} />
+                < PlaceFavoriteButton adaptedPlaceForClient={ adaptedPlaceForClient } onFavoriteClick={onFavoriteClick} />
               </div>
               <div className="property__rating rating">
                 <div className="property__stars rating__stars">
@@ -119,7 +119,7 @@ function Property ( props ) {
               </div>
               <div className="property__inside">
                 <h2 className="property__inside-title">What&apos;s inside</h2>
-                < PropertyGoodsList goods={ adaptedPlaceForClient.goods } />
+                < PlaceGoodList goods={ adaptedPlaceForClient.goods } />
               </div>
               <div className="property__host">
                 <h2 className="property__host-title">Meet the host</h2>
@@ -156,7 +156,7 @@ function Property ( props ) {
                     < PropertyCommentList reviews={comments} />
                   </Fragment>
                   : <LoadingScreen />}
-                { authorizationStatus === AuthorizationStatus.AUTH && < PropertyCommentForm />}
+                { authorizationStatus === AuthorizationStatus.AUTH && < PlaceCommentForm />}
               </section>
             </div>
           </div>
@@ -173,7 +173,7 @@ function Property ( props ) {
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
             { isNearbyPlacesLoaded
-              ? < PropertyNearPlacesList nearbyPlaces={ nearbyPlaces } commonPlaces={places}/>
+              ? < PlaceNearPlaceList nearbyPlaces={ nearbyPlaces } commonPlaces={places}/>
               : <LoadingScreen />}
           </section>
         </div>
@@ -217,4 +217,3 @@ const withLayoutProperty =  withLayout(Property);
 
 export { withLayoutProperty };
 export default connect(mapStateToProps, mapDispatchToProps)(withLayoutProperty);
-// export default connect(mapStateToProps, null)(withLayoutProperty);

@@ -15,13 +15,13 @@ import { useParams } from 'react-router-dom';
 import { sendComment } from '../../store/api-actions';
 import { ActionCreator } from '../../store/actions';
 
-import PropertyCommentSubmitButton from './property-comment-submit-button';
-import PropertyRatingStar from './property-rating-star';
+import PlaceCommentSubmitButton from './place-comment-submit-button';
+import PlaceRatingStar from './place-rating-star';
 
 import { MAX_RATING } from '../../const';
 import Utils from '../../utils/utils';
 
-function PropertyCommentForm(props) {
+function PlaceCommentForm(props) {
   const {
     onSubmit,
     isCommentSending,
@@ -76,7 +76,7 @@ function PropertyCommentForm(props) {
       >
         <label className="reviews__label form__label" htmlFor="review">Your review</label>
         <div className="reviews__rating-form form__rating" onChange={ onChangeRatingHandler }>
-          { generatedKeys.map((idValue, index) => <PropertyRatingStar key={ idValue } index={ index } rating={rating}/>).reverse() }
+          { generatedKeys.map((idValue, index) => <PlaceRatingStar key={ idValue } index={ index } rating={rating}/>).reverse() }
         </div>
         <Tooltip
           overlay={ <div style={{ height: 100, width: 200, fontSize: 25, textAlign: 'center' }}>{commentErrorMessage}</div> }
@@ -106,7 +106,7 @@ function PropertyCommentForm(props) {
             and describe your stay with at least
             <b className="reviews__text-amount">50 characters</b>.
           </p>
-          <PropertyCommentSubmitButton
+          <PlaceCommentSubmitButton
             disabled={ isSubmitButtonDisabled }
             isSending={isCommentSending}
           />
@@ -129,7 +129,7 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-PropertyCommentForm.propTypes = {
+PlaceCommentForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   isCommentSending: PropTypes.bool.isRequired,
   isShowCommentErrorMessage: PropTypes.bool,
@@ -137,5 +137,5 @@ PropertyCommentForm.propTypes = {
   commentErrorMessage: PropTypes.string,
 };
 
-export { PropertyCommentForm };
-export default connect(mapStateToProps, mapDispatchToProps)(PropertyCommentForm);
+export { PlaceCommentForm };
+export default connect(mapStateToProps, mapDispatchToProps)(PlaceCommentForm);

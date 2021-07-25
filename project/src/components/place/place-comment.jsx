@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Utils from '../../utils/utils';
 
-function PropertyComment ( props ) {
+function PlaceComment ( props ) {
   const {
     avatarImgPath,
     date,
@@ -40,7 +40,7 @@ function PropertyComment ( props ) {
   );
 }
 
-PropertyComment.propTypes = {
+PlaceComment.propTypes = {
   avatarImgPath: PropTypes.string,
   date: PropTypes.string,
   text: PropTypes.string,
@@ -48,4 +48,4 @@ PropertyComment.propTypes = {
   rating: PropTypes.number,
 };
 
-export default PropertyComment;
+export default PlaceComment;

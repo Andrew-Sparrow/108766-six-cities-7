@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 
 import Utils from '../../utils/utils';
 
-import PropertyNearPlace from './property-near-place';
+import PlaceNearPlace from './place-near-place';
 
-function PropertyNearPlacesList(props) {
+function PlaceNearPlaceList(props) {
   const { nearbyPlaces, commonPlaces } = props;
 
   const commonPlacesLinksGottenByNearbyPlaces = Utils.getNearbyPlacesFromCommonPlaces(nearbyPlaces, commonPlaces);
@@ -13,7 +13,7 @@ function PropertyNearPlacesList(props) {
   return (
     <div className="near-places__list places__list">
       {commonPlacesLinksGottenByNearbyPlaces.map((place) => (
-        <PropertyNearPlace
+        <PlaceNearPlace
           key={place.id}
           id={place.id}
           price={place.price}
@@ -28,9 +28,9 @@ function PropertyNearPlacesList(props) {
   );
 }
 
-PropertyNearPlacesList.propTypes = {
+PlaceNearPlaceList.propTypes = {
   nearbyPlaces: PropTypes.array,
   commonPlaces: PropTypes.array,
 };
 
-export default PropertyNearPlacesList;
+export default PlaceNearPlaceList;
