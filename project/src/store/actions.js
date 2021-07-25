@@ -32,6 +32,16 @@ export const showErrorCommentFormMessage = (isShowErrorMessage, errorMessageText
   payload: { isShowErrorMessage, errorMessageText },
 });
 
+export const changeCity = (cityName) => ({
+  type: ActionType.CHANGE_CITY,
+  payload: cityName,
+});
+
+export const changeSortBy = (sortByValue) => ({
+  type: ActionType.CHANGE_SORT_BY,
+  payload: sortByValue,
+});
+
 export const ActionCreator = {
   // changeLoadingCommentProcessStatus: (isLoading) => ({
   //   type: ActionType.CHANGE_LOADING_COMMENT_PROCESS_STATUS,
@@ -41,14 +51,14 @@ export const ActionCreator = {
   //   type: ActionType.CHANGE_COMMENT_SENDED_SUCCESSFULLY_STATUS,
   //   payload: isCommentSendedSuccessfully,
   // }),
-  showErrorCommentFormMessage: (isShowErrorMessage, errorMessageText) => ({
-    type: ActionType.SHOW_COMMENT_ERROR_MESSAGE,
-    payload: {isShowErrorMessage, errorMessageText},
-  }),
-  changeCity: (cityName) => ({
-    type: ActionType.CHANGE_CITY,
-    payload: cityName,
-  }),
+  // showErrorCommentFormMessage: (isShowErrorMessage, errorMessageText) => ({
+  //   type: ActionType.SHOW_COMMENT_ERROR_MESSAGE,
+  //   payload: {isShowErrorMessage, errorMessageText},
+  // }),
+  // changeCity: (cityName) => ({
+  //   type: ActionType.CHANGE_CITY,
+  //   payload: cityName,
+  // }),
   changeSortBy: (sortByValue) => ({
     type: ActionType.CHANGE_SORT_BY,
     payload: sortByValue,

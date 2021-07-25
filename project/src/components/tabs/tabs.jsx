@@ -7,7 +7,9 @@ import {
   cityList,
   SortByValues
 } from '../../const';
-import { ActionCreator } from '../../store/actions';
+
+import { changeCity } from '../../store/actions';
+import { changeSortBy } from '../../store/actions';
 
 function Tabs(props) {
   const { activeCityName, onTabClick } = props;
@@ -43,8 +45,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   onTabClick(cityName) {
-    dispatch(ActionCreator.changeCity(cityName));
-    dispatch(ActionCreator.changeSortBy(SortByValues.POPULAR));
+    dispatch(changeCity(cityName));
+    dispatch(changeSortBy(SortByValues.POPULAR));
   },
 });
 
