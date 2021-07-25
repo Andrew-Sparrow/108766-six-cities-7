@@ -93,7 +93,7 @@ function Property(props) {
                 <h1 className="property__name">
                   { place.description }
                 </h1>
-                <PlaceFavoriteButton place={ place } onFavoriteClick={ onClick } />
+                <PlaceFavoriteButton place={ place } onClick={ onClick } />
               </div>
               <div className="property__rating rating">
                 <div className="property__stars rating__stars">

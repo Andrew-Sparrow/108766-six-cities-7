@@ -8,14 +8,14 @@ import { addToFavorite } from '../../store/api-actions';
 function PlaceFavoriteButton(props) {
   const {
     place,
-    onFavoriteClick,
+    onClick,
   } = props;
 
   return (
     <button
       className={ `property__bookmark-button button ${ place.isFavorite ? 'property__bookmark-button--active' : '' }` }
       type="button"
-      onClick={ (evt) => { onFavoriteClick(evt); } }
+      onClick={onClick}
     >
       <svg className="property__bookmark-icon" width={ 31 } height={ 33 }>
         <use xlinkHref="#icon-bookmark" />
@@ -38,7 +38,7 @@ const mapStateToProps = (state) => ({
 
 PlaceFavoriteButton.propTypes = {
   place: PropTypes.object,
-  onFavoriteClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export { PlaceFavoriteButton };
