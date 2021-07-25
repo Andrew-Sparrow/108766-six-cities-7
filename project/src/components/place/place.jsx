@@ -55,9 +55,9 @@ function Property ( props ) {
     favoriteClickHandler,
   } = props;
 
-  const adaptedPlaceForClient = places.find((place) => place.id === +id);
+  const place = places.find((placeItem) => placeItem.id === +id);
 
-  const width = Utils.getWidthByRating(adaptedPlaceForClient.rating);
+  const width = Utils.getWidthByRating(place.rating);
 
   useEffect(() => {
     dispatch(fetchCommentsList(id));
@@ -69,12 +69,12 @@ function Property ( props ) {
     };
   }, [id, dispatch]);
 
-  const onFavoriteClick = (evt) => {
+  const onClick = (evt) => {
     evt.preventDefault();
     if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
       history.push(AppRoute.SIGN_IN);
     } else {
-      favoriteClickHandler(adaptedPlaceForClient.id, !adaptedPlaceForClient.isFavorite);
+      favoriteClickHandler(place.id, !place.isFavorite);
     }
   };
 
@@ -82,61 +82,61 @@ function Property ( props ) {
     <Fragment>
       <main className="page__main">
         <section className="property">
-          < PlaceImageList images={adaptedPlaceForClient.images} />
+          < PlaceImageList images={place.images} />
           <div className="property__container container">
             <div className="property__wrapper">
-              {adaptedPlaceForClient.isPremium && (
+              {place.isPremium && (
                 <div className="property__mark">
                   <span>Premium</span>
                 </div>)}
               <div className="property__name-wrapper">
                 <h1 className="property__name">
-                  { adaptedPlaceForClient.description }
+                  { place.description }
                 </h1>
-                < PlaceFavoriteButton adaptedPlaceForClient={ adaptedPlaceForClient } onFavoriteClick={onFavoriteClick} />
+                <PlaceFavoriteButton adaptedPlaceForClient={ place } onFavoriteClick={onClick} />
               </div>
               <div className="property__rating rating">
                 <div className="property__stars rating__stars">
                   <span style={{ width: `${width}%` }} />
                   <span className="visually-hidden">Rating</span>
                 </div>
-                <span className="property__rating-value rating__value">{ Math.round(adaptedPlaceForClient.rating) }</span>
+                <span className="property__rating-value rating__value">{ Math.round(place.rating) }</span>
               </div>
               <ul className="property__features">
                 <li className="property__feature property__feature--entire">
-                  {adaptedPlaceForClient.type}
+                  {place.type}
                 </li>
                 <li className="property__feature property__feature--bedrooms">
-                  { adaptedPlaceForClient.bedrooms } Bedrooms
+                  { place.bedrooms } Bedrooms
                 </li>
                 <li className="property__feature property__feature--adults">
-                  Max { adaptedPlaceForClient.maxAdults } adults
+                  Max { place.maxAdults } adults
                 </li>
               </ul>
               <div className="property__price">
-                <b className="property__price-value">€{ adaptedPlaceForClient.price }</b>
+                <b className="property__price-value">€{ place.price }</b>
                 <span className="property__price-text">&nbsp;night</span>
               </div>
               <div className="property__inside">
                 <h2 className="property__inside-title">What&apos;s inside</h2>
-                < PlaceGoodList goods={ adaptedPlaceForClient.goods } />
+                < PlaceGoodList goods={ place.goods } />
               </div>
               <div className="property__host">
                 <h2 className="property__host-title">Meet the host</h2>
                 <div className="property__host-user user">
-                  <div className={`property__avatar-wrapper ${adaptedPlaceForClient.host.isPro && 'property__avatar-wrapper--pro'} user__avatar-wrapper`}>
+                  <div className={`property__avatar-wrapper ${place.host.isPro && 'property__avatar-wrapper--pro'} user__avatar-wrapper`}>
                     <img
                       className="property__avatar user__avatar"
-                      src={adaptedPlaceForClient.host.avatarUrl}
+                      src={place.host.avatarUrl}
                       width={74}
                       height={74}
                       alt="Host avatar"
                     />
                   </div>
                   <span className="property__user-name">
-                    { adaptedPlaceForClient.host.name}
+                    { place.host.name}
                   </span>
-                  {adaptedPlaceForClient.host.isPro && (
+                  {place.host.isPro && (
                     <span className="property__user-status">
                       Pro
                     </span>
@@ -144,7 +144,7 @@ function Property ( props ) {
                 </div>
                 <div className="property__description">
                   <p className="property__text">
-                    { adaptedPlaceForClient.description }
+                    { place.description }
                   </p>
                 </div>
               </div>
@@ -162,10 +162,10 @@ function Property ( props ) {
           </div>
           <section className="property__map map">
             <Map
-              activeCityName={adaptedPlaceForClient.city.name}
-              city={adaptedPlaceForClient.city}
+              activeCityName={place.city.name}
+              city={place.city}
               points={neighbourhoodPlaces}
-              selectedPoint={adaptedPlaceForClient}
+              selectedPoint={place}
             />
           </section>
         </section>
