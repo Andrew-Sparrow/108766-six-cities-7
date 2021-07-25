@@ -5,7 +5,8 @@ import {
   changeIsCommentSendedSuccessfullyStatus,
   showErrorCommentFormMessage,
   loadPlaces,
-  loadNearbyPlaces
+  loadNearbyPlaces,
+  loadComments
 } from './actions';
 
 import { AuthorizationStatus, APIRoute } from '../const';
@@ -32,7 +33,7 @@ export const fetchNearbyPlacesList = (id) => (dispatch, _getState, api) => (
 export const fetchCommentsList = (id) => (dispatch, _getState, api) => (
   api.get(`${APIRoute.COMMENTS}/${id}`)
     .then((info) => {
-      dispatch(ActionCreator.loadComments(info.data));
+      dispatch(loadComments(info.data));
     })
     .catch((err) => {})
 );
@@ -61,7 +62,7 @@ export const sendComment = (id, comment, rating) => (dispatch, _getState, api) =
 
   api.post(`${APIRoute.COMMENTS}/${ id }`, { comment, rating })
     .then((info) => {
-      dispatch(ActionCreator.loadComments(info.data));
+      dispatch(loadComments(info.data));
       dispatch(changeLoadingCommentProcessStatus(false));
       dispatch(showErrorCommentFormMessage(false));
       dispatch(changeIsCommentSendedSuccessfullyStatus(true));

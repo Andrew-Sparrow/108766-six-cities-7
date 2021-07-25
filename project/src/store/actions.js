@@ -52,11 +52,12 @@ export const loadNearbyPlaces = (nearbyPlaces) => ({
   payload: nearbyPlaces,
 });
 
+export const loadComments = (comments) => ({
+  type: ActionType.LOAD_COMMENTS,
+  payload: comments,
+});
+
 export const ActionCreator = {
-  loadComments: (comments) => ({
-    type: ActionType.LOAD_COMMENTS,
-    payload: comments,
-  }),
   changeAuthorizationStatus: (status) => ({
     type: ActionType.CHANGE_AUTHORIZATION_STATUS,
     payload: status,
