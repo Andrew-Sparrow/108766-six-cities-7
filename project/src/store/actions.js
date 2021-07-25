@@ -42,6 +42,11 @@ export const changeSortBy = (sortByValue) => ({
   payload: sortByValue,
 });
 
+export const loadPlaces = (places) => ({
+  type: ActionType.LOAD_PLACES,
+  payload: places,
+});
+
 export const ActionCreator = {
   // changeLoadingCommentProcessStatus: (isLoading) => ({
   //   type: ActionType.CHANGE_LOADING_COMMENT_PROCESS_STATUS,
@@ -59,14 +64,14 @@ export const ActionCreator = {
   //   type: ActionType.CHANGE_CITY,
   //   payload: cityName,
   // }),
-  changeSortBy: (sortByValue) => ({
-    type: ActionType.CHANGE_SORT_BY,
-    payload: sortByValue,
-  }),
-  loadPlaces: (places) => ({
-    type: ActionType.LOAD_PLACES,
-    payload: places,
-  }),
+  // changeSortBy: (sortByValue) => ({
+  //   type: ActionType.CHANGE_SORT_BY,
+  //   payload: sortByValue,
+  // }),
+  // loadPlaces: (places) => ({
+  //   type: ActionType.LOAD_PLACES,
+  //   payload: places,
+  // }),
   loadNearbyPlaces: (nearbyPlaces) => ({
     type: ActionType.LOAD_NEARBY_PLACES,
     payload: nearbyPlaces,

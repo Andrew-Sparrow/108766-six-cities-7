@@ -3,7 +3,8 @@ import { ActionCreator } from './actions';
 import {
   changeLoadingCommentProcessStatus,
   changeIsCommentSendedSuccessfullyStatus,
-  showErrorCommentFormMessage
+  showErrorCommentFormMessage,
+  loadPlaces
 } from './actions';
 
 import { AuthorizationStatus, APIRoute } from '../const';
@@ -13,7 +14,7 @@ export const fetchPlacesList = () => (dispatch, _getState, api) => (
   api.get(APIRoute.HOTELS)
     .then(({ data }) => {
       const adaptedPlacesToClient = Utils.adaptPlacesToClient(data);
-      dispatch(ActionCreator.loadPlaces(adaptedPlacesToClient));
+      dispatch(loadPlaces(adaptedPlacesToClient));
     })
     .catch((err) => {})
 );
