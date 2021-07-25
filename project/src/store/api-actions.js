@@ -4,7 +4,8 @@ import {
   changeLoadingCommentProcessStatus,
   changeIsCommentSendedSuccessfullyStatus,
   showErrorCommentFormMessage,
-  loadPlaces
+  loadPlaces,
+  loadNearbyPlaces
 } from './actions';
 
 import { AuthorizationStatus, APIRoute } from '../const';
@@ -23,7 +24,7 @@ export const fetchNearbyPlacesList = (id) => (dispatch, _getState, api) => (
   api.get(`${APIRoute.HOTELS}/${id}/nearby`)
     .then(({ data }) => {
       const adaptedPlacesToClient = Utils.adaptPlacesToClient(data);
-      dispatch(ActionCreator.loadNearbyPlaces(adaptedPlacesToClient));
+      dispatch(loadNearbyPlaces(adaptedPlacesToClient));
     })
     .catch((err) => {})
 );

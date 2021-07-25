@@ -47,35 +47,12 @@ export const loadPlaces = (places) => ({
   payload: places,
 });
 
+export const loadNearbyPlaces = (nearbyPlaces) => ({
+  type: ActionType.LOAD_NEARBY_PLACES,
+  payload: nearbyPlaces,
+});
+
 export const ActionCreator = {
-  // changeLoadingCommentProcessStatus: (isLoading) => ({
-  //   type: ActionType.CHANGE_LOADING_COMMENT_PROCESS_STATUS,
-  //   payload: isLoading,
-  // }),
-  // changeIsCommentSendedSuccessfullyStatus: (isCommentSendedSuccessfully) => ({
-  //   type: ActionType.CHANGE_COMMENT_SENDED_SUCCESSFULLY_STATUS,
-  //   payload: isCommentSendedSuccessfully,
-  // }),
-  // showErrorCommentFormMessage: (isShowErrorMessage, errorMessageText) => ({
-  //   type: ActionType.SHOW_COMMENT_ERROR_MESSAGE,
-  //   payload: {isShowErrorMessage, errorMessageText},
-  // }),
-  // changeCity: (cityName) => ({
-  //   type: ActionType.CHANGE_CITY,
-  //   payload: cityName,
-  // }),
-  // changeSortBy: (sortByValue) => ({
-  //   type: ActionType.CHANGE_SORT_BY,
-  //   payload: sortByValue,
-  // }),
-  // loadPlaces: (places) => ({
-  //   type: ActionType.LOAD_PLACES,
-  //   payload: places,
-  // }),
-  loadNearbyPlaces: (nearbyPlaces) => ({
-    type: ActionType.LOAD_NEARBY_PLACES,
-    payload: nearbyPlaces,
-  }),
   loadComments: (comments) => ({
     type: ActionType.LOAD_COMMENTS,
     payload: comments,
