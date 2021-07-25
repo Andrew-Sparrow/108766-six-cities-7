@@ -80,6 +80,10 @@ export const removeComments = () => ({
   type: ActionType.REMOVE_COMMENTS,
 });
 
+export const logout = () => ({
+  type: ActionType.LOGOUT,
+});
+
 export const ActionCreator = {
   logout: () => ({
     type: ActionType.LOGOUT,

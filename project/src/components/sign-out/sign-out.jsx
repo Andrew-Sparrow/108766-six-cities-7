@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import Tooltip from 'rc-tooltip';
 
 import { AppRoute } from '../../const.js';
-import { ActionCreator } from '../../store/actions';
+import { logout } from '../../store/actions';
 
 function SignOut(props) {
   const { login, onSignOutClick } = props;
@@ -43,7 +43,7 @@ function SignOut(props) {
 
 const mapDispatchToProps = (dispatch) => ({
   onSignOutClick() {
-    dispatch(ActionCreator.logout());
+    dispatch(logout());
   },
 });
 

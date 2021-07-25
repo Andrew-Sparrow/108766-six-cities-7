@@ -9,7 +9,8 @@ import {
   loadComments,
   changeAuthorizationStatus,
   changeLogin,
-  changeFavorite
+  changeFavorite,
+  logout as userLogout
 } from './actions';
 
 import { AuthorizationStatus, APIRoute } from '../const';
@@ -82,6 +83,6 @@ export const logout = () => (dispatch, _getState, api) => (
     .then(() => {
       localStorage.removeItem('token');
       localStorage.removeItem('login');
-      dispatch(ActionCreator.logout());
+      dispatch(userLogout());
     })
 );
