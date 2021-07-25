@@ -1,6 +1,9 @@
 import { ActionCreator } from './actions';
 
-import { changeLoadingCommentProcessStatus } from './actions';
+import {
+  changeLoadingCommentProcessStatus,
+  changeIsCommentSendedSuccessfullyStatus
+} from './actions';
 
 import { AuthorizationStatus, APIRoute } from '../const';
 import Utils from '../utils/utils';
@@ -58,12 +61,12 @@ export const sendComment = (id, comment, rating) => (dispatch, _getState, api) =
       dispatch(ActionCreator.loadComments(info.data));
       dispatch(changeLoadingCommentProcessStatus(false));
       dispatch(ActionCreator.showErrorCommentFormMessage(false));
-      dispatch(ActionCreator.changeIsCommentSendedSuccessfullyStatus(true));
+      dispatch(changeIsCommentSendedSuccessfullyStatus(true));
     })
     .catch((err) => {
       dispatch(ActionCreator.showErrorCommentFormMessage(true, err.message));
       dispatch(ActionCreator.changeLoadingCommentProcessStatus(false));
-      dispatch(ActionCreator.changeIsCommentSendedSuccessfullyStatus(false));
+      dispatch(changeIsCommentSendedSuccessfullyStatus(false));
     });
 };
 

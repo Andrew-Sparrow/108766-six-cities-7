@@ -22,7 +22,7 @@ export const changeLoadingCommentProcessStatus = (isLoading) => ({
   payload: isLoading,
 });
 
-export const changeLoadingCommentchangeIsCommentSendedSuccessfullyStatus = (isCommentSendedSuccessfully) => ({
+export const changeIsCommentSendedSuccessfullyStatus = (isCommentSendedSuccessfully) => ({
   type: ActionType.CHANGE_COMMENT_SENDED_SUCCESSFULLY_STATUS,
   payload: isCommentSendedSuccessfully,
 });
