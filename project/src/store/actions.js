@@ -72,13 +72,15 @@ export const changeFavorite = (id, newPlace) => ({
   payload: { id, newPlace },
 });
 
+export const removeNearbyPlaces = () => ({
+  type: ActionType.REMOVE_NEARBY_PLACES,
+});
+
+export const removeComments = () => ({
+  type: ActionType.REMOVE_COMMENTS,
+});
+
 export const ActionCreator = {
-  removeNearbyPlaces: () => ({
-    type: ActionType.REMOVE_NEARBY_PLACES,
-  }),
-  removeComments: () => ({
-    type: ActionType.REMOVE_COMMENTS,
-  }),
   logout: () => ({
     type: ActionType.LOGOUT,
   }),

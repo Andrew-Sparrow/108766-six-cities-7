@@ -30,7 +30,8 @@ import {
   addToFavorite
 } from '../../store/api-actions';
 
-import { ActionCreator } from '../../store/actions';
+import { removeNearbyPlaces } from '../../store/actions';
+import { removeComments } from '../../store/actions';
 
 import {
   AuthorizationStatus,
@@ -64,8 +65,8 @@ function Place(props) {
     dispatch(fetchNearbyPlacesList(id));
 
     return () => {
-      dispatch(ActionCreator.removeNearbyPlaces());
-      dispatch(ActionCreator.removeComments());
+      dispatch(removeNearbyPlaces());
+      dispatch(removeComments());
     };
   }, [id, dispatch]);
 
