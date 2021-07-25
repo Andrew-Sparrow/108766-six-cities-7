@@ -6,7 +6,9 @@ import {
   showErrorCommentFormMessage,
   loadPlaces,
   loadNearbyPlaces,
-  loadComments
+  loadComments,
+  changeAuthorizationStatus,
+  changeLogin
 } from './actions';
 
 import { AuthorizationStatus, APIRoute } from '../const';
@@ -51,8 +53,8 @@ export const login = ({ login: email, password }) => (dispatch, _getState, api) 
     .then((info) => {
       localStorage.setItem('token', info.data.token);
       localStorage.setItem('login', info.data.email);
-      dispatch(ActionCreator.changeLogin(info.data.email));
-      dispatch(ActionCreator.changeAuthorizationStatus(AuthorizationStatus.AUTH));
+      dispatch(changeLogin(info.data.email));
+      dispatch(changeAuthorizationStatus(AuthorizationStatus.AUTH));
     })
     .catch((err) => {})
 );

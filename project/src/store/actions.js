@@ -57,11 +57,17 @@ export const loadComments = (comments) => ({
   payload: comments,
 });
 
+export const changeAuthorizationStatus = (status) => ({
+  type: ActionType.CHANGE_AUTHORIZATION_STATUS,
+  payload: status,
+});
+
+export const changeLogin = (login) => ({
+  type: ActionType.CHANGE_LOGIN,
+  payload: login,
+});
+
 export const ActionCreator = {
-  changeAuthorizationStatus: (status) => ({
-    type: ActionType.CHANGE_AUTHORIZATION_STATUS,
-    payload: status,
-  }),
   changeLogin: (login) => ({
     type: ActionType.CHANGE_LOGIN,
     payload: login,
