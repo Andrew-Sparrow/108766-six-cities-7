@@ -1,5 +1,3 @@
-import { ActionCreator } from './actions';
-
 import {
   changeLoadingCommentProcessStatus,
   changeIsCommentSendedSuccessfullyStatus,
@@ -62,7 +60,7 @@ export const login = ({ login: email, password }) => (dispatch, _getState, api) 
 );
 
 export const sendComment = (id, comment, rating) => (dispatch, _getState, api) => {
-  dispatch(ActionCreator.changeLoadingCommentProcessStatus(true));
+  dispatch(changeLoadingCommentProcessStatus(true));
 
   api.post(`${APIRoute.COMMENTS}/${ id }`, { comment, rating })
     .then((info) => {

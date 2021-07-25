@@ -83,9 +83,3 @@ export const removeComments = () => ({
 export const logout = () => ({
   type: ActionType.LOGOUT,
 });
-
-export const ActionCreator = {
-  logout: () => ({
-    type: ActionType.LOGOUT,
-  }),
-};

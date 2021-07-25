@@ -13,7 +13,7 @@ import 'rc-tooltip/assets/bootstrap.css';
 
 import { useParams } from 'react-router-dom';
 import { sendComment } from '../../store/api-actions';
-import { ActionCreator } from '../../store/actions';
+import { showErrorCommentFormMessage } from '../../store/actions';
 
 import PlaceCommentSubmitButton from './place-comment-submit-button';
 import PlaceRatingStar from './place-rating-star';
@@ -93,7 +93,7 @@ function PlaceCommentForm(props) {
             placeholder="Tell how was your stay, what you like and what can be improved"
             onFocus={ () => {
               if (isShowCommentErrorMessage) {
-                dispatch(ActionCreator.showErrorCommentFormMessage(false));
+                dispatch(showErrorCommentFormMessage(false));
               }
             }}
           >
