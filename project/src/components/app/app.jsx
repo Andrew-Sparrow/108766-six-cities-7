@@ -34,10 +34,10 @@ function App(props) {
   return (
     <BrowserRouter history={ browserHistory }>
       <Switch>
-        <Route exact path={AppRoute.ROOT}>
+        <Route exact path={AppRoute.MAIN}>
           <Main className="page page--gray page--index" />
         </Route>
-        <Route exact path={AppRoute.LOGIN}>
+        <Route exact path={AppRoute.SIGN_IN}>
           {authorizationStatus === AuthorizationStatus.NO_AUTH || authorizationStatus === AuthorizationStatus.UNKNOWN
             ? <Login />
             : <Main className="page page--gray page--index" />}
@@ -48,7 +48,7 @@ function App(props) {
           render={() => <Favorites places={places} className="page" />}
         >
         </PrivateRoute>
-        <Route exact path={AppRoute.HOTELS}>
+        <Route exact path={AppRoute.ROOM}>
           <Property className="page" />
         </Route>
         <Route>

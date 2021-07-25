@@ -1,8 +1,8 @@
 export const AppRoute = {
-  ROOT: '/',
-  LOGIN: '/login',
+  MAIN: '/',
+  SIGN_IN: '/login',
   FAVORITES: '/favorites',
-  HOTELS: '/hotels/:id',
+  ROOM: '/offer/:id',
 };
 
 export const MAX_RATING = 5;

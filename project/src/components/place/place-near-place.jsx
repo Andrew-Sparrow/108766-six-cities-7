@@ -43,7 +43,7 @@ function PlaceNearPlace(props) {
   const favoriteClickHandler = (evt) => {
     evt.preventDefault();
     if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
-      history.push(AppRoute.LOGIN);
+      history.push(AppRoute.SIGN_IN);
     } else {
       dispatch(addToFavorite(id, !isFavorite));
     }

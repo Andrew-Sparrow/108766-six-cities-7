@@ -13,7 +13,7 @@ function FavoritePlace(props) {
 
   const dispatch = useDispatch();
 
-  const favoriteClickHandler = (evt) => {
+  const onFavoriteChange = (evt) => {
     evt.preventDefault();
     dispatch(addToFavorite(id, !isFavorite));
   };
@@ -31,7 +31,7 @@ function FavoritePlace(props) {
             <b className="place-card__price-value">€{price}</b>
             <span className="place-card__price-text">/&nbsp;night</span>
           </div>
-          <button className="place-card__bookmark-button place-card__bookmark-button--active button" type="button" onClick={favoriteClickHandler}>
+          <button className="place-card__bookmark-button place-card__bookmark-button--active button" type="button" onClick={onFavoriteChange}>
             <svg className="place-card__bookmark-icon" width={18} height={19}>
               <use xlinkHref="#icon-bookmark" />
             </svg>

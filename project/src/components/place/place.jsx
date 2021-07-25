@@ -72,7 +72,7 @@ function Property ( props ) {
   const onFavoriteClick = (evt) => {
     evt.preventDefault();
     if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
-      history.push(AppRoute.LOGIN);
+      history.push(AppRoute.SIGN_IN);
     } else {
       favoriteClickHandler(adaptedPlaceForClient.id, !adaptedPlaceForClient.isFavorite);
     }
