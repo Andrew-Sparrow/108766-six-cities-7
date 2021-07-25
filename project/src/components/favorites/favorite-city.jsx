@@ -12,15 +12,15 @@ function FavoriteCity(props) {
       <div className="favorites__locations locations locations--current">
         <div className="locations__item">
           <Link className="locations__item-link" to="/">
-            <span>{city}</span>
+            <span>{ city }</span>
           </Link>
         </div>
       </div>
       <div className="favorites__places">
         { favoritePlaces.map((place) => (
           <FavoritePlace
-            id={place.id}
-            isFavorite={place.isFavorite}
+            id={ place.id }
+            isFavorite={ place.isFavorite }
             price={ place.price }
             title={ place.title }
             type={ place.type }
