@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import { user } from './user/user';
 
 export const NameSpace = {
   PLACES: 'PLACES',
@@ -8,5 +9,7 @@ export const NameSpace = {
   COMMENT: 'COMMENT',
 };
 
-export default combineReducers();
+export default combineReducers({
+  [NameSpace.USER]: user,
+});
 
