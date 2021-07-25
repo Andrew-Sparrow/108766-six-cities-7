@@ -66,7 +66,7 @@ function PlaceNearPlace(props) {
           />
         </Link>
       </div>
-      < CardInfo
+      <CardInfo
         id={id}
         price={price}
         title={title}
