@@ -27,15 +27,20 @@ export const changeIsCommentSendedSuccessfullyStatus = (isCommentSendedSuccessfu
   payload: isCommentSendedSuccessfully,
 });
 
+export const showErrorCommentFormMessage = (isShowErrorMessage, errorMessageText) => ({
+  type: ActionType.SHOW_COMMENT_ERROR_MESSAGE,
+  payload: { isShowErrorMessage, errorMessageText },
+});
+
 export const ActionCreator = {
-  changeLoadingCommentProcessStatus: (isLoading) => ({
-    type: ActionType.CHANGE_LOADING_COMMENT_PROCESS_STATUS,
-    payload: isLoading,
-  }),
-  changeIsCommentSendedSuccessfullyStatus: (isCommentSendedSuccessfully) => ({
-    type: ActionType.CHANGE_COMMENT_SENDED_SUCCESSFULLY_STATUS,
-    payload: isCommentSendedSuccessfully,
-  }),
+  // changeLoadingCommentProcessStatus: (isLoading) => ({
+  //   type: ActionType.CHANGE_LOADING_COMMENT_PROCESS_STATUS,
+  //   payload: isLoading,
+  // }),
+  // changeIsCommentSendedSuccessfullyStatus: (isCommentSendedSuccessfully) => ({
+  //   type: ActionType.CHANGE_COMMENT_SENDED_SUCCESSFULLY_STATUS,
+  //   payload: isCommentSendedSuccessfully,
+  // }),
   showErrorCommentFormMessage: (isShowErrorMessage, errorMessageText) => ({
     type: ActionType.SHOW_COMMENT_ERROR_MESSAGE,
     payload: {isShowErrorMessage, errorMessageText},
