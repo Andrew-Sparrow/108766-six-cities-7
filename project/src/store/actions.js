@@ -51,6 +51,8 @@ export const loadComments = createAction(ActionType.LOAD_COMMENTS, (comments) =>
   payload: comments,
 }));
 
+export const removeComments = createAction(ActionType.REMOVE_COMMENTS);
+
 export const changeAuthorizationStatus = createAction(ActionType.CHANGE_AUTHORIZATION_STATUS, (status) => ({
   payload: status,
 }));
@@ -64,7 +66,5 @@ export const changeFavorite = createAction(ActionType.CHANGE_FAVORITE, (id, newP
 }));
 
 export const removeNearbyPlaces = createAction(ActionType.REMOVE_NEARBY_PLACES);
-
-export const removeComments = createAction(ActionType.REMOVE_COMMENTS);
 
 export const logout = createAction(ActionType.LOGOUT);
