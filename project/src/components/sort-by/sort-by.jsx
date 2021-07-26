@@ -15,10 +15,7 @@ function SortBy(props) {
   };
 
   const handleSortChange = (evt) => {
-    evt.preventDefault();
-    if (evt.target.tagName === 'LI') {
-      onSortChange(evt.target.innerText);
-    }
+    onSortChange(evt.target.innerText);
   };
 
   return (
