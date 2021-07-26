@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {addToFavorite} from '../../store/api-actions';
+import {getAuthorizationStatus} from '../../store/user/selectors';
+import {getPlaces} from '../../store/places/selectors';
 
 function PlaceFavoriteButton(props) {
   const {
@@ -29,9 +31,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-const mapStateToProps = ({USER, PLACES}) => ({
-  places: PLACES.places,
-  authorizationStatus: USER.authorizationStatus,
+const mapStateToProps = (state) => ({
+  places: getPlaces(state),
+  authorizationStatus: getAuthorizationStatus(state),
 });
 
 PlaceFavoriteButton.propTypes = {
