@@ -18,8 +18,6 @@ const initialState = {
   sortBy: SortByValues.POPULAR,
   loginValue: LoginValue.UNAUTHORIZED,
   isNearbyPlacesLoaded: false,
-  commentText: '',
-  commentRating: 0,
   isCommentSending: false,
   isShowCommentErrorMessage: false,
   isCommentFormSendedSuccessfully: null,
