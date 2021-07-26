@@ -47,6 +47,8 @@ export const loadNearbyPlaces = createAction(ActionType.LOAD_NEARBY_PLACES, (nea
   payload: nearbyPlaces,
 }));
 
+export const removeNearbyPlaces = createAction(ActionType.REMOVE_NEARBY_PLACES);
+
 export const loadComments = createAction(ActionType.LOAD_COMMENTS, (comments) => ({
   payload: comments,
 }));
@@ -64,7 +66,5 @@ export const changeLogin = createAction(ActionType.CHANGE_LOGIN, (login) => ({
 export const changeFavorite = createAction(ActionType.CHANGE_FAVORITE, (id, newPlace) => ({
   payload: {id, newPlace},
 }));
-
-export const removeNearbyPlaces = createAction(ActionType.REMOVE_NEARBY_PLACES);
 
 export const logout = createAction(ActionType.LOGOUT);

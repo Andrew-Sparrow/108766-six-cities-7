@@ -1,7 +1,14 @@
-import {ActionType} from '../actions';
-
+import {createReducer} from '@reduxjs/toolkit';
 import {SortByValues} from '../../const';
 import Utils from '../../utils/utils';
+import {
+  changeCity,
+  changeSortBy,
+  loadPlaces,
+  loadNearbyPlaces,
+  removeNearbyPlaces,
+  changeFavorite
+} from '../actions';
 
 const initialState = {
   places: [],
@@ -12,46 +19,29 @@ const initialState = {
   nearbyPlaces: [],
 };
 
-const places = (state = initialState, action) => {
-  switch (action.type) {
-    case ActionType.CHANGE_CITY: {
-      return {
-        ...state,
-        activeCityName: action.payload,
-      };
-    }
-    case ActionType.CHANGE_SORT_BY: {
-      return {
-        ...state,
-        sortBy: action.payload,
-      };
-    }
-    case ActionType.LOAD_PLACES:
-      return {
-        ...state,
-        places: action.payload,
-        isDataLoaded: true,
-      };
-    case ActionType.LOAD_NEARBY_PLACES:
-      return {
-        ...state,
-        nearbyPlaces: action.payload,
-        isNearbyPlacesLoaded: true,
-      };
-    case ActionType.REMOVE_NEARBY_PLACES:
-      return {
-        ...state,
-        nearbyPlaces: [],
-        isNearbyPlacesLoaded: false,
-      };
-    case ActionType.CHANGE_FAVORITE:
-      return {
-        ...state,
-        places: Utils.getUpdatedPlaces(action.payload.id, state.places, action.payload.newPlace),
-      };
-    default:
-      return state;
-  }
-};
+const places = createReducer(initialState, (builder) => {
+  builder
+    .addCase(changeCity, (state, action) => {
+      state.activeCityName = action.payload;
+    })
+    .addCase(changeSortBy, (state, action) => {
+      state.sortBy = action.payload;
+    })
+    .addCase(loadPlaces, (state, action) => {
+      state.places = action.payload;
+      state.isDataLoaded = true;
+    })
+    .addCase(loadNearbyPlaces, (state, action) => {
+      state.nearbyPlaces = action.payload;
+      state.isNearbyPlacesLoaded = true;
+    })
+    .addCase(removeNearbyPlaces, (state) => {
+      state.nearbyPlaces = [];
+      state.isNearbyPlacesLoaded = false;
+    })
+    .addCase(changeFavorite, (state, action) => {
+      state.places = Utils.getUpdatedPlaces(action.payload.id, state.places, action.payload.newPlace);
+    });
+});
 
 export {places};
