@@ -9,6 +9,7 @@ import {
   AppRoute,
   AuthorizationStatus
 } from '../../const.js';
+import {getAuthorizationStatus} from '../../store/user/selectors';
 
 function Login({onSubmit, authorizationStatus}) {
   const loginRef = useRef();
@@ -111,8 +112,8 @@ Login.propTypes = {
   authorizationStatus: PropTypes.string,
 };
 
-const mapStateToProps = ({USER}) => ({
-  authorizationStatus: USER.authorizationStatus,
+const mapStateToProps = (state) => ({
+  authorizationStatus: getAuthorizationStatus(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
