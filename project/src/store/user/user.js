@@ -15,6 +15,11 @@ const user = (state = initialState, action) => {
         ...state,
         authorizationStatus: action.payload,
       };
+    case ActionType.CHANGE_LOGIN:
+      return {
+        ...state,
+        loginValue: action.payload,
+      };
     case ActionType.LOGOUT:
       return {
         ...state,
