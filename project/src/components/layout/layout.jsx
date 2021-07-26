@@ -6,9 +6,7 @@ import PropTypes from 'prop-types';
 import SignIn from '../sign-in/sign-in';
 import SignOut from '../sign-out/sign-out';
 
-import {
-  AuthorizationStatus
-} from '../../const.js';
+import {AuthorizationStatus} from '../../const.js';
 
 function Layout(props) {
   const {
@@ -32,7 +30,7 @@ function Layout(props) {
               <ul className="header__nav-list">
                 {authorizationStatus === AuthorizationStatus.AUTH
                   ? <SignOut login={login} />
-                  : < SignIn />}
+                  : <SignIn/>}
               </ul>
             </nav>
           </div>

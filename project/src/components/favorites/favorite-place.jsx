@@ -1,20 +1,14 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
-
-import {
-  useDispatch
-} from 'react-redux';
-
+import {useDispatch} from 'react-redux';
 import {addToFavorite} from '../../store/api-actions';
 
 function FavoritePlace(props) {
   const {id, price, title, type, isFavorite} = props;
-
   const dispatch = useDispatch();
 
-  const onFavoriteChange = (evt) => {
-    evt.preventDefault();
+  const handleFavoriteChange = (evt) => {
     dispatch(addToFavorite(id, !isFavorite));
   };
 
@@ -31,7 +25,7 @@ function FavoritePlace(props) {
             <b className="place-card__price-value">€{price}</b>
             <span className="place-card__price-text">/&nbsp;night</span>
           </div>
-          <button className="place-card__bookmark-button place-card__bookmark-button--active button" type="button" onClick={onFavoriteChange}>
+          <button className="place-card__bookmark-button place-card__bookmark-button--active button" type="button" onClick={handleFavoriteChange}>
             <svg className="place-card__bookmark-icon" width={18} height={19}>
               <use xlinkHref="#icon-bookmark" />
             </svg>

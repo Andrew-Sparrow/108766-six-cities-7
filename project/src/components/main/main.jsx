@@ -29,7 +29,7 @@ function Main(props) {
       <Tabs />
       {
         sortedPlaces.length === 0
-          ? < MainEmpty activeCityName={activeCityName} />
+          ? <MainEmpty activeCityName={activeCityName}/>
           : (
             <div className="cities">
               <div className="cities__places-container container">
@@ -37,7 +37,7 @@ function Main(props) {
                   <h2 className="visually-hidden">Places</h2>
                   <b className="places__found">{sortedPlaces.length} places to stay in {activeCityName}</b>
                   <SortBy />
-                  < RoomList places={sortedPlaces} onListItemHover={onListItemHover} />
+                  <RoomList places={sortedPlaces} onListItemHover={onListItemHover}/>
                 </section>
                 <div className="cities__right-section">
                   <section className="cities__map map">

@@ -39,8 +39,8 @@ function Tabs(props) {
   );
 }
 
-const mapStateToProps = ({USER}) => ({
-  activeCityName: USER.activeCityName,
+const mapStateToProps = ({PLACES}) => ({
+  activeCityName: PLACES.activeCityName,
 });
 
 const mapDispatchToProps = (dispatch) => ({

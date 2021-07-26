@@ -46,15 +46,21 @@ function PlaceCommentForm(props) {
 
   const generatedKeys = Utils.generateIdKeys(MAX_RATING);
 
-  const onChangeCommentHandler = (evt) => {
+  const handleChangeComment = (evt) => {
     setCommentText(evt.target.value);
   };
 
-  const onChangeRatingHandler = (evt) => {
+  const handleChangeRating = (evt) => {
     setRating(+evt.target.defaultValue);
   };
 
-  const onSubmitHandler = (evt) => {
+  const handleFocusChange = () => () => {
+    if (isShowCommentErrorMessage) {
+      dispatch(showErrorCommentFormMessage(false));
+    }
+  };
+
+  const handleSubmit = (evt) => {
     evt.preventDefault();
     onSubmit(id, commentText, rating);
   };
@@ -72,11 +78,11 @@ function PlaceCommentForm(props) {
         className="reviews__form form"
         action=""
         method="post"
-        onSubmit={(evt) => {onSubmitHandler(evt);}}
+        onSubmit={handleSubmit}
       >
         <label className="reviews__label form__label" htmlFor="review">Your review</label>
-        <div className="reviews__rating-form form__rating" onChange={onChangeRatingHandler}>
-          {generatedKeys.map((idValue, index) => <PlaceRatingStar key={idValue} index={index} rating={rating} />).reverse()}
+        <div className="reviews__rating-form form__rating" onChange={handleChangeRating}>
+          {generatedKeys.map((item, index) => <PlaceRatingStar key={item} index={index} rating={rating} />).reverse()}
         </div>
         <Tooltip
           overlay={<div style={{height: 100, width: 200, fontSize: 25, textAlign: 'center'}}>{commentErrorMessage}</div>}
@@ -86,16 +92,12 @@ function PlaceCommentForm(props) {
         >
           <textarea
             className="reviews__textarea form__textarea"
-            onChange={(evt) => onChangeCommentHandler(evt)}
+            onChange={(evt) => handleChangeComment(evt)}
             id="review"
             value={commentText}
             name="review"
             placeholder="Tell how was your stay, what you like and what can be improved"
-            onFocus={() => {
-              if (isShowCommentErrorMessage) {
-                dispatch(showErrorCommentFormMessage(false));
-              }
-            }}
+            onFocus={handleFocusChange}
           >
           </textarea>
         </Tooltip>

@@ -5,18 +5,14 @@ import {createStore, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
 import browserHistory from './browser-history';
 
-import {
-  getAxiosInstance
-} from './services/api';
+import {getAxiosInstance} from './services/api';
 
 import App from './components/app/app';
 import {Provider} from 'react-redux';
 import {composeWithDevTools} from 'redux-devtools-extension';
 import rootReducer from './store/root-reducer';
 
-import {
-  fetchPlacesList
-} from './store/api-actions';
+import {fetchPlacesList} from './store/api-actions';
 
 const api = getAxiosInstance(browserHistory);
 

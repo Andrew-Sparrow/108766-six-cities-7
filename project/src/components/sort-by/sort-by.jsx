@@ -14,6 +14,10 @@ function SortBy(props) {
     setIsOpened((prevValue) => !prevValue);
   };
 
+  const handleSortChange = (evt) => {
+    onSortChange(evt.target.innerText);
+  };
+
   return (
     <form
       className="places__sorting"
@@ -32,48 +36,28 @@ function SortBy(props) {
         <li
           className={`places__option ${ sortByValue === SortByValues.POPULAR && 'places__option--active' }`}
           tabIndex="0"
-          onClick={(evt) => {
-            evt.preventDefault();
-            if (evt.target.tagName === 'LI') {
-              onSortChange(evt.target.innerText);
-            }
-          }}
+          onClick={handleSortChange}
         >
           {SortByValues.POPULAR}
         </li>
         <li
           className={`places__option ${ sortByValue === SortByValues.PRICE_LOW_TO_HIGH && 'places__option--active' }`}
           tabIndex="0"
-          onClick={(evt) => {
-            evt.preventDefault();
-            if (evt.target.tagName === 'LI') {
-              onSortChange(evt.target.innerText);
-            }
-          }}
+          onClick={handleSortChange}
         >
           {SortByValues.PRICE_LOW_TO_HIGH}
         </li>
         <li
           className={`places__option ${ sortByValue === SortByValues.PRICE_HIGH_TO_LOW && 'places__option--active' }`}
           tabIndex="0"
-          onClick={(evt) => {
-            evt.preventDefault();
-            if (evt.target.tagName === 'LI') {
-              onSortChange(evt.target.innerText);
-            }
-          }}
+          onClick={handleSortChange}
         >
           {SortByValues.PRICE_HIGH_TO_LOW}
         </li>
         <li
           className={`places__option ${ sortByValue === SortByValues.TOP_RATED_FIRST && 'places__option--active' }`}
           tabIndex="0"
-          onClick={(evt) => {
-            evt.preventDefault();
-            if (evt.target.tagName === 'LI') {
-              onSortChange(evt.target.innerText);
-            }
-          }}
+          onClick={handleSortChange}
         >
           {SortByValues.TOP_RATED_FIRST}
         </li>

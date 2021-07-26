@@ -83,7 +83,7 @@ function Place(props) {
     <Fragment>
       <main className="page__main">
         <section className="property">
-          < PlaceImageList images={place.images} />
+          <PlaceImageList images={place.images}/>
           <div className="property__container container">
             <div className="property__wrapper">
               {place.isPremium && (
@@ -120,7 +120,7 @@ function Place(props) {
               </div>
               <div className="property__inside">
                 <h2 className="property__inside-title">What&apos;s inside</h2>
-                < PlaceGoodList goods={place.goods} />
+                <PlaceGoodList goods={place.goods}/>
               </div>
               <div className="property__host">
                 <h2 className="property__host-title">Meet the host</h2>
@@ -154,7 +154,7 @@ function Place(props) {
                   ?
                   <Fragment>
                     <h2 className="reviews__title">Reviews · <span className="reviews__amount">{comments.length}</span></h2>
-                    < PlaceCommentList reviews={comments} />
+                    <PlaceCommentList reviews={comments}/>
                   </Fragment>
                   : <LoadingScreen />}
                 {authorizationStatus === AuthorizationStatus.AUTH && < PlaceCommentForm />}
