@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-
 import RoomList from '../room-list/room-list';
 import withLayout from '../hocs/with-layout';
 import Map from '../map/map';
@@ -9,6 +8,11 @@ import Tabs from '../tabs/tabs';
 import SortBy from '../sort-by/sort-by';
 import Utils from '../../utils/utils';
 import MainEmpty from '../main-empty/main-empty';
+import {
+  getPlaces,
+  getSortBy,
+  getActiveCityName
+} from '../../store/places/selectors';
 
 function Main(props) {
   const {places, activeCityName, sortBy} = props;
@@ -57,10 +61,10 @@ function Main(props) {
   );
 }
 
-const mapStateToProps = ({PLACES}) => ({
-  activeCityName: PLACES.activeCityName,
-  places: PLACES.places,
-  sortBy: PLACES.sortBy,
+const mapStateToProps = (state) => ({
+  activeCityName: getActiveCityName(state),
+  places: getPlaces(state),
+  sortBy: getSortBy(state),
 });
 
 Main.propTypes = {
