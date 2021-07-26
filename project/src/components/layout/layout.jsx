@@ -10,7 +10,7 @@ import {
   AuthorizationStatus
 } from '../../const.js';
 
-function Layout (props) {
+function Layout(props) {
   const {
     children,
     login,
@@ -43,11 +43,11 @@ function Layout (props) {
   );
 }
 
-const mapStateToProps = (state) => ({
-  login: state.loginValue,
-  places: state.places,
-  sortBy: state.sortBy,
-  authorizationStatus: state.authorizationStatus,
+const mapStateToProps = ({ USER, PLACES }) => ({
+  login: USER.loginValue,
+  places: PLACES.places,
+  sortBy: PLACES.sortBy,
+  authorizationStatus: USER.authorizationStatus,
 });
 
 Layout.propTypes = {

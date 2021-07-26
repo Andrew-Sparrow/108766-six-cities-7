@@ -82,8 +82,8 @@ function SortBy( props ) {
   );
 }
 
-const mapStateToProps = (state) => ({
-  sortByValue: state.sortBy,
+const mapStateToProps = ({ PLACES }) => ({
+  sortByValue: PLACES.sortBy,
 });
 
 const mapDispatchToProps = (dispatch) => ({

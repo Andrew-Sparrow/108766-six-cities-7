@@ -12,7 +12,7 @@ import {
 import App from './components/app/app';
 import { Provider } from 'react-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { reducer } from './store/reducer';
+import rootReducer from './store/root-reducer';
 
 import {
   fetchPlacesList
@@ -21,7 +21,7 @@ import {
 const api = getAxiosInstance(browserHistory);
 
 const store = createStore(
-  reducer,
+  rootReducer,
   composeWithDevTools(
     applyMiddleware(thunk.withExtraArgument(api)),
   ),

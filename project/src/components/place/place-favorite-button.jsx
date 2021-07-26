@@ -13,11 +13,11 @@ function PlaceFavoriteButton(props) {
 
   return (
     <button
-      className={ `property__bookmark-button button ${ place.isFavorite ? 'property__bookmark-button--active' : '' }` }
+      className={`property__bookmark-button button ${ place.isFavorite ? 'property__bookmark-button--active' : '' }`}
       type="button"
       onClick={onClick}
     >
-      <svg className="property__bookmark-icon" width={ 31 } height={ 33 }>
+      <svg className="property__bookmark-icon" width={31} height={33}>
         <use xlinkHref="#icon-bookmark" />
       </svg>
       <span className="visually-hidden">To bookmarks</span>
@@ -31,9 +31,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-const mapStateToProps = (state) => ({
-  places: state.places,
-  authorizationStatus: state.authorizationStatus,
+const mapStateToProps = ({ USER, PLACES }) => ({
+  places: PLACES.places,
+  authorizationStatus: USER.authorizationStatus,
 });
 
 PlaceFavoriteButton.propTypes = {

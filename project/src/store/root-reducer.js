@@ -8,7 +8,6 @@ export const NameSpace = {
   PLACES: 'PLACES',
   COMMENTS: 'COMMENTS',
   USER: 'USER',
-  PLACE: 'PLACE',
   COMMENT: 'COMMENT',
 };
 

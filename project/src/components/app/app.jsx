@@ -32,7 +32,7 @@ function App(props) {
   }
 
   return (
-    <BrowserRouter history={ browserHistory }>
+    <BrowserRouter history={browserHistory}>
       <Switch>
         <Route exact path={AppRoute.MAIN}>
           <Main className="page page--gray page--index" />
@@ -65,10 +65,10 @@ App.propTypes = {
   isDataLoaded: PropTypes.bool.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  places: state.places,
-  authorizationStatus: state.authorizationStatus,
-  isDataLoaded: state.isDataLoaded,
+const mapStateToProps = ({ USER, PLACES }) => ({
+  places: PLACES.places,
+  authorizationStatus: USER.authorizationStatus,
+  isDataLoaded: PLACES.isDataLoaded,
 });
 
 export { App };

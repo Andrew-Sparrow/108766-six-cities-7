@@ -83,105 +83,105 @@ function Place(props) {
     <Fragment>
       <main className="page__main">
         <section className="property">
-          < PlaceImageList images={ place.images } />
+          < PlaceImageList images={place.images} />
           <div className="property__container container">
             <div className="property__wrapper">
-              { place.isPremium && (
+              {place.isPremium && (
                 <div className="property__mark">
                   <span>Premium</span>
-                </div>) }
+                </div>)}
               <div className="property__name-wrapper">
                 <h1 className="property__name">
-                  { place.description }
+                  {place.description}
                 </h1>
-                <PlaceFavoriteButton place={ place } onClick={ onClick } />
+                <PlaceFavoriteButton place={place} onClick={onClick} />
               </div>
               <div className="property__rating rating">
                 <div className="property__stars rating__stars">
-                  <span style={ { width: `${ width }%` } } />
+                  <span style={{ width: `${ width }%` }} />
                   <span className="visually-hidden">Rating</span>
                 </div>
-                <span className="property__rating-value rating__value">{ Math.round(place.rating) }</span>
+                <span className="property__rating-value rating__value">{Math.round(place.rating)}</span>
               </div>
               <ul className="property__features">
                 <li className="property__feature property__feature--entire">
-                  { place.type }
+                  {place.type}
                 </li>
                 <li className="property__feature property__feature--bedrooms">
-                  { place.bedrooms } Bedrooms
+                  {place.bedrooms} Bedrooms
                 </li>
                 <li className="property__feature property__feature--adults">
-                  Max { place.maxAdults } adults
+                  Max {place.maxAdults} adults
                 </li>
               </ul>
               <div className="property__price">
-                <b className="property__price-value">€{ place.price }</b>
+                <b className="property__price-value">€{place.price}</b>
                 <span className="property__price-text">&nbsp;night</span>
               </div>
               <div className="property__inside">
                 <h2 className="property__inside-title">What&apos;s inside</h2>
-                < PlaceGoodList goods={ place.goods } />
+                < PlaceGoodList goods={place.goods} />
               </div>
               <div className="property__host">
                 <h2 className="property__host-title">Meet the host</h2>
                 <div className="property__host-user user">
-                  <div className={ `property__avatar-wrapper ${ place.host.isPro && 'property__avatar-wrapper--pro' } user__avatar-wrapper` }>
+                  <div className={`property__avatar-wrapper ${ place.host.isPro && 'property__avatar-wrapper--pro' } user__avatar-wrapper`}>
                     <img
                       className="property__avatar user__avatar"
-                      src={ place.host.avatarUrl }
-                      width={ 74 }
-                      height={ 74 }
+                      src={place.host.avatarUrl}
+                      width={74}
+                      height={74}
                       alt="Host avatar"
                     />
                   </div>
                   <span className="property__user-name">
-                    { place.host.name }
+                    {place.host.name}
                   </span>
-                  { place.host.isPro && (
+                  {place.host.isPro && (
                     <span className="property__user-status">
                       Pro
                     </span>
-                  ) }
+                  )}
                 </div>
                 <div className="property__description">
                   <p className="property__text">
-                    { place.description }
+                    {place.description}
                   </p>
                 </div>
               </div>
               <section className="property__reviews reviews">
-                { isCommentsLoaded
+                {isCommentsLoaded
                   ?
                   <Fragment>
-                    <h2 className="reviews__title">Reviews · <span className="reviews__amount">{ comments.length }</span></h2>
-                    < PlaceCommentList reviews={ comments } />
+                    <h2 className="reviews__title">Reviews · <span className="reviews__amount">{comments.length}</span></h2>
+                    < PlaceCommentList reviews={comments} />
                   </Fragment>
-                  : <LoadingScreen /> }
-                { authorizationStatus === AuthorizationStatus.AUTH && < PlaceCommentForm /> }
+                  : <LoadingScreen />}
+                {authorizationStatus === AuthorizationStatus.AUTH && < PlaceCommentForm />}
               </section>
             </div>
           </div>
           <section className="property__map map">
             <Map
-              activeCityName={ place.city.name }
-              city={ place.city }
-              points={ neighbourhoodPlaces }
-              selectedPoint={ place }
+              activeCityName={place.city.name}
+              city={place.city}
+              points={neighbourhoodPlaces}
+              selectedPoint={place}
             />
           </section>
         </section>
         <div className="container">
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
-            { isNearbyPlacesLoaded
-              ? <PlaceNearPlaceList nearbyPlaces={ nearbyPlaces } commonPlaces={ places } />
-              : <LoadingScreen /> }
+            {isNearbyPlacesLoaded
+              ? <PlaceNearPlaceList nearbyPlaces={nearbyPlaces} commonPlaces={places} />
+              : <LoadingScreen />}
           </section>
         </div>
       </main>
       <footer className="footer container">
         <Link className="footer__logo-link" to="/">
-          <img className="footer__logo" src="img/logo.svg" alt="6 cities logo" width={ 64 } height={ 33 } />
+          <img className="footer__logo" src="img/logo.svg" alt="6 cities logo" width={64} height={33} />
         </Link>
       </footer>
 
@@ -205,13 +205,13 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-const mapStateToProps = (state) => ({
-  places: state.places,
-  comments: state.comments,
-  nearbyPlaces: state.nearbyPlaces,
-  isCommentsLoaded: state.isCommentsLoaded,
-  isNearbyPlacesLoaded: state.isNearbyPlacesLoaded,
-  authorizationStatus: state.authorizationStatus,
+const mapStateToProps = ({ PLACES, COMMENTS, USER }) => ({
+  places: PLACES.places,
+  comments: COMMENTS.comments,
+  nearbyPlaces: PLACES.nearbyPlaces,
+  isCommentsLoaded: COMMENTS.isCommentsLoaded,
+  isNearbyPlacesLoaded: PLACES.isNearbyPlacesLoaded,
+  authorizationStatus: USER.authorizationStatus,
 });
 
 const withLayoutPlace = withLayout(Place);

@@ -24,7 +24,7 @@ function Tabs(props) {
                 data-city={city}
                 className={`locations__item-link tabs__item ${ city === activeCityName && 'tabs__item--active' }`}
                 to="#"
-                onClick={(evt) =>{
+                onClick={(evt) => {
                   evt.preventDefault();
                   onTabClick(evt.currentTarget.dataset.city);
                 }}
@@ -39,8 +39,8 @@ function Tabs(props) {
   );
 }
 
-const mapStateToProps = (state) => ({
-  activeCityName: state.activeCityName,
+const mapStateToProps = ({ USER }) => ({
+  activeCityName: USER.activeCityName,
 });
 
 const mapDispatchToProps = (dispatch) => ({

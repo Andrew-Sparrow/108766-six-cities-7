@@ -1,7 +1,7 @@
 import { ActionType } from '../actions';
 
-import { SortByValues } from '../..const';
-import { Utils } from '../../utils/utils';
+import { SortByValues } from '../../const';
+import Utils from '../../utils/utils';
 
 const initialState = {
   places: [],

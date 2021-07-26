@@ -67,21 +67,21 @@ function PlaceCommentForm(props) {
   }, [isCommentSending, isCommentFormSendedSuccessfully]);
 
   return (
-    <fieldset disabled={ isCommentSending } style={{ border: 'none'}}>
+    <fieldset disabled={isCommentSending} style={{ border: 'none' }}>
       <form
         className="reviews__form form"
         action=""
         method="post"
-        onSubmit={ (evt) => { onSubmitHandler(evt); } }
+        onSubmit={(evt) => { onSubmitHandler(evt); }}
       >
         <label className="reviews__label form__label" htmlFor="review">Your review</label>
-        <div className="reviews__rating-form form__rating" onChange={ onChangeRatingHandler }>
-          { generatedKeys.map((idValue, index) => <PlaceRatingStar key={ idValue } index={ index } rating={rating}/>).reverse() }
+        <div className="reviews__rating-form form__rating" onChange={onChangeRatingHandler}>
+          {generatedKeys.map((idValue, index) => <PlaceRatingStar key={idValue} index={index} rating={rating} />).reverse()}
         </div>
         <Tooltip
-          overlay={ <div style={{ height: 100, width: 200, fontSize: 25, textAlign: 'center' }}>{commentErrorMessage}</div> }
+          overlay={<div style={{ height: 100, width: 200, fontSize: 25, textAlign: 'center' }}>{commentErrorMessage}</div>}
           placement="top"
-          visible={ isShowCommentErrorMessage }
+          visible={isShowCommentErrorMessage}
           animation="zoom"
         >
           <textarea
@@ -91,7 +91,7 @@ function PlaceCommentForm(props) {
             value={commentText}
             name="review"
             placeholder="Tell how was your stay, what you like and what can be improved"
-            onFocus={ () => {
+            onFocus={() => {
               if (isShowCommentErrorMessage) {
                 dispatch(showErrorCommentFormMessage(false));
               }
@@ -107,7 +107,7 @@ function PlaceCommentForm(props) {
             <b className="reviews__text-amount">50 characters</b>.
           </p>
           <PlaceCommentSubmitButton
-            disabled={ isSubmitButtonDisabled }
+            disabled={isSubmitButtonDisabled}
             isSending={isCommentSending}
           />
         </div>
@@ -116,11 +116,11 @@ function PlaceCommentForm(props) {
   );
 }
 
-const mapStateToProps = (state) => ({
-  isCommentSending: state.isCommentSending,
-  isShowCommentErrorMessage: state.isShowCommentErrorMessage,
-  isCommentFormSendedSuccessfully: state.isCommentFormSendedSuccessfully,
-  commentErrorMessage: state.commentErrorMessage,
+const mapStateToProps = ({ COMMENT }) => ({
+  isCommentSending: COMMENT.isCommentSending,
+  isShowCommentErrorMessage: COMMENT.isShowCommentErrorMessage,
+  isCommentFormSendedSuccessfully: COMMENT.isCommentFormSendedSuccessfully,
+  commentErrorMessage: COMMENT.commentErrorMessage,
 });
 
 const mapDispatchToProps = (dispatch) => ({

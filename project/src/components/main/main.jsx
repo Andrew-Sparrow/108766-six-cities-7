@@ -29,23 +29,23 @@ function Main(props) {
       <Tabs />
       {
         sortedPlaces.length === 0
-          ? < MainEmpty activeCityName={activeCityName}/>
+          ? < MainEmpty activeCityName={ activeCityName } />
           : (
             <div className="cities">
               <div className="cities__places-container container">
                 <section className="cities__places places">
                   <h2 className="visually-hidden">Places</h2>
-                  <b className="places__found">{sortedPlaces.length} places to stay in {activeCityName}</b>
+                  <b className="places__found">{ sortedPlaces.length } places to stay in { activeCityName }</b>
                   <SortBy />
-                  < RoomList places={sortedPlaces} onListItemHover={onListItemHover} />
+                  < RoomList places={ sortedPlaces } onListItemHover={ onListItemHover } />
                 </section>
                 <div className="cities__right-section">
                   <section className="cities__map map">
                     <Map
-                      activeCityName={activeCityName}
-                      city={sortedPlaces.length !== 0 && sortedPlaces[0].city}
-                      points={sortedPlaces}
-                      selectedPoint={selectedPoint}
+                      activeCityName={ activeCityName }
+                      city={ sortedPlaces.length !== 0 && sortedPlaces[0].city }
+                      points={ sortedPlaces }
+                      selectedPoint={ selectedPoint }
                     />
                   </section>
                 </div>
@@ -57,10 +57,10 @@ function Main(props) {
   );
 }
 
-const mapStateToProps = (state) => ({
-  activeCityName: state.activeCityName,
-  places: state.places,
-  sortBy: state.sortBy,
+const mapStateToProps = ({ PLACES }) => ({
+  activeCityName: PLACES.activeCityName,
+  places: PLACES.places,
+  sortBy: PLACES.sortBy,
 });
 
 Main.propTypes = {
