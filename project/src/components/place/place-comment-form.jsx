@@ -7,19 +7,21 @@ import {
   connect,
   useDispatch
 } from 'react-redux';
-
 import Tooltip from 'rc-tooltip';
 import 'rc-tooltip/assets/bootstrap.css';
-
 import {useParams} from 'react-router-dom';
 import {sendComment} from '../../store/api-actions';
 import {showErrorCommentFormMessage} from '../../store/actions';
-
 import PlaceCommentSubmitButton from './place-comment-submit-button';
 import PlaceRatingStar from './place-rating-star';
-
 import {MAX_RATING} from '../../const';
 import Utils from '../../utils/utils';
+import {
+  getIsCommentSending,
+  getIsCommentFormSendedSuccessfully,
+  getIsShowCommentErrorMessage,
+  getCommentErrorMessage
+} from '../../store/comment/selectors';
 
 function PlaceCommentForm(props) {
   const {
@@ -118,11 +120,11 @@ function PlaceCommentForm(props) {
   );
 }
 
-const mapStateToProps = ({COMMENT}) => ({
-  isCommentSending: COMMENT.isCommentSending,
-  isShowCommentErrorMessage: COMMENT.isShowCommentErrorMessage,
-  isCommentFormSendedSuccessfully: COMMENT.isCommentFormSendedSuccessfully,
-  commentErrorMessage: COMMENT.commentErrorMessage,
+const mapStateToProps = (state) => ({
+  isCommentSending: getIsCommentSending(state),
+  isShowCommentErrorMessage: getIsShowCommentErrorMessage(state),
+  isCommentFormSendedSuccessfully: getIsCommentFormSendedSuccessfully(state),
+  commentErrorMessage: getCommentErrorMessage(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
