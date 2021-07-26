@@ -2,8 +2,8 @@ import React, {useState} from 'react';
 import {SortByValues} from '../../const';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-
 import {changeSortBy} from '../../store/actions';
+import {getSortBy} from '../../store/places/selectors';
 
 function SortBy(props) {
   const {sortByValue, onSortChange} = props;
@@ -66,8 +66,8 @@ function SortBy(props) {
   );
 }
 
-const mapStateToProps = ({PLACES}) => ({
-  sortByValue: PLACES.sortBy,
+const mapStateToProps = (state) => ({
+  sortByValue: getSortBy(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
