@@ -17,14 +17,14 @@ function FavoriteCity(props) {
         </div>
       </div>
       <div className="favorites__places">
-        {favoritePlaces.map((place) => (
+        {favoritePlaces.map(({id, isFavorite, price, title, type}) => (
           <FavoritePlace
-            id={place.id}
-            isFavorite={place.isFavorite}
-            price={place.price}
-            title={place.title}
-            type={place.type}
-            key={place.id}
+            id={id}
+            isFavorite={isFavorite}
+            price={price}
+            title={title}
+            type={type}
+            key={id}
           />))}
       </div>
     </li>);
