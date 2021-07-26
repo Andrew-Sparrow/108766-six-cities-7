@@ -1,4 +1,9 @@
-import {ActionType} from '../actions';
+import {createReducer} from '@reduxjs/toolkit';
+import {
+  changeLoadingCommentProcessStatus,
+  changeIsCommentSendedSuccessfullyStatus,
+  showErrorCommentFormMessage
+} from '../actions';
 
 const initialState = {
   isCommentSending: false,
@@ -7,30 +12,18 @@ const initialState = {
   commentErrorMessage: null,
 };
 
-const comment = (state = initialState, action) => {
-  switch (action.type) {
-    case ActionType.CHANGE_LOADING_COMMENT_PROCESS_STATUS: {
-      return {
-        ...state,
-        isCommentSending: action.payload,
-      };
-    }
-    case ActionType.CHANGE_COMMENT_SENDED_SUCCESSFULLY_STATUS: {
-      return {
-        ...state,
-        isCommentFormSendedSuccessfully: action.payload,
-      };
-    }
-    case ActionType.SHOW_COMMENT_ERROR_MESSAGE: {
-      return {
-        ...state,
-        isShowCommentErrorMessage: action.payload.isShowErrorMessage,
-        commentErrorMessage: action.payload.errorMessageText,
-      };
-    }
-    default:
-      return state;
-  }
-};
+const comment = createReducer(initialState, (builder) => {
+  builder
+    .addCase(changeLoadingCommentProcessStatus, (state, action) => {
+      state.isCommentSending = action.payload;
+    })
+    .addCase(changeIsCommentSendedSuccessfullyStatus, (state, action) => {
+      state.isCommentFormSendedSuccessfully = action.payload;
+    })
+    .addCase(showErrorCommentFormMessage, (state, action) => {
+      state.isShowCommentErrorMessage = action.payload.isShowErrorMessage;
+      state.commentErrorMessage = action.payload.errorMessageText;
+    });
+});
 
 export {comment};
