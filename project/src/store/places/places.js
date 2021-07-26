@@ -1,6 +1,7 @@
 import { ActionType } from '../actions';
 
 import { SortByValues } from '../..const';
+import { Utils } from '../../utils/utils';
 
 const initialState = {
   places: [],
@@ -42,6 +43,11 @@ const places = (state = initialState, action) => {
         ...state,
         nearbyPlaces: [],
         isNearbyPlacesLoaded: false,
+      };
+    case ActionType.CHANGE_FAVORITE:
+      return {
+        ...state,
+        places: Utils.getUpdatedPlaces(action.payload.id, state.places, action.payload.newPlace),
       };
     default:
       return state;
