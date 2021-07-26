@@ -2,18 +2,14 @@ import React, {
   useEffect,
   Fragment
 } from 'react';
-
 import {useDispatch} from 'react-redux';
-
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-
 import {
   Link,
   useParams,
   useHistory
 } from 'react-router-dom';
-
 import PlaceCommentForm from './place-comment-form';
 import PlaceCommentList from './place-comment-list';
 import {PlaceFavoriteButton} from './place-favorite-button';
@@ -23,23 +19,29 @@ import PlaceGoodList from './place-goods-list';
 import {neighbourhoodPlaces} from '../../mock/neighbourhood-places';
 import PlaceNearPlaceList from './place-near-place-list';
 import LoadingScreen from '../loading-screen/loading-screen.jsx';
-
 import {
   fetchCommentsList,
   fetchNearbyPlacesList,
   addToFavorite
 } from '../../store/api-actions';
-
 import {removeNearbyPlaces} from '../../store/actions';
 import {removeComments} from '../../store/actions';
-
 import {
   AuthorizationStatus,
   AppRoute
 } from '../../const.js';
-
 import Utils from '../../utils/utils';
 import Map from '../map/map';
+import {getAuthorizationStatus} from '../../store/user/selectors';
+import {
+  getPlaces,
+  getIsNearbyPlacesLoaded,
+  getNearbyPlaces
+} from '../../store/places/selectors';
+import {
+  getComments,
+  getIsCommentsLoaded
+} from '../../store/comments/selectors';
 
 function Place(props) {
   const {id} = useParams();
@@ -205,13 +207,13 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-const mapStateToProps = ({PLACES, COMMENTS, USER}) => ({
-  places: PLACES.places,
-  comments: COMMENTS.comments,
-  nearbyPlaces: PLACES.nearbyPlaces,
-  isCommentsLoaded: COMMENTS.isCommentsLoaded,
-  isNearbyPlacesLoaded: PLACES.isNearbyPlacesLoaded,
-  authorizationStatus: USER.authorizationStatus,
+const mapStateToProps = (state) => ({
+  places: getPlaces(state),
+  isNearbyPlacesLoaded: getIsNearbyPlacesLoaded(state),
+  nearbyPlaces: getNearbyPlaces(state),
+  comments: getComments(state),
+  isCommentsLoaded: getIsCommentsLoaded(state),
+  authorizationStatus: getAuthorizationStatus(state),
 });
 
 const withLayoutPlace = withLayout(Place);
