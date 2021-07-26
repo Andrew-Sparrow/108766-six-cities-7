@@ -1,12 +1,18 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
-
 import PropTypes from 'prop-types';
 import SignIn from '../sign-in/sign-in';
 import SignOut from '../sign-out/sign-out';
-
 import {AuthorizationStatus} from '../../const.js';
+import {
+  getAuthorizationStatus,
+  getLogin
+} from '../../store/user/selectors';
+import {
+  getPlaces,
+  getSortBy
+} from '../../store/places/selectors';
 
 function Layout(props) {
   const {
@@ -41,11 +47,11 @@ function Layout(props) {
   );
 }
 
-const mapStateToProps = ({USER, PLACES}) => ({
-  login: USER.loginValue,
-  places: PLACES.places,
-  sortBy: PLACES.sortBy,
-  authorizationStatus: USER.authorizationStatus,
+const mapStateToProps = (state) => ({
+  login: getLogin(state),
+  places: getPlaces(state),
+  sortBy: getSortBy(state),
+  authorizationStatus: getAuthorizationStatus(state),
 });
 
 Layout.propTypes = {

@@ -1,8 +1,12 @@
 import {ActionType} from '../actions';
-import {AuthorizationStatus} from '../../const';
+import {
+  AuthorizationStatus,
+  LoginValue
+} from '../../const';
 
 const initialState = {
   authorizationStatus: AuthorizationStatus.NO_AUTH,
+  login: LoginValue.UNAUTHORIZED,
 };
 
 const user = (state = initialState, action) => {
@@ -15,7 +19,7 @@ const user = (state = initialState, action) => {
     case ActionType.CHANGE_LOGIN:
       return {
         ...state,
-        loginValue: action.payload,
+        login: action.payload,
       };
     case ActionType.LOGOUT:
       return {
