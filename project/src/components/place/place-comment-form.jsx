@@ -54,7 +54,7 @@ function PlaceCommentForm(props) {
     setRating(+evt.target.defaultValue);
   };
 
-  const onSubmitHandler = (evt) => {
+  const handleSubmit = (evt) => {
     evt.preventDefault();
     onSubmit(id, commentText, rating);
   };
@@ -72,7 +72,7 @@ function PlaceCommentForm(props) {
         className="reviews__form form"
         action=""
         method="post"
-        onSubmit={(evt) => {onSubmitHandler(evt);}}
+        onSubmit={handleSubmit}
       >
         <label className="reviews__label form__label" htmlFor="review">Your review</label>
         <div className="reviews__rating-form form__rating" onChange={onChangeRatingHandler}>
