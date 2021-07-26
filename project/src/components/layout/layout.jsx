@@ -30,7 +30,7 @@ function Layout(props) {
               <ul className="header__nav-list">
                 {authorizationStatus === AuthorizationStatus.AUTH
                   ? <SignOut login={login} />
-                  : < SignIn />}
+                  : <SignIn/>}
               </ul>
             </nav>
           </div>
