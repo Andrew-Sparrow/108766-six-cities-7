@@ -1,8 +1,6 @@
 import React from 'react';
-
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-
 import {addToFavorite} from '../../store/api-actions';
 
 function PlaceFavoriteButton(props) {
