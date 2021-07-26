@@ -6,9 +6,7 @@ import PropTypes from 'prop-types';
 import SignIn from '../sign-in/sign-in';
 import SignOut from '../sign-out/sign-out';
 
-import {
-  AuthorizationStatus
-} from '../../const.js';
+import {AuthorizationStatus} from '../../const.js';
 
 function Layout(props) {
   const {
