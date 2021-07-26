@@ -2,14 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
-
 import {
   cityList,
   SortByValues
 } from '../../const';
-
 import {changeCity} from '../../store/actions';
 import {changeSortBy} from '../../store/actions';
+import {getActiveCityName} from '../../store/places/selectors';
 
 function Tabs(props) {
   const {activeCityName, onTabClick} = props;
@@ -39,8 +38,8 @@ function Tabs(props) {
   );
 }
 
-const mapStateToProps = ({PLACES}) => ({
-  activeCityName: PLACES.activeCityName,
+const mapStateToProps = (state) => ({
+  activeCityName: getActiveCityName(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
