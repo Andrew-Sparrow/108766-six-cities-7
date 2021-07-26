@@ -1,4 +1,9 @@
-import {ActionType} from '../actions';
+import {createReducer} from '@reduxjs/toolkit';
+import {
+  changeAuthorizationStatus,
+  changeLogin,
+  logout
+} from '../actions';
 import {
   AuthorizationStatus,
   LoginValue
@@ -9,26 +14,17 @@ const initialState = {
   login: LoginValue.UNAUTHORIZED,
 };
 
-const user = (state = initialState, action) => {
-  switch (action.type) {
-    case ActionType.CHANGE_AUTHORIZATION_STATUS:
-      return {
-        ...state,
-        authorizationStatus: action.payload,
-      };
-    case ActionType.CHANGE_LOGIN:
-      return {
-        ...state,
-        login: action.payload,
-      };
-    case ActionType.LOGOUT:
-      return {
-        ...state,
-        authorizationStatus: AuthorizationStatus.NO_AUTH,
-      };
-    default:
-      return state;
-  }
-};
+const user = createReducer(initialState, (builder) => {
+  builder
+    .addCase(changeAuthorizationStatus, (state, action) => {
+      state.authorizationStatus = action.payload;
+    })
+    .addCase(changeLogin, (state, action) => {
+      state.login = action.payload;
+    })
+    .addCase(logout, (state) => {
+      state.authorizationStatus = AuthorizationStatus.NO_AUTH;
+    });
+});
 
 export {user};
