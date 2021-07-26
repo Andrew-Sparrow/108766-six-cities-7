@@ -1,7 +1,7 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
-import {connect} from 'react-redux';
+import {useDispatch} from 'react-redux';
 
 import Tooltip from 'rc-tooltip';
 
@@ -9,7 +9,9 @@ import {AppRoute} from '../../const.js';
 import {logout} from '../../store/actions';
 
 function SignOut(props) {
-  const {login, onSignOutClick} = props;
+  const {login} = props;
+  const dispatch = useDispatch();
+  const handleLogOutButtonClick = () => dispatch(logout());
 
   return (
     <Fragment>
@@ -30,9 +32,7 @@ function SignOut(props) {
         <Link
           className="header__nav-link"
           to={AppRoute.MAIN}
-          onClick={() => {
-            onSignOutClick();
-          }}
+          onClick={handleLogOutButtonClick}
         >
           <span className="header__signout">Sign out</span>
         </Link>
@@ -41,16 +41,8 @@ function SignOut(props) {
   );
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  onSignOutClick() {
-    dispatch(logout());
-  },
-});
-
 SignOut.propTypes = {
   login: PropTypes.string,
-  onSignOutClick: PropTypes.func.isRequired,
 };
 
-export {SignOut};
-export default connect(null, mapDispatchToProps)(SignOut);
+export default SignOut;
