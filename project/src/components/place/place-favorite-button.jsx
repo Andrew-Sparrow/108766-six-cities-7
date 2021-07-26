@@ -1,9 +1,9 @@
 import React from 'react';
 
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 
-import { addToFavorite } from '../../store/api-actions';
+import {addToFavorite} from '../../store/api-actions';
 
 function PlaceFavoriteButton(props) {
   const {
@@ -31,7 +31,7 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-const mapStateToProps = ({ USER, PLACES }) => ({
+const mapStateToProps = ({USER, PLACES}) => ({
   places: PLACES.places,
   authorizationStatus: USER.authorizationStatus,
 });
@@ -41,5 +41,5 @@ PlaceFavoriteButton.propTypes = {
   onClick: PropTypes.func.isRequired,
 };
 
-export { PlaceFavoriteButton };
+export {PlaceFavoriteButton};
 export default connect(mapStateToProps, mapDispatchToProps)(PlaceFavoriteButton);

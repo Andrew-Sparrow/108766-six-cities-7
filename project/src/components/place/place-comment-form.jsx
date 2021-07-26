@@ -11,14 +11,14 @@ import {
 import Tooltip from 'rc-tooltip';
 import 'rc-tooltip/assets/bootstrap.css';
 
-import { useParams } from 'react-router-dom';
-import { sendComment } from '../../store/api-actions';
-import { showErrorCommentFormMessage } from '../../store/actions';
+import {useParams} from 'react-router-dom';
+import {sendComment} from '../../store/api-actions';
+import {showErrorCommentFormMessage} from '../../store/actions';
 
 import PlaceCommentSubmitButton from './place-comment-submit-button';
 import PlaceRatingStar from './place-rating-star';
 
-import { MAX_RATING } from '../../const';
+import {MAX_RATING} from '../../const';
 import Utils from '../../utils/utils';
 
 function PlaceCommentForm(props) {
@@ -37,7 +37,7 @@ function PlaceCommentForm(props) {
   const [rating, setRating] = useState(0);
   const dispatch = useDispatch();
 
-  const { id } = useParams();
+  const {id} = useParams();
 
   const isSubmitButtonDisabled =
     (commentText.length < MIN_LETTERS_AMOUNT)
@@ -67,19 +67,19 @@ function PlaceCommentForm(props) {
   }, [isCommentSending, isCommentFormSendedSuccessfully]);
 
   return (
-    <fieldset disabled={isCommentSending} style={{ border: 'none' }}>
+    <fieldset disabled={isCommentSending} style={{border: 'none'}}>
       <form
         className="reviews__form form"
         action=""
         method="post"
-        onSubmit={(evt) => { onSubmitHandler(evt); }}
+        onSubmit={(evt) => {onSubmitHandler(evt);}}
       >
         <label className="reviews__label form__label" htmlFor="review">Your review</label>
         <div className="reviews__rating-form form__rating" onChange={onChangeRatingHandler}>
           {generatedKeys.map((idValue, index) => <PlaceRatingStar key={idValue} index={index} rating={rating} />).reverse()}
         </div>
         <Tooltip
-          overlay={<div style={{ height: 100, width: 200, fontSize: 25, textAlign: 'center' }}>{commentErrorMessage}</div>}
+          overlay={<div style={{height: 100, width: 200, fontSize: 25, textAlign: 'center'}}>{commentErrorMessage}</div>}
           placement="top"
           visible={isShowCommentErrorMessage}
           animation="zoom"
@@ -116,7 +116,7 @@ function PlaceCommentForm(props) {
   );
 }
 
-const mapStateToProps = ({ COMMENT }) => ({
+const mapStateToProps = ({COMMENT}) => ({
   isCommentSending: COMMENT.isCommentSending,
   isShowCommentErrorMessage: COMMENT.isShowCommentErrorMessage,
   isCommentFormSendedSuccessfully: COMMENT.isCommentFormSendedSuccessfully,
@@ -137,5 +137,5 @@ PlaceCommentForm.propTypes = {
   commentErrorMessage: PropTypes.string,
 };
 
-export { PlaceCommentForm };
+export {PlaceCommentForm};
 export default connect(mapStateToProps, mapDispatchToProps)(PlaceCommentForm);

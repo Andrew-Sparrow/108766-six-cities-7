@@ -1,8 +1,8 @@
 import React from 'react';
 
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { Switch, Route, Router as BrowserRouter } from 'react-router-dom';
+import {connect} from 'react-redux';
+import {Switch, Route, Router as BrowserRouter} from 'react-router-dom';
 
 import {
   AppRoute,
@@ -65,11 +65,11 @@ App.propTypes = {
   isDataLoaded: PropTypes.bool.isRequired,
 };
 
-const mapStateToProps = ({ USER, PLACES }) => ({
+const mapStateToProps = ({USER, PLACES}) => ({
   places: PLACES.places,
   authorizationStatus: USER.authorizationStatus,
   isDataLoaded: PLACES.isDataLoaded,
 });
 
-export { App };
+export {App};
 export default connect(mapStateToProps, null)(App);

@@ -1,10 +1,10 @@
-import React, { useRef, useEffect } from 'react';
+import React, {useRef, useEffect} from 'react';
 import PropTypes from 'prop-types';
 
 import leaflet from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import useMap from '../../hooks/use-map';
-import { URL_MARKER_DEFAULT, URL_MARKER_CURRENT } from '../../const';
+import {URL_MARKER_DEFAULT, URL_MARKER_CURRENT} from '../../const';
 
 function Map(props) {
   const {
@@ -48,7 +48,7 @@ function Map(props) {
 
   return (
     <div
-      style={{ height: '100%' }}
+      style={{height: '100%'}}
       ref={mapRef}
     >
     </div>
@@ -62,4 +62,4 @@ Map.propTypes = {
   points: PropTypes.array,
 };
 
-export default Map ;
+export default Map;

@@ -29,7 +29,7 @@ export const changeIsCommentSendedSuccessfullyStatus = (isCommentSendedSuccessfu
 
 export const showErrorCommentFormMessage = (isShowErrorMessage, errorMessageText) => ({
   type: ActionType.SHOW_COMMENT_ERROR_MESSAGE,
-  payload: { isShowErrorMessage, errorMessageText },
+  payload: {isShowErrorMessage, errorMessageText},
 });
 
 export const changeCity = (cityName) => ({
@@ -69,7 +69,7 @@ export const changeLogin = (login) => ({
 
 export const changeFavorite = (id, newPlace) => ({
   type: ActionType.CHANGE_FAVORITE,
-  payload: { id, newPlace },
+  payload: {id, newPlace},
 });
 
 export const removeNearbyPlaces = () => ({

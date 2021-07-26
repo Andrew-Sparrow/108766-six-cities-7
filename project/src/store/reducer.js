@@ -1,4 +1,4 @@
-import { ActionType } from './actions';
+import {ActionType} from './actions';
 
 import {
   AuthorizationStatus,
@@ -25,7 +25,7 @@ const initialState = {
   nearbyPlaces: [],
 };
 
-function reducer (state = initialState, action) {
+function reducer(state = initialState, action) {
   switch (action.type) {
     case ActionType.CHANGE_LOADING_COMMENT_PROCESS_STATUS: {
       return {
@@ -114,4 +114,4 @@ function reducer (state = initialState, action) {
   }
 }
 
-export { reducer };
+export {reducer};

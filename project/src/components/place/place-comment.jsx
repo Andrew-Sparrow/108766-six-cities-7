@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Utils from '../../utils/utils';
 
-function PlaceComment ( props ) {
+function PlaceComment(props) {
   const {
     avatarImgPath,
     date,
@@ -17,16 +17,16 @@ function PlaceComment ( props ) {
     <li className="reviews__item">
       <div className="reviews__user user">
         <div className="reviews__avatar-wrapper user__avatar-wrapper">
-          <img className="reviews__avatar user__avatar" src={ avatarImgPath } width={54} height={54} alt="Reviews avatar" />
+          <img className="reviews__avatar user__avatar" src={avatarImgPath} width={54} height={54} alt="Reviews avatar" />
         </div>
         <span className="reviews__user-name">
-          { name }
+          {name}
         </span>
       </div>
       <div className="reviews__info">
         <div className="reviews__rating rating">
           <div className="reviews__stars rating__stars">
-            <span style={{ width:`${width}%`}}>
+            <span style={{width: `${ width }%`}}>
             </span>
             <span className="visually-hidden">Rating</span>
           </div>

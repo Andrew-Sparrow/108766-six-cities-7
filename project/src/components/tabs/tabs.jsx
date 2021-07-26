@@ -1,18 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
+import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
 
 import {
   cityList,
   SortByValues
 } from '../../const';
 
-import { changeCity } from '../../store/actions';
-import { changeSortBy } from '../../store/actions';
+import {changeCity} from '../../store/actions';
+import {changeSortBy} from '../../store/actions';
 
 function Tabs(props) {
-  const { activeCityName, onTabClick } = props;
+  const {activeCityName, onTabClick} = props;
 
   return (
     <div className="tabs">
@@ -39,7 +39,7 @@ function Tabs(props) {
   );
 }
 
-const mapStateToProps = ({ USER }) => ({
+const mapStateToProps = ({USER}) => ({
   activeCityName: USER.activeCityName,
 });
 
@@ -55,5 +55,5 @@ Tabs.propTypes = {
   onTabClick: PropTypes.func.isRequired,
 };
 
-export { Tabs };
+export {Tabs};
 export default connect(mapStateToProps, mapDispatchToProps)(Tabs);

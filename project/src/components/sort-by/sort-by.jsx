@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import { SortByValues } from '../../const';
+import React, {useState} from 'react';
+import {SortByValues} from '../../const';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 
-import { changeSortBy } from '../../store/actions';
+import {changeSortBy} from '../../store/actions';
 
-function SortBy( props ) {
-  const { sortByValue, onSortChange } = props;
+function SortBy(props) {
+  const {sortByValue, onSortChange} = props;
   const [isOpened, setIsOpened] = useState(false);
 
   const handleOpen = (evt) => {
@@ -23,66 +23,66 @@ function SortBy( props ) {
     >
       <span className="places__sorting-caption">Sort by&nbsp;</span>
       <span className="places__sorting-type" tabIndex="0">
-        { sortByValue }
+        {sortByValue}
         <svg className="places__sorting-arrow" width="7" height="4">
           <use xlinkHref="#icon-arrow-select"></use>
         </svg>
       </span>
-      <ul className={`places__options places__options--custom ${isOpened && 'places__options--opened'}`}>
+      <ul className={`places__options places__options--custom ${ isOpened && 'places__options--opened' }`}>
         <li
           className={`places__option ${ sortByValue === SortByValues.POPULAR && 'places__option--active' }`}
           tabIndex="0"
-          onClick={(evt) =>{
+          onClick={(evt) => {
             evt.preventDefault();
             if (evt.target.tagName === 'LI') {
               onSortChange(evt.target.innerText);
             }
           }}
         >
-          { SortByValues.POPULAR }
+          {SortByValues.POPULAR}
         </li>
         <li
           className={`places__option ${ sortByValue === SortByValues.PRICE_LOW_TO_HIGH && 'places__option--active' }`}
           tabIndex="0"
-          onClick={(evt) =>{
+          onClick={(evt) => {
             evt.preventDefault();
             if (evt.target.tagName === 'LI') {
               onSortChange(evt.target.innerText);
             }
           }}
         >
-          { SortByValues.PRICE_LOW_TO_HIGH }
+          {SortByValues.PRICE_LOW_TO_HIGH}
         </li>
         <li
           className={`places__option ${ sortByValue === SortByValues.PRICE_HIGH_TO_LOW && 'places__option--active' }`}
           tabIndex="0"
-          onClick={(evt) =>{
+          onClick={(evt) => {
             evt.preventDefault();
             if (evt.target.tagName === 'LI') {
               onSortChange(evt.target.innerText);
             }
           }}
         >
-          { SortByValues.PRICE_HIGH_TO_LOW }
+          {SortByValues.PRICE_HIGH_TO_LOW}
         </li>
         <li
           className={`places__option ${ sortByValue === SortByValues.TOP_RATED_FIRST && 'places__option--active' }`}
           tabIndex="0"
-          onClick={(evt) =>{
+          onClick={(evt) => {
             evt.preventDefault();
             if (evt.target.tagName === 'LI') {
               onSortChange(evt.target.innerText);
             }
           }}
         >
-          { SortByValues.TOP_RATED_FIRST }
+          {SortByValues.TOP_RATED_FIRST}
         </li>
       </ul>
     </form>
   );
 }
 
-const mapStateToProps = ({ PLACES }) => ({
+const mapStateToProps = ({PLACES}) => ({
   sortByValue: PLACES.sortBy,
 });
 
@@ -97,5 +97,5 @@ SortBy.propTypes = {
   onSortChange: PropTypes.func.isRequired,
 };
 
-export { SortBy };
+export {SortBy};
 export default connect(mapStateToProps, mapDispatchToProps)(SortBy);

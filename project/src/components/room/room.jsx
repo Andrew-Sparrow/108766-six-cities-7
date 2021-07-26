@@ -12,7 +12,7 @@ import {
   useSelector
 } from 'react-redux';
 
-import { addToFavorite } from '../../store/api-actions';
+import {addToFavorite} from '../../store/api-actions';
 
 import CardInfo from '../card-info/card-info';
 
@@ -65,10 +65,10 @@ function Room(props) {
           <span>Premium</span>
         </div>}
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <Link to={`/offer/${id}`}>
+        <Link to={`/offer/${ id }`}>
           <img
             className="place-card__image"
-            src={ previewImage }
+            src={previewImage}
             width="260"
             height="200"
             alt="Place"
@@ -81,7 +81,7 @@ function Room(props) {
         title={title}
         isFavorite={isFavorite}
         type={type}
-        width={ width }
+        width={width}
         favoriteClickHandler={favoriteClickHandler}
       />
     </article>

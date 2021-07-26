@@ -1,6 +1,6 @@
-import { ActionType } from '../actions';
+import {ActionType} from '../actions';
 
-import { SortByValues } from '../../const';
+import {SortByValues} from '../../const';
 import Utils from '../../utils/utils';
 
 const initialState = {
@@ -54,4 +54,4 @@ const places = (state = initialState, action) => {
   }
 };
 
-export { places };
+export {places};

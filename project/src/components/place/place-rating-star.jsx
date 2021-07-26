@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 
 const RatingTitles = {
@@ -29,17 +29,17 @@ function PlaceRatingStar(props) {
   return (
     <Fragment>
       <input
-        className={`form__rating-input ${isActive ? 'form__rating-input--active' : ''} visually-hidden`}
+        className={`form__rating-input ${ isActive ? 'form__rating-input--active' : '' } visually-hidden`}
         name="rating"
         defaultValue={serialNumber}
-        id={ `${serialNumber}-stars` }
+        id={`${ serialNumber }-stars`}
         type="radio"
-        defaultChecked={ false }
+        defaultChecked={false}
       />
       <label
-        htmlFor={ `${ serialNumber }-stars` }
+        htmlFor={`${ serialNumber }-stars`}
         className="reviews__rating-label form__rating-label"
-        title={ RatingCombination[serialNumber] }
+        title={RatingCombination[serialNumber]}
       >
         <svg className="form__star-image" width={37} height={33}>
           <use xlinkHref="#icon-star" />

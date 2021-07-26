@@ -1,5 +1,5 @@
 import React from 'react';
-import { Fragment } from 'react';
+import {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import FavoriteList from './favorite-list';
@@ -11,7 +11,7 @@ import withLayout from '../hocs/with-layout';
 import Utils from '../../utils/utils';
 
 function Favorites(props) {
-  const { places } = props;
+  const {places} = props;
   const favoriteList = Utils.getFavoritePlacesSeparatedByCity(places);
 
   return (

@@ -6,7 +6,7 @@ import Utils from '../../utils/utils';
 import PlaceNearPlace from './place-near-place';
 
 function PlaceNearPlaceList(props) {
-  const { nearbyPlaces, commonPlaces } = props;
+  const {nearbyPlaces, commonPlaces} = props;
 
   const commonPlacesLinksGottenByNearbyPlaces = Utils.getNearbyPlacesFromCommonPlaces(nearbyPlaces, commonPlaces);
 

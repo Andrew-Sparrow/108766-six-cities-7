@@ -1,10 +1,10 @@
-import React, { memo } from 'react';
+import React, {memo} from 'react';
 import PropTypes from 'prop-types';
 import PlaceImage from './place-image';
 import Utils from '../../utils/utils';
 
-function PlaceImageList (props) {
-  const { images } = props;
+function PlaceImageList(props) {
+  const {images} = props;
   const generatedIds = Utils.generateIdKeys(images.length);
 
   return (
@@ -20,4 +20,4 @@ PlaceImageList.propTypes = {
   images: PropTypes.arrayOf(PropTypes.string),
 };
 
-export default memo(PlaceImageList, (prevProps, nextProps) =>  prevProps.images === nextProps.images);
+export default memo(PlaceImageList, (prevProps, nextProps) => prevProps.images === nextProps.images);

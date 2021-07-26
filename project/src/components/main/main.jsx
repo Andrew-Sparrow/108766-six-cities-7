@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 
 import RoomList from '../room-list/room-list';
 import withLayout from '../hocs/with-layout';
@@ -11,7 +11,7 @@ import Utils from '../../utils/utils';
 import MainEmpty from '../main-empty/main-empty';
 
 function Main(props) {
-  const { places, activeCityName, sortBy } = props;
+  const {places, activeCityName, sortBy} = props;
 
   const [selectedPoint, setSelectedPoint] = useState({});
 
@@ -29,23 +29,23 @@ function Main(props) {
       <Tabs />
       {
         sortedPlaces.length === 0
-          ? < MainEmpty activeCityName={ activeCityName } />
+          ? < MainEmpty activeCityName={activeCityName} />
           : (
             <div className="cities">
               <div className="cities__places-container container">
                 <section className="cities__places places">
                   <h2 className="visually-hidden">Places</h2>
-                  <b className="places__found">{ sortedPlaces.length } places to stay in { activeCityName }</b>
+                  <b className="places__found">{sortedPlaces.length} places to stay in {activeCityName}</b>
                   <SortBy />
-                  < RoomList places={ sortedPlaces } onListItemHover={ onListItemHover } />
+                  < RoomList places={sortedPlaces} onListItemHover={onListItemHover} />
                 </section>
                 <div className="cities__right-section">
                   <section className="cities__map map">
                     <Map
-                      activeCityName={ activeCityName }
-                      city={ sortedPlaces.length !== 0 && sortedPlaces[0].city }
-                      points={ sortedPlaces }
-                      selectedPoint={ selectedPoint }
+                      activeCityName={activeCityName}
+                      city={sortedPlaces.length !== 0 && sortedPlaces[0].city}
+                      points={sortedPlaces}
+                      selectedPoint={selectedPoint}
                     />
                   </section>
                 </div>
@@ -57,7 +57,7 @@ function Main(props) {
   );
 }
 
-const mapStateToProps = ({ PLACES }) => ({
+const mapStateToProps = ({PLACES}) => ({
   activeCityName: PLACES.activeCityName,
   places: PLACES.places,
   sortBy: PLACES.sortBy,
@@ -70,5 +70,5 @@ Main.propTypes = {
 };
 
 const withLayoutMain = withLayout(Main);
-export { withLayoutMain };
+export {withLayoutMain};
 export default connect(mapStateToProps, null)(withLayoutMain);

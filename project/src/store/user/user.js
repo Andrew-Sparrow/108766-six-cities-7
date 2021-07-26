@@ -1,4 +1,4 @@
-import { ActionType } from '../actions';
+import {ActionType} from '../actions';
 
 import {
   AuthorizationStatus
@@ -30,4 +30,4 @@ const user = (state = initialState, action) => {
   }
 };
 
-export { user };
+export {user};

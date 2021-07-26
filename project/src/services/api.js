@@ -17,8 +17,7 @@ export const getAxiosInstance = (history = null) => {
 
   axiosInstance.interceptors.response.use(
     (response) =>
-      new Promise((resolve, reject) =>
-      {
+      new Promise((resolve, reject) => {
         resolve(response);
       }),
     (error) =>

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function PlaceCommentSubmitButton (props) {
+function PlaceCommentSubmitButton(props) {
   const {
     disabled,
     isSending,
@@ -11,9 +11,9 @@ function PlaceCommentSubmitButton (props) {
     <button
       className="reviews__submit form__submit button"
       type="submit"
-      disabled={ disabled }
+      disabled={disabled}
     >
-      { isSending ? 'Sending ...' : 'Submit' }
+      {isSending ? 'Sending ...' : 'Submit'}
     </button>
   );
 }

@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
+import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
 
 import PropTypes from 'prop-types';
 import SignIn from '../sign-in/sign-in';
@@ -43,7 +43,7 @@ function Layout(props) {
   );
 }
 
-const mapStateToProps = ({ USER, PLACES }) => ({
+const mapStateToProps = ({USER, PLACES}) => ({
   login: USER.loginValue,
   places: PLACES.places,
   sortBy: PLACES.sortBy,
@@ -57,5 +57,5 @@ Layout.propTypes = {
   authorizationStatus: PropTypes.string.isRequired,
 };
 
-export { Layout };
+export {Layout};
 export default connect(mapStateToProps, null)(Layout);

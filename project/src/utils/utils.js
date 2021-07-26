@@ -1,4 +1,4 @@
-import { AuthorizationStatus } from '../const';
+import {AuthorizationStatus} from '../const';
 import nanoid from 'nanoid';
 
 import {
@@ -109,7 +109,7 @@ class Utils {
     authorizationStatus === AuthorizationStatus.UNKNOWN;
 
   static formatDate = (dateString) => {
-    const DATE_OPTIONS = { year: 'numeric', month: 'short' };
+    const DATE_OPTIONS = {year: 'numeric', month: 'short'};
 
     return (new Date(dateString)).toLocaleDateString('en-US', DATE_OPTIONS);
   }

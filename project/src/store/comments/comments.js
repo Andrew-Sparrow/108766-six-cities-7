@@ -1,4 +1,4 @@
-import { ActionType } from '../actions';
+import {ActionType} from '../actions';
 
 const initialState = {
   comments: [],
@@ -24,4 +24,4 @@ const comments = (state = initialState, action) => {
   }
 };
 
-export { comments };
+export {comments};

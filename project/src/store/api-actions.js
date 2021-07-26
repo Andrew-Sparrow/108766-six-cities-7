@@ -11,12 +11,12 @@ import {
   logout as userLogout
 } from './actions';
 
-import { AuthorizationStatus, APIRoute } from '../const';
+import {AuthorizationStatus, APIRoute} from '../const';
 import Utils from '../utils/utils';
 
 export const fetchPlacesList = () => (dispatch, _getState, api) => (
   api.get(APIRoute.HOTELS)
-    .then(({ data }) => {
+    .then(({data}) => {
       const adaptedPlacesToClient = Utils.adaptPlacesToClient(data);
       dispatch(loadPlaces(adaptedPlacesToClient));
     })
@@ -24,8 +24,8 @@ export const fetchPlacesList = () => (dispatch, _getState, api) => (
 );
 
 export const fetchNearbyPlacesList = (id) => (dispatch, _getState, api) => (
-  api.get(`${APIRoute.HOTELS}/${id}/nearby`)
-    .then(({ data }) => {
+  api.get(`${ APIRoute.HOTELS }/${ id }/nearby`)
+    .then(({data}) => {
       const adaptedPlacesToClient = Utils.adaptPlacesToClient(data);
       dispatch(loadNearbyPlaces(adaptedPlacesToClient));
     })
@@ -33,7 +33,7 @@ export const fetchNearbyPlacesList = (id) => (dispatch, _getState, api) => (
 );
 
 export const fetchCommentsList = (id) => (dispatch, _getState, api) => (
-  api.get(`${APIRoute.COMMENTS}/${id}`)
+  api.get(`${ APIRoute.COMMENTS }/${ id }`)
     .then((info) => {
       dispatch(loadComments(info.data));
     })
@@ -48,8 +48,8 @@ export const addToFavorite = (id, isFavorite) => (dispatch, _getState, api) => (
     .catch((err) => {})
 );
 
-export const login = ({ login: email, password }) => (dispatch, _getState, api) => (
-  api.post(APIRoute.LOGIN, { email, password })
+export const login = ({login: email, password}) => (dispatch, _getState, api) => (
+  api.post(APIRoute.LOGIN, {email, password})
     .then((info) => {
       localStorage.setItem('token', info.data.token);
       localStorage.setItem('login', info.data.email);
@@ -62,7 +62,7 @@ export const login = ({ login: email, password }) => (dispatch, _getState, api) 
 export const sendComment = (id, comment, rating) => (dispatch, _getState, api) => {
   dispatch(changeLoadingCommentProcessStatus(true));
 
-  api.post(`${APIRoute.COMMENTS}/${ id }`, { comment, rating })
+  api.post(`${ APIRoute.COMMENTS }/${ id }`, {comment, rating})
     .then((info) => {
       dispatch(loadComments(info.data));
       dispatch(changeLoadingCommentProcessStatus(false));

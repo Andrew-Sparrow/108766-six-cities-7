@@ -3,9 +3,9 @@ import React, {
   Fragment
 } from 'react';
 
-import { useDispatch } from 'react-redux';
+import {useDispatch} from 'react-redux';
 
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
 import {
@@ -16,11 +16,11 @@ import {
 
 import PlaceCommentForm from './place-comment-form';
 import PlaceCommentList from './place-comment-list';
-import { PlaceFavoriteButton } from './place-favorite-button';
+import {PlaceFavoriteButton} from './place-favorite-button';
 import withLayout from '../hocs/with-layout';
 import PlaceImageList from './place-images-list';
 import PlaceGoodList from './place-goods-list';
-import { neighbourhoodPlaces } from '../../mock/neighbourhood-places';
+import {neighbourhoodPlaces} from '../../mock/neighbourhood-places';
 import PlaceNearPlaceList from './place-near-place-list';
 import LoadingScreen from '../loading-screen/loading-screen.jsx';
 
@@ -30,8 +30,8 @@ import {
   addToFavorite
 } from '../../store/api-actions';
 
-import { removeNearbyPlaces } from '../../store/actions';
-import { removeComments } from '../../store/actions';
+import {removeNearbyPlaces} from '../../store/actions';
+import {removeComments} from '../../store/actions';
 
 import {
   AuthorizationStatus,
@@ -42,7 +42,7 @@ import Utils from '../../utils/utils';
 import Map from '../map/map';
 
 function Place(props) {
-  const { id } = useParams();
+  const {id} = useParams();
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -98,7 +98,7 @@ function Place(props) {
               </div>
               <div className="property__rating rating">
                 <div className="property__stars rating__stars">
-                  <span style={{ width: `${ width }%` }} />
+                  <span style={{width: `${ width }%`}} />
                   <span className="visually-hidden">Rating</span>
                 </div>
                 <span className="property__rating-value rating__value">{Math.round(place.rating)}</span>
@@ -205,7 +205,7 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-const mapStateToProps = ({ PLACES, COMMENTS, USER }) => ({
+const mapStateToProps = ({PLACES, COMMENTS, USER}) => ({
   places: PLACES.places,
   comments: COMMENTS.comments,
   nearbyPlaces: PLACES.nearbyPlaces,
@@ -216,5 +216,5 @@ const mapStateToProps = ({ PLACES, COMMENTS, USER }) => ({
 
 const withLayoutPlace = withLayout(Place);
 
-export { withLayoutPlace };
+export {withLayoutPlace};
 export default connect(mapStateToProps, mapDispatchToProps)(withLayoutPlace);

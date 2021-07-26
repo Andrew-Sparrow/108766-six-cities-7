@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import PlaceGood from './place-good';
 import Utils from '../../utils/utils';
 
-function PlaceGoodList (props) {
-  const { goods } = props;
+function PlaceGoodList(props) {
+  const {goods} = props;
   const generatedIds = Utils.generateIdKeys(goods.length);
 
   return (

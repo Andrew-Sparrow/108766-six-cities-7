@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { createStore, applyMiddleware } from 'redux';
+import {createStore, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
 import browserHistory from './browser-history';
 
@@ -10,8 +10,8 @@ import {
 } from './services/api';
 
 import App from './components/app/app';
-import { Provider } from 'react-redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
+import {Provider} from 'react-redux';
+import {composeWithDevTools} from 'redux-devtools-extension';
 import rootReducer from './store/root-reducer';
 
 import {

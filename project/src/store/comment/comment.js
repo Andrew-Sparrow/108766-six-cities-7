@@ -1,4 +1,4 @@
-import { ActionType } from '../actions';
+import {ActionType} from '../actions';
 
 const initialState = {
   isCommentSending: false,
@@ -33,4 +33,4 @@ const comment = (state = initialState, action) => {
   }
 };
 
-export { comment };
+export {comment};
