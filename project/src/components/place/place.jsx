@@ -12,7 +12,7 @@ import {
 } from 'react-router-dom';
 import PlaceCommentForm from './place-comment-form';
 import PlaceCommentList from './place-comment-list';
-import {PlaceFavoriteButton} from './place-favorite-button';
+import PlaceFavoriteButton from './place-favorite-button';
 import withLayout from '../hocs/with-layout';
 import PlaceImageList from './place-images-list';
 import PlaceGoodList from './place-goods-list';

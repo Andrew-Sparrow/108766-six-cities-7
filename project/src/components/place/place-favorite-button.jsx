@@ -1,15 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
-import {addToFavorite} from '../../store/api-actions';
-import {getAuthorizationStatus} from '../../store/user/selectors';
-import {getPlaces} from '../../store/places/selectors';
 
 function PlaceFavoriteButton(props) {
-  const {
-    place,
-    onClick,
-  } = props;
+  const {place, onClick} = props;
 
   return (
     <button
@@ -25,21 +18,9 @@ function PlaceFavoriteButton(props) {
   );
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  favoriteClickHandler(idPlace, isFavoritePlace) {
-    dispatch(addToFavorite(idPlace, isFavoritePlace));
-  },
-});
-
-const mapStateToProps = (state) => ({
-  places: getPlaces(state),
-  authorizationStatus: getAuthorizationStatus(state),
-});
-
 PlaceFavoriteButton.propTypes = {
   place: PropTypes.object,
   onClick: PropTypes.func.isRequired,
 };
 
-export {PlaceFavoriteButton};
-export default connect(mapStateToProps, mapDispatchToProps)(PlaceFavoriteButton);
+export default PlaceFavoriteButton;
