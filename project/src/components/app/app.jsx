@@ -1,10 +1,8 @@
 import React from 'react';
 import {useSelector} from 'react-redux';
 import {Switch, Route, Router as BrowserRouter} from 'react-router-dom';
-import {
-  AppRoute,
-  AuthorizationStatus
-} from '../../const.js';
+
+import {AppRoute, AuthorizationStatus} from '../../const.js';
 import Main from '../main/main';
 import Favorites from '../favorites/favorites';
 import Login from '../login/login';
@@ -13,10 +11,7 @@ import Error from '../error/error';
 import LoadingScreen from '../loading-screen/loading-screen.jsx';
 import PrivateRoute from '../private-route/private-route.jsx';
 import browserHistory from '../../browser-history';
-import {
-  getPlaces,
-  getIsDataLoaded
-} from '../../store/places/selectors';
+import { getPlaces, getIsDataLoaded} from '../../store/places/selectors';
 import {getAuthorizationStatus} from '../../store/user/selectors';
 
 function App() {
