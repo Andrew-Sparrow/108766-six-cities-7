@@ -1,25 +1,12 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import Utils from '../../utils/utils';
-
-import {
-  Link,
-  useHistory
-} from 'react-router-dom';
-
-import {
-  useDispatch,
-  useSelector
-} from 'react-redux';
+import {Link, useHistory} from 'react-router-dom';
+import {useDispatch, useSelector} from 'react-redux';
 
 import {addToFavorite} from '../../store/api-actions';
-
+import Utils from '../../utils/utils';
 import CardInfo from '../card-info/card-info';
-
-import {
-  AuthorizationStatus,
-  AppRoute
-} from '../../const.js';
+import {AuthorizationStatus, AppRoute} from '../../const.js';
 
 function Room(props) {
   const {
@@ -34,12 +21,11 @@ function Room(props) {
     previewImage,
   } = props;
 
-  const width = Utils.getWidthByRating(rating);
-
   const history = useHistory();
   const dispatch = useDispatch();
-
   const authorizationStatus = useSelector((state) => state.authorizationStatus);
+
+  const width = Utils.getWidthByRating(rating);
 
   const listItemHoverHandler = (evt) => {
     onListItemHover(evt.currentTarget);

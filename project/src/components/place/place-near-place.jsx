@@ -1,24 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-
-import {
-  Link,
-  useHistory
-} from 'react-router-dom';
-
-import {
-  useDispatch,
-  useSelector
-} from 'react-redux';
+import {Link, useHistory} from 'react-router-dom';
+import {useDispatch, useSelector} from 'react-redux';
 
 import CardInfo from '../card-info/card-info';
 import Utils from '../../utils/utils';
-
-import {
-  AuthorizationStatus,
-  AppRoute
-} from '../../const.js';
-
+import {AuthorizationStatus, AppRoute} from '../../const.js';
 import {addToFavorite} from '../../store/api-actions';
 
 function PlaceNearPlace(props) {
@@ -35,10 +22,9 @@ function PlaceNearPlace(props) {
 
   const dispatch = useDispatch();
   const history = useHistory();
+  const authorizationStatus = useSelector((state) => state.authorizationStatus);
 
   const width = Utils.getWidthByRating(rating);
-
-  const authorizationStatus = useSelector((state) => state.authorizationStatus);
 
   const favoriteClickHandler = (evt) => {
     evt.preventDefault();

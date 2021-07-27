@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {configureStore} from '@reduxjs/toolkit';
-import browserHistory from './browser-history';
-import {getAxiosInstance} from './services/api';
-import App from './components/app/app';
 import {Provider} from 'react-redux';
-import rootReducer from './store/root-reducer';
 
+import {getAxiosInstance} from './services/api';
+import browserHistory from './browser-history';
+import App from './components/app/app';
+import rootReducer from './store/root-reducer';
 import {fetchPlacesList} from './store/api-actions';
 
 const api = getAxiosInstance(browserHistory);

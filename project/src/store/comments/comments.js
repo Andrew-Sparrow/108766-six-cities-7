@@ -1,8 +1,5 @@
 import {createReducer} from '@reduxjs/toolkit';
-import {
-  loadComments,
-  removeComments
-} from '../actions';
+import {loadComments, removeComments} from '../actions';
 
 const initialState = {
   comments: [],

@@ -5,19 +5,14 @@ import {Link} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
 
 import {login} from '../../store/api-actions';
-import {
-  AppRoute,
-  AuthorizationStatus
-} from '../../const.js';
+import {AppRoute, AuthorizationStatus} from '../../const.js';
 import {getAuthorizationStatus} from '../../store/user/selectors';
 
 function Login() {
   const loginRef = useRef();
   const passwordRef = useRef();
-
   const history = useHistory();
   const dispatch = useDispatch();
-
   const authorizationStatus = useSelector(getAuthorizationStatus);
 
   const handleSubmit = (evt) => {

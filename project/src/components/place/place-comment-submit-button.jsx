@@ -2,10 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function PlaceCommentSubmitButton(props) {
-  const {
-    disabled,
-    isSending,
-  } = props;
+  const {disabled, isSending} = props;
 
   return (
     <button

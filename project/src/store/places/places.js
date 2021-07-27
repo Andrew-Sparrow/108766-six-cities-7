@@ -1,6 +1,7 @@
 import {createReducer} from '@reduxjs/toolkit';
 import {SortByValues} from '../../const';
 import Utils from '../../utils/utils';
+
 import {
   changeCity,
   changeSortBy,

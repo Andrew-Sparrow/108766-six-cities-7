@@ -2,12 +2,11 @@ import React from 'react';
 import {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
+
 import FavoriteList from './favorite-list';
 import FavoritesEmpty from './favorites-empty';
-
 import offerProp from '../room/room.prop.js';
 import withLayout from '../hocs/with-layout';
-
 import Utils from '../../utils/utils';
 
 function Favorites(props) {
