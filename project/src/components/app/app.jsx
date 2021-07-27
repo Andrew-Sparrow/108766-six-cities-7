@@ -1,6 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
+import {useSelector} from 'react-redux';
 import {Switch, Route, Router as BrowserRouter} from 'react-router-dom';
 import {
   AppRoute,
@@ -20,12 +19,10 @@ import {
 } from '../../store/places/selectors';
 import {getAuthorizationStatus} from '../../store/user/selectors';
 
-function App(props) {
-  const {
-    isDataLoaded,
-    places,
-    authorizationStatus,
-  } = props;
+function App() {
+  const places = useSelector(getPlaces);
+  const isDataLoaded = useSelector(getIsDataLoaded);
+  const authorizationStatus = useSelector(getAuthorizationStatus);
 
   if (!isDataLoaded) {
     return (
@@ -61,17 +58,4 @@ function App(props) {
   );
 }
 
-App.propTypes = {
-  places: PropTypes.array.isRequired,
-  authorizationStatus: PropTypes.string,
-  isDataLoaded: PropTypes.bool.isRequired,
-};
-
-const mapStateToProps = (state) => ({
-  places: getPlaces(state),
-  isDataLoaded: getIsDataLoaded(state),
-  authorizationStatus: getAuthorizationStatus(state),
-});
-
-export {App};
-export default connect(mapStateToProps, null)(App);
+export default App;
