@@ -1,13 +1,14 @@
 import React, {useState} from 'react';
+import {useSelector, useDispatch} from 'react-redux';
+
 import {SortByValues} from '../../const';
-import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
 import {changeSortBy} from '../../store/actions';
 import {getSortBy} from '../../store/places/selectors';
 
 function SortBy(props) {
-  const {sortByValue, onSortChange} = props;
   const [isOpened, setIsOpened] = useState(false);
+  const sortByValue = useSelector(getSortBy);
+  const dispatch = useDispatch();
 
   const handleOpen = (evt) => {
     evt.preventDefault();
@@ -15,7 +16,7 @@ function SortBy(props) {
   };
 
   const handleSortChange = (evt) => {
-    onSortChange(evt.target.innerText);
+    dispatch(changeSortBy(evt.target.innerText));
   };
 
   return (
@@ -66,20 +67,4 @@ function SortBy(props) {
   );
 }
 
-const mapStateToProps = (state) => ({
-  sortByValue: getSortBy(state),
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  onSortChange(sortByValue) {
-    dispatch(changeSortBy(sortByValue));
-  },
-});
-
-SortBy.propTypes = {
-  sortByValue: PropTypes.string.isRequired,
-  onSortChange: PropTypes.func.isRequired,
-};
-
-export {SortBy};
-export default connect(mapStateToProps, mapDispatchToProps)(SortBy);
+export default SortBy;
