@@ -1,21 +1,16 @@
-import React, {
-  useState,
-  useEffect
-} from 'react';
-import PropTypes from 'prop-types';
-import {
-  connect,
-  useDispatch
-} from 'react-redux';
+import React, {useState, useEffect} from 'react';
+import {useSelector, useDispatch} from 'react-redux';
 import Tooltip from 'rc-tooltip';
 import 'rc-tooltip/assets/bootstrap.css';
 import {useParams} from 'react-router-dom';
+
 import {sendComment} from '../../store/api-actions';
 import {showErrorCommentFormMessage} from '../../store/actions';
 import PlaceCommentSubmitButton from './place-comment-submit-button';
 import PlaceRatingStar from './place-rating-star';
 import {MAX_RATING} from '../../const';
 import Utils from '../../utils/utils';
+
 import {
   getIsCommentSending,
   getIsCommentFormSendedSuccessfully,
@@ -24,13 +19,10 @@ import {
 } from '../../store/comment/selectors';
 
 function PlaceCommentForm(props) {
-  const {
-    onSubmit,
-    isCommentSending,
-    isShowCommentErrorMessage,
-    isCommentFormSendedSuccessfully,
-    commentErrorMessage,
-  } = props;
+  const isCommentSending = useSelector(getIsCommentSending);
+  const isShowCommentErrorMessage = useSelector(getIsShowCommentErrorMessage);
+  const isCommentFormSendedSuccessfully = useSelector(getIsCommentFormSendedSuccessfully);
+  const commentErrorMessage = useSelector(getCommentErrorMessage);
 
   const MAX_LETTERS_AMOUNT = 300;
   const MIN_LETTERS_AMOUNT = 50;
@@ -64,7 +56,7 @@ function PlaceCommentForm(props) {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    onSubmit(id, commentText, rating);
+    dispatch(sendComment(id, commentText, rating));
   };
 
   useEffect(() => {
@@ -120,26 +112,4 @@ function PlaceCommentForm(props) {
   );
 }
 
-const mapStateToProps = (state) => ({
-  isCommentSending: getIsCommentSending(state),
-  isShowCommentErrorMessage: getIsShowCommentErrorMessage(state),
-  isCommentFormSendedSuccessfully: getIsCommentFormSendedSuccessfully(state),
-  commentErrorMessage: getCommentErrorMessage(state),
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  onSubmit(idHotel, text, hotelRating) {
-    dispatch(sendComment(idHotel, text, hotelRating));
-  },
-});
-
-PlaceCommentForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-  isCommentSending: PropTypes.bool.isRequired,
-  isShowCommentErrorMessage: PropTypes.bool,
-  isCommentFormSendedSuccessfully: PropTypes.bool,
-  commentErrorMessage: PropTypes.string,
-};
-
-export {PlaceCommentForm};
-export default connect(mapStateToProps, mapDispatchToProps)(PlaceCommentForm);
+export default PlaceCommentForm;
