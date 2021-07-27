@@ -2,8 +2,8 @@ import React, {useRef, useEffect} from 'react';
 import {useHistory} from 'react-router-dom';
 import {Fragment} from 'react';
 import {Link} from 'react-router-dom';
-import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
+
 import {login} from '../../store/api-actions';
 import {
   AppRoute,
@@ -11,19 +11,22 @@ import {
 } from '../../const.js';
 import {getAuthorizationStatus} from '../../store/user/selectors';
 
-function Login({onSubmit, authorizationStatus}) {
+function Login() {
   const loginRef = useRef();
   const passwordRef = useRef();
 
   const history = useHistory();
+  const dispatch = useDispatch();
+
+  const authorizationStatus = useSelector(getAuthorizationStatus);
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
 
-    onSubmit({
+    dispatch(login({
       login: loginRef.current.value,
       password: passwordRef.current.value,
-    });
+    }));
   };
 
   useEffect(() => {
@@ -107,20 +110,4 @@ function Login({onSubmit, authorizationStatus}) {
   );
 }
 
-Login.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-  authorizationStatus: PropTypes.string,
-};
-
-const mapStateToProps = (state) => ({
-  authorizationStatus: getAuthorizationStatus(state),
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  onSubmit(authData) {
-    dispatch(login(authData));
-  },
-});
-
-export {Login};
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default Login;
