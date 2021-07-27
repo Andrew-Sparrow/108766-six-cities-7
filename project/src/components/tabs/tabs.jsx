@@ -1,17 +1,21 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
-import {connect} from 'react-redux';
-import {
-  cityList,
-  SortByValues
-} from '../../const';
+import {useSelector, useDispatch} from 'react-redux';
+
+import {cityList, SortByValues} from '../../const';
 import {changeCity} from '../../store/actions';
 import {changeSortBy} from '../../store/actions';
 import {getActiveCityName} from '../../store/places/selectors';
 
 function Tabs(props) {
-  const {activeCityName, onTabClick} = props;
+  const activeCityName = useSelector(getActiveCityName);
+  const dispatch = useDispatch();
+
+  const handleTabClick = (evt) => {
+    evt.preventDefault();
+    dispatch(changeCity(evt.currentTarget.dataset.city));
+    dispatch(changeSortBy(SortByValues.POPULAR));
+  };
 
   return (
     <div className="tabs">
@@ -23,10 +27,7 @@ function Tabs(props) {
                 data-city={city}
                 className={`locations__item-link tabs__item ${ city === activeCityName && 'tabs__item--active' }`}
                 to="#"
-                onClick={(evt) => {
-                  evt.preventDefault();
-                  onTabClick(evt.currentTarget.dataset.city);
-                }}
+                onClick={handleTabClick}
               >
                 <span>{city}</span>
               </Link>
@@ -38,21 +39,4 @@ function Tabs(props) {
   );
 }
 
-const mapStateToProps = (state) => ({
-  activeCityName: getActiveCityName(state),
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  onTabClick(cityName) {
-    dispatch(changeCity(cityName));
-    dispatch(changeSortBy(SortByValues.POPULAR));
-  },
-});
-
-Tabs.propTypes = {
-  activeCityName: PropTypes.string,
-  onTabClick: PropTypes.func.isRequired,
-};
-
-export {Tabs};
-export default connect(mapStateToProps, mapDispatchToProps)(Tabs);
+export default Tabs;
