@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
+import {useSelector} from 'react-redux';
+
 import RoomList from '../room-list/room-list';
 import withLayout from '../hocs/with-layout';
 import Map from '../map/map';
@@ -8,16 +8,14 @@ import Tabs from '../tabs/tabs';
 import SortBy from '../sort-by/sort-by';
 import Utils from '../../utils/utils';
 import MainEmpty from '../main-empty/main-empty';
-import {
-  getPlaces,
-  getSortBy,
-  getActiveCityName
-} from '../../store/places/selectors';
+import {getPlaces, getSortBy, getActiveCityName} from '../../store/places/selectors';
 
-function Main(props) {
-  const {places, activeCityName, sortBy} = props;
-
+function Main() {
   const [selectedPoint, setSelectedPoint] = useState({});
+
+  const activeCityName = useSelector(getActiveCityName);
+  const places = useSelector(getPlaces);
+  const sortBy = useSelector(getSortBy);
 
   const filteredPlaces = Utils.getFilteredPlaces(activeCityName, places);
   const sortedPlaces = Utils.getSortedPlaces(sortBy, filteredPlaces);
@@ -61,18 +59,5 @@ function Main(props) {
   );
 }
 
-const mapStateToProps = (state) => ({
-  activeCityName: getActiveCityName(state),
-  places: getPlaces(state),
-  sortBy: getSortBy(state),
-});
-
-Main.propTypes = {
-  places: PropTypes.array,
-  activeCityName: PropTypes.string.isRequired,
-  sortBy: PropTypes.string.isRequired,
-};
-
 const withLayoutMain = withLayout(Main);
-export {withLayoutMain};
-export default connect(mapStateToProps, null)(withLayoutMain);
+export default withLayoutMain;
