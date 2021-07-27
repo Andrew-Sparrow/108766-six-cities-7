@@ -1,15 +1,7 @@
-import React, {
-  useEffect,
-  Fragment
-} from 'react';
-import {useDispatch} from 'react-redux';
-import {connect} from 'react-redux';
-import PropTypes from 'prop-types';
-import {
-  Link,
-  useParams,
-  useHistory
-} from 'react-router-dom';
+import React, {useEffect, Fragment} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {Link, useParams, useHistory} from 'react-router-dom';
+
 import PlaceCommentForm from './place-comment-form';
 import PlaceCommentList from './place-comment-list';
 import PlaceFavoriteButton from './place-favorite-button';
@@ -19,44 +11,39 @@ import PlaceGoodList from './place-goods-list';
 import {neighbourhoodPlaces} from '../../mock/neighbourhood-places';
 import PlaceNearPlaceList from './place-near-place-list';
 import LoadingScreen from '../loading-screen/loading-screen.jsx';
+
 import {
   fetchCommentsList,
   fetchNearbyPlacesList,
   addToFavorite
 } from '../../store/api-actions';
+
 import {removeNearbyPlaces} from '../../store/actions';
 import {removeComments} from '../../store/actions';
-import {
-  AuthorizationStatus,
-  AppRoute
-} from '../../const.js';
+import {AuthorizationStatus, AppRoute} from '../../const.js';
 import Utils from '../../utils/utils';
 import Map from '../map/map';
 import {getAuthorizationStatus} from '../../store/user/selectors';
+import {getComments, getIsCommentsLoaded} from '../../store/comments/selectors';
+
 import {
   getPlaces,
   getIsNearbyPlacesLoaded,
   getNearbyPlaces
 } from '../../store/places/selectors';
-import {
-  getComments,
-  getIsCommentsLoaded
-} from '../../store/comments/selectors';
+
 
 function Place(props) {
   const {id} = useParams();
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const {
-    places,
-    nearbyPlaces,
-    comments,
-    isCommentsLoaded,
-    isNearbyPlacesLoaded,
-    authorizationStatus,
-    favoriteClickHandler,
-  } = props;
+  const places = useSelector(getPlaces);
+  const isNearbyPlacesLoaded = useSelector(getIsNearbyPlacesLoaded);
+  const nearbyPlaces = useSelector(getNearbyPlaces);
+  const comments = useSelector(getComments);
+  const isCommentsLoaded = useSelector(getIsCommentsLoaded);
+  const authorizationStatus = useSelector(getAuthorizationStatus);
 
   const place = places.find((placeItem) => placeItem.id === +id);
 
@@ -77,7 +64,7 @@ function Place(props) {
     if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
       history.push(AppRoute.SIGN_IN);
     } else {
-      favoriteClickHandler(place.id, !place.isFavorite);
+      dispatch(addToFavorite(place.id, !place.isFavorite));
     }
   };
 
@@ -191,32 +178,6 @@ function Place(props) {
   );
 }
 
-Place.propTypes = {
-  places: PropTypes.array,
-  comments: PropTypes.array,
-  nearbyPlaces: PropTypes.array,
-  isCommentsLoaded: PropTypes.bool.isRequired,
-  isNearbyPlacesLoaded: PropTypes.bool.isRequired,
-  authorizationStatus: PropTypes.string.isRequired,
-  favoriteClickHandler: PropTypes.func,
-};
-
-const mapDispatchToProps = (dispatch) => ({
-  favoriteClickHandler(idPlace, isFavoritePlace) {
-    dispatch(addToFavorite(idPlace, isFavoritePlace));
-  },
-});
-
-const mapStateToProps = (state) => ({
-  places: getPlaces(state),
-  isNearbyPlacesLoaded: getIsNearbyPlacesLoaded(state),
-  nearbyPlaces: getNearbyPlaces(state),
-  comments: getComments(state),
-  isCommentsLoaded: getIsCommentsLoaded(state),
-  authorizationStatus: getAuthorizationStatus(state),
-});
-
 const withLayoutPlace = withLayout(Place);
 
-export {withLayoutPlace};
-export default connect(mapStateToProps, mapDispatchToProps)(withLayoutPlace);
+export default withLayoutPlace;
