@@ -48,7 +48,7 @@ function PlaceCommentForm(props) {
     setRating(+evt.target.defaultValue);
   };
 
-  const handleFocusChange = () => () => {
+  const handleFocusChange = () => {
     if (isShowCommentErrorMessage) {
       dispatch(showErrorCommentFormMessage(false));
     }
@@ -86,7 +86,7 @@ function PlaceCommentForm(props) {
         >
           <textarea
             className="reviews__textarea form__textarea"
-            onChange={(evt) => handleChangeComment(evt)}
+            onChange={handleChangeComment}
             id="review"
             value={commentText}
             name="review"
