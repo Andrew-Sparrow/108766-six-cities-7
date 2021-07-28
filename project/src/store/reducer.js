@@ -6,7 +6,7 @@ import {
   LoginValue
 } from '../const';
 
-import Utils from '../utils/utils';
+import Util from '../util/util';
 
 const initialState = {
   activeCityName: 'Paris',
@@ -96,7 +96,7 @@ function reducer(state = initialState, action) {
     case ActionType.CHANGE_FAVORITE:
       return {
         ...state,
-        places: Utils.getUpdatedPlaces(action.payload.id, state.places, action.payload.newPlace),
+        places: Util.getUpdatedPlaces(action.payload.id, state.places, action.payload.newPlace),
       };
     case ActionType.CHANGE_LOGIN:
       return {

@@ -4,7 +4,7 @@ import {Link, useHistory} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
 
 import {addToFavorite} from '../../store/api-actions';
-import Utils from '../../util/util';
+import Util from '../../util/util';
 import CardInfo from '../card-info/card-info';
 import {AuthorizationStatus, AppRoute} from '../../const';
 
@@ -25,13 +25,13 @@ function Room(props) {
   const dispatch = useDispatch();
   const authorizationStatus = useSelector((state) => state.authorizationStatus);
 
-  const width = Utils.getWidthByRating(rating);
+  const width = Util.getWidthByRating(rating);
 
   const listItemHoverHandler = (evt) => {
     onListItemHover(evt.currentTarget);
   };
 
-  const favoriteClickHandler = (evt) => {
+  const onFavoriteClick = (evt) => {
     evt.preventDefault();
     if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
       history.push(AppRoute.SIGN_IN);
@@ -68,7 +68,7 @@ function Room(props) {
         isFavorite={isFavorite}
         type={type}
         width={width}
-        favoriteClickHandler={favoriteClickHandler}
+        onFavoriteClick={onFavoriteClick}
       />
     </article>
   );

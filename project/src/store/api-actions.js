@@ -12,12 +12,12 @@ import {
 } from './actions';
 
 import {AuthorizationStatus, APIRoute} from '../const';
-import Utils from '../util/util';
+import Util from '../util/util';
 
 export const fetchPlacesList = () => (dispatch, _getState, api) => (
   api.get(APIRoute.HOTELS)
     .then(({data}) => {
-      const adaptedPlacesToClient = Utils.adaptPlacesToClient(data);
+      const adaptedPlacesToClient = Util.adaptPlacesToClient(data);
       dispatch(loadPlaces(adaptedPlacesToClient));
     })
     .catch((err) => {})
@@ -26,7 +26,7 @@ export const fetchPlacesList = () => (dispatch, _getState, api) => (
 export const fetchNearbyPlacesList = (id) => (dispatch, _getState, api) => (
   api.get(`${ APIRoute.HOTELS }/${ id }/nearby`)
     .then(({data}) => {
-      const adaptedPlacesToClient = Utils.adaptPlacesToClient(data);
+      const adaptedPlacesToClient = Util.adaptPlacesToClient(data);
       dispatch(loadNearbyPlaces(adaptedPlacesToClient));
     })
     .catch((err) => {})

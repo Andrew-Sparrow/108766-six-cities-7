@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Utils from '../../util/util';
+import Util from '../../util/util';
 import PlaceNearPlace from './place-near-place';
 
 function PlaceNearPlaceList(props) {
   const {nearbyPlaces, commonPlaces} = props;
 
-  const commonPlacesLinksGottenByNearbyPlaces = Utils.getNearbyPlacesFromCommonPlaces(nearbyPlaces, commonPlaces);
+  const commonPlacesLinksGottenByNearbyPlaces = Util.getNearbyPlacesFromCommonPlaces(nearbyPlaces, commonPlaces);
 
   return (
     <div className="near-places__list places__list">

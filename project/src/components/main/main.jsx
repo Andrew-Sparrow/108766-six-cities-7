@@ -6,7 +6,7 @@ import withLayout from '../hocs/with-layout';
 import Map from '../map/map';
 import Tabs from '../tabs/tabs';
 import SortBy from '../sort-by/sort-by';
-import Utils from '../../util/util';
+import Util from '../../util/util';
 import MainEmpty from '../main-empty/main-empty';
 import {getPlaces, getSortBy, getActiveCityName} from '../../store/places/selectors';
 
@@ -17,8 +17,8 @@ function Main() {
   const places = useSelector(getPlaces);
   const sortBy = useSelector(getSortBy);
 
-  const filteredPlaces = Utils.getFilteredPlaces(activeCityName, places);
-  const sortedPlaces = Utils.getSortedPlaces(sortBy, filteredPlaces);
+  const filteredPlaces = Util.getFilteredPlaces(activeCityName, places);
+  const sortedPlaces = Util.getSortedPlaces(sortBy, filteredPlaces);
 
   const onListItemHover = (listItem) => {
     const currentPoint = sortedPlaces.find((place) => place.id === parseInt(listItem.id, 10));

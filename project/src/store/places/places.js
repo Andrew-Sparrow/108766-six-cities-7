@@ -1,6 +1,6 @@
 import {createReducer} from '@reduxjs/toolkit';
 import {SortByValues} from '../../const';
-import Utils from '../../util/util';
+import Util from '../../util/util';
 
 import {
   changeCity,
@@ -41,7 +41,7 @@ const places = createReducer(initialState, (builder) => {
       state.isNearbyPlacesLoaded = false;
     })
     .addCase(changeFavorite, (state, action) => {
-      state.places = Utils.getUpdatedPlaces(action.payload.id, state.places, action.payload.newPlace);
+      state.places = Util.getUpdatedPlaces(action.payload.id, state.places, action.payload.newPlace);
     });
 });
 

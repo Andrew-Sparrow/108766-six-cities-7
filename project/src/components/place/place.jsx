@@ -21,7 +21,7 @@ import {
 import {removeNearbyPlaces} from '../../store/actions';
 import {removeComments} from '../../store/actions';
 import {AuthorizationStatus, AppRoute} from '../../const';
-import Utils from '../../util/util';
+import Util from '../../util/util';
 import Map from '../map/map';
 import {getAuthorizationStatus} from '../../store/user/selectors';
 import {getComments, getIsCommentsLoaded} from '../../store/comments/selectors';
@@ -47,7 +47,7 @@ function Place(props) {
 
   const place = places.find((placeItem) => placeItem.id === +id);
 
-  const width = Utils.getWidthByRating(place.rating);
+  const width = Util.getWidthByRating(place.rating);
 
   useEffect(() => {
     dispatch(fetchCommentsList(id));

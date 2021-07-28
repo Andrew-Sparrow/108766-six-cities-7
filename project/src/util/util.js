@@ -7,7 +7,7 @@ import {
   SortByValues
 } from '../const';
 
-class Utils {
+class Util {
   static adaptToClient(offerFromServer) {
     const adaptedOfferForClient = Object.assign(
       {},
@@ -160,4 +160,4 @@ class Utils {
   }
 }
 
-export default Utils;
+export default Util;

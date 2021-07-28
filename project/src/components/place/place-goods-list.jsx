@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import PlaceGood from './place-good';
-import Utils from '../../util/util';
+import Util from '../../util/util';
 
 function PlaceGoodList(props) {
   const {goods} = props;
-  const generatedIds = Utils.generateIdKeys(goods.length);
+  const generatedIds = Util.generateIdKeys(goods.length);
 
   return (
     <ul className="property__inside-list">

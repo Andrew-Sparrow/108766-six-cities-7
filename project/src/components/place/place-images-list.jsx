@@ -1,11 +1,11 @@
 import React, {memo} from 'react';
 import PropTypes from 'prop-types';
 import PlaceImage from './place-image';
-import Utils from '../../util/util';
+import Util from '../../util/util';
 
 function PlaceImageList(props) {
   const {images} = props;
-  const generatedIds = Utils.generateIdKeys(images.length);
+  const generatedIds = Util.generateIdKeys(images.length);
 
   return (
     <div className="property__gallery-container container">

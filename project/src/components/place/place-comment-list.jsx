@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import PlaceComment from './place-comment';
-import Utils from '../../util/util';
+import Util from '../../util/util';
 import {MAX_COMMENTS_AMOUNT} from '../../const';
 
 function PlaceCommentList(props) {
@@ -11,7 +11,7 @@ function PlaceCommentList(props) {
   return (
     <ul className="reviews__list">
       {slicedReviews.map((item) => {
-        const adaptedCommentForClient = Utils.adaptCommentToClient(item);
+        const adaptedCommentForClient = Util.adaptCommentToClient(item);
 
         return (
           <PlaceComment

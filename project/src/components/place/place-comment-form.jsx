@@ -9,7 +9,7 @@ import {showErrorCommentFormMessage} from '../../store/actions';
 import PlaceCommentSubmitButton from './place-comment-submit-button';
 import PlaceRatingStar from './place-rating-star';
 import {MAX_RATING} from '../../const';
-import Utils from '../../util/util';
+import Util from '../../util/util';
 
 import {
   getIsCommentSending,
@@ -38,7 +38,7 @@ function PlaceCommentForm(props) {
     || (commentText.length > MAX_LETTERS_AMOUNT)
     || (rating === 0);
 
-  const generatedKeys = Utils.generateIdKeys(MAX_RATING);
+  const generatedKeys = Util.generateIdKeys(MAX_RATING);
 
   const handleChangeComment = (evt) => {
     setCommentText(evt.target.value);

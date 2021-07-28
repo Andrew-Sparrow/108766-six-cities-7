@@ -4,7 +4,7 @@ import {Link, useHistory} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
 
 import CardInfo from '../card-info/card-info';
-import Utils from '../../utils/utils';
+import Util from '../../util/util';
 import {AuthorizationStatus, AppRoute} from '../../const';
 import {addToFavorite} from '../../store/api-actions';
 import {getAuthorizationStatus} from '../../store/user/selectors';
@@ -12,7 +12,7 @@ import {getAuthorizationStatus} from '../../store/user/selectors';
 function PlaceNearPlace(props) {
   const {
     id,
-    price,../../util/utils
+    price,
     title,
     isPremium,
     isFavorite,
@@ -25,9 +25,9 @@ function PlaceNearPlace(props) {
   const history = useHistory();
   const authorizationStatus = useSelector(getAuthorizationStatus);
 
-  const width = Utils.getWidthByRating(rating);
+  const width = Util.getWidthByRating(rating);
 
-  const favoriteClickHandler = (evt) => {
+  const onFavoriteClick = (evt) => {
     evt.preventDefault();
     if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
       history.push(AppRoute.SIGN_IN);
@@ -60,7 +60,7 @@ function PlaceNearPlace(props) {
         isFavorite={isFavorite}
         type={type}
         width={width}
-        favoriteClickHandler={favoriteClickHandler}
+        onFavoriteClick={onFavoriteClick}
       />
     </article>
   );

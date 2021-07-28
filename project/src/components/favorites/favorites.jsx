@@ -7,11 +7,11 @@ import FavoriteList from './favorite-list';
 import FavoritesEmpty from './favorites-empty';
 import offerProp from '../room/room.prop';
 import withLayout from '../hocs/with-layout';
-import Utils from '../../util/util';
+import Util from '../../util/util';
 
 function Favorites(props) {
   const {places} = props;
-  const favoriteList = Utils.getFavoritePlacesSeparatedByCity(places);
+  const favoriteList = Util.getFavoritePlacesSeparatedByCity(places);
 
   return (
     <Fragment>

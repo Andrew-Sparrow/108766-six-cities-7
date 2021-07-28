@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Utils from '../../util/util';
+import Util from '../../util/util';
 
 function PlaceComment(props) {
   const {
@@ -11,7 +11,7 @@ function PlaceComment(props) {
     rating,
   } = props;
 
-  const width = Utils.getWidthByRating(rating);
+  const width = Util.getWidthByRating(rating);
 
   return (
     <li className="reviews__item">
@@ -34,7 +34,7 @@ function PlaceComment(props) {
         <p className="reviews__text">
           {text}
         </p>
-        <time className="reviews__time" dateTime={date}>{Utils.formatDate(date)}</time>
+        <time className="reviews__time" dateTime={date}>{Util.formatDate(date)}</time>
       </div>
     </li>
   );
