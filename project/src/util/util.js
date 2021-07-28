@@ -73,15 +73,6 @@ class Utils {
     return adaptedCommentForClient;
   }
 
-  static adaptToServer(filmFromClient) {
-    const filmInfoForServer = Object.assign(
-      {},
-      {},
-    );
-
-    return filmInfoForServer;
-  }
-
   static getFavoritePlacesSeparatedByCity(places) {
     const favoritePlaces = new Map();
 
