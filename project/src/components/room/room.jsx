@@ -7,6 +7,7 @@ import {addToFavorite} from '../../store/api-actions';
 import Util from '../../util/util';
 import CardInfo from '../card-info/card-info';
 import {AuthorizationStatus, AppRoute} from '../../const';
+import {getAuthorizationStatus} from '../../store/user/selectors';
 
 function Room(props) {
   const {
@@ -23,7 +24,7 @@ function Room(props) {
 
   const history = useHistory();
   const dispatch = useDispatch();
-  const authorizationStatus = useSelector((state) => state.authorizationStatus);
+  const authorizationStatus = useSelector(getAuthorizationStatus);
 
   const width = Util.getWidthByRating(rating);
 
