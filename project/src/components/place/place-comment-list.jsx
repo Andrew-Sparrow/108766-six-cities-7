@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import PlaceComment from './place-comment';
-import Utils from '../../utils/utils';
+import Utils from '../../util/util';
 import {MAX_COMMENTS_AMOUNT} from '../../const';
 
 function PlaceCommentList(props) {

@@ -12,7 +12,7 @@ import {
 } from './actions';
 
 import {AuthorizationStatus, APIRoute} from '../const';
-import Utils from '../utils/utils';
+import Utils from '../util/util';
 
 export const fetchPlacesList = () => (dispatch, _getState, api) => (
   api.get(APIRoute.HOTELS)

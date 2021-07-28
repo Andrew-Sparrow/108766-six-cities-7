@@ -1,7 +1,7 @@
 import React, {memo} from 'react';
 import PropTypes from 'prop-types';
 import PlaceImage from './place-image';
-import Utils from '../../utils/utils';
+import Utils from '../../util/util';
 
 function PlaceImageList(props) {
   const {images} = props;

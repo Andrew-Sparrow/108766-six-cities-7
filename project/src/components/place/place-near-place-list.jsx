@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Utils from '../../utils/utils';
+import Utils from '../../util/util';
 import PlaceNearPlace from './place-near-place';
 
 function PlaceNearPlaceList(props) {

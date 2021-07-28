@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import PlaceGood from './place-good';
-import Utils from '../../utils/utils';
+import Utils from '../../util/util';
 
 function PlaceGoodList(props) {
   const {goods} = props;

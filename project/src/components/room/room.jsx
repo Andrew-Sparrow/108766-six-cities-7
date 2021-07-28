@@ -4,7 +4,7 @@ import {Link, useHistory} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
 
 import {addToFavorite} from '../../store/api-actions';
-import Utils from '../../utils/utils';
+import Utils from '../../util/util';
 import CardInfo from '../card-info/card-info';
 import {AuthorizationStatus, AppRoute} from '../../const';
 

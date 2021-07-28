@@ -21,7 +21,7 @@ import {
 import {removeNearbyPlaces} from '../../store/actions';
 import {removeComments} from '../../store/actions';
 import {AuthorizationStatus, AppRoute} from '../../const';
-import Utils from '../../utils/utils';
+import Utils from '../../util/util';
 import Map from '../map/map';
 import {getAuthorizationStatus} from '../../store/user/selectors';
 import {getComments, getIsCommentsLoaded} from '../../store/comments/selectors';

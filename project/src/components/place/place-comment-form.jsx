@@ -9,7 +9,7 @@ import {showErrorCommentFormMessage} from '../../store/actions';
 import PlaceCommentSubmitButton from './place-comment-submit-button';
 import PlaceRatingStar from './place-rating-star';
 import {MAX_RATING} from '../../const';
-import Utils from '../../utils/utils';
+import Utils from '../../util/util';
 
 import {
   getIsCommentSending,

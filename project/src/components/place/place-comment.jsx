@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Utils from '../../utils/utils';
+import Utils from '../../util/util';
 
 function PlaceComment(props) {
   const {

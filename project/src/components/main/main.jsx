@@ -6,7 +6,7 @@ import withLayout from '../hocs/with-layout';
 import Map from '../map/map';
 import Tabs from '../tabs/tabs';
 import SortBy from '../sort-by/sort-by';
-import Utils from '../../utils/utils';
+import Utils from '../../util/util';
 import MainEmpty from '../main-empty/main-empty';
 import {getPlaces, getSortBy, getActiveCityName} from '../../store/places/selectors';
 

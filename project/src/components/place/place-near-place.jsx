@@ -12,7 +12,7 @@ import {getAuthorizationStatus} from '../../store/user/selectors';
 function PlaceNearPlace(props) {
   const {
     id,
-    price,
+    price,../../util/utils
     title,
     isPremium,
     isFavorite,
