@@ -5,8 +5,9 @@ import {useDispatch, useSelector} from 'react-redux';
 
 import CardInfo from '../card-info/card-info';
 import Utils from '../../utils/utils';
-import {AuthorizationStatus, AppRoute} from '../../const.js';
+import {AuthorizationStatus, AppRoute} from '../../const';
 import {addToFavorite} from '../../store/api-actions';
+import {getAuthorizationStatus} from '../../store/user/selectors';
 
 function PlaceNearPlace(props) {
   const {
@@ -22,7 +23,7 @@ function PlaceNearPlace(props) {
 
   const dispatch = useDispatch();
   const history = useHistory();
-  const authorizationStatus = useSelector((state) => state.authorizationStatus);
+  const authorizationStatus = useSelector(getAuthorizationStatus);
 
   const width = Utils.getWidthByRating(rating);
 

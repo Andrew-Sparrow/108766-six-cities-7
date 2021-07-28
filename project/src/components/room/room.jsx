@@ -6,7 +6,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {addToFavorite} from '../../store/api-actions';
 import Utils from '../../utils/utils';
 import CardInfo from '../card-info/card-info';
-import {AuthorizationStatus, AppRoute} from '../../const.js';
+import {AuthorizationStatus, AppRoute} from '../../const';
 
 function Room(props) {
   const {

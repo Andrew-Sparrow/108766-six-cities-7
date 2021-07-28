@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import {useDispatch} from 'react-redux';
 import Tooltip from 'rc-tooltip';
 
-import {AppRoute} from '../../const.js';
+import {AppRoute} from '../../const';
 import {logout} from '../../store/actions';
 
 function SignOut(props) {

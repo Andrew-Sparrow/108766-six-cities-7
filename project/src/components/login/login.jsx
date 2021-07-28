@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
 
 import {login} from '../../store/api-actions';
-import {AppRoute, AuthorizationStatus} from '../../const.js';
+import {AppRoute, AuthorizationStatus} from '../../const';
 import {getAuthorizationStatus} from '../../store/user/selectors';
 
 function Login() {

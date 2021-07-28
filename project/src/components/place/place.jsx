@@ -10,7 +10,7 @@ import PlaceImageList from './place-images-list';
 import PlaceGoodList from './place-goods-list';
 import {neighbourhoodPlaces} from '../../mock/neighbourhood-places';
 import PlaceNearPlaceList from './place-near-place-list';
-import LoadingScreen from '../loading-screen/loading-screen.jsx';
+import LoadingScreen from '../loading-screen/loading-screen';
 
 import {
   fetchCommentsList,
@@ -20,7 +20,7 @@ import {
 
 import {removeNearbyPlaces} from '../../store/actions';
 import {removeComments} from '../../store/actions';
-import {AuthorizationStatus, AppRoute} from '../../const.js';
+import {AuthorizationStatus, AppRoute} from '../../const';
 import Utils from '../../utils/utils';
 import Map from '../map/map';
 import {getAuthorizationStatus} from '../../store/user/selectors';
