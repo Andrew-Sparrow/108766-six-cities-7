@@ -68,6 +68,12 @@ export const sendComment = (id, comment, rating) => (dispatch, _getState, api) =
       dispatch(changeLoadingCommentProcessStatus(false));
       dispatch(showErrorCommentFormMessage(false));
       dispatch(changeIsCommentSendedSuccessfullyStatus(true));
+      /*
+      this additional bottom line was made for clean up a comment form
+      and establish "isCommentFormSendedSuccessfully" to "false"
+      to fix problem with save text in comment form after network error
+       */
+      dispatch(changeIsCommentSendedSuccessfullyStatus(false));
     })
     .catch((err) => {
       dispatch(showErrorCommentFormMessage(true, err.message));
