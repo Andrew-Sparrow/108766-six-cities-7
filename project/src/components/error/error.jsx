@@ -1,12 +1,14 @@
-import React, {Fragment} from 'react';
+import React from 'react';
+import withLayout from '../hocs/with-layout';
 
 function Error() {
   return (
-    <Fragment>
-      <h1>404</h1>
+    <div style={{margin: 'auto', width: '200px'}}>
+      <h1 style={{textAlign: 'center'}}>404</h1>
       <h2>Page Not Found</h2>
-    </Fragment>
+    </div>
   );
 }
 
-export default Error;
+const withLayoutMain = withLayout(Error);
+export default withLayoutMain;
