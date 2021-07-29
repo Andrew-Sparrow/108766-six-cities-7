@@ -1,13 +1,12 @@
 import {createReducer} from '@reduxjs/toolkit';
+
 import {
   changeAuthorizationStatus,
   changeLogin,
   logout
 } from '../actions';
-import {
-  AuthorizationStatus,
-  LoginValue
-} from '../../const';
+
+import {AuthorizationStatus, LoginValue} from '../../const';
 
 const initialState = {
   authorizationStatus: AuthorizationStatus.NO_AUTH,

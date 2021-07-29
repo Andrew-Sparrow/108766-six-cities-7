@@ -158,6 +158,13 @@ class Util {
 
     return nearbyPlacesLinks;
   }
+
+  static resetFavoriteStates(places) {
+    return places.map((place) => {
+      place = {...place, isFavorite: false};
+      return place;
+    });
+  }
 }
 
 export default Util;

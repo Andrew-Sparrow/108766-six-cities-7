@@ -1,16 +1,22 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import Tooltip from 'rc-tooltip';
 
 import {AppRoute} from '../../const';
-import {logout} from '../../store/actions';
+import {logout, resetFavorites} from '../../store/actions';
+import {getPlaces} from '../../store/places/selectors';
 
 function SignOut(props) {
   const {login} = props;
+  const places = useSelector(getPlaces);
+
   const dispatch = useDispatch();
-  const handleLogOutButtonClick = () => dispatch(logout());
+  const handleLogOutButtonClick = () => {
+    dispatch(logout());
+    dispatch(resetFavorites(places));
+  };
 
   return (
     <Fragment>

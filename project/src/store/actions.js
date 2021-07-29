@@ -17,6 +17,7 @@ export const ActionType = {
   SEND_COMMENT: 'comment/sendComment',
   SEND_COMMENT_RATING: 'comment/sendCommentRating',
   CHANGE_COMMENT_SENDED_SUCCESSFULLY_STATUS: 'comment/changeCommentSendedSuccessfulyStatus',
+  RESET_FAVORITES: 'places/resetFavorites',
 };
 
 export const changeLoadingCommentProcessStatus = createAction(ActionType.CHANGE_LOADING_COMMENT_PROCESS_STATUS, (isLoading) => ({
@@ -68,3 +69,7 @@ export const changeFavorite = createAction(ActionType.CHANGE_FAVORITE, (id, newP
 }));
 
 export const logout = createAction(ActionType.LOGOUT);
+
+export const resetFavorites = createAction(ActionType.RESET_FAVORITES, (places) => ({
+  payload: places,
+}));

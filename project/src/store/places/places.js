@@ -8,7 +8,8 @@ import {
   loadPlaces,
   loadNearbyPlaces,
   removeNearbyPlaces,
-  changeFavorite
+  changeFavorite,
+  resetFavorites
 } from '../actions';
 
 const initialState = {
@@ -42,6 +43,9 @@ const places = createReducer(initialState, (builder) => {
     })
     .addCase(changeFavorite, (state, action) => {
       state.places = Util.getUpdatedPlaces(action.payload.id, state.places, action.payload.newPlace);
+    })
+    .addCase(resetFavorites, (state, action) => {
+      state.places = Util.resetFavoriteStates(action.payload);
     });
 });
 

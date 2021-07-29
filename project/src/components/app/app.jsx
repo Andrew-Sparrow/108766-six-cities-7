@@ -1,5 +1,5 @@
-import React from 'react';
-import {useSelector} from 'react-redux';
+import React, {useEffect} from 'react';
+import {useSelector, useDispatch} from 'react-redux';
 import {Switch, Route, Router as BrowserRouter} from 'react-router-dom';
 
 import {AppRoute, AuthorizationStatus} from '../../const';
@@ -13,11 +13,20 @@ import PrivateRoute from '../private-route/private-route';
 import browserHistory from '../../browser-history';
 import { getPlaces, getIsDataLoaded} from '../../store/places/selectors';
 import {getAuthorizationStatus} from '../../store/user/selectors';
+import {fetchPlacesList, logout} from '../../store/api-actions';
 
 function App() {
   const places = useSelector(getPlaces);
   const isDataLoaded = useSelector(getIsDataLoaded);
   const authorizationStatus = useSelector(getAuthorizationStatus);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
+      dispatch(logout());
+      dispatch(fetchPlacesList());
+    }
+  }, [authorizationStatus, dispatch]);
 
   if (!isDataLoaded) {
     return (
