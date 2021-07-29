@@ -5,7 +5,14 @@ import {useDispatch} from 'react-redux';
 import {addToFavorite} from '../../store/api-actions';
 
 function FavoritePlace(props) {
-  const {id, price, title, type, isFavorite} = props;
+  const {
+    id,
+    price,
+    title,
+    type,
+    isFavorite,
+  } = props;
+
   const dispatch = useDispatch();
 
   const handleFavoriteChange = (evt) => {
@@ -15,7 +22,7 @@ function FavoritePlace(props) {
   return (
     <article className="favorites__card place-card">
       <div className="favorites__image-wrapper place-card__image-wrapper">
-        <Link to="/">
+        <Link to={`/offer/${ id }`}>
           <img className="place-card__image" src="img/apartment-small-03.jpg" width={150} height={110} alt="Place" />
         </Link>
       </div>
