@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import {Switch, Redirect, Route, Router as BrowserRouter} from 'react-router-dom';
+import {Switch, Route, Router as BrowserRouter} from 'react-router-dom';
+// import {Switch, Redirect, Route, Router as BrowserRouter} from 'react-router-dom';
 
 import {AppRoute, AuthorizationStatus} from '../../const';
 import Main from '../main/main';
@@ -22,7 +23,7 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (localStorage.getItem('login')) {
+    if (localStorage.getItem('login') !== null) {
       dispatch(changeAuthorizationStatus(AuthorizationStatus.AUTH));
       dispatch(changeLogin(localStorage.getItem('login')));
     }
@@ -40,10 +41,13 @@ function App() {
         <Route exact path={AppRoute.MAIN}>
           <Main className="page page--gray page--index" />
         </Route>
-        <Route exact path={AppRoute.SIGN_IN}>
+        {/* <Route exact path={AppRoute.SIGN_IN}>
           {authorizationStatus === AuthorizationStatus.NO_AUTH
             ? <Login />
             : <Redirect to={AppRoute.MAIN} />}
+        </Route> */}
+        <Route exact path={AppRoute.SIGN_IN}>
+          <Login />
         </Route>
         <PrivateRoute
           exact

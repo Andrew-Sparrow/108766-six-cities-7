@@ -8,10 +8,11 @@ import {
   changeAuthorizationStatus,
   changeLogin,
   changeFavorite,
-  logout as userLogout
+  logout as userLogout,
+  redirectToRoute
 } from './actions';
 
-import {AuthorizationStatus, APIRoute} from '../const';
+import {AuthorizationStatus, APIRoute, AppRoute} from '../const';
 import Util from '../util/util';
 
 export const fetchPlacesList = () => (dispatch, _getState, api) => (
@@ -51,10 +52,13 @@ export const addToFavorite = (id, isFavorite) => (dispatch, _getState, api) => (
 export const login = ({login: email, password}) => (dispatch, _getState, api) => (
   api.post(APIRoute.LOGIN, {email, password})
     .then((info) => {
+      localStorage.removeItem('token');
+      localStorage.removeItem('login');
       localStorage.setItem('token', info.data.token);
       localStorage.setItem('login', info.data.email);
       dispatch(changeLogin(info.data.email));
       dispatch(changeAuthorizationStatus(AuthorizationStatus.AUTH));
+      dispatch(redirectToRoute(AppRoute.MAIN));
     })
     .catch((err) => {})
 );

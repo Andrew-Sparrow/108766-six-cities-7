@@ -8,6 +8,7 @@ import browserHistory from './browser-history';
 import App from './components/app/app';
 import rootReducer from './store/root-reducer';
 import {fetchPlacesList} from './store/api-actions';
+import {redirect} from './store/middlewares/redirect';
 
 const api = getAxiosInstance(browserHistory);
 
@@ -18,7 +19,7 @@ const store = configureStore({
       thunk: {
         extraArgument: api,
       },
-    }),
+    }).concat(redirect),
 });
 
 store.dispatch(fetchPlacesList());
