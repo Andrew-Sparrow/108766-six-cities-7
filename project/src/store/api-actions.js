@@ -97,10 +97,10 @@ export const logout = () => (dispatch, _getState, api) => (
 
 export const checkAuth = () => (dispatch, _getState, api) => (
   api.get(APIRoute.LOGIN)
-    .then(() => {
+    .then((info) => {
       if (localStorage.getItem('login') !== null) {
         dispatch(changeAuthorizationStatus(AuthorizationStatus.AUTH));
-        dispatch(changeLogin(localStorage.getItem('login')));
+        dispatch(changeLogin(info.data.email));
       }
     })
     .catch(() => {})
