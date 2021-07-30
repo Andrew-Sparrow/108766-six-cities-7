@@ -24,7 +24,7 @@ function SignOut(props) {
       <Tooltip
         trigger={['hover']}
         placement='bottom'
-        overlay={<div style={{height: 100, width: 150, fontSize: 25}}>Click to show up favorites</div>}
+        overlay={<div style={{height: 60, width: 150, fontSize: 20}}>Click to show up favorites</div>}
       >
         <li className="header__nav-item user">
           <Link className="header__nav-link header__nav-link--profile" to={AppRoute.FAVORITES}>
