@@ -61,9 +61,7 @@ export const changeAuthorizationStatus = createAction(ActionType.CHANGE_AUTHORIZ
   payload: status,
 }));
 
-export const changeLogin = createAction(ActionType.CHANGE_LOGIN, (login) => ({
-  payload: login,
-}));
+export const changeLogin = createAction(ActionType.CHANGE_LOGIN, (login) => ({payload: login}));
 
 export const changeFavorite = createAction(ActionType.CHANGE_FAVORITE, (id, newPlace) => ({
   payload: {id, newPlace},

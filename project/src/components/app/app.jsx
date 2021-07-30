@@ -1,9 +1,11 @@
-import React, {useEffect} from 'react';
-import {useSelector, useDispatch} from 'react-redux';
+import React from 'react';
+// import React, {useEffect} from 'react';
+import {useSelector} from 'react-redux';
 import {Switch, Route, Router as BrowserRouter} from 'react-router-dom';
 // import {Switch, Redirect, Route, Router as BrowserRouter} from 'react-router-dom';
 
-import {AppRoute, AuthorizationStatus} from '../../const';
+import {AppRoute} from '../../const';
+// import {AppRoute, AuthorizationStatus} from '../../const';
 import Main from '../main/main';
 import Favorites from '../favorites/favorites';
 import Login from '../login/login';
@@ -13,21 +15,21 @@ import LoadingScreen from '../loading-screen/loading-screen';
 import PrivateRoute from '../private-route/private-route';
 import browserHistory from '../../browser-history';
 import { getPlaces, getIsDataLoaded} from '../../store/places/selectors';
-import {getAuthorizationStatus} from '../../store/user/selectors';
-import {changeAuthorizationStatus, changeLogin} from '../../store/actions';
+// import {getAuthorizationStatus} from '../../store/user/selectors';
+// import {changeAuthorizationStatus, changeLogin} from '../../store/actions';
 
 function App() {
   const places = useSelector(getPlaces);
   const isDataLoaded = useSelector(getIsDataLoaded);
-  const authorizationStatus = useSelector(getAuthorizationStatus);
-  const dispatch = useDispatch();
+  // const authorizationStatus = useSelector(getAuthorizationStatus);
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (localStorage.getItem('login') !== null) {
-      dispatch(changeAuthorizationStatus(AuthorizationStatus.AUTH));
-      dispatch(changeLogin(localStorage.getItem('login')));
-    }
-  }, [authorizationStatus, dispatch]);
+  // useEffect(() => {
+  //   if (localStorage.getItem('login') !== null) {
+  //     dispatch(changeAuthorizationStatus(AuthorizationStatus.AUTH));
+  //     dispatch(changeLogin(localStorage.getItem('login')));
+  //   }
+  // }, [authorizationStatus, dispatch]);
 
   if (!isDataLoaded) {
     return (

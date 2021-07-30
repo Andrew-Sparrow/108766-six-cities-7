@@ -94,3 +94,14 @@ export const logout = () => (dispatch, _getState, api) => (
       dispatch(userLogout());
     })
 );
+
+export const checkAuth = () => (dispatch, _getState, api) => (
+  api.get(APIRoute.LOGIN)
+    .then(() => {
+      if (localStorage.getItem('login') !== null) {
+        dispatch(changeAuthorizationStatus(AuthorizationStatus.AUTH));
+        dispatch(changeLogin(localStorage.getItem('login')));
+      }
+    })
+    .catch(() => {})
+);
