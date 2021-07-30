@@ -1,4 +1,3 @@
-import {AuthorizationStatus} from '../const';
 import nanoid from 'nanoid';
 
 import {
@@ -95,9 +94,6 @@ class Util {
     filteredPlaces = places.filter((item) => item.city.name === activeCity);
     return filteredPlaces;
   }
-
-  static isCheckedAuth = (authorizationStatus) =>
-    authorizationStatus === AuthorizationStatus.UNKNOWN;
 
   static formatDate = (dateString) => {
     const DATE_OPTIONS = {year: 'numeric', month: 'short'};

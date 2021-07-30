@@ -5,8 +5,9 @@ import {useDispatch, useSelector} from 'react-redux';
 import Tooltip from 'rc-tooltip';
 
 import {AppRoute} from '../../const';
-import {logout, resetFavorites} from '../../store/actions';
+import {resetFavorites} from '../../store/actions';
 import {getPlaces} from '../../store/places/selectors';
+import {logout} from '../../store/api-actions';
 
 function SignOut(props) {
   const {login} = props;

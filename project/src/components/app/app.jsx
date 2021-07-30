@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import {Switch, Route, Router as BrowserRouter} from 'react-router-dom';
+import {Switch, Redirect, Route, Router as BrowserRouter} from 'react-router-dom';
 
 import {AppRoute, AuthorizationStatus} from '../../const';
 import Main from '../main/main';
@@ -13,7 +13,7 @@ import PrivateRoute from '../private-route/private-route';
 import browserHistory from '../../browser-history';
 import { getPlaces, getIsDataLoaded} from '../../store/places/selectors';
 import {getAuthorizationStatus} from '../../store/user/selectors';
-import {fetchPlacesList, logout} from '../../store/api-actions';
+import {changeAuthorizationStatus, changeLogin} from '../../store/actions';
 
 function App() {
   const places = useSelector(getPlaces);
@@ -22,9 +22,9 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
-      dispatch(logout());
-      dispatch(fetchPlacesList());
+    if (localStorage.getItem('login')) {
+      dispatch(changeAuthorizationStatus(AuthorizationStatus.AUTH));
+      dispatch(changeLogin(localStorage.getItem('login')));
     }
   }, [authorizationStatus, dispatch]);
 
@@ -41,9 +41,9 @@ function App() {
           <Main className="page page--gray page--index" />
         </Route>
         <Route exact path={AppRoute.SIGN_IN}>
-          {authorizationStatus === AuthorizationStatus.NO_AUTH || authorizationStatus === AuthorizationStatus.UNKNOWN
+          {authorizationStatus === AuthorizationStatus.NO_AUTH
             ? <Login />
-            : <Main className="page page--gray page--index" />}
+            : <Redirect to={AppRoute.MAIN} />}
         </Route>
         <PrivateRoute
           exact
