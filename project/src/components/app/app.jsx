@@ -1,11 +1,8 @@
 import React from 'react';
-// import React, {useEffect} from 'react';
 import {useSelector} from 'react-redux';
 import {Switch, Route, Router as BrowserRouter} from 'react-router-dom';
-// import {Switch, Redirect, Route, Router as BrowserRouter} from 'react-router-dom';
 
 import {AppRoute} from '../../const';
-// import {AppRoute, AuthorizationStatus} from '../../const';
 import Main from '../main/main';
 import Favorites from '../favorites/favorites';
 import Login from '../login/login';

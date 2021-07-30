@@ -44,14 +44,9 @@ export const fetchCommentsList = (id) => (dispatch, _getState, api) => (
 export const addToFavorite = (id, isFavorite) => (dispatch, _getState, api) => (
   api.post(`${APIRoute.FAVORITE }/${id}/${isFavorite ? 1 : 0}`)
     .then((info) => {
-      // eslint-disable-next-line
-      console.log(localStorage.getItem('token'));
       dispatch(changeFavorite(id, info.data));
     })
-    .catch((err) => {
-      // eslint-disable-next-line
-      console.log(localStorage.getItem('token'));
-    })
+    .catch((err) => {})
 );
 
 export const login = ({login: email, password}) => (dispatch, _getState, api) => {
@@ -60,8 +55,6 @@ export const login = ({login: email, password}) => (dispatch, _getState, api) =>
   api.post(APIRoute.LOGIN, {email, password})
     .then((info) => {
       localStorage.setItem('token', info.data.token);
-      // eslint-disable-next-line
-      console.log(localStorage.getItem('token'));
       localStorage.setItem('login', info.data.email);
       dispatch(changeLogin(info.data.email));
       dispatch(changeAuthorizationStatus(AuthorizationStatus.AUTH));
