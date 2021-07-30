@@ -1,21 +1,14 @@
 import React, {useRef} from 'react';
-// import React, {useRef, useEffect} from 'react';
-// import {useHistory} from 'react-router-dom';
 import {Fragment} from 'react';
 import {Link} from 'react-router-dom';
 import {useDispatch} from 'react-redux';
-// import {useDispatch, useSelector} from 'react-redux';
 
 import {login} from '../../store/api-actions';
-// import {AppRoute, AuthorizationStatus} from '../../const';
-// import {getAuthorizationStatus} from '../../store/user/selectors';
 
 function Login() {
   const loginRef = useRef();
   const passwordRef = useRef();
-  // const history = useHistory();
   const dispatch = useDispatch();
-  // const authorizationStatus = useSelector(getAuthorizationStatus);
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -25,12 +18,6 @@ function Login() {
       password: passwordRef.current.value,
     }));
   };
-
-  // useEffect(() => {
-  //   if (authorizationStatus === AuthorizationStatus.AUTH) {
-  //     history.push(AppRoute.FAVORITES);
-  //   }
-  // }, [authorizationStatus, history]);
 
   return (
     <Fragment>
