@@ -7,13 +7,15 @@ import {getAxiosInstance} from './services/api';
 // import browserHistory from './browser-history';
 import App from './components/app/app';
 import rootReducer from './store/root-reducer';
-import {fetchPlacesList, checkAuth} from './store/api-actions';
-// import {fetchPlacesList} from './store/api-actions';
+// import {fetchPlacesList, checkAuth} from './store/api-actions';
+import {fetchPlacesList} from './store/api-actions';
 import {redirect} from './store/middlewares/redirect';
 import {changeAuthorizationStatus} from './store/actions';
 import {AuthorizationStatus} from './const';
+import Util from './util/util';
 
 const api = getAxiosInstance(
+  // () => store.dispatch(checkAuth()),
   () => store.dispatch(changeAuthorizationStatus(AuthorizationStatus.NO_AUTH)),
 );
 // const api = getAxiosInstance(browserHistory);
@@ -28,7 +30,8 @@ const store = configureStore({
     }).concat(redirect),
 });
 
-store.dispatch(checkAuth());
+// store.dispatch(checkAuth());
+Util.getIsTokenExist(store.dispatch);
 store.dispatch(fetchPlacesList());
 
 ReactDOM.render(

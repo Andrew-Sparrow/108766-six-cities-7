@@ -6,6 +6,9 @@ import {
   SortByValues
 } from '../const';
 
+import {changeLogin, changeAuthorizationStatus} from '../store/actions';
+import {AuthorizationStatus} from '../const';
+
 class Util {
   static adaptToClient(offerFromServer) {
     const adaptedOfferForClient = Object.assign(
@@ -160,6 +163,13 @@ class Util {
       place = {...place, isFavorite: false};
       return place;
     });
+  }
+
+  static getIsTokenExist(dispatch) {
+    if (localStorage.getItem('token') !== null) {
+      dispatch(changeLogin(localStorage.getItem('login')));
+      dispatch(changeAuthorizationStatus(AuthorizationStatus.AUTH));
+    }
   }
 }
 

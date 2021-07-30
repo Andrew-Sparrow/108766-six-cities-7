@@ -63,6 +63,15 @@ export const login = ({login: email, password}) => (dispatch, _getState, api) =>
     .catch((err) => {})
 );
 
+export const checkAuth = () => (dispatch, _getState, api) => (
+  api.get(APIRoute.LOGIN)
+    .then((info) => {
+      dispatch(changeLogin(info.data.email));
+      dispatch(changeAuthorizationStatus(AuthorizationStatus.AUTH));
+    })
+    .catch(() => {})
+);
+
 export const sendComment = (id, comment, rating) => (dispatch, _getState, api) => {
   dispatch(changeLoadingCommentProcessStatus(true));
 
@@ -93,15 +102,4 @@ export const logout = () => (dispatch, _getState, api) => (
       localStorage.removeItem('login');
       dispatch(userLogout());
     })
-);
-
-export const checkAuth = () => (dispatch, _getState, api) => (
-  api.get(APIRoute.LOGIN)
-    .then((info) => {
-      if (localStorage.getItem('login') !== null) {
-        dispatch(changeAuthorizationStatus(AuthorizationStatus.AUTH));
-        dispatch(changeLogin(info.data.email));
-      }
-    })
-    .catch(() => {})
 );
