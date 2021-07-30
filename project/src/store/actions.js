@@ -21,58 +21,73 @@ export const ActionType = {
   REDIRECT_TO_ROUTE: 'places/redirectToRoute',
 };
 
-export const changeLoadingCommentProcessStatus = createAction(ActionType.CHANGE_LOADING_COMMENT_PROCESS_STATUS, (isLoading) => ({
-  payload: isLoading,
-}));
+export const changeLoadingCommentProcessStatus = createAction(
+  ActionType.CHANGE_LOADING_COMMENT_PROCESS_STATUS,
+  (isLoading) => ({payload: isLoading}),
+);
 
-export const changeIsCommentSendedSuccessfullyStatus = createAction(ActionType.CHANGE_COMMENT_SENDED_SUCCESSFULLY_STATUS, (isCommentSendedSuccessfully) => ({
-  payload: isCommentSendedSuccessfully,
-}));
+export const changeIsCommentSendedSuccessfullyStatus = createAction(
+  ActionType.CHANGE_COMMENT_SENDED_SUCCESSFULLY_STATUS,
+  (isCommentSendedSuccessfully) => ({payload: isCommentSendedSuccessfully}),
+);
 
-export const showErrorCommentFormMessage = createAction(ActionType.SHOW_COMMENT_ERROR_MESSAGE, (isShowErrorMessage, errorMessageText) => ({
-  payload: {isShowErrorMessage, errorMessageText},
-}));
+export const showErrorCommentFormMessage = createAction(
+  ActionType.SHOW_COMMENT_ERROR_MESSAGE,
+  (isShowErrorMessage, errorMessageText) => ({payload: {isShowErrorMessage, errorMessageText}}),
+);
 
-export const changeCity = createAction(ActionType.CHANGE_CITY, (cityName) => ({
-  payload: cityName,
-}));
+export const changeCity = createAction(
+  ActionType.CHANGE_CITY,
+  (cityName) => ({payload: cityName}),
+);
 
-export const changeSortBy = createAction(ActionType.CHANGE_SORT_BY, (sortByValue) => ({
-  payload: sortByValue,
-}));
+export const changeSortBy = createAction(
+  ActionType.CHANGE_SORT_BY,
+  (sortByValue) => ({payload: sortByValue}),
+);
 
-export const loadPlaces = createAction(ActionType.LOAD_PLACES, (places) => ({
-  payload: places,
-}));
+export const loadPlaces = createAction(
+  ActionType.LOAD_PLACES,
+  (places) => ({payload: places}),
+);
 
-export const loadNearbyPlaces = createAction(ActionType.LOAD_NEARBY_PLACES, (nearbyPlaces) => ({
-  payload: nearbyPlaces,
-}));
+export const loadNearbyPlaces = createAction(
+  ActionType.LOAD_NEARBY_PLACES,
+  (nearbyPlaces) => ({payload: nearbyPlaces}),
+);
 
 export const removeNearbyPlaces = createAction(ActionType.REMOVE_NEARBY_PLACES);
 
-export const loadComments = createAction(ActionType.LOAD_COMMENTS, (comments) => ({
-  payload: comments,
-}));
+export const loadComments = createAction(
+  ActionType.LOAD_COMMENTS,
+  (comments) => ({payload: comments}),
+);
 
 export const removeComments = createAction(ActionType.REMOVE_COMMENTS);
 
-export const changeAuthorizationStatus = createAction(ActionType.CHANGE_AUTHORIZATION_STATUS, (status) => ({
-  payload: status,
-}));
+export const changeAuthorizationStatus = createAction(
+  ActionType.CHANGE_AUTHORIZATION_STATUS,
+  (status) => ({payload: status}),
+);
 
-export const changeLogin = createAction(ActionType.CHANGE_LOGIN, (login) => ({payload: login}));
+export const changeLogin = createAction(
+  ActionType.CHANGE_LOGIN,
+  (login) => ({payload: login}),
+);
 
-export const changeFavorite = createAction(ActionType.CHANGE_FAVORITE, (id, newPlace) => ({
-  payload: {id, newPlace},
-}));
+export const changeFavorite = createAction(
+  ActionType.CHANGE_FAVORITE,
+  (id, newPlace) => ({payload: {id, newPlace}}),
+);
 
 export const logout = createAction(ActionType.LOGOUT);
 
-export const resetFavorites = createAction(ActionType.RESET_FAVORITES, (places) => ({
-  payload: places,
-}));
+export const resetFavorites = createAction(
+  ActionType.RESET_FAVORITES,
+  (places) => ({payload: places}),
+);
 
-export const redirectToRoute = createAction(ActionType.REDIRECT_TO_ROUTE, (url) => ({
-  payload: url,
-}));
+export const redirectToRoute = createAction(
+  ActionType.REDIRECT_TO_ROUTE,
+  (url) => ({payload: url}),
+);

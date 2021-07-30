@@ -2,11 +2,10 @@ import axios from 'axios';
 
 const BACKEND_URL = 'https://7.react.pages.academy/six-cities';
 const REQUEST_TIMEOUT = 5000;
-const HttpCode = {UNAUTHORIZED: 401};
 
 const token = localStorage.getItem('token') ?? '';
 
-export const getAxiosInstance = (onUnauthorized) => {
+export const getAxiosInstance = () => {
 
   const axiosInstance = axios.create({
     baseURL: BACKEND_URL,
@@ -18,15 +17,7 @@ export const getAxiosInstance = (onUnauthorized) => {
 
   const onSuccess = (response) => response;
 
-  const onFail = (err) => {
-    const {response} = err;
-
-    if (response.status === HttpCode.UNAUTHORIZED) {
-      onUnauthorized();
-    }
-
-    throw err;
-  };
+  const onFail = () => {};
 
   axiosInstance.interceptors.response.use(onSuccess, onFail);
 
