@@ -15,21 +15,10 @@ import LoadingScreen from '../loading-screen/loading-screen';
 import PrivateRoute from '../private-route/private-route';
 import browserHistory from '../../browser-history';
 import { getPlaces, getIsDataLoaded} from '../../store/places/selectors';
-// import {getAuthorizationStatus} from '../../store/user/selectors';
-// import {changeAuthorizationStatus, changeLogin} from '../../store/actions';
 
 function App() {
   const places = useSelector(getPlaces);
   const isDataLoaded = useSelector(getIsDataLoaded);
-  // const authorizationStatus = useSelector(getAuthorizationStatus);
-  // const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   if (localStorage.getItem('login') !== null) {
-  //     dispatch(changeAuthorizationStatus(AuthorizationStatus.AUTH));
-  //     dispatch(changeLogin(localStorage.getItem('login')));
-  //   }
-  // }, [authorizationStatus, dispatch]);
 
   if (!isDataLoaded) {
     return (
@@ -43,11 +32,6 @@ function App() {
         <Route exact path={AppRoute.MAIN}>
           <Main className="page page--gray page--index" />
         </Route>
-        {/* <Route exact path={AppRoute.SIGN_IN}>
-          {authorizationStatus === AuthorizationStatus.NO_AUTH
-            ? <Login />
-            : <Redirect to={AppRoute.MAIN} />}
-        </Route> */}
         <Route exact path={AppRoute.SIGN_IN}>
           <Login />
         </Route>
