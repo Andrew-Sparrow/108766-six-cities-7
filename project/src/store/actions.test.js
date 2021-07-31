@@ -19,6 +19,10 @@ import {
 } from './actions';
 
 import {AuthorizationStatus} from '../const';
+import {comments} from '../mock/comments';
+import {neighbourhoodPlaces} from '../mock/neighbourhood-places';
+import {placeHotel} from '../mock/place-hotel';
+import {offers} from '../mock/places';
 
 describe('Actions', () => {
   it('action creator for change loading comment process status returns correct action', () => {
@@ -69,19 +73,20 @@ describe('Actions', () => {
   it('action creator for loadPlaces returns correct action', () => {
     const expectedAction = {
       type: ActionType.LOAD_PLACES,
-      payload: [],
+      payload: offers,
     };
 
-    expect(loadPlaces([])).toEqual(expectedAction);
+    expect(loadPlaces(offers)).toEqual(expectedAction);
   });
 
   it('action creator for loadNearbyPlaces returns correct action', () => {
+    const testNearbyPlaces = neighbourhoodPlaces;
     const expectedAction = {
       type: ActionType.LOAD_NEARBY_PLACES,
-      payload: [],
+      payload: testNearbyPlaces,
     };
 
-    expect(loadNearbyPlaces([])).toEqual(expectedAction);
+    expect(loadNearbyPlaces(neighbourhoodPlaces)).toEqual(expectedAction);
   });
 
   it('action creator for removeNearbyPlaces returns correct action', () => {
@@ -91,12 +96,13 @@ describe('Actions', () => {
   });
 
   it('action creator for loadComments returns correct action', () => {
+    const testComments = comments;
     const expectedAction = {
       type: ActionType.LOAD_COMMENTS,
-      payload: [],
+      payload: testComments,
     };
 
-    expect(loadComments([])).toEqual(expectedAction);
+    expect(loadComments(comments)).toEqual(expectedAction);
   });
 
   it('action creator for removeComments returns correct action', () => {
@@ -126,10 +132,10 @@ describe('Actions', () => {
   it('action creator for changeFavorite returns correct action', () => {
     const expectedAction = {
       type: ActionType.CHANGE_FAVORITE,
-      payload: {id: 1, newPlace: 'newPlace'},
+      payload: {id: 1, newPlace: placeHotel},
     };
 
-    expect(changeFavorite(1, 'newPlace')).toEqual(expectedAction);
+    expect(changeFavorite(1, placeHotel)).toEqual(expectedAction);
   });
 
   it('action creator for logout returns correct action', () => {
