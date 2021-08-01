@@ -168,11 +168,9 @@ describe('Reducer: places', () => {
     };
 
     const oldPlaces = [initialPlace];
-
     const oldState = Object.assign({}, initialState, {places: oldPlaces});
 
     const newPlaces = [(Object.assign({}, initialPlace, {isFavorite: false}))];
-
     const newState = Object.assign({}, initialState, {places: newPlaces});
 
     const changeFavoriteAction = resetFavorites(oldPlaces);
