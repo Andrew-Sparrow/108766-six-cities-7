@@ -1,0 +1,37 @@
+import {comments} from './comments';
+import {
+  loadComments,
+  removeComments
+} from '../actions';
+import {comments as mockComments} from '../../mock/comments';
+
+const initialState = {
+  comments: [],
+  isCommentsLoaded: false,
+};
+
+describe('Reducer: comment', () => {
+  it('without additional parameters should return initial state', () => {
+    expect(comments(undefined, {})).toEqual(initialState);
+  });
+
+  it('should add comments', () => {
+    const newState = {
+      comments: mockComments,
+      isCommentsLoaded: true,
+    };
+
+    const loadCommentsAction = loadComments(mockComments);
+    expect(comments(initialState, loadCommentsAction)).toEqual(newState);
+  });
+
+  it('should change loading comment process status', () => {
+    const newState = {
+      comments: [],
+      isCommentsLoaded: false,
+    };
+
+    const loadCommentsAction = removeComments();
+    expect(comments(initialState, loadCommentsAction)).toEqual(newState);
+  });
+});
