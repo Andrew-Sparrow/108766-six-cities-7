@@ -1,17 +1,17 @@
 import {places} from './places';
 import {SortByValues} from '../../const';
+
 import {
   changeCity,
   changeSortBy,
   loadPlaces,
   loadNearbyPlaces,
   removeNearbyPlaces,
-  changeFavorite
-  // resetFavorites
+  changeFavorite,
+  resetFavorites
 } from '../actions';
 
 import {offers as mockPlaces} from '../../mock/places';
-import {placeHotel} from '../../mock/place-hotel';
 
 const initialState = {
   places: [],
@@ -83,15 +83,99 @@ describe('Reducer: places', () => {
   });
 
   it('should change favorite', () => {
-    const newPlace = Object.assign({}, placeHotel, {id: 1, isFavorite: true});
+    const initialPlace = {
+      'id': 1,
+      'price': 220,
+      'bedrooms': 3,
+      'type': 'apartment',
+      'title': 'Beautiful & luxurious studio at great location',
+      'city': {
+        'name': 'Amsterdam',
+        'location': {},
+      },
+      'description': 'A qu unique lightness of Amsterdam.',
+      'goods': [],
+      'host': {},
+      'images': ['img/1.png', 'img/2.png'],
+      'isFavorite': true,
+      'isPremium': true,
+      'location': {},
+      'maxAdults': 4,
+      'previewImage': 'img/1.png',
+      'rating': 4.0,
+    };
 
-    const newState = Object.assign(
-      {},
-      initialState,
-      {id: 1, newPlace},
-    );
+    const placeFromServer = {
+      'id': 1,
+      'price': 2200,
+      'bedrooms': 5,
+      'type': 'apartment',
+      'title': 'Beautiful & luxurious studio at great location',
+      'city': {
+        'name': 'Amsterdam',
+        'location': {},
+      },
+      'description': 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.',
+      'goods': [],
+      'host': {
+        'id': 3,
+        'avatar_url': 'img/avatar-angelina.jpg',
+        'is_pro': true,
+        'name': 'Angelina',
+      },
+      'images': [],
+      'is_favorite': false,
+      'is_premium': true,
+      'location': {},
+      'max_adults': 40,
+      'preview_image': 'img/1.png',
+      'rating': 0.5,
+    };
 
-    const changeFavoriteAction = changeFavorite(1, newPlace);
-    expect(places(initialState, changeFavoriteAction)).toEqual(newState);
+    const oldPlaces = [initialPlace];
+    const oldState = Object.assign({}, initialState, {places: oldPlaces});
+
+    const newPlace = Object.assign({}, initialPlace, {isFavorite: false});
+    const newPlaces = [newPlace];
+    const newState = Object.assign({}, initialState, {places: newPlaces});
+
+    const changeFavoriteAction = changeFavorite(1, placeFromServer);
+
+    expect(places(oldState, changeFavoriteAction)).toEqual(newState);
+  });
+
+  it('should reset all favorites', () => {
+    const initialPlace = {
+      'id': 1,
+      'price': 220,
+      'bedrooms': 3,
+      'type': 'apartment',
+      'title': 'Beautiful & luxurious studio at great location',
+      'city': {
+        'name': 'Amsterdam',
+        'location': {},
+      },
+      'description': 'A qu unique lightness of Amsterdam.',
+      'goods': [],
+      'host': {},
+      'images': ['img/1.png', 'img/2.png'],
+      'isFavorite': true,
+      'isPremium': true,
+      'location': {},
+      'maxAdults': 4,
+      'previewImage': 'img/1.png',
+      'rating': 4.0,
+    };
+
+    const oldPlaces = [initialPlace];
+
+    const oldState = Object.assign({}, initialState, {places: oldPlaces});
+
+    const newPlaces = [(Object.assign({}, initialPlace, {isFavorite: false}))];
+
+    const newState = Object.assign({}, initialState, {places: newPlaces});
+
+    const changeFavoriteAction = resetFavorites(oldPlaces);
+    expect(places(oldState, changeFavoriteAction)).toEqual(newState);
   });
 });

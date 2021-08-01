@@ -13,7 +13,7 @@ export const offers = [
     'goods': [],
     'host': {},
     'images': ['img/1.png', 'img/2.png'],
-    'isFavorite': true,
+    'isFavorite': false,
     'isPremium': true,
     'location': {},
     'maxAdults': 4,
