@@ -20,7 +20,7 @@ import {
 
 import {AuthorizationStatus} from '../const';
 
-export const offers = [
+const offers = [
   {
     'id': 1,
     'price': 220,
@@ -276,7 +276,7 @@ const mockComments = [
   },
 ];
 
-export const neighbourhoodPlaces = [
+const neighbourhoodPlaces = [
   {
     'id': 1,
     'price': 220,
