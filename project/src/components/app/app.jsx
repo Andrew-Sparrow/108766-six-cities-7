@@ -7,7 +7,7 @@ import Main from '../main/main';
 import Favorites from '../favorites/favorites';
 import Login from '../login/login';
 import Place from '../place/place';
-import Error from '../error/error';
+import Error from '../not-found/not-found';
 import LoadingScreen from '../loading-screen/loading-screen';
 import PrivateRoute from '../private-route/private-route';
 import browserHistory from '../../browser-history';
