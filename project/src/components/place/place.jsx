@@ -8,7 +8,6 @@ import PlaceFavoriteButton from './place-favorite-button';
 import withLayout from '../hocs/with-layout';
 import PlaceImageList from './place-images-list';
 import PlaceGoodList from './place-goods-list';
-import {neighbourhoodPlaces} from '../../mock/neighbourhood-places';
 import PlaceNearPlaceList from './place-near-place-list';
 import LoadingScreen from '../loading-screen/loading-screen';
 
@@ -46,6 +45,7 @@ function Place(props) {
   const authorizationStatus = useSelector(getAuthorizationStatus);
 
   const place = places.find((placeItem) => placeItem.id === +id);
+  const nearbyPlacesWithCurrentPlace = [...nearbyPlaces, place];
 
   const width = Util.getWidthByRating(place.rating);
 
@@ -154,7 +154,7 @@ function Place(props) {
             <Map
               activeCityName={place.city.name}
               city={place.city}
-              points={neighbourhoodPlaces}
+              points={nearbyPlacesWithCurrentPlace}
               selectedPoint={place}
             />
           </section>
