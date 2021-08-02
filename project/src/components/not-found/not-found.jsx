@@ -10,5 +10,5 @@ function NotFound() {
   );
 }
 
-const withLayoutMain = withLayout(NotFound);
-export default withLayoutMain;
+const withLayoutNotFound = withLayout(NotFound);
+export default withLayoutNotFound;
