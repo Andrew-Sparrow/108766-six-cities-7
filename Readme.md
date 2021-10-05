@@ -3,7 +3,7 @@
 
 ## Training project
 
-GitHub Demo - https://andrew-sparrow.github.io/108766-six-cities-7
+GitHub Demo - https://andrew-sparrow.github.io/react6cities
 
 ### Description:
 Project for booking apartments in six cities.
