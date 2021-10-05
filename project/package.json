@@ -2,7 +2,7 @@
   "name": "project",
   "version": "0.1.0",
   "private": false,
-  "homepage": "https://andrew-sparrow.github.io/react6cities",
+  "homepage": "https://andrew-sparrow.github.io/react6cities/login",
   "dependencies": {
     "@reduxjs/toolkit": "^1.5.0",
     "axios": "^0.21.1",
