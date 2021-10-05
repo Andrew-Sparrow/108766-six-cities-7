@@ -1,6 +1,6 @@
 import React from 'react';
 import {useSelector} from 'react-redux';
-import {Switch, Route, Router as BrowserRouter} from 'react-router-dom';
+import {Switch, Route, HashRouter as BrowserRouter} from 'react-router-dom';
 
 import {AppRoute} from '../../const';
 import Main from '../main/main';
