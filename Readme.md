@@ -17,3 +17,5 @@ Project for booking apartments in six cities.
 * HOC's
 * Redux-thunk
 * Jest
+
+![Alt text](project/public/assets/screenshot.png?raw=true "Title")
