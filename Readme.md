@@ -26,5 +26,8 @@ Project for booking apartments in six cities.
 - adding new comments
 
 ---
+##### The full list of projects in my portfolio:
+##### https://andrew-sparrow.github.io/ap-portfolio
+---
 
 ![Alt text](project/public/assets/screenshot.png?raw=true "Title")
