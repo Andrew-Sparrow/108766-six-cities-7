@@ -3,7 +3,12 @@
 
 ## Training project
 
-GitHub Demo - https://andrew-sparrow.github.io/react6cities/#/
+---
+
+#### Watch deployed project at GitHub Pages
+###### https://andrew-sparrow.github.io/react6cities/#/
+
+---
 
 ### Description:
 Project for booking apartments in six cities.
@@ -19,11 +24,13 @@ Project for booking apartments in six cities.
 * Jest
 ---
 ### Functionality:
-- getting data from server
+- getting and sending data from/to server
 - filtering hotels by city
 - authorizations
 - privite page
 - adding new comments
+- adding to favorite
+- displaying hotels on the map
 
 ---
 ##### The full list of projects in my portfolio:
