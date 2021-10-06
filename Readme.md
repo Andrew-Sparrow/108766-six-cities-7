@@ -17,5 +17,14 @@ Project for booking apartments in six cities.
 * HOC's
 * Redux-thunk
 * Jest
+---
+### Functionality:
+- getting data from server
+- filtering hotels by city
+- authorizations
+- privite page
+- adding new comments
+
+---
 
 ![Alt text](project/public/assets/screenshot.png?raw=true "Title")
